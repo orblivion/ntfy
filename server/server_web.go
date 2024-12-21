@@ -12,6 +12,10 @@ import (
 // handleWebApp serves the embedded web app's index for client-side (SPA) routes that the
 // browser router resolves, so the app shell loads and the client-side router takes over.
 func (s *Server) handleWebApp(w http.ResponseWriter, r *http.Request, v *visitor) error {
+	// Strongly discourage grain sharing (for now at least)
+	if !GetSandstormPermissions(r).Has(SandstormPermissionAdmin) {
+		return errHTTPUnauthorized
+	}
 	r.URL.Path = webAppIndex
 	return s.handleStatic(w, r, v)
 }

@@ -90,12 +90,14 @@ const PublishDialog = (props) => {
   const open = !!props.openMode;
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
+    /* // Attachments not supported in Sandstorm
   useEffect(() => {
     window.addEventListener("dragenter", () => {
       props.onDragEnter();
       setDropZone(true);
     });
   }, []);
+  */
 
   useEffect(() => {
     setBaseUrl(props.baseUrl);
@@ -298,7 +300,11 @@ const PublishDialog = (props) => {
       {dropZone && <DropArea onDrop={handleAttachFileDrop} onDragLeave={handleAttachFileDragLeave} />}
       <Dialog maxWidth="md" open={open} onClose={props.onClose} fullScreen={fullScreen}>
         <DialogTitle>
-          {baseUrl && topic
+	  {/*
+	  Sandstorm ntfy doesn't interact with other ntfy servers right now.
+	  Don't show the topic (which includes the ui-subdomain, which will confuse people)
+	  */}
+          {baseUrl && topic && false
             ? t("publish_dialog_title_topic", {
                 topic: topicShortUrl(baseUrl, topic),
               })
@@ -317,6 +323,7 @@ const PublishDialog = (props) => {
                 setShowTopicUrl(false);
               }}
             >
+	      {false && // Sandstorm ntfy doesn't interact with other ntfy servers right now
               <TextField
                 margin="dense"
                 label={t("publish_dialog_base_url_label")}
@@ -333,6 +340,7 @@ const PublishDialog = (props) => {
                   },
                 }}
               />
+	      }
               <TextField
                 margin="dense"
                 label={t("publish_dialog_topic_label")}
@@ -668,7 +676,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showEmail && (
+            {!showEmail && false && ( // Sandstorm ntfy doesn't have email support
               <Chip
                 clickable
                 disabled={disabled}
@@ -701,7 +709,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showAttachFile && !showAttachUrl && (
+            {!showAttachFile && !showAttachUrl && false && (
               <Chip
                 clickable
                 disabled={disabled}
