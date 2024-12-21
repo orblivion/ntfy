@@ -11,5 +11,5 @@ export PATH=$PATH:~/go/bin
 goreleaser -v || go install github.com/goreleaser/goreleaser@latest
 goreleaser -v   # verifies that it worked
 
-#make web
+make web
 make cli-linux-amd64
