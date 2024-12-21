@@ -481,6 +481,10 @@ func (s *Server) handle(w http.ResponseWriter, r *http.Request) {
 		s.handleError(w, r, v, err)
 		return
 	}
+	if !GetSandstormPermissions(r).Has(SandstormPermissionFullApi) {
+		s.handleError(w, r, v, errHTTPUnauthorized)
+		return
+	}
 	ev := logvr(v, r)
 	if ev.IsTrace() {
 		ev.Field("http_request", renderHTTPRequest(r)).Trace("HTTP request started")
@@ -682,6 +686,10 @@ func (s *Server) handleInternal(w http.ResponseWriter, r *http.Request, v *visit
 // handleWebApp serves the embedded web app's index for client-side (SPA) routes that the
 // browser router resolves, so the app shell loads and the client-side router takes over.
 func (s *Server) handleWebApp(w http.ResponseWriter, r *http.Request, v *visitor) error {
+	// Strongly discourage grain sharing (for now at least)
+	if !GetSandstormPermissions(r).Has(SandstormPermissionAdmin) {
+		return errHTTPUnauthorized
+	}
 	r.URL.Path = webAppIndex
 	return s.handleStatic(w, r, v)
 }

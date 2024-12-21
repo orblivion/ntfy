@@ -1,3 +1,11 @@
+# This is the Sandstorm fork of ntfy
+
+[See here](.sandstorm/README.md).
+
+Original README continues below:
+
+---
+
 <div align="center" markdown="1">
 <sup>Special thanks to:</sup>
 <br>
