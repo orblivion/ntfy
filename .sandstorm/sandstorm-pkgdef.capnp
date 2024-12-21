@@ -1,0 +1,266 @@
+@0xd1130297b9769e17;
+
+using Spk = import "/sandstorm/package.capnp";
+# This imports:
+#   $SANDSTORM_HOME/latest/usr/include/sandstorm/package.capnp
+# Check out that file to see the full, documented package definition format.
+
+const pkgdef :Spk.PackageDefinition = (
+  # The package definition. Note that the spk tool looks specifically for the
+  # "pkgdef" constant.
+
+  id = "pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh",
+  # Your app ID is actually its public key. The private key was placed in
+  # your keyring. All updates must be signed with the same key.
+
+  manifest = (
+    # This manifest is included in your app package to tell Sandstorm
+    # about your app.
+
+    appTitle = (defaultText = "ntfy"),
+
+    appVersion = 9,  # Increment this for every release.
+
+    appMarketingVersion = (defaultText = "v2.13.0-sandstorm-9"),
+    # Human-readable representation of appVersion. Should match the way you
+    # identify versions of your app in documentation and marketing.
+
+    actions = [
+      # Define your "new document" handlers here.
+      ( nounPhrase = (defaultText = "push service"),
+        command = .myCommand
+        # The command to run when starting for the first time. (".myCommand"
+        # is just a constant defined at the bottom of the file.)
+      )
+    ],
+
+    continueCommand = .myCommand,
+    # This is the command called to start your app back up after it has been
+    # shut down for inactivity. Here we're using the same command as for
+    # starting a new instance, but you could use different commands for each
+    # case.
+
+    metadata = (
+      # Data which is not needed specifically to execute the app, but is useful
+      # for purposes like marketing and display.  These fields are documented at
+      # https://docs.sandstorm.io/en/latest/developing/publishing-apps/#add-required-metadata
+      # and (in deeper detail) in the sandstorm source code, in the Metadata section of
+      # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/package.capnp
+      icons = (
+        # Various icons to represent the app in various contexts.
+        appGrid = (png = (dpi1x = embed "metadata/logo.png")),
+        grain = (png = (dpi1x = embed "metadata/logo.png")),
+        market = (png = (dpi1x = embed "metadata/logo.png")),
+        marketBig = (png = (dpi1x = embed "metadata/logo.png")),
+      ),
+
+      website = "https://ntfy.sh",
+      # This should be the app's main website url.
+
+      codeUrl = "https://github.com/orblivion/ntfy",
+      # URL of the app's source code repository, e.g. a GitHub URL.
+      # Required if you specify a license requiring redistributing code, but optional otherwise.
+
+      license = (openSource = apache2),
+      # The license this package is distributed under.  See
+      # https://docs.sandstorm.io/en/latest/developing/publishing-apps/#license
+
+      categories = [other],
+      # A list of categories/genres to which this app belongs, sorted with best fit first.
+      # See the list of categories at
+      # https://docs.sandstorm.io/en/latest/developing/publishing-apps/#categories
+
+      author = (
+        # Fields relating to the author of this app.
+
+        contactEmail = "dan@danielkrol.com",
+        # Email address to contact for any issues with this app. This includes end-user support
+        # requests as well as app store administrator requests, so it is very important that this be a
+        # valid address with someone paying attention to it.
+
+        pgpSignature = embed "metadata/pgp-signature",
+        # PGP signature attesting responsibility for the app ID. This is a binary-format detached
+        # signature of the following ASCII message (not including the quotes, no newlines, and
+        # replacing <app-id> with the standard base-32 text format of the app's ID):
+        #
+        # "I am the author of the Sandstorm.io app with the following ID: <app-id>"
+        #
+        # You can create a signature file using `gpg` like so:
+        #
+        #     echo -n "I am the author of the Sandstorm.io app with the following ID: <app-id>" | gpg --sign > pgp-signature
+        #
+        # Further details including how to set up GPG and how to use keybase.io can be found
+        # at https://docs.sandstorm.io/en/latest/developing/publishing-apps/#verify-your-identity
+
+        upstreamAuthor = "Philipp C. Heckel",
+        # Name of the original primary author of this app, if it is different from the person who
+        # produced the Sandstorm package. Setting this implies that the author connected to the PGP
+        # signature only "packaged" the app for Sandstorm, rather than developing the app.
+        # Remove this line if you consider yourself as the author of the app.
+      ),
+
+      pgpKeyring = embed "metadata/pgp-keyring",
+      # A keyring in GPG keyring format containing all public keys needed to verify PGP signatures in
+      # this manifest (as of this writing, there is only one: `author.pgpSignature`).
+      #
+      # To generate a keyring containing just your public key, do:
+      #
+      #     gpg --export <key-id> > keyring
+      #
+      # Where `<key-id>` is a PGP key ID or email address associated with the key.
+
+      description = (defaultText = embed "metadata/description.md"),
+      # The app's description in Github-flavored Markdown format, to be displayed e.g.
+      # in an app store. Note that the Markdown is not permitted to contain HTML nor image tags (but
+      # you can include a list of screenshots separately).
+
+      shortDescription = (defaultText = "Push notifications"),
+      # A very short (one-to-three words) description of what the app does. For example,
+      # "Document editor", or "Notetaking", or "Email client". This will be displayed under the app
+      # title in the grid view in the app market.
+
+      screenshots = [
+        # Screenshots to use for marketing purposes.  Examples below.
+        # Sizes are given in device-independent pixels, so if you took these
+        # screenshots on a Retina-style high DPI screen, divide each dimension by two.
+
+        (png = embed "metadata/screenshot-curl.png"),
+        (jpeg = embed "metadata/screenshot-phone-detail.jpg"),
+        (jpeg = embed "metadata/screenshot-phone-main.jpg"),
+        (jpeg = embed "metadata/screenshot-phone-notification.jpg"),
+
+        # We don't do notifications in browser at the moment (also I
+        # forget if we do images)
+        #
+        # (png = embed "metadata/screenshot-web-detail.png"),
+
+      ],
+      #changeLog = (defaultText = embed "path/to/sandstorm-specific/changelog.md"),
+      # Documents the history of changes in Github-flavored markdown format (with the same restrictions
+      # as govern `description`). We recommend formatting this with an H1 heading for each version
+      # followed by a bullet list of changes.
+    ),
+  ),
+
+  sourceMap = (
+    # Here we defined where to look for files to copy into your package. The
+    # `spk dev` command actually figures out what files your app needs
+    # automatically by running it on a FUSE filesystem. So, the mappings
+    # here are only to tell it where to find files that the app wants.
+    searchPath = [
+      ( sourcePath = "." ),  # Search this directory first.
+
+      ( sourcePath = "rootfs" ),
+      # Then some system files I want to override
+      # * set /etc/localtime to UTC to have it be immune to tzdata changes
+
+      ( sourcePath = "/",    # Then search the system root directory.
+        hidePaths = [ "home", "proc", "sys",
+                      "etc/passwd", "etc/hosts", "etc/host.conf",
+                      "etc/nsswitch.conf", "etc/resolv.conf" ]
+        # You probably don't want the app pulling files from these places,
+        # so we hide them. Note that /dev, /var, and /tmp are implicitly
+        # hidden because Sandstorm itself provides them.
+      )
+    ]
+  ),
+
+  fileList = "sandstorm-files.list",
+  # `spk dev` will write a list of all the files your app uses to this file.
+  # You should review it later, before shipping your app.
+
+  alwaysInclude = [],
+  # Fill this list with more names of files or directories that should be
+  # included in your package, even if not listed in sandstorm-files.list.
+  # Use this to force-include stuff that you know you need but which may
+  # not have been detected as a dependency during `spk dev`. If you list
+  # a directory here, its entire contents will be included recursively.
+
+  bridgeConfig = (
+  #  # Used for integrating permissions and roles into the Sandstorm shell
+  #  # and for sandstorm-http-bridge to pass to your app.
+  #  # Uncomment this block and adjust the permissions and roles to make
+  #  # sense for your app.
+  #  # For more information, see high-level documentation at
+  #  # https://docs.sandstorm.io/en/latest/developing/auth/
+  #  # and advanced details in the "BridgeConfig" section of
+  #  # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/package.capnp
+    viewInfo = (
+      # For details on the viewInfo field, consult "ViewInfo" in
+      # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/grain.capnp
+
+      permissions = [
+      # Permissions which a user may or may not possess.  A user's current
+      # permissions are passed to the app as a comma-separated list of `name`
+      # fields in the X-Sandstorm-Permissions header with each request.
+      #
+      # IMPORTANT: only ever append to this list!  Reordering or removing fields
+      # will change behavior and permissions for existing grains!  To deprecate a
+      # permission, or for more information, see "PermissionDef" in
+      # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/grain.capnp
+        (
+          # For now this just gatekeeps the web UI, which is cosmetic. Later we can use this to gatekeep admin-like features.
+          name = "admin",
+
+          title = (defaultText = "administration"),
+          # Display name of the permission, e.g. to display in a checklist of permissions
+          # that may be assigned when sharing.
+
+          # In the future this may include things like topic names, which are usually secret
+          description = (defaultText = "grants access to any private data and allows changing settings"),
+          # Prose describing what this role means, suitable for a tool tip or similar help text.
+        ),
+        (
+          # In the future we may have fine grained topic permissions
+          name = "fullapi",
+          title = (defaultText = "full api"),
+          description = (defaultText = "grants read and write to all topics"),
+        ),
+      ],
+      roles = [
+        # Roles are logical collections of permissions.  For instance, your app may have
+        # a "viewer" role and an "editor" role
+
+        # Having at least one role stops the default full-permission role from showing up in the share menu.
+        # This role will be used for the API, but will break if you try to use it in the share menu.
+        # Thus, there's no way to have a share work in the web UI.
+        (
+          title = (defaultText = "api"),
+          # Name of the role.  Shown in the Sandstorm UI to indicate which users have which roles.
+
+          permissions  = [false, true],
+          # An array indicating which permissions this role carries.
+          # It should be the same length as the permissions array in
+          # viewInfo, and the order of the lists must match.
+
+          verbPhrase = (defaultText = "can read and write notifications on all topics via API only"),
+          # Brief explanatory text to show in the sharing UI indicating
+          # what a user assigned this role will be able to do with the grain.
+
+          description = (defaultText = "can read and write notifications on all topics via API only"),
+          # Prose describing what this role means, suitable for a tool tip or similar help text.
+        ),
+      ],
+    ),
+  #
+  apiPath = "/",
+  #
+  #  # Apps can export an API to the world.  The API is to be used primarily by Javascript
+  #  # code and native apps, so it can't serve out regular HTML to browsers.  If a request
+  #  # comes in to your app's API, sandstorm-http-bridge will prefix the request's path with
+  #  # this string, if specified.
+  ),
+);
+
+const myCommand :Spk.Manifest.Command = (
+  # Here we define the command used to start up your server.
+  argv = ["/sandstorm-http-bridge", "8080", "--", "/bin/bash", "/opt/app/.sandstorm/launcher.sh"],
+  environ = [
+    # Note that this defines the *entire* environment seen by your app.
+    (key = "PATH", value = "/usr/local/bin:/usr/bin:/bin"),
+    (key = "SANDSTORM", value = "1"),
+    # Export SANDSTORM=1 into the environment, so that apps running within Sandstorm
+    # can detect if $SANDSTORM="1" at runtime, switching UI and/or backend to use
+    # the app's Sandstorm-specific integration code.
+  ]
+);

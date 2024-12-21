@@ -191,6 +191,7 @@ export class SubscriptionManager {
 
   /** Adds notification, or returns false if it already exists */
   async addNotification(subscriptionId, notification) {
+    return // disable for Sandstorm just in case, but it should be gone from the UI anyway
     if (notification.event === EVENT_MESSAGE_DELETE || notification.event === EVENT_MESSAGE_CLEAR) {
       return false;
     }
@@ -246,6 +247,7 @@ export class SubscriptionManager {
    * older versions of the same sequence; will not throw if they exist
    */
   async addNotifications(subscriptionId, notifications) {
+    return // disable for Sandstorm just in case, but it should be gone from the UI anyway
     const added = await this.db.transaction("rw", this.db.notifications, async () => {
       // Skip notifications that are already stored (e.g. delivered via WebSocket while this poll
       // was in flight), so overwriting them doesn't drop their "new" marker, or deleted
@@ -283,6 +285,7 @@ export class SubscriptionManager {
   }
 
   async updateNotification(notification) {
+    return // disable for Sandstorm just in case, but it should be gone from the UI anyway
     const exists = await this.db.notifications.get(notification.id);
     if (!exists) {
       return false;

@@ -36,6 +36,7 @@ const broadcastChannel = new BroadcastChannel("web-push-broadcast");
  * receives the broadcast and plays a sound (see web/src/app/WebPush.js).
  */
 const handlePushMessage = async (data) => {
+  return // disable for Sandstorm just in case, but it should be gone from the UI anyway
   const { subscription_id: subscriptionId, message } = data;
 
   const db = await dbAsync();
