@@ -190,6 +190,7 @@ export class SubscriptionManager {
 
   /** Adds notification, or returns false if it already exists */
   async addNotification(subscriptionId, notification) {
+    return // disable for Sandstorm just in case, but it should be gone from the UI anyway
     const exists = await this.db.notifications.get(notification.id);
     if (exists || notification.event === EVENT_MESSAGE_DELETE || notification.event === EVENT_MESSAGE_CLEAR) {
       return false;
@@ -218,6 +219,7 @@ export class SubscriptionManager {
 
   /** Adds/replaces notifications, will not throw if they exist */
   async addNotifications(subscriptionId, notifications) {
+    return // disable for Sandstorm just in case, but it should be gone from the UI anyway
     const notificationsWithSubscriptionId = notifications.map((notification) => ({
       ...messageWithSequenceId(notification),
       subscriptionId,
@@ -230,6 +232,7 @@ export class SubscriptionManager {
   }
 
   async updateNotification(notification) {
+    return // disable for Sandstorm just in case, but it should be gone from the UI anyway
     const exists = await this.db.notifications.get(notification.id);
     if (!exists) {
       return false;
