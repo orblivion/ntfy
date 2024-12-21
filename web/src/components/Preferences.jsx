@@ -52,6 +52,7 @@ import { subscribeTopic } from "./SubscribeDialog";
 import notifier from "../app/Notifier";
 import { useIsLaunchedPWA, useNotificationPermissionListener } from "./hooks";
 import { usePrefCache } from "./PrefCache";
+import { AppSetup, SettingsRefreshWarning } from "./Sandstorm";
 
 const maybeUpdateAccountSettings = async (payload) => {
   if (!session.exists()) {
@@ -70,9 +71,11 @@ const maybeUpdateAccountSettings = async (payload) => {
 const Preferences = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
     <Stack spacing={3}>
+      <AppSetup />
       <Notifications />
       <Reservations />
-      <Users />
+      {/* No accounts (or protected topics) for Sandstorm ntfy right now */}
+      {/* <Users /> */}
       <Appearance />
     </Stack>
   </Container>
@@ -88,6 +91,8 @@ const Notifications = () => {
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         {t("prefs_notifications_title")}
       </Typography>
+      <SettingsRefreshWarning />
+      <br/>
       <PrefGroup>
         <Sound />
         <MinPriority />
@@ -606,6 +611,8 @@ const Appearance = () => {
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         {t("prefs_appearance_title")}
       </Typography>
+      <SettingsRefreshWarning />
+      <br/>
       <PrefGroup>
         <Theme />
         <DateFormat />
