@@ -22,6 +22,7 @@ import initI18n from "../src/app/i18n";
 const broadcastChannel = new BroadcastChannel("web-push-broadcast");
 
 const addNotification = async ({ subscriptionId, message }) => {
+  return // disable for Sandstorm just in case, but it should be gone from the UI anyway
   const db = await dbAsync();
 
   await db.notifications.add({
