@@ -1,3 +1,11 @@
+# This is the Sandstorm fork of ntfy
+
+[See here](.sandstorm/README.md).
+
+Original README continues below:
+
+---
+
 ![ntfy](web/public/static/images/ntfy.png)
 
 # ntfy.sh | Send push notifications to your phone or desktop via PUT/POST
