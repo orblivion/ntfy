@@ -27,7 +27,7 @@ import Person from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from "@mui/icons-material/Add";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
+import { WavingHand, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Trans, useTranslation } from "react-i18next";
 import CelebrationIcon from "@mui/icons-material/Celebration";
@@ -45,6 +45,7 @@ import { AccountContext } from "./App";
 import { PermissionDenyAll, PermissionRead, PermissionReadWrite, PermissionWrite } from "./ReserveIcons";
 import { SubscriptionPopup } from "./SubscriptionPopup";
 import { useNotificationPermissionListener } from "./hooks";
+import { DocsHeadsup } from "./Sandstorm";
 
 const navWidth = 280;
 
@@ -91,6 +92,7 @@ const NavList = (props) => {
   const { account } = useContext(AccountContext);
   const [subscribeDialogKey, setSubscribeDialogKey] = useState(0);
   const [subscribeDialogOpen, setSubscribeDialogOpen] = useState(false);
+  const [docsHeadsupOpen, setDocsHeadsupOpen] = useState(false);
 
   const handleSubscribeReset = () => {
     setSubscribeDialogOpen(false);
@@ -112,11 +114,13 @@ const NavList = (props) => {
   const isPaid = account?.billing?.subscription;
   const showUpgradeBanner = config.enable_payments && !isAdmin && !isPaid;
   const showSubscriptionsList = props.subscriptions?.length > 0;
-  const showNotificationPermissionRequired = useNotificationPermissionListener(() => notifier.notRequested());
-  const showNotificationPermissionDenied = useNotificationPermissionListener(() => notifier.denied());
-  const showNotificationIOSInstallRequired = notifier.iosSupportedButInstallRequired();
-  const showNotificationBrowserNotSupportedBox = !showNotificationIOSInstallRequired && !notifier.browserSupported();
-  const showNotificationContextNotSupportedBox = notifier.browserSupported() && !notifier.contextSupported(); // Only show if notifications are generally supported in the browser
+
+  // no notifications or PWA. we'll explain it elsewhere.
+  const showNotificationPermissionRequired = false; // useNotificationPermissionListener(() => notifier.notRequested());
+  const showNotificationPermissionDenied = false; // useNotificationPermissionListener(() => notifier.denied());
+  const showNotificationIOSInstallRequired = false; // notifier.iosSupportedButInstallRequired();
+  const showNotificationBrowserNotSupportedBox = false; // !showNotificationIOSInstallRequired && !notifier.browserSupported();
+  const showNotificationContextNotSupportedBox = false; // notifier.browserSupported() && !notifier.contextSupported(); // Only show if notifications are generally supported in the browser
 
   const alertVisible =
     showNotificationPermissionRequired ||
@@ -127,6 +131,7 @@ const NavList = (props) => {
 
   return (
     <>
+      <DocsHeadsup open={docsHeadsupOpen} setOpen={setDocsHeadsupOpen}/>
       <Toolbar sx={{ display: { xs: "none", sm: "block" } }} />
       <List component="nav" sx={{ paddingTop: { xs: 0, sm: alertVisible ? 0 : "" } }}>
         {showNotificationPermissionRequired && <NotificationPermissionRequired />}
@@ -135,8 +140,20 @@ const NavList = (props) => {
         {showNotificationContextNotSupportedBox && <NotificationContextNotSupportedAlert />}
         {showNotificationIOSInstallRequired && <NotificationIOSInstallRequiredAlert />}
         {alertVisible && <Divider />}
+        <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === routes.app || location.pathname === routes.missingFeatures || location.pathname === routes.privacySecurityFull}>
+          <ListItemIcon>
+            <WavingHand />
+          </ListItemIcon>
+          <ListItemText primary="Welcome" />
+        </ListItemButton>
+        {/*
+
+        For now, just do away with subscriptions in the browser altogether. Sandstorm rotates ui subdomains so it
+        all gets lost on every reload. It could be okay to have for testing but I have no idea whether the Dexie
+        data will self-delete over time.
+
         {!showSubscriptionsList && (
-          <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
+          <ListItemButton onClick={() => navigate(routes.allSubscriptions)} selected={location.pathname === routes.allSubscriptions}>
             <ListItemIcon>
               <ChatBubble />
             </ListItemIcon>
@@ -146,7 +163,7 @@ const NavList = (props) => {
         {showSubscriptionsList && (
           <>
             <ListSubheader>{t("nav_topics_title")}</ListSubheader>
-            <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
+            <ListItemButton onClick={() => navigate(routes.allSubscriptions)} selected={location.pathname === routes.allSubscriptions}>
               <ListItemIcon>
                 <ChatBubble />
               </ListItemIcon>
@@ -156,6 +173,7 @@ const NavList = (props) => {
             <Divider sx={{ my: 1 }} />
           </>
         )}
+        */}
         {session.exists() && (
           <ListItemButton onClick={handleAccountClick} selected={location.pathname === routes.account}>
             <ListItemIcon>
@@ -170,7 +188,7 @@ const NavList = (props) => {
           </ListItemIcon>
           <ListItemText primary={t("nav_button_settings")} />
         </ListItemButton>
-        <ListItemButton onClick={() => openUrl("/docs")}>
+        <ListItemButton onClick={() => setDocsHeadsupOpen(true)}>
           <ListItemIcon>
             <ArticleIcon />
           </ListItemIcon>
@@ -182,12 +200,15 @@ const NavList = (props) => {
           </ListItemIcon>
           <ListItemText primary={t("nav_button_publish_message")} />
         </ListItemButton>
+        {/*
         <ListItemButton onClick={() => setSubscribeDialogOpen(true)}>
           <ListItemIcon>
             <AddIcon />
           </ListItemIcon>
           <ListItemText primary={t("nav_button_subscribe")} />
         </ListItemButton>
+        */}
+
         {showUpgradeBanner && (
           // The text background gradient didn't seem to do well with switching between light/dark mode,
           // So adding a `key` forces React to replace the entire component when the theme changes
