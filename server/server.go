@@ -496,6 +496,10 @@ func (s *Server) handle(w http.ResponseWriter, r *http.Request) {
 		s.handleError(w, r, v, err)
 		return
 	}
+	if !GetSandstormPermissions(r).Has(SandstormPermissionFullApi) {
+		s.handleError(w, r, v, errHTTPUnauthorized)
+		return
+	}
 	ev := logvr(v, r)
 	if ev.IsTrace() {
 		ev.Field("http_request", renderHTTPRequest(r)).Trace("HTTP request started")
