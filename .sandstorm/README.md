@@ -23,7 +23,7 @@ See:
 ### Connections
 
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
-* Websockets: Currently websocket connection on phone doesn't seem to work.
+* Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
 
 ### Attachments
@@ -72,6 +72,8 @@ Block other features that won't work with Sandstorm
 
 Maybe consider other useful configs: https://docs.ntfy.sh/config/
 
+Check out server/types.go:publishMessage - to see everything I need to... what? Why do I care, I got it working right? Maybe some aspects of the thing won't work with the connection I have I dunno.
+
 # Notes
 
 * It responds fast to requests, even if grain started as off, it looks like.
@@ -93,5 +95,3 @@ Some things I'd like to learn about ntfy in general which could help us develop.
 	* I see Tusky topics show up in my app (without me asking! which is neat):
 	* Again, not sure if it's opting me into privacy issues, supposing it wasn't my own server
 * Topic subscriptions keep disapperaing in the UI? Is that normal? Something to fix (if so move to appropriate part of this doc)?
-* Ntfy - try websocket. Maybe works already. (Will need to check again if I do Caddy).    https://docs.ntfy.sh/config/#nginxapache2caddy
-* Check out server/types.go:publishMessage - to see everything I need to... what? Why do I care, I got it working right? Maybe some aspects of the thing won't work with the connection I have I dunno.
