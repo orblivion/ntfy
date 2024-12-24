@@ -15,6 +15,7 @@ Options (in order of preference):
 * Check for Sandstorm auth headers for Web URLs. (hopefully not too hard! look for how the options to protect the web interface work, and stick in the header check. But then, make sure the API requests don't set the headers!)
 * Caddy reverse proxy, URL rewrites. Add a Web Root to ntfy and put it in a separate box that is not accessible via the API endpoint. (Heavy handed, probably slower executing)
 * Add an "API Root" - like "Web Root" - to the server, and restrict API access to it. (probably not, this looks like it will be a lot of work)
+* Just get rid of the web UI and make my own? I don't really need it. It's nice for debugging that messages get through, though. But then, if anything, it should debug further by showing that Tusky etc messages are going through it.
 
 See:
 
