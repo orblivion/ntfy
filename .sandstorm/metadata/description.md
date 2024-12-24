@@ -2,6 +2,10 @@
 
 This is in the proof-of-concept phase.
 
+In particular I suspect that it's insecure until I fix something in particular. And, if you connect your Android ntfy app to this Sandstorm app, Android apps such as Tusky may *automatically* configure itself to use your server. Which means hypothetically your push notification data could be exposed.
+
+So please use with these concerns in mind!
+
 # What is this
 
 It's a push notification service. See here for the [main project](https://ntfy.sh). It seems that a decent number of apps use it. You can host it yourself. And hopefully we can make it available for Sandstorm. But, it needs a few touches before it's ready to go.
