@@ -25,7 +25,7 @@ See:
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
 * Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
-* App is not very resilient to service disruption (though I haven't tried websockets, but it ought to work regardless). Is that the app's shortcoming, or is Sandstorm making the server worse?
+* App is not very resilient to service disruption (though I haven't tried websockets, but it ought to work regardless). Is that the app's shortcoming, or is Sandstorm making the server worse? It seems that you want to subscribe to a new topic to restart the ntfy listener or whatever.
 
 ### Attachments
 
