@@ -25,6 +25,7 @@ See:
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
 * Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
+* App is not very resilient to service disruption (though I haven't tried websockets, but it ought to work regardless). Is that the app's shortcoming, or is Sandstorm making the server worse?
 
 ### Attachments
 
@@ -73,6 +74,10 @@ Block other features that won't work with Sandstorm
 Maybe consider other useful configs: https://docs.ntfy.sh/config/
 
 Check out server/types.go:publishMessage - to see everything I need to... what? Why do I care, I got it working right? Maybe some aspects of the thing won't work with the connection I have I dunno.
+
+Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
+
+Confirm licenses for everything I use
 
 # Notes
 
