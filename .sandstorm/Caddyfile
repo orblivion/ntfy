@@ -35,12 +35,12 @@
 		handle /{$NTFY_WEB_ROOT}/* {
 			respond 404
 		}
-		rewrite * /{uri}
+		rewrite * {uri}
 	}
 
 	# Everything else should be under the web root
 	handle {
-		rewrite * /{$NTFY_WEB_ROOT}/{uri}
+		rewrite * /{$NTFY_WEB_ROOT}{uri}
 	}
 
 	reverse_proxy :8081 {
