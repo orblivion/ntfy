@@ -1,6 +1,6 @@
 {
 	# Caddy by default supports https (and even handles ACME certs). For our
-        # purposes this is annoying at best.
+	# purposes this is annoying at best.
 	auto_https off
 
 	# The admin API would let you edit this config over http (!) at localhost:2019
@@ -23,6 +23,26 @@
 		format json
 		level error # removing this line defaults to "info" which logs every request
 	}
+
+	# We prefix api requests with /api-prefix-1234/ in sandstorm-pkgdef. Now that
+	# we've identified the api trying to access webroot and blocked it, we can use
+	# handle_path to strip the prefix back away and pass the real path to ntfy.
+	handle_path /api-prefix-1234/* {
+		# Stop the API from accessing the web root
+		handle /{$NTFY_WEB_ROOT} {
+			respond 404
+		}
+		handle /{$NTFY_WEB_ROOT}/* {
+			respond 404
+		}
+		rewrite * /{uri}
+	}
+
+	# Everything else should be under the web root
+	handle {
+		rewrite * /{$NTFY_WEB_ROOT}/{uri}
+	}
+
 	reverse_proxy :8081 {
 		# See: https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#load-balancing
 
