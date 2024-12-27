@@ -12,7 +12,7 @@ export NTFY_BEHIND_PROXY=true # (TODO: Hopefully Sandstorm uses X-Forwarded-For 
 #export NTFY_ATTACHMENT_CACHE_DIR=/var/lib/ntfy/attachments (TODO: Seems to require BASE_URL for some reason)
 # export NTFY_ENABLE_LOGIN=true (TODO: default seems to have me just logged in anyway?)
 
-export NTFY_LISTEN_HTTP=:8080
+export NTFY_LISTEN_HTTP=:8081
 
 # Gets everything underneath as well
 mkdir -p /var/lib/ntfy/attachments
@@ -24,3 +24,8 @@ export PATH=$PATH:/opt/app/dist/ntfy_linux_amd64_linux_amd64_v1
 
 cd /opt/app
 ntfy serve
+
+# Caddy likes to save stuff in the home directory that we don't care about
+FAKE_CADDY_HOME=/tmp/fake-caddy-home
+mkdir $FAKE_CADDY_HOME
+HOME=$FAKE_CADDY_HOME caddy run --config .sandstorm/Caddyfile
