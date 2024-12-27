@@ -229,7 +229,7 @@ const pkgdef :Spk.PackageDefinition = (
   #      ),
   #    ],
   #  ),
-  apiPath = "/", # TODO - This is not safe! Need to lock down the web interface, with Sandstorm headers, API root, or Caddy+rewrites.
+  apiPath = "/api-prefix-1234/", # avoid name collisions
   #  # Apps can export an API to the world.  The API is to be used primarily by Javascript
   #  # code and native apps, so it can't serve out regular HTML to browsers.  If a request
   #  # comes in to your app's API, sandstorm-http-bridge will prefix the request's path with

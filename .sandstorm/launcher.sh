@@ -14,6 +14,8 @@ export NTFY_BEHIND_PROXY=true # (TODO: Hopefully Sandstorm uses X-Forwarded-For 
 
 export NTFY_LISTEN_HTTP=:8081
 
+export NTFY_WEB_ROOT=0a5c4ea29f899c0c55316201ea96b1646f26a2d444c9e9ce904ae24f65c96f00
+
 # Gets everything underneath as well
 mkdir -p /var/lib/ntfy/attachments
 
