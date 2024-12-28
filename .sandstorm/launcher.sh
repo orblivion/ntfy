@@ -14,7 +14,7 @@ export NTFY_BEHIND_PROXY=true # (TODO: Hopefully Sandstorm uses X-Forwarded-For 
 
 export NTFY_LISTEN_HTTP=:8081
 
-export NTFY_WEB_ROOT=0a5c4ea29f899c0c55316201ea96b1646f26a2d444c9e9ce904ae24f65c96f00
+export NTFY_WEB_ROOT=/0a5c4ea29f899c0c55316201ea96b1646f26a2d444c9e9ce904ae24f65c96f00
 
 # Gets everything underneath as well
 mkdir -p /var/lib/ntfy/attachments
@@ -25,7 +25,7 @@ export PATH=$PATH:/opt/app/dist/ntfy_linux_amd64_linux_amd64_v1
 # https://docs.ntfy.sh/config/#nginxapache2caddy for an idea
 
 cd /opt/app
-ntfy serve
+ntfy serve&
 
 # Caddy likes to save stuff in the home directory that we don't care about
 FAKE_CADDY_HOME=/tmp/fake-caddy-home

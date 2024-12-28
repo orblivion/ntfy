@@ -29,10 +29,10 @@
 	# handle_path to strip the prefix back away and pass the real path to ntfy.
 	handle_path /api-prefix-1234/* {
 		# Stop the API from accessing the web root
-		handle /{$NTFY_WEB_ROOT} {
+		handle {$NTFY_WEB_ROOT} {
 			respond 404
 		}
-		handle /{$NTFY_WEB_ROOT}/* {
+		handle {$NTFY_WEB_ROOT}/* {
 			respond 404
 		}
 		rewrite * {uri}
@@ -40,7 +40,7 @@
 
 	# Everything else should be under the web root
 	handle {
-		rewrite * /{$NTFY_WEB_ROOT}{uri}
+		rewrite * {$NTFY_WEB_ROOT}{uri}
 	}
 
 	reverse_proxy :8081 {
