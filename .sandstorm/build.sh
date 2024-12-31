@@ -10,7 +10,7 @@ export PATH=$PATH:/usr/local/go/bin
 # TODO - is there a better place for this?
 export PATH=$PATH:~/go/bin
 
-goreleaser -v || go install github.com/goreleaser/goreleaser@latest
+which goreleaser || go install github.com/goreleaser/goreleaser@latest
 goreleaser -v   # verifies that it worked
 
 make web
