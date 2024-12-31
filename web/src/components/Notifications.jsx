@@ -27,6 +27,7 @@ import { useOutletContext } from "react-router-dom";
 import { useRemark } from "react-remark";
 import styled from "@emotion/styled";
 import { formatBytes, formatShortDateTime, maybeActionErrors, openUrl, shortUrl, topicShortUrl, unmatchedTags } from "../app/utils";
+import { requestSandstormIframeURL } from "../app/sandstorm";
 import { formatMessage, formatTitle, isImage } from "../app/notificationUtils";
 import { LightboxBackdrop, Paragraph, VerticallyCenteredContainer } from "./styles";
 import subscriptionManager from "../app/SubscriptionManager";
@@ -629,11 +630,16 @@ const NoNotificationsWithoutSubscription = (props) => {
 
 const NoSubscriptions = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    requestSandstormIframeURL()
+  })
   return (
     <VerticallyCenteredContainer maxWidth="xs">
       <Typography variant="h5" align="center" sx={{ paddingBottom: 1 }}>
         <img src={logoOutline} height="64" width="64" alt={t("action_bar_logo_alt")} />
         <br />
+        <iframe style={{ height: "55px", width: "100%", margin: 0, border: 0 }} id="offer-iframe-0064f6194bfb82">
+        </iframe>
         {t("notifications_no_subscriptions_title")}
       </Typography>
       <Paragraph>
