@@ -9,7 +9,7 @@ apt install -y \
     build-essential \
     libsqlite3-dev \
     python3-pip \
-    #gcc-aarch64-linux-gnu \
+    caddy
 
 # TODO - this is really annoying, I shouldn't have to do this everywhere
 export PATH=$PATH:/usr/local/go/bin
