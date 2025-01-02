@@ -6,21 +6,6 @@ Temporary README as we scrape this together. If this takes off we can move to Gi
 
 ## Backend changes
 
-### Security
-
-Because of how Sandstorm works, we don't want anything like a login UI in between the user and the app. Because ntfy as of yet has no "API Root" feature, the API needs to access the root path of the URL. This leaves the web interface wide open. So we need to add a way to stop anything with API access from accessing the web interface.
-
-Options (in order of preference):
-
-* Check for Sandstorm auth headers for Web URLs. (hopefully not too hard! look for how the options to protect the web interface work, and stick in the header check. But then, make sure the API requests don't set the headers!)
-* Caddy reverse proxy, URL rewrites. Add a Web Root to ntfy and put it in a separate box that is not accessible via the API endpoint. (Heavy handed, probably slower executing)
-* Add an "API Root" - like "Web Root" - to the server, and restrict API access to it. (probably not, this looks like it will be a lot of work)
-* Just get rid of the web UI and make my own? I don't really need it. It's nice for debugging that messages get through, though. But then, if anything, it should debug further by showing that Tusky etc messages are going through it.
-
-See:
-
-* `NTFY_ENABLE_LOGIN`, `NTFY_AUTH_DEFAULT_ACCESS`, and other related configs
-
 ### Connections
 
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
