@@ -21,7 +21,7 @@ Some things I'd like to learn about ntfy in general which could help us develop.
 	* Again, not sure if it's opting me into privacy issues, supposing it wasn't my own server
 * Topic subscriptions keep disapperaing in the UI? Is that normal? Something to fix (if so move to appropriate part of this doc)?
 
-# Changes - Summary
+# Changes and Issues - Summary
 
 My notes on what can and should be done exploded. For most readers here, I wanted to make a summary, but you can look at the accompanying sub-section under the "Lots of detail" section.
 
@@ -37,7 +37,9 @@ Make attachments work
 
 ### Headers vs JSON API
 
-Sandstorm blocks non-standard headers. This will break services unless they use json instead. Crossing our fingers that it's not very many. Mastodon works for now, at least.
+Sandstorm blocks non-standard headers. This will break services unless they use json instead. Crossing our fingers that it's not very many (and that the ones that do will not change).
+
+Let's keep a list of services that are known to work, for the app description. Android app, iOS app, and Mastodon work for now, at least.
 
 ### Locking Down Topics
 
@@ -69,7 +71,7 @@ Since Sandstorm rotates ui subdomains, none of the data saved locally to the bro
 
 Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use.
 
-# Changes - Lots of detail
+# Changes and Issues - Lots of detail
 
 ## Backend changes
 
@@ -87,7 +89,26 @@ Does `BASE_URL` relate to what gets displayed to the user? In what context?
 
 ### Headers vs JSON API
 
-...
+#### Explanation
+
+The ntfy API has a "headers" version (i.e. fields are set in custom headers) and a JSON version. Sandstorm is very selective about the headers it accepts. Until and unless we update the Sandstorm platform, the headers version of the API is expected not to work. This will break any components (clients or services) that rely on them.
+
+But, as of now the system seems to work:
+
+* Android UnifiedPush test Client can send notifications.
+* Android and iOS ntfy clients can read notifications (It may be that subscribers do not need to send headers [unless we want auth]).
+* Tusky/Mastodon sends timely notifications.
+* For custom scripts, we can tell users to use the JSON version.
+
+We can check a handful of popular services. If you've tested something that isn't on this list, please let us know!
+
+However, we will need to maintain this list, as the services could always change to using the JSON api.
+
+We might also be able to change Sandstorm to accept all these headers, but this seems like an extreme measure. A better idea IMO is to wait until Tempest, and add a pkgdef config to pass through specific headers.
+
+#### Question
+
+Why isn't UnifiedPush a json parameter? There is a X-UnifiedPush header after all. Are the servers (that are working thus far) using the query param thing instead? Hmm.
 
 ### Locking Down Topics
 
