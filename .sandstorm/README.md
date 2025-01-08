@@ -19,13 +19,7 @@ Does `BASE_URL` relate to what gets displayed to the user? In what context?
 
 ## Assorted
 
-Maybe consider other useful configs: https://docs.ntfy.sh/config/
-
-Check out server/types.go:publishMessage - to see everything I need to... what? Why do I care, I got it working right? Maybe some aspects of the thing won't work with the connection I have I dunno.
-
-Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
-
-Confirm licenses for everything I use
+...
 
 # Notes
 
