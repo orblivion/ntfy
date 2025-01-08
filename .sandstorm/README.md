@@ -21,12 +21,53 @@ Some things I'd like to learn about ntfy in general which could help us develop.
 	* Again, not sure if it's opting me into privacy issues, supposing it wasn't my own server
 * Topic subscriptions keep disapperaing in the UI? Is that normal? Something to fix (if so move to appropriate part of this doc)?
 
-
-
 # Changes - Summary
 
-My notes on what can and should be done exploded. For most people I wanted to make a summary, but you can look at the accompanying sub-section under the "Lots of detail" section.
+My notes on what can and should be done exploded. For most readers here, I wanted to make a summary, but you can look at the accompanying sub-section under the "Lots of detail" section.
 
+## Backend changes
+
+### Connections
+
+Confirm we don't need outbound requests, fix websockets, confirm proxy config is right.
+
+### Attachments
+
+Make attachments work
+
+### Headers vs JSON API
+
+Sandstorm blocks non-standard headers. This will break services unless they use json instead. Crossing our fingers that it's not very many. Mastodon works for now, at least.
+
+### Locking Down Topics
+
+Because Sandstorm uses auth headers for its own purposes, we can't "log in" and thus we cannot have private topics. Thus, just as with a basic ntfy.sh account, the user should always pick randomly generated topics. Thankfully the API endpoint given my Sandstorm is random and revokable. However services (Mastodon, etc) that send notifications will see the endpoint.
+
+Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. We can probably give users the ability to monitor which topics are being used, and even get a notification when a new topic is being used.
+
+In the medium run we could add an approval process in the admin. In the long run we might be able to change Sandstorm to carve out a way for us to authenticate after all.
+
+## Web UI
+
+### Security
+
+ntfy's web UI is just another dumb client. All configurations and secrets are stored in the browser. However for Sandstorm integration, we will offer extra functionality. We will make sure that none of it works over the API endpoint. One item will be the "offer template" which gives the user a new API endpoint in the first place. The other will be a few "admin" endpoints to facilitate features such as monitoring the used topics.
+
+### Desktop Notifications and Progressive Web App
+
+These won't work on Sandstorm.
+
+### Remove Features
+
+Inapplicable features such as logging in should be removed from the UI to avoid confusing the user.
+
+### Caveats about missing features
+
+Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around. We need to explain to the user what will and won't work.
+
+### Caveats about privacy
+
+Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use.
 
 # Changes - Lots of detail
 
@@ -35,9 +76,8 @@ My notes on what can and should be done exploded. For most people I wanted to ma
 ### Connections
 
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
-* Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy
+* Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
-* App is not very resilient to service disruption (though I haven't tried websockets, but it ought to work regardless). Is that the app's shortcoming, or is Sandstorm making the server worse? It seems that you want to subscribe to a new topic to restart the ntfy listener or whatever.
 
 ### Attachments
 
