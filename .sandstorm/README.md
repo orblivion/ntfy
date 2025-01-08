@@ -1,9 +1,3 @@
-Temporary README as we scrape this together. If this takes off we can move to Github Issues.
-
-----
-
-# TODO
-
 ## Backend changes
 
 ### Connections
@@ -19,15 +13,9 @@ Attachments (`NTFY_ATTACHMENT_CACHE_DIR`) requires `BASE_URL`. I have to figure 
 
 Does `BASE_URL` relate to what gets displayed to the user? In what context?
 
-## UI Changes
+## WebUI
 
-### Text changes
-
-Explain that the Desktop PWA may not work so great (or at all) with the Sandstorm version. (In the far future, PWAs would be great for Sandstorm)
-
-Ntfy - Get rid of docs? Or link to the public site? Or maybe not, if it's not too hefty?
-
-Block other features that won't work with Sandstorm
+...
 
 ## Assorted
 
