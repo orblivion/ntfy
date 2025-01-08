@@ -21,32 +21,6 @@ Does `BASE_URL` relate to what gets displayed to the user? In what context?
 
 ## UI Changes
 
-### Add "copy api URL" to ui
-
-The URL we pass to apps (and thus to UnifiedPush-enabled servers) is not the same as the web URL. With Sandstorm, the web URL requires that you be logged into Sandstorm. However you can create (and revoke) "API keys" that have their own subdomain, and bypass the auth. Sandstorm has its own UI for generating these API keys, but the format it gives, I think, is not in a format that would be usable.
-
-So, we should add a UI that makes it easy to copy the API key in the right format.
-
-#### How to try it for now
-
-Until we add the above UI, here's what to do. Go to the Sandstorm UI above and click the key icon. You'll be able to create an API key that will be in this format:
-
-`https://api-ABC.YOURSUBDOMAIN.sandcats.io#XYZ`
-
-Take this and rearrange it in the following way:
-
-`https://api-ABC.YOURSUBDOMAIN.sandcats.io/.sandstorm-token/XYZ`
-
-Put this into the "default server" option in your ntfy Android app and you'll be connected!
-
-#### Details
-
-Maybe even a QR code for easy phone transfer? (In the far future, this should be built into Sandstorm)
-
-Maybe we should create an API key automatically and display it right away.
-
-Regarding the URL format: I'm assuming that `https://domain/path/` works across UnifiedPush. And I'm assuming that `https://basic:auth@domain` does not. So I went with the former format. I wonder if these assumptions are wrong, in which case we should change the format given here.
-
 ### Text changes
 
 Explain that the Desktop PWA may not work so great (or at all) with the Sandstorm version. (In the far future, PWAs would be great for Sandstorm)
