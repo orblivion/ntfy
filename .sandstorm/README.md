@@ -67,8 +67,6 @@ Inapplicable features such as logging in should be removed from the UI to avoid 
 
 Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around. We need to explain to the user what will and won't work.
 
-Though, we will possibly be giving the "admin" endpoints access to every topic anyway, so perhaps we could just auto-subscribe to every topic in web every time. It's something to consider.
-
 ### Caveats about privacy
 
 Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use.
