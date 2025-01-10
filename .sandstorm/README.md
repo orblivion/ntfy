@@ -69,7 +69,7 @@ Since Sandstorm rotates ui subdomains, none of the data saved locally to the bro
 
 ### Caveats about privacy
 
-Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use.
+Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use. Make sure they don't share grains with other users.
 
 # Changes and Issues - Lots of detail
 
@@ -111,6 +111,94 @@ We might also be able to change Sandstorm to accept all these headers, but this 
 Why isn't UnifiedPush a json parameter? There is a X-UnifiedPush header after all. Are the servers (that are working thus far) using the query param thing instead? Hmm.
 
 ### Locking Down Topics
+
+See the "Web UI"/"Caveats about privacy" section for details about why we want to lock this down. In short: while the domain (i.e., the API key) is randomized and can be revoked, this necessarily allows 3rd party services (Mastodon, etc) to see it when using UnifiedPush.
+
+ntfy is by default a public website that multiple people use, where anybody can publish or subscribe to any topic. Privacy is generally maintained by creating random hard-to-guess topics, though there is an option to create an account and protect topics with a password. This being a Sandstorm port, we will do what we can to lock it down (even if we make it less flexible in the process; we are opinionated here). Unfortunately our options are limited, so we have to get creative.
+
+In the below subsections, we explore our hypothetical options for locking down the ntfy instance:
+
+* Fully public (i.e. not locking it down)
+* Private topics (i.e. fully locked down, requiring authentication)
+* Allowing monitoring activity on the server in the web interface, and send the user a notification when a new topic is created
+* Requiring approval for new topics in the web interface
+
+For now, we will settle for the monitoring option, assuming it's not deemed insecure. The reasons are given below.
+
+#### Option: fully public server with no private topics
+
+Give the user the same warning that ntfy.sh gives for free users: they should treat topic names as passwords to prevent snooping. If you choose a random enough topic, you should be safe from sooping.
+
+Further, remind them that others may use your server for their own pub-sub, if they find your URL. That said, Sandstorm offers the mitigation is that your API URL is a secret between you and every service you use (Mastodon servers, Matrix servers, etc). The bad actors would be limited to those who operate those services.
+
+The exception is if you *only* use it for notifications that you trigger yourself (via scripts, etc). But then, you have to be aware that the ntfy Android app will *automatically* give your URL to some services: If you have Tusky installed and you connect the ntfy Android app to your grain, it will subscribe you to Tusky *without asking you*. In my opinion, this makes it too much of a risk to recommend the script-only use case.
+
+So, no other mitigations other than hard-to-guess topics. No private topics, no indication of who is using your grain, etc. I think we can do better than this.
+
+#### Option: private topics
+
+The best way to implement private topics is for all topics to be have a policy of being write-only, and give the user's ntfy app (and scripts) full read/write access (i.e. ntfy's "admin" role). https://docs.ntfy.sh/config/#access-control That way only the user's clients can read all of the messages, and all services can only write them.
+
+The first benefit is that it will disuade malicious services you've connected to (i.e. a bad Mastodon server) from piggybacking on your grain for its own purposes. They can still write to arbitrary channels, but they can't read any of the messages that they wrote. This would make it pretty useless to them, and hopefully remove any incentive to bother writing.
+
+The second benefit is that the user would be safe to use easy-to-guess channel names ("alerts", "camera", etc) for their scripts. (Though, bad actors could still write to them, but they'd have no idea if you're subscribed to them.)
+
+To give the client full permission, we would need to set it up with a password or a token. For convenient ntfy client setup, we could present a token to users along with API key in the offer template. Ntfy seems to store tokens in cleartext anyway (you can query for them), so we can generate it once and show it to the user as many times as we need. For the web UI to read topics, we could just automatically log in with the same token. We could maybe just write the token to a tmp folder and use Caddy's file_server to avoid writing a whole new server for the admin API (unless we're writing one anyway for other reasons). We should probably disable any special endpoints that use the token though, such as password changing.
+
+But there are two fatal problems with this:
+
+Firstly, there are two ways to pass passwords and tokens in with requests: auth header or auth GET parameter. https://docs.ntfy.sh/subscribe/api/#authentication Since we can't pass auth headers into Sandstorm, we'd need our clients to go with the auth parameter. However, it seems like our main client, the Android app, [goes with the header](https://github.com/binwiederhier/ntfy-android/blob/f70c000b5615c52b3afaf3fb165cbead68ef2e4f/app/src/main/java/io/heckel/ntfy/msg/ApiService.kt#L187). While there may be other clients (and users might write their own), the benefit of private topics would be very limited.
+
+Secondly, while we could log in via the web interface, the subscribed topics are stored client side, which will get periodicaly wiped due to how Sandstorm works.
+
+For now I am skipping this. If users are interested in *limited* private topics for use with other clients (including home-made ones), let me know and I can try to figure that out.
+
+QUESTIONS
+
+* "Sign In Sign Up" on ntfy.sh is the "allow signups" config option? What would that even do without the ability to set ACL'd topics? Does it relate to Base URL?
+
+See:
+
+* `NTFY_ENABLE_LOGIN`, `NTFY_AUTH_DEFAULT_ACCESS`, and other related configs
+
+#### Option: monitor currently used topics
+
+Give the user some stats about how their grain is being used so they can catch unwanted users. There will be only one user per ntfy grain (see "Web UI"/"Caveats about privacy"). This means that, unlike with other ntfy installations, there should be no problem putting information in the Web UI about the whole system using a new "Admin API" (accessible only via the web), provided that this doesn't somehow introduce a new vulnerability.
+
+Some ideas:
+
+* Show recently used IP addresses, particularly for reads
+* Show topic full info
+	* Option 1) Recently used topics. Easier; can use notifications in cache
+	* Option 2) All used topics. Harder; would need to keep a list additional to the cache
+	* Possibly a security liability. Anybody with access to the server UI will be able to see topic names. Granted Sandstorm should protect you, but on the other hand this is something normal ntfy doesn't have.
+		* If there is a breach and the user starts over with a new grain, any scripts that used ntfy should probably also use new topics to stay private. People may not think of this. Best to just not show topic names.
+* Show topic partial info
+	* No topic name, but give other info (Service type, whether it's UnifiedPush, last/first used, etc)
+	* Again, either recently used or used across all time?
+* Extra "System" topic: Give a notification when a new topic is subscribed/listened to.
+	* Users can see unexpected activity right away. Give IP address etc if possible. "If you expected this, you can copy this topic and subscribe to it. If you did not expect this, you might consider resetting your API"
+	* Have ntfy generate the topic for us for this, randomized for security, but also have a human readable part so users remember what it is and don't delete it. "system-hntuhitsh6th45" or something.
+	* Start with a "welcome" message.
+	* More uses for this topic over time
+	* Showing the topic name has a breach risk similar to above. We could show "partial info" here instead, though then the user won't be able to conveniently copy/paste to subscribe from their client.
+
+And then if they see something sketchy, we recommend that they rotate their credentials to boot off the unwanted users.
+
+* Option 1) Encourage the user to delete the grain and start over
+	* Easier option
+	* If we ever do start using tokens, this will invalidate the token as well, which could make this a simple dual purpose "rotate keys" action
+* Option 2) Show user how to delete API key, tell them to make a new one with the offer template
+	* Doesn't delete other settings (if we have any, which is a big if)
+	* In case the user has any notifications queued up, they won't accidentally lose them. (alternately we could just warn the user about this)
+
+#### Option: approve new topics in the admin
+
+Adding to the monitoring feature, we could require the user to approve new topics that appear in the admin. However, it may be a bad user experience, and not trivial to implement.
+
+Also note that this will *not alert you* if anyone is snooping on or posting to a topic (perhaps you used an easy-to-guess topic name for a script). It will merely alert you to unwanted users publishing to new topics.
+
+But, if enough people want it, it might be a viable optional feature.
 
 ## WebUI
 
