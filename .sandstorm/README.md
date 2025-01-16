@@ -51,6 +51,8 @@ In the medium run we could add an approval process in the admin. In the long run
 
 ## Web UI
 
+(TODO rework this summary to match the full version below)
+
 ### Security
 
 ntfy's web UI is just another dumb client. All configurations and secrets are stored in the browser. However for Sandstorm integration, we will offer extra functionality. We will make sure that none of it works over the API endpoint. One item will be the "offer template" which gives the user a new API endpoint in the first place. The other will be a few "admin" endpoints to facilitate features such as monitoring the used topics.
@@ -202,11 +204,86 @@ But, if enough people want it, it might be a viable optional feature.
 
 ## WebUI
 
-...
 
-### Desktop Notifications
 
-...
+### Security
+
+(TODO combine with "privacy caveats" and/or delete so long as it's mentioned elsewhere in the README because the user doesn't need it in the UI)
+
+For the Sandstorm version of ntfy, use Caddy to have a special "Admin API" path that is only accessible via the web (i.e. not under the API path which Android/iOS clients use). We can add extra functionality here, which we'll explain.
+
+The Web UI is ephemeral other than this Admin API that we are adding. This is because the Web UI saves all of its data in browser local storage, which gets periodically wiped in Sandstorm apps due to how it rotates subdomains. On the bright side, this means that the UI is harmless. It's a client like any other client. Even if a bad actor sees it via the API endpoint, they can't change anything because they shouldn't have access to the admin API (and we should make sure they don't). However, this means that any settings (other than "admin API" related things) will not survive long term. Language choice, subscribed topics, etc.
+
+We won't have private topics for now, but if we later venture to do so, we should find a way to automatically "log in" to the web app automatically with a valid token. Though maybe that's less secure than the original ntfy.
+
+### Link to URL to put into phone app
+
+The URL we give to the user to connect to their phone is not the Web UI URL. We need a special "API URL" that Sandstorm facilitates. We provide it to the user using something called the "offer template" in Sandstorm parlance.
+* Offer Template text should include something like "put this into the 'default server' option in your ntfy Android app and you'll be connected!"
+* Regarding the URL format: I'm assuming that `https://domain/path/` works across UnifiedPush. And I'm assuming that `https://basic:auth@domain` does not. So I went with the former format. I wonder if these assumptions are wrong, in which case we may consider changing the format given here. But for simplicity and laziness I'll probably stick to what I have, it's just a bit ugly.
+* Make sure that the offer template API doesn't work over API endpoint!
+
+### Remove features
+
+We should figure out what everything in the UI does, and remove things we don't want (such as the User/Password thing).
+
+* Hide "URL" fields in forms? Since we can't ping outside servers anyway.
+* Docs
+	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
+	* Warn the user that it may not 100% reflect the Sandstorm implementation
+* Etc.
+
+### Caveats about missing features
+
+In the UI and package description:
+
+* Note that the custom Sandstorm code will only be in English. We should still use translation codes, and could solicit translations.
+* Warn the user that their web-based configs will not be saved.
+	* By the language picker so they're not confused about it later.
+	* Topic subscriptions should only be used for testing, and maybe we should rename them accordingly. "Send test notification" "Test topics".
+		* Though we may be giving the web UI access to topics via the "admin API" we're adding. So perhaps we could go ahead and subscribe it to all topics. This is a possibility, but it may not be worth the security risk.
+	* Give a link to "learn more" about why it's different from ntfy, perhaps, or just say to read the description of the project in the market.
+* Note that the Sandstorm version of ntfy may not work for certain services.
+	* It works so for:
+		* Tusky on Mastodon.
+	* Help us test more:
+		* https://docs.ntfy.sh/integrations/
+		* https://unifiedpush.org/users/apps/
+* Explain that the Desktop PWA will not work with the Sandstorm version. (In the far future, PWAs would be great for Sandstorm)
+* We can't support Desktop Notifications out of the box.
+	* Reasons
+		* Sandstorm changes subdomains for grains regularly. ntfy stores its information in the browser, tied to the subdomain. So any subscriptions would be lost.
+		* Grains may fall asleep.
+		* The UI says "notifications not supported" in UI. (Perhaps because the reverse proxy is http? We'd need to look into it.)
+	* If you're a user and Desktop notifications are a priority, we can look at working around these issues. One odd idea is that we could look into users opening an API endpoint in the browser. That would at least be a consistent domain.
+
+### Caveats about reliability
+
+In the UI and package description:
+
+Warn users that notifications disappear after 12 hours.
+
+"Convenience, not mission critical" - particularly the Sandstorm version. it's got a lot of caveats for techincal reasons.
+
+### Caveats about privacy
+
+Put it in the web UI somewhere, and package description. Summarised nicely, bolded sections, with links or dropdowns for more info. Or perhaps, by the relevant sections?:
+
+Unlike most Sandstorm apps, ntfy is meant to receive updates from services on the open Internet. Any service that sends you notifications will have access to your API Key, and can thus publish or subscribe to notifications.
+
+For this reason, you should treat your topic names like passwords, so other services can't read them. UnifiedPush-enabled apps pick good topics automatically. If someone gets access to your web interface (assuming we show topic names there, which we probably won't) or otherwise sees your topic names, you may want to change them. As of now, you cannot use the ntfy user accounts to protect your topics. (see here for why [link to locking down topics in the readme?])
+
+The API URL will be secret and randomized, and can be revoked, but the services you get notifications from will necessarily be able to contact your ntfy grain. Furthermore, if you install ntfy and Tusky, Tusky will configure itself with ntfy **without prompting you**, giving your API URL to your Mastodon servers. This is very slick UI-wise, but be warned that it exposes your API key to the Mastodon servers where you have an account. This may way apply to other apps and services as well.
+
+The Sandstorm version of ntfy is made for one **user per** grain. It is not advised share this with friends nor to use it to broadcast messages to them. The web interface in the Sandstorm version will have extra data about the topics.
+
+Warn users that stick around for 12 hours.
+
+### Missing instructions
+
+(IMHO this would be good to put into the normal ntfy UI. Maybe I could upstream it.)
+
+How to use it for UnifiedPush, and that it's a separate thing from scripts that message it. Have a link to the "publish" doc. Maybe this is a section called "setup" or "configure" or "send messages" or "how to use" or "how to connect" or "how to send messages" or whatever to get people to look. And maybe have this be a section instead of "docs", but it should have the "docs" link here, which will go to official ntfy docs with the caveat that it doesn't strictly apply to the Sandstorm version.
 
 ## Assorted
 
