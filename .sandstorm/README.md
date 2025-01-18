@@ -51,27 +51,43 @@ In the medium run we could add an approval process in the admin. In the long run
 
 ## Web UI
 
-(TODO rework this summary to match the full version below)
-
 ### Security
 
 ntfy's web UI is just another dumb client. All configurations and secrets are stored in the browser. However for Sandstorm integration, we will offer extra functionality. We will make sure that none of it works over the API endpoint, only Sandstorm's web portal. One item will be the "offer template" which gives the user a new API endpoint in the first place. The other will be an "Admin API" to facilitate features described in the Backend Changes section.
 
-### Desktop Notifications and Progressive Web App
+### Link to URL to put into phone app
 
-These won't work on Sandstorm.
+"Offer template" that has API URL and instructions for phone setup.
 
 ### Remove Features
 
 Inapplicable features such as logging in should be removed from the UI to avoid confusing the user.
 
-### Caveats about missing features
+### Info in the UI
+
+Actually explain this stuff to the user
+
+#### Caveats about missing features
 
 Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around. We need to explain to the user what will and won't work.
 
-### Caveats about privacy
+Other features will be missing as well, such as Desktop Notifications and Progressive Web App.
+
+#### Caveats about reliability
+
+Warn users about some reliability issues that may be inherent to this Sandstorm version.
+
+#### Caveats about privacy
 
 Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use. Make sure they don't share grains with other users.
+
+#### Missing instructions
+
+Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush setup works, etc)
+
+## Assorted
+
+...
 
 # Changes and Issues - Lots of detail
 
@@ -202,7 +218,7 @@ Also note that this will *not alert you* if anyone is snooping on or posting to 
 
 But, if enough people want it, it might be a viable optional feature.
 
-## WebUI
+## Web UI
 
 ### Security
 
@@ -230,6 +246,8 @@ We should figure out what everything in the UI does, and remove things we don't 
 * Etc.
 
 ### Info in the UI
+
+Actually explain this stuff to the user
 
 #### Caveats about missing features
 
