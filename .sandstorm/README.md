@@ -89,4 +89,12 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 Various other things TODO
 
+# Future
 
+Some ideas for future versions if we get this off the ground. They may or may not work. See [README_FUTURE.md](README_FUTURE.md) for details.
+
+* Molly support via Mollysocket
+* Zulip partial support via a Zulip bot
+* Action buttons on phone notifications that perform ntfy-related tasks
+* Build into Tempest's notification system
+* GUI-based ntfy configs (as opposed to env vars) in the Sandstorm portal via Admin API
