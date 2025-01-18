@@ -87,7 +87,7 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 ## Assorted
 
-...
+Various other things TODO
 
 # Changes and Issues - Lots of detail
 
@@ -243,6 +243,7 @@ We should figure out what everything in the UI does, and remove things we don't 
 * Docs
 	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
 	* Warn the user that it may not 100% reflect the Sandstorm implementation
+* "Logging in"
 * Etc.
 
 ### Info in the UI
@@ -306,4 +307,26 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 ## Assorted
 
-...
+* Figure out why go.sum changed when I ran `make` for linux?
+* Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
+* Server security and performance testing
+	* Make sure API response time from a sleeping grain is still low now that I'm using Caddy
+	* Make sure curl $API/$ADMIN URLS don't give me the admin
+	* Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
+		* Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
+		* I think it makes requests to parent though.
+* Block all access for shared grains.
+    * If need be, only create one sharing profile and one permission, and don't include the permission?
+    * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
+    * Or see how other apps do it.
+* Maybe consider other useful configs: https://docs.ntfy.sh/config/
+* Check out server/types.go:publishMessage
+    * see if anything else looks like it should be checked?
+    * Maybe some aspects of it won't work with the connections available with Sandstorm?
+    * Why isn't UnifiedPush a parameter here?
+* Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
+* Confirm licenses for everything I use
+* Ntfy - Put Sandstorm ntfy on the ntfy page next to cloudtron! Merge into ntfy?
+* Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
+* Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
+* Put data retention back to 12 hours
