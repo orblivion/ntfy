@@ -1,3 +1,10 @@
+# Overview
+
+These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. I confused myself multiple times in the process. I've put some effort into cleaning it all up but that itself has been an endeavor.
+
+The bottom line is this: The **initial release** of this ntfy Sandstorm app will have some advantages and some disadvantages compared to the normal ntfy app. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
+
+These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you. And if you are interested in helping, I'd love to hear from you as well.
 
 # Notes
 
@@ -49,11 +56,17 @@ Because this is Sandstorm, we still want to make ntfy a single-user app and give
 
 In the medium run we could add an approval process in the admin. In the long run we might be able to change Sandstorm to carve out a way for us to authenticate after all.
 
+For the **initial release**, we're just going to release this as-is. No ability to protect topics, no special monitoring features.
+
 ## Web UI
+
+For the **initial release** we will only do the "offer template" (described below) because it is necessary for smooth onboarding. We should also do all of the removal of features and explanation to users because it avoids confusion and it's easy enough to do. Anything related to the "Admin API" will be put off.
 
 ### Security
 
-ntfy's web UI is just another dumb client. All configurations and secrets are stored in the browser. However for Sandstorm integration, we will offer extra functionality. We will make sure that none of it works over the API endpoint, only Sandstorm's web portal. One item will be the "offer template" which gives the user a new API endpoint in the first place. The other will be an "Admin API" to facilitate features described in the Backend Changes section.
+ntfy's web UI is just another dumb client. It looks like an admin (it fooled me at first), but all configurations and secrets you see are actually stored in the browser (which causes some new problems, see "Caveats about missing features" below)
+
+For Sandstorm integration, we will offer extra functionality. We will make sure that none of this new functionality works over the API endpoint (i.e. via phone clients), only Sandstorm's web portal. One such item will be the "offer template" which gives the user a new API endpoint and shows them how to connect it to their phone. The other, which we will do later, will be an "Admin API" to facilitate features described in the Backend Changes section.
 
 ### Link to URL to put into phone app
 
@@ -71,7 +84,7 @@ Actually explain this stuff to the user
 
 Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around. We need to explain to the user what will and won't work.
 
-Other features will be missing as well, such as Desktop Notifications and Progressive Web App.
+Other features will be missing as well, such as Desktop Notifications and the Progressive Web App.
 
 #### Caveats about reliability
 
@@ -87,7 +100,7 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 ## Assorted
 
-Various other TODO items
+Various other TODO items. Most of these are probably prudent to do for the **initial release**.
 
 # Future
 

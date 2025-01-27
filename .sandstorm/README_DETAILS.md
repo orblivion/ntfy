@@ -220,7 +220,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 * Figure out why go.sum changed when I ran `make` for linux?
 * Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-* Server security and performance testing
+* Server security and performance testing (mostly not necessary until we add the Admin API)
 	* Make sure API response time from a sleeping grain is still low now that I'm using Caddy
 	* Make sure curl $API/$ADMIN URLS don't give me the admin
 	* Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
