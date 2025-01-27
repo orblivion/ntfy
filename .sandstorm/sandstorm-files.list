@@ -8,7 +8,6 @@ etc/localtime
 etc/machine-id
 lib
 lib64
-opt/app/.sandstorm/Caddyfile
 opt/app/.sandstorm/launcher.sh
 opt/app/dist/ntfy_linux_amd64_linux_amd64_v1/ntfy
 proc/cpuinfo
