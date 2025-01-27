@@ -230,8 +230,7 @@ const pkgdef :Spk.PackageDefinition = (
   #    ],
   #  ),
   #
-  # Random-like to avoid name collisions with topics via the browser
-  apiPath = "/api-b7b2014f6534a7cba6d57dfe4d20be0352f5f23689d1ea187453bab65f97638b/",
+  apiPath = "/",
   #
   #  # Apps can export an API to the world.  The API is to be used primarily by Javascript
   #  # code and native apps, so it can't serve out regular HTML to browsers.  If a request

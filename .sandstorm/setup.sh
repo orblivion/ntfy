@@ -8,8 +8,7 @@ cd $here
 apt install -y \
     build-essential \
     libsqlite3-dev \
-    python3-pip \
-    caddy
+    python3-pip
 
 # TODO - this is really annoying, I shouldn't have to do this everywhere
 export PATH=$PATH:/usr/local/go/bin
