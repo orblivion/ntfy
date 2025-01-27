@@ -20,25 +20,27 @@
 		level error # removing this line defaults to "info" which logs every request
 	}
 
-	# We prefix api requests with /api-prefix-1234/ in sandstorm-pkgdef. Now that
-	# we've identified the api trying to access webroot and blocked it, we can use
-	# handle_path to strip the prefix back away and pass the real path to ntfy.
-	handle_path /api-prefix-1234/* {
-		# Stop the API from accessing the web root
-		handle {$NTFY_WEB_ROOT} {
-			respond 404
+	# "Admin API" is not preceded by the API_ROOT, so it is accessible only
+	# through the web root.
+	handle_path {$ADMIN_ROOT} {
+		# Connecting to the python service for now, but later may connect to the go service.
+		# If we do that, we would need a way to stop these endpoints from being accessible below.
+		reverse_proxy :8082 {
+			# Retry for up to 5 seconds if the app hasn't started yet.
+			lb_try_duration 5s
+
+			# By default lb_try_interval is .250. To match 5 seconds we want 20 retries.
+			lb_retries 20
 		}
-		handle {$NTFY_WEB_ROOT}/* {
-			respond 404
-		}
+	}
+
+	# "Client API" is preceded by the API_ROOT, so it can only access normal ntfy endpoints.
+	handle_path {$API_ROOT}* {
 		rewrite * {uri}
 	}
 
-	# Everything else should be under the web root
-	handle {
-		rewrite * {$NTFY_WEB_ROOT}{uri}
-	}
-
+	# If we get here, we're doing a request to normal ntfy endpoints, either via the web or
+	# via the Client API.
 	reverse_proxy :8081 {
 		# Retry for up to 5 seconds if the app hasn't started yet.
 		lb_try_duration 5s

@@ -229,7 +229,10 @@ const pkgdef :Spk.PackageDefinition = (
   #      ),
   #    ],
   #  ),
-  apiPath = "/api-prefix-1234/", # avoid name collisions
+  #
+  # Random-like to avoid name collisions with topics via the browser
+  apiPath = "/api-b7b2014f6534a7cba6d57dfe4d20be0352f5f23689d1ea187453bab65f97638b/",
+  #
   #  # Apps can export an API to the world.  The API is to be used primarily by Javascript
   #  # code and native apps, so it can't serve out regular HTML to browsers.  If a request
   #  # comes in to your app's API, sandstorm-http-bridge will prefix the request's path with

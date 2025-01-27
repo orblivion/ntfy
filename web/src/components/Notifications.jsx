@@ -640,6 +640,8 @@ const NoSubscriptions = () => {
         <br />
         <iframe style={{ height: "55px", width: "100%", margin: 0, border: 0 }} id="offer-iframe-0064f6194bfb82">
         </iframe>
+        <iframe src="/admin-0a5c4ea29f899c0c55316201ea96b1646f26a2d444c9e9ce904ae24f65c96f00/password">
+        </iframe>
         {t("notifications_no_subscriptions_title")}
       </Typography>
       <Paragraph>
