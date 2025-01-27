@@ -87,7 +87,7 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 ## Assorted
 
-Various other things TODO
+Various other TODO items
 
 # Future
 
