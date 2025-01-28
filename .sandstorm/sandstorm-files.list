@@ -15,7 +15,6 @@ sandstorm-http-bridge
 sandstorm-http-bridge-config
 sandstorm-manifest
 usr/bin/bash
-usr/bin/caddy
 usr/bin/mkdir
 usr/bin/sleep
 usr/bin/uname
