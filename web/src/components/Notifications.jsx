@@ -638,21 +638,38 @@ const NoSubscriptions = () => {
       <Typography variant="h5" align="center" sx={{ paddingBottom: 1 }}>
         <img src={logoOutline} height="64" width="64" alt={t("action_bar_logo_alt")} />
         <br />
-        <iframe style={{ height: "55px", width: "100%", margin: 0, border: 0 }} id="offer-iframe-0064f6194bfb82">
-        </iframe>
-        {t("notifications_no_subscriptions_title")}
+        Server URL
       </Typography>
-      <Paragraph>
-        {t("notifications_no_subscriptions_description", {
-          linktext: t("nav_button_subscribe"),
-        })}
-      </Paragraph>
+
+      <OfferTemplate />
+
       <Paragraph>
         <ForMoreDetails />
       </Paragraph>
     </VerticallyCenteredContainer>
   );
 };
+
+const OfferTemplate = () => {
+  const [serverUrlShown, setServerUrlShown] = useState(false);
+  const toggleServerUrl = () => {setServerUrlShown(!serverUrlShown)}
+  return (
+    <VerticallyCenteredContainer>
+      Click to Copy:
+      <br />
+      <iframe scrolling="no" style={{ height: "15px", width: "16px", "margin-left": 0, "margin-top": "15px", "margin-bottom": "15px", border: 0, overflow: "hidden" }} id="offer-iframe-full"></iframe>
+      <br />
+      <pre style={{ "font-size": "0.8em", margin: 0, border: 0, display: serverUrlShown ? "none" : ""}} onClick={toggleServerUrl}>https://...<i>(show full url)</i></pre>
+      <div style={{display: serverUrlShown ? "" : "none"}}>
+        <pre style={{ "font-size": "0.8em", margin: 0, border: 0}}>https://</pre>
+        <iframe scrolling="no" style={{ height: "15px", width: "250%", margin: 0, border: 0, overflow: "hidden" }} id="offer-iframe-host"></iframe>
+        <pre style={{ "font-size": "0.8em", margin: 0, border: 0}}>/.sandstorm-token/</pre>
+        <iframe scrolling="no" style={{ height: "15px", width: "100%", margin: 0, border: 0, overflow: "hidden" }} id="offer-iframe-token"></iframe>
+        <br />
+      </div>
+    </VerticallyCenteredContainer>
+  )
+}
 
 const ForMoreDetails = () => (
   <Trans
