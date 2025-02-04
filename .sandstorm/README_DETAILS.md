@@ -150,6 +150,8 @@ The URL we give to the user to connect to their phone is not the Web UI URL. We 
 
 We should figure out what everything in the UI does, and remove things we don't want (such as the User/Password thing).
 
+Check out: public/config.js maybe this can do a lot of it for us
+
 * Hide "URL" fields in forms? Since we can't ping outside servers anyway.
 * Docs
 	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
