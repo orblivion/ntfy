@@ -230,6 +230,17 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * If need be, only create one sharing profile and one permission, and don't include the permission?
     * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
     * Or see how other apps do it.
+* Figure out the meaning of this: `"prefs_users_description_no_sync": "Users and passwords are not synchronized to your account."`
+    * What's the difference between a "User" and an "Account"?
+    * I thought "logging in as a user" was just for protected topics. But why does it have a server URL field, even in the web UI where the server should be implicit?
+    * I think this is related to the Admin API (the one it turns out ntfy released as beta in 2023, not the one I've been talking about!)
+        * Rename the "Admin API" in my own docs to something else.
+        * Though ntfy's may be pretty much the same as mine, heh.
+        * Make a note to use this API for the future perhaps.
+        * Is this another security risk, leaving the web URL open?
+            * I don't think so. Previously I was worried because you could "add and remove users" but that turned out to be client side only. In this case, whatever it is, I think it requires an admin login first.
+            * Just make sure we don't hvae a vulnerable admin account, or make sure to turn off admin in configs
+            * Make sure we note to not use admin users as a shortcut for "all read access" in the future, since it could open the API inadvertently
 * Maybe consider other useful configs: https://docs.ntfy.sh/config/
 * Check out server/types.go:publishMessage
     * see if anything else looks like it should be checked?
