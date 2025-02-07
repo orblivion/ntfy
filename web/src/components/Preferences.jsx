@@ -50,6 +50,7 @@ import { UnauthorizedError } from "../app/errors";
 import { subscribeTopic } from "./SubscribeDialog";
 import notifier from "../app/Notifier";
 import { useIsLaunchedPWA, useNotificationPermissionListener } from "./hooks";
+import { requestSandstormIframeURL } from "../app/sandstorm";
 
 const maybeUpdateAccountSettings = async (payload) => {
   if (!session.exists()) {
@@ -68,6 +69,7 @@ const maybeUpdateAccountSettings = async (payload) => {
 const Preferences = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
     <Stack spacing={3}>
+      <AppSetup />
       <Notifications />
       <Reservations />
       <Users />
@@ -747,5 +749,27 @@ const ReservationsTable = (props) => {
     </Table>
   );
 };
+
+const AppSetup = () => {
+  const { t } = useTranslation(); // TODO
+  useEffect(() => {
+    requestSandstormIframeURL()
+  })
+  return (
+    <Card sx={{ p: 3 }} aria-label="App Setup">
+      <Typography variant="h5" sx={{ marginBottom: 2 }}>
+        App Setup
+      </Typography>
+      Connect your ntfy mobile app or scripts with this API URL:
+      <br />
+      <iframe scrolling="no" style={{ height: "15px", width: "100%", "margin-left": 0, "margin-top": "15px", "margin-bottom": "15px", border: 0, overflow: "hidden" }} id="offer-iframe-full"></iframe>
+      <br />
+      <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
+      <br />
+      <br />
+      You can always revoke API URLs from the Sandstorm Webkeys menu (next to grain sharing, etc) and get a new one here.
+    </Card>
+  )
+}
 
 export default Preferences;

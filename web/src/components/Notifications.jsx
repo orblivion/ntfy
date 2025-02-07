@@ -27,7 +27,6 @@ import { useOutletContext } from "react-router-dom";
 import { useRemark } from "react-remark";
 import styled from "@emotion/styled";
 import { formatBytes, formatShortDateTime, maybeActionErrors, openUrl, shortUrl, topicShortUrl, unmatchedTags } from "../app/utils";
-import { requestSandstormIframeURL } from "../app/sandstorm";
 import { formatMessage, formatTitle, isImage } from "../app/notificationUtils";
 import { LightboxBackdrop, Paragraph, VerticallyCenteredContainer } from "./styles";
 import subscriptionManager from "../app/SubscriptionManager";
@@ -630,46 +629,24 @@ const NoNotificationsWithoutSubscription = (props) => {
 
 const NoSubscriptions = () => {
   const { t } = useTranslation();
-  useEffect(() => {
-    requestSandstormIframeURL()
-  })
   return (
     <VerticallyCenteredContainer maxWidth="xs">
       <Typography variant="h5" align="center" sx={{ paddingBottom: 1 }}>
         <img src={logoOutline} height="64" width="64" alt={t("action_bar_logo_alt")} />
         <br />
-        Server URL
+        {t("notifications_no_subscriptions_title")}
       </Typography>
-
-      <OfferTemplate />
-
+      <Paragraph>
+        {t("notifications_no_subscriptions_description", {
+          linktext: t("nav_button_subscribe"),
+        })}
+      </Paragraph>
       <Paragraph>
         <ForMoreDetails />
       </Paragraph>
     </VerticallyCenteredContainer>
   );
 };
-
-const OfferTemplate = () => {
-  const [serverUrlShown, setServerUrlShown] = useState(false);
-  const toggleServerUrl = () => {setServerUrlShown(!serverUrlShown)}
-  return (
-    <VerticallyCenteredContainer>
-      Click to Copy:
-      <br />
-      <iframe scrolling="no" style={{ height: "15px", width: "16px", "margin-left": 0, "margin-top": "15px", "margin-bottom": "15px", border: 0, overflow: "hidden" }} id="offer-iframe-full"></iframe>
-      <br />
-      <pre style={{ "font-size": "0.8em", margin: 0, border: 0, display: serverUrlShown ? "none" : ""}} onClick={toggleServerUrl}>https://...<i>(show full url)</i></pre>
-      <div style={{display: serverUrlShown ? "" : "none"}}>
-        <pre style={{ "font-size": "0.8em", margin: 0, border: 0}}>https://</pre>
-        <iframe scrolling="no" style={{ height: "15px", width: "250%", margin: 0, border: 0, overflow: "hidden" }} id="offer-iframe-host"></iframe>
-        <pre style={{ "font-size": "0.8em", margin: 0, border: 0}}>/.sandstorm-token/</pre>
-        <iframe scrolling="no" style={{ height: "15px", width: "100%", margin: 0, border: 0, overflow: "hidden" }} id="offer-iframe-token"></iframe>
-        <br />
-      </div>
-    </VerticallyCenteredContainer>
-  )
-}
 
 const ForMoreDetails = () => (
   <Trans

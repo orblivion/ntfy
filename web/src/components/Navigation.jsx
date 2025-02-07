@@ -27,7 +27,7 @@ import Person from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from "@mui/icons-material/Add";
 import { useLocation, useNavigate } from "react-router-dom";
-import { InstallMobile, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
+import { ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Trans, useTranslation } from "react-i18next";
 import CelebrationIcon from "@mui/icons-material/Celebration";
@@ -138,9 +138,9 @@ const NavList = (props) => {
         {!showSubscriptionsList && (
           <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
             <ListItemIcon>
-              <InstallMobile />
+              <ChatBubble />
             </ListItemIcon>
-            <ListItemText primary="Setup Device" />
+            <ListItemText primary={t("nav_button_all_notifications")} />
           </ListItemButton>
         )}
         {showSubscriptionsList && (
