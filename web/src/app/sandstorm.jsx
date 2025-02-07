@@ -5,7 +5,8 @@ export function requestSandstormIframeURL() {
   window.parent.postMessage({renderTemplate: {
     rpcId: "FULL_TEMPLATE",
     template: fullTemplate,
-    clipboardButton: 'left'
+    clipboardButton: 'left',
+    petname: 'ntfy API URL',
     // TODO petname, style, etc https://docs.sandstorm.io/en/latest/developing/http-apis/
   }}, "*");
   window.parent.postMessage({renderTemplate: {
