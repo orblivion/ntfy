@@ -762,7 +762,7 @@ const AppSetup = () => {
       </Typography>
       Connect your ntfy mobile app or scripts with this API URL:
       <br />
-      <iframe scrolling="no" style={{ height: "15px", width: "100%", "margin-left": 0, "margin-top": "15px", "margin-bottom": "15px", border: 0, overflow: "hidden" }} id="offer-iframe-full"></iframe>
+      <iframe scrolling="no" style={{ "background-color": "#ffffff", height: "15px", width: "100%", "margin-left": 0, "margin-top": "15px", "margin-bottom": "15px", border: 0, overflow: "hidden" }} id="offer-iframe-full"></iframe>
       <br />
       <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
       <br />
