@@ -72,7 +72,6 @@ const Preferences = () => (
       <AppSetup />
       <Notifications />
       <Reservations />
-      <Users />
       <Appearance />
     </Stack>
   </Container>
