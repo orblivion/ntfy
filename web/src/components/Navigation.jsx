@@ -27,7 +27,7 @@ import Person from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from "@mui/icons-material/Add";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
+import { WavingHand, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Trans, useTranslation } from "react-i18next";
 import CelebrationIcon from "@mui/icons-material/Celebration";
@@ -112,11 +112,13 @@ const NavList = (props) => {
   const isPaid = account?.billing?.subscription;
   const showUpgradeBanner = config.enable_payments && !isAdmin && !isPaid;
   const showSubscriptionsList = props.subscriptions?.length > 0;
-  const showNotificationPermissionRequired = useNotificationPermissionListener(() => notifier.notRequested());
-  const showNotificationPermissionDenied = useNotificationPermissionListener(() => notifier.denied());
-  const showNotificationIOSInstallRequired = notifier.iosSupportedButInstallRequired();
-  const showNotificationBrowserNotSupportedBox = !showNotificationIOSInstallRequired && !notifier.browserSupported();
-  const showNotificationContextNotSupportedBox = notifier.browserSupported() && !notifier.contextSupported(); // Only show if notifications are generally supported in the browser
+
+  // no notifications or PWA. we'll explain it elsewhere.
+  const showNotificationPermissionRequired = false; // useNotificationPermissionListener(() => notifier.notRequested());
+  const showNotificationPermissionDenied = false; // useNotificationPermissionListener(() => notifier.denied());
+  const showNotificationIOSInstallRequired = false; // notifier.iosSupportedButInstallRequired();
+  const showNotificationBrowserNotSupportedBox = false; // !showNotificationIOSInstallRequired && !notifier.browserSupported();
+  const showNotificationContextNotSupportedBox = false; // notifier.browserSupported() && !notifier.contextSupported(); // Only show if notifications are generally supported in the browser
 
   const alertVisible =
     showNotificationPermissionRequired ||
@@ -135,8 +137,14 @@ const NavList = (props) => {
         {showNotificationContextNotSupportedBox && <NotificationContextNotSupportedAlert />}
         {showNotificationIOSInstallRequired && <NotificationIOSInstallRequiredAlert />}
         {alertVisible && <Divider />}
+        <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === routes.app}>
+          <ListItemIcon>
+            <WavingHand />
+          </ListItemIcon>
+          <ListItemText primary="Welcome" /> {/* TODO - translate {t("...")}*/}
+        </ListItemButton>
         {!showSubscriptionsList && (
-          <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
+          <ListItemButton onClick={() => navigate(routes.allSubscriptions)} selected={location.pathname === routes.allSubscriptions}>
             <ListItemIcon>
               <ChatBubble />
             </ListItemIcon>
@@ -146,7 +154,7 @@ const NavList = (props) => {
         {showSubscriptionsList && (
           <>
             <ListSubheader>{t("nav_topics_title")}</ListSubheader>
-            <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === config.app_root}>
+            <ListItemButton onClick={() => navigate(routes.allSubscriptions)} selected={location.pathname === routes.allSubscriptions}>
               <ListItemIcon>
                 <ChatBubble />
               </ListItemIcon>

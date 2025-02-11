@@ -169,7 +169,7 @@ export const SubscriptionPopup = (props) => {
     if (newSelected && !newSelected.internal) {
       navigate(routes.forSubscription(newSelected));
     } else {
-      navigate(routes.app);
+      navigate(routes.allSubscriptions);
     }
   };
 
