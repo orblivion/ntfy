@@ -5,6 +5,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { BrowserRouter, Outlet, Route, Routes, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AllSubscriptions, SingleSubscription } from "./Notifications";
+import { SandstormHome } from "./Sandstorm";
 import { darkTheme, lightTheme } from "./theme";
 import Navigation from "./Navigation";
 import ActionBar from "./ActionBar";
@@ -72,7 +73,8 @@ const App = () => {
                   <Route path={routes.login} element={<Login />} />
                   <Route path={routes.signup} element={<Signup />} />
                   <Route element={<Layout />}>
-                    <Route path={routes.app} element={<AllSubscriptions />} />
+                    <Route path={routes.app} element={<SandstormHome />} />
+                    <Route path={routes.allSubscriptions} element={<AllSubscriptions />} />
                     <Route path={routes.account} element={<Account />} />
                     <Route path={routes.settings} element={<Preferences />} />
                     <Route path={routes.subscription} element={<SingleSubscription />} />
