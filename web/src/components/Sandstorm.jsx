@@ -17,7 +17,7 @@ import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
 import { useEffect } from "react";
 
-export const SandstormHome = () => (
+export const Welcome = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
     <Stack spacing={3}>
       <Intro/>
