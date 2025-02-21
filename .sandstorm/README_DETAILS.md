@@ -129,6 +129,14 @@ Also note that this will *not alert you* if anyone is snooping on or posting to 
 
 But, if enough people want it, it might be a viable optional feature.
 
+#### Option: assorted hack ideas
+
+I have other hack ideas that I kick around. I want to write them down so I don't forget them.
+
+* What if we have two kinds of API keys. Only one can use "unified push" in the title? Or only long keys? (I don't think this works but maybe if I keep thinking down this path)
+    * But then you'd need two "servers" in your Android app, which means it would make two separate connections. May as well just use a different grain.
+* Could I have protected topics for POSTING that actually post to different topics? But then you have this stupid long password anyway. Pointless. Just use long topics.
+
 ## Web UI
 
 ### Security
@@ -155,8 +163,12 @@ Check out: public/config.js maybe this can do a lot of it for us
 * Hide "URL" fields in forms? Since we can't ping outside servers anyway.
 * Docs
 	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
-	* Warn the user that it may not 100% reflect the Sandstorm implementation
+	* Open a dialog. Warn the user that it may not 100% reflect the Sandstorm implementation. Then give link.
+    * Invite people to talk to us about it if they want help with Sandstorm-specific one.
 * "Logging in"
+* "Server" fields, for sending notifications, etc. Just assume this server.
+    * It's a "power user" feature. This being Sandstorm, I'm going to be opinionated and just axe it.
+    * What was that place in the UI where I saw the ui-* URL? Make sure that doesn't show up either.
 * Etc.
 
 ### Info in the UI
@@ -180,10 +192,10 @@ In the UI and package description:
 		* https://docs.ntfy.sh/integrations/
 		* https://unifiedpush.org/users/apps/
 * Explain that the Desktop PWA will not work with the Sandstorm version. (In the far future, PWAs would be great for Sandstorm)
-* We can't support Desktop Notifications out of the box.
+* We won't support Desktop Notifications out of the box.
 	* Reasons
 		* Sandstorm changes subdomains for grains regularly. ntfy stores its information in the browser, tied to the subdomain. So any subscriptions would be lost.
-		* Grains may fall asleep.
+		* Grains may fall asleep so users might miss the notifications. (I'm not totally sure about this one. Maybe it'll stay awake if you just leave the tab open)
 		* The UI says "notifications not supported" in UI. (Perhaps because the reverse proxy is http? We'd need to look into it.)
 	* If you're a user and Desktop notifications are a priority, we can look at working around these issues. One odd idea is that we could look into users opening an API endpoint in the browser. That would at least be a consistent domain.
 
@@ -193,7 +205,9 @@ In the UI and package description:
 
 Warn users that notifications disappear after 12 hours.
 
-"Convenience, not mission critical" - particularly the Sandstorm version. it's got a lot of caveats for techincal reasons.
+Missing messages:
+* "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons.
+* "when you upgrade, restart your Android app or you will lose messages". This is probably more on Android than the server but whatever.
 
 #### Caveats about privacy
 
@@ -212,6 +226,8 @@ ere](TODO) for more.
 
 Warn users that stick around for 12 hours.
 
+Don't use the "webkey", use the API URL we give you. (I'm not sure yet if this matters. We might place special permissions restrictions on the API URL.)
+
 #### Missing instructions
 
 (IMHO this would be good to put into the normal ntfy UI. Maybe I could upstream it.)
@@ -222,12 +238,20 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 * Figure out why go.sum changed when I ran `make` for linux?
 * Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-* Server security and performance testing (mostly not necessary until we add the Admin API)
-	* Make sure API response time from a sleeping grain is still low now that I'm using Caddy
-	* Make sure curl $API/$ADMIN URLS don't give me the admin
-	* Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
-		* Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
-		* I think it makes requests to parent though.
+* Test
+    * Keep this all around for if we switch to Caddy.
+    * Do websocket-based connections work?
+    * Server security and performance testing (mostly not necessary until we add the Admin API)
+        * Make sure API response time from a sleeping grain is still low if I ever switch back to Caddy
+        * Make sure curl $API/$ADMIN URLS don't give me the admin
+        * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
+            * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
+            * I think it makes requests to parent though.
+    * See what happens if I use multiple API URLs.
+        * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
+        * If I use it for scripts, will it be okay?
+        * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
+        * If something goes wrong, put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
 * Block all access for shared grains.
     * If need be, only create one sharing profile and one permission, and don't include the permission?
     * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
@@ -254,3 +278,8 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 * Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 * Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
 * Put data retention back to 12 hours
+* Think about upgrades - this is more vulnerable than most Sandstorm apps.
+    * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
+* What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
+    * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
+    * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.

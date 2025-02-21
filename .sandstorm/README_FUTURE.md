@@ -20,6 +20,12 @@ Also multiple Zulip accounts, sheesh.
 
 "If you trust the Sandstorm platform, you'll know that we're not exfiltrating data".
 
+## Sandstorm App Notifications
+
+Maybe we could have one randomly generated topic that all Sandstorm apps push to. To avoid a bunch of manual subscriptions. Send the new topic to the phone over the "System Topic" I suppose. Maybe this would be integrated somehow. Maybe it's just a suggestion given to the user.
+
+MAYBE it's a different API URL with different permissions. Give it to Sandstorm apps, they don't need to find the Sandstorm topic, it is handed to them or something. You could even change it. I dunno if this would be useful in any way.
+
 ## Action buttons
 
 See here: https://docs.ntfy.sh/publish/#action-buttons
@@ -44,3 +50,9 @@ Let's say a sandstorm app wants to send a notification and you want it on your p
 ## GUI-based configs
 
 Cache lifetime, private topics (if we find a way to do this), other env vars.
+
+## Group grains
+
+Sandstorm lets you make multiple "types" of grains per app. We could make a "group" type grain if people keep using it for groups when they're not supposed to. It just removes any admin capabilities etc.
+
+HOPEFULLY IT WILL NOT COME TO THIS but I wanted to mark it down because I thought of it.
