@@ -4,11 +4,13 @@ These READMEs are the result of pondering how ntfy works and how it can be integ
 
 The bottom line is this: The **initial release** of this ntfy Sandstorm app will have some advantages and some disadvantages compared to the normal ntfy app. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
 
-These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you. And if you are interested in helping, I'd love to hear from you as well.
+These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you.
+
+And if you are interested in helping, I'd love to hear from you as well. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile. I can start to put this stuff into Github issues.
 
 # Notes
 
-* It responds fast to requests, even if grain started as off, it looks like.
+* It responds fast to requests, even if grain is asleep, it looks like.
 * We'll be having the outside world pinging us. Namely, services that we're subscribed to. In theory it could be a DOS problem.
 * In the long run, Tempest should perhaps integrate with ntfy. Sandstorm has its own notification system that apps can trigger.
 	* Perhaps we could have a "system app" hook for getting the notifications and pushing them to ntfy.
