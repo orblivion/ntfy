@@ -274,6 +274,14 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
+(Maybe stuff we're learning about the system should be split into "Research"?)
+
+* Does private info get sent to the ntfy server?
+    * When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)?
+        * And it's initially configured to ntfy.sh, before you even realize what's happening.
+    * What about Element, etc?
+    * I could try to find a "verbose" mode for ntfy and just dump everything it's getting from the server.
+    * Hopefully ntfy just gets a "ping" to let it know to pull from the server.
 * Which apps work?
     * List the apps here so we can keep testing them.
 * Do websocket-based connections work at all?
