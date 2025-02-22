@@ -274,6 +274,8 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
+* Which apps work?
+    * List the apps here so we can keep testing them.
 * Do websocket-based connections work at all?
 * Server security and performance testing (mostly not necessary until we add the Admin API)
     * Make sure API response time from a sleeping grain is low

@@ -15,12 +15,6 @@ Some things I'd like to learn about ntfy in general which could help us develop.
 * Does private info get sent to ntfy.sh ? When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)? What about Element, etc? I could try to find a "verbose" mode for ntfy and just dump everything it's getting from the server. Hopefully just a "ping" to let it know to check.
 * https://www.youtube.com/watch?v=XQ2jhqbDL6M&feature=youtu.be NextCloud Calendar -> notifications to "Your DAV app"? Any app? How?
 
-# Confirm features
-
-* Tusky Notifications seem to work! They are faster with everything connected (and ntfy is actually listening). But I don't see messages explicitly showing up in the ntfy UI or anything like that.
-	* I see Tusky topics show up in my app (without me asking! which is neat):
-	* Again, not sure if it's opting me into privacy issues, supposing it wasn't my own server
-
 # Changes and Issues - Summary
 
 My notes on what can and should be done exploded. For most readers here, I wanted to make a summary, but you can look at the accompanying sub-section in [README_DETAILS.md](README_DETAILS.md)
