@@ -282,8 +282,10 @@ To learn about the system and/or to validate before release. In particular, if w
     * What about Element, etc?
     * I could try to find a "verbose" mode for ntfy and just dump everything it's getting from the server.
     * Hopefully ntfy just gets a "ping" to let it know to pull from the server.
+    * Watch the database. See if it gets the contents of Matrix messages etc.
 * Which apps work?
     * List the apps here so we can keep testing them.
+    * Watch the database. See if it sees notifications for those apps.
 * Do websocket-based connections work at all?
 * Server security and performance testing (mostly not necessary until we add the Admin API)
     * Make sure API response time from a sleeping grain is low
@@ -293,6 +295,12 @@ To learn about the system and/or to validate before release. In particular, if w
         * I think it makes requests to parent though.
 * See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
+        * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
+        * What about two phones with the same API key?
     * If I use it for scripts, will it be okay?
     * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
-    * If something goes wrong, put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
+    * If it turns out that something goes wrong, we should put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
+* Try moving to a new grain?
+    * See how fast that updates?
+    * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
+    * If so, that makes the jettison-restart strategy (in case of compromise) fast.
