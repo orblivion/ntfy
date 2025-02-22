@@ -238,20 +238,6 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 * Figure out why go.sum changed when I ran `make` for linux?
 * Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-* Test
-    * Keep this all around for if we switch to Caddy.
-    * Do websocket-based connections work?
-    * Server security and performance testing (mostly not necessary until we add the Admin API)
-        * Make sure API response time from a sleeping grain is still low if I ever switch back to Caddy
-        * Make sure curl $API/$ADMIN URLS don't give me the admin
-        * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
-            * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
-            * I think it makes requests to parent though.
-    * See what happens if I use multiple API URLs.
-        * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
-        * If I use it for scripts, will it be okay?
-        * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
-        * If something goes wrong, put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
 * Block all access for shared grains.
     * If need be, only create one sharing profile and one permission, and don't include the permission?
     * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
@@ -283,3 +269,20 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 * What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
+
+# Test
+
+To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
+
+* Do websocket-based connections work at all?
+* Server security and performance testing (mostly not necessary until we add the Admin API)
+    * Make sure API response time from a sleeping grain is low
+    * Make sure curl $API/$ADMIN URLS don't give me the admin
+    * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
+        * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
+        * I think it makes requests to parent though.
+* See what happens if I use multiple API URLs.
+    * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
+    * If I use it for scripts, will it be okay?
+    * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
+    * If something goes wrong, put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)

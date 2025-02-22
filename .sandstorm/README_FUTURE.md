@@ -26,6 +26,8 @@ Maybe we could have one randomly generated topic that all Sandstorm apps push to
 
 MAYBE it's a different API URL with different permissions. Give it to Sandstorm apps, they don't need to find the Sandstorm topic, it is handed to them or something. You could even change it. I dunno if this would be useful in any way.
 
+But really though, it should be a powerbox thing when we get around to figuring that out.
+
 ## Action buttons
 
 See here: https://docs.ntfy.sh/publish/#action-buttons
@@ -46,6 +48,8 @@ The one thing we could do today is use the "view" to open a normal https URL, or
 ## Build into Tempest's notification system
 
 Let's say a sandstorm app wants to send a notification and you want it on your phone via ntfy. Instead of needing to do a powerbox connection to a ntfy grain, let's have ntfy be a "system grain" with special privileges to read notifications on Tempest itself and propagate them to the user's phone. That way apps need only trigger normal Tempest (Sandstorm) notifications. Perhaps we add some extra metadata.
+
+And/or perhaps some apps already have ntfy hooks. Maybe Tempest could read those and turn them into Tempest notifications (and then back into ntfy notifications, if applicable?). Though if they're UnifiedPush enabled, they have their own Android apps that will find the ntfy Androyd app and configure with the ntfy grain that way. It could get muddled.
 
 ## GUI-based configs
 
