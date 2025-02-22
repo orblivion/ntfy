@@ -8,14 +8,6 @@ These docs describe what I can and can't do. These notes are for my future self,
 
 And if you are interested in helping, I'd love to hear from you as well. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile. I can start to put this stuff into Github issues.
 
-# Notes
-
-* It responds fast to requests, even if grain is asleep, it looks like.
-* We'll be having the outside world pinging us. Namely, services that we're subscribed to. In theory it could be a DOS problem.
-* In the long run, Tempest should perhaps integrate with ntfy. Sandstorm has its own notification system that apps can trigger.
-	* Perhaps we could have a "system app" hook for getting the notifications and pushing them to ntfy.
-	* And/Or perhaps apps already have ntfy hooks. Maybe Tempest could read those and turn them into Tempest notifications (and then back into ntfy notifications, if applicable?)
-
 # Learn
 
 Some things I'd like to learn about ntfy in general which could help us develop.
@@ -28,7 +20,6 @@ Some things I'd like to learn about ntfy in general which could help us develop.
 * Tusky Notifications seem to work! They are faster with everything connected (and ntfy is actually listening). But I don't see messages explicitly showing up in the ntfy UI or anything like that.
 	* I see Tusky topics show up in my app (without me asking! which is neat):
 	* Again, not sure if it's opting me into privacy issues, supposing it wasn't my own server
-* Topic subscriptions keep disapperaing in the UI? Is that normal? Something to fix (if so move to appropriate part of this doc)?
 
 # Changes and Issues - Summary
 
@@ -84,7 +75,7 @@ Actually explain this stuff to the user
 
 #### Caveats about missing features
 
-Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around. We need to explain to the user what will and won't work.
+Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser (such as topic subscriptions and notifications) will stick around. We need to explain to the user what will and won't work.
 
 Other features will be missing as well, such as Desktop Notifications and the Progressive Web App.
 
@@ -103,6 +94,10 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 ## Assorted
 
 Various other TODO items. Most of these are probably prudent to do for the **initial release**.
+
+# Test
+
+To learn about the system and/or to validate before release.
 
 # Future
 
