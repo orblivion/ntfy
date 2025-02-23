@@ -1,4 +1,4 @@
-# Changes and Issues - Lots of detail
+# Changes and Issues
 
 (summary in [README.md](README.md))
 
