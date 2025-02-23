@@ -1,4 +1,4 @@
-# [Overview](README_DETAILS.md#overview)
+# Overview
 
 These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. I confused myself multiple times in the process. I've put some effort into cleaning it all up but that itself has been an endeavor.
 
@@ -8,7 +8,7 @@ These docs describe what I can and can't do. These notes are for my future self,
 
 And if you are interested in helping, I'd love to hear from you as well. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile. I can start to put this stuff into Github issues.
 
-# [Changes and Issues - Summary](README_DETAILS.md#changes-and-issues)
+# [Changes and Issues](README_DETAILS.md#changes-and-issues)
 
 My notes on what can and should be done exploded. For most readers here, I wanted to make a summary, but you can look at the accompanying sub-section in [README_DETAILS.md](README_DETAILS.md)
 
@@ -20,7 +20,7 @@ Confirm we don't need outbound requests, fix websockets, confirm proxy config is
 
 ### [Attachments](README_DETAILS.md#attachments)
 
-Make attachments work
+Make attachments work if they don't already.
 
 ### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
@@ -82,7 +82,7 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 Various other TODO items. Most of these are probably prudent to do for the **initial release**.
 
-# [Test](README_DETAILS.md#test)
+# [Validate](README_DETAILS.md#validate)
 
 To learn about the system and/or to validate before release.
 
