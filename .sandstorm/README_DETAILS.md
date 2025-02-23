@@ -274,8 +274,25 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
-(Maybe stuff we're learning about the system should be split into "Research"?)
+* Test that known working apps still work
+    * Tusky
+    * (TODO - add to list - see research)
+* Various connections work
+    * Websocket
+    * JSON stream over HTTP
+* Server security and performance testing
+    * Make sure API response time from a sleeping grain is low
+    * Make sure curl $API/$ADMIN URLS (if/when we implement them) don't give me the admin
 
+# Research
+
+* Which apps work?
+    * List the apps here so we can keep testing them.
+    * Watch the database. See if it sees notifications for those apps.
+* Security
+    * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
+        * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
+        * I think it makes requests to parent though.
 * Does private info get sent to the ntfy server?
     * When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)?
         * And it's initially configured to ntfy.sh, before you even realize what's happening.
@@ -283,16 +300,6 @@ To learn about the system and/or to validate before release. In particular, if w
     * I could try to find a "verbose" mode for ntfy and just dump everything it's getting from the server.
     * Hopefully ntfy just gets a "ping" to let it know to pull from the server.
     * Watch the database. See if it gets the contents of Matrix messages etc.
-* Which apps work?
-    * List the apps here so we can keep testing them.
-    * Watch the database. See if it sees notifications for those apps.
-* Do websocket-based connections work at all?
-* Server security and performance testing (mostly not necessary until we add the Admin API)
-    * Make sure API response time from a sleeping grain is low
-    * Make sure curl $API/$ADMIN URLS don't give me the admin
-    * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
-        * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
-        * I think it makes requests to parent though.
 * See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
