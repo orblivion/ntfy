@@ -66,19 +66,19 @@ So, no other mitigations other than hard-to-guess topics. No private topics, no 
 
 #### Option: private topics
 
-The best way to implement private topics is for all topics to be have a policy of being write-only, and give the user's ntfy app (and scripts) full read/write access (i.e. ntfy's "admin" role, not the same as the "Admin API" mentioned elsewhere). https://docs.ntfy.sh/config/#access-control That way only the user's clients can read all of the messages, and all services can only write them.
+The best way to implement private topics is for all topics to be have a policy of being write-only, and give the user's ntfy app (and scripts) full read/write access (i.e. ntfy's "admin" role for users). https://docs.ntfy.sh/config/#access-control That way only the user's clients can read all of the messages, and all services can only write them.
 
 The first benefit is that it will disuade malicious services you've connected to (i.e. a bad Mastodon server) from piggybacking on your grain for its own purposes. They can still write to arbitrary channels, but they can't read any of the messages that they wrote. This would make it pretty useless to them, and hopefully remove any incentive to bother writing.
 
 The second benefit is that the user would be safe to use easy-to-guess channel names ("alerts", "camera", etc) for their scripts. (Though, bad actors could still write to them, but they'd have no idea if you're subscribed to them.)
 
-To give the client full permission, we would need to set it up with a password or a token. For convenient ntfy client setup, we could present a token to users along with API key in the offer template. Ntfy seems to store tokens in cleartext anyway (you can query for them), so we can generate it once and show it to the user as many times as we need. For the web UI to read topics, we could just automatically log in with the same token (though maybe that's less secure than the original ntfy). We could maybe just write the token to a tmp folder and use Caddy's file_server to avoid writing a whole new server for the Admin API (unless we're writing one anyway for other reasons). We should probably disable any special endpoints that use the token though, such as password changing.
+To give the client full permission, we would need to set it up with a password or a token. For convenient ntfy client setup, we could present a token to users along with API key in the offer template. Ntfy seems to store tokens in cleartext anyway (you can query for them), so we can generate it once and show it to the user as many times as we need. For the web UI to read topics, we could just automatically log in with the same token (though maybe that's less secure than the original ntfy). We could maybe just write the token to a tmp folder and use Caddy's file_server to avoid writing a whole new server for the Extra API (unless we're writing one anyway for other reasons). We should probably disable any special endpoints that use the token though, such as password changing.
 
 But there are two fatal problems with this:
 
 Firstly, there are two ways to pass passwords and tokens in with requests: auth header or auth GET parameter. https://docs.ntfy.sh/subscribe/api/#authentication Since we can't pass auth headers into Sandstorm, we'd need our clients to go with the auth parameter. However, it seems like our main client, the Android app, [goes with the header](https://github.com/binwiederhier/ntfy-android/blob/f70c000b5615c52b3afaf3fb165cbead68ef2e4f/app/src/main/java/io/heckel/ntfy/msg/ApiService.kt#L187). While there may be other clients (and users might write their own), the benefit of private topics would be very limited.
 
-Secondly, while we could log in via the web interface, the subscribed topics are stored client side, which will get periodicaly wiped due to how Sandstorm works. Though, we could perhaps persist the topic subscriptions as well using the Admin API, though again maybe that's less secure than the original ntfy.
+Secondly, while we could log in via the web interface, the subscribed topics are stored client side, which will get periodicaly wiped due to how Sandstorm works. Though, we could perhaps persist the topic subscriptions as well using the Extra API, though again maybe that's less secure than the original ntfy.
 
 For now I am skipping this. If users are interested in *limited* private topics for use with other clients (including home-made ones), let me know and I can try to figure that out.
 
@@ -92,7 +92,7 @@ See:
 
 #### Option: monitor currently used topics
 
-Give the user some stats about how their grain is being used so they can catch unwanted users. There will be only one user per ntfy grain (see "Web UI"/"Caveats about privacy"). This means that, unlike with other ntfy installations, there should be no problem putting information in the Web UI about the whole system using a new "Admin API" (accessible only via the web), provided that this doesn't somehow introduce a new vulnerability.
+Give the user some stats about how their grain is being used so they can catch unwanted users. There will be only one user per ntfy grain (see "Web UI"/"Caveats about privacy"). This means that, unlike with other ntfy installations, there should be no problem putting information in the Web UI about the whole system using a new "Extra API" (accessible only via the web), provided that this doesn't somehow introduce a new vulnerability.
 
 Some ideas:
 
@@ -121,9 +121,9 @@ And then if they see something sketchy, we recommend that they rotate their cred
 	* Doesn't delete other settings (if we have any, which is a big if)
 	* In case the user has any notifications queued up, they won't accidentally lose them. (alternately we could just warn the user about this)
 
-#### Option: approve new topics in the admin
+#### Option: approve new topics in the Web UI
 
-Adding to the monitoring feature, we could require the user to approve new topics that appear in the admin. However, it may be a bad user experience, and not trivial to implement.
+Adding to the monitoring feature, we could require the user to approve new topics that appear in the Web UI. However, it may be a bad user experience, and not trivial to implement.
 
 Also note that this will *not alert you* if anyone is snooping on or posting to a topic (perhaps you used an easy-to-guess topic name for a script). It will merely alert you to unwanted users publishing to new topics.
 
@@ -141,11 +141,11 @@ I have other hack ideas that I kick around. I want to write them down so I don't
 
 ### Security
 
-For the Sandstorm version of ntfy, use Caddy to have a special "Admin API" path that is only accessible via the Sandstorm web portal (i.e. not under the API path which Android/iOS clients use). Since each grain is meant for one user, we treat that user as an admin. We use this to add the extra functionality mentioned in the Backend Changes section.
+For the Sandstorm version of ntfy, use Caddy to have a special "Extra API" path that is only accessible via the Sandstorm web portal (i.e. not under the API path which Android/iOS clients use). Since each grain is meant for one user, we treat that user effectively as an admin. We use this to add the extra functionality mentioned in the Backend Changes section.
 
-In normal ntfy, the Web UI is just a dumb client. For this Sandstorm app, this is true other than the Admin API that we are adding. The Web UI saves all of its data in browser local storage, which, as a Sandstorm app, gets periodically wiped due to how Sandstorm rotates subdomains. On the bright side, this means that the UI is harmless. It's a client like any other client. Even if a bad actor sees it via the API endpoint, they can't change anything because they shouldn't have access to the Admin API (and we should make sure they don't). However, this means that any settings (other than "Admin API" related things) will not survive long term. Language choice, subscribed topics, etc.
+In normal ntfy, the Web UI is just a dumb client. For this Sandstorm app, this is true other than the Extra API that we are adding (and also ntfy's Admin API which might still be in beta?). The Web UI saves all of its data in browser local storage, which, as a Sandstorm app, gets periodically wiped due to how Sandstorm rotates subdomains. On the bright side, this means that the UI is harmless. It's a client like any other client. Even if a bad actor sees it via the API endpoint, they can't change anything because they shouldn't have access to the Extra API (and we should make sure they don't). However, this means that any settings (other than "Extra API" related things) will not survive long term. Language choice, subscribed topics, etc.
 
-Separate from the Admin API, we will make use of the "offer template" which is a facility from the Sandstorm platform. I don't think Sandstorm exposes this via the API path, so this is again only via the Sandstorm web portal.
+Separate from the Extra API, we will make use of the "offer template" which is a facility from the Sandstorm platform. I don't think Sandstorm exposes this via the API path, so this is again only via the Sandstorm web portal.
 
 ### Link to URL to put into phone app
 
@@ -183,7 +183,7 @@ In the UI and package description:
 * Warn the user that their web-based configs will not be saved.
 	* By the language picker so they're not confused about it later.
 	* Topic subscriptions should only be used for testing, and maybe we should rename them accordingly. "Send test notification" "Test topics".
-		* Though we may be giving the web UI access to topics via the "Admin API" we're adding. So perhaps we could go ahead and subscribe it to all topics. This is a possibility, but it may not be worth the security risk.
+		* Though we may be giving the web UI access to topics via the "Extra API" we're adding. So perhaps we could go ahead and subscribe it to all topics. This is a possibility, but it may not be worth the security risk.
 	* Give a link to "learn more" about why it's different from ntfy, perhaps, or just say to read the description of the project in the market.
 * Note that the Sandstorm version of ntfy may not work for certain services.
 	* It works so for:
@@ -221,7 +221,7 @@ The API URL will be secret and randomized, and can be revoked, but the services 
 
 The Sandstorm version of ntfy is made for one **user per** grain. It is not advised share this with friends nor to use it to broadcast messages to them. The web interface in the Sandstorm version will have extra data about the topics.
 
-(This sucks but I want to warn ntfy users somehow) Note for normal ntfy users: Unlike normal ntfy, we are adding a special "Admin API" path only accessible via Sandstorm's web portal. [See h
+(This sucks but I want to warn ntfy users somehow) Note for normal ntfy users: Unlike normal ntfy, we are adding a special "Extra API" path only accessible via Sandstorm's web portal. [See h
 ere](TODO) for more.
 
 Warn users that stick around for 12 hours.
@@ -245,13 +245,12 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 * Figure out the meaning of this: `"prefs_users_description_no_sync": "Users and passwords are not synchronized to your account."`
     * What's the difference between a "User" and an "Account"?
     * I thought "logging in as a user" was just for protected topics. But why does it have a server URL field, even in the web UI where the server should be implicit?
-    * I think this is related to the Admin API (the one it turns out ntfy released as beta in 2023, not the one I've been talking about!)
-        * Rename the "Admin API" in my own docs to something else.
-        * Though ntfy's may be pretty much the same as mine, heh.
+    * I think this is related to the Admin API (which ntfy released as beta in 2023)
+        * Though it may be pretty much the same as my "Extra API", heh.
         * Make a note to use this API for the future perhaps.
         * Is this another security risk, leaving the web URL open?
-            * I don't think so. Previously I was worried because you could "add and remove users" but that turned out to be client side only. In this case, whatever it is, I think it requires an admin login first.
-            * Just make sure we don't hvae a vulnerable admin account, or make sure to turn off admin in configs
+            * I don't think so. Previously I was worried because you could "add and remove users" but that turned out to be client side only. In this case, whatever it is, I think it requires an admin user to log in first.
+            * Just make sure we don't have a vulnerable admin account, or make sure to turn off admin in configs
             * Make sure we note to not use admin users as a shortcut for "all read access" in the future, since it could open the API inadvertently
 * Maybe consider other useful configs: https://docs.ntfy.sh/config/
 * Check out server/types.go:publishMessage
@@ -282,7 +281,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * JSON stream over HTTP
 * Server security and performance testing
     * Make sure API response time from a sleeping grain is low
-    * Make sure curl $API/$ADMIN URLS (if/when we implement them) don't give me the admin
+    * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
 
 # Research
 

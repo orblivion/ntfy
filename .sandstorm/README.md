@@ -34,19 +34,19 @@ Because Sandstorm uses auth headers for its own purposes, we can't "log in" and 
 
 Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. We can probably give users the ability to monitor which topics are being used, and even get a notification when a new topic is being used.
 
-In the medium run we could add an approval process in the admin. In the long run we might be able to change Sandstorm to carve out a way for us to authenticate after all.
+In the medium run we could add an approval process in the Web UI (requiring an "Extra API"). In the long run we might be able to change Sandstorm to carve out a way for us to authenticate after all.
 
 For the **initial release**, we're just going to release this as-is. No ability to protect topics, no special monitoring features.
 
 ## [Web UI](README_DETAILS.md#web-ui)
 
-For the **initial release** we will only do the "offer template" (described below) because it is necessary for smooth onboarding. We should also do all of the removal of features and explanation to users because it avoids confusion and it's easy enough to do. Anything related to the "Admin API" will be put off.
+For the **initial release** we will only do the "offer template" (described below) because it is necessary for smooth onboarding. We should also do all of the removal of features and explanation to users because it avoids confusion and it's easy enough to do. Anything related to the "Extra API" will be put off.
 
 ### [Security](README_DETAILS.md#security)
 
 ntfy's web UI is just another dumb client. It looks like an admin (it fooled me at first), but all configurations and secrets you see are actually stored in the browser (which causes some new problems, see "Caveats about missing features" below)
 
-For Sandstorm integration, we will offer extra functionality. We will make sure that none of this new functionality works over the API endpoint (i.e. via phone clients), only Sandstorm's web portal. One such item will be the "offer template" which gives the user a new API endpoint and shows them how to connect it to their phone. The other, which we will do later, will be an "Admin API" to facilitate features described in the Backend Changes section.
+For Sandstorm integration, we will offer extra functionality. We will make sure that none of this new functionality works over the API endpoint (i.e. via phone clients), only Sandstorm's web portal. One such item will be the "offer template" which gives the user a new API endpoint and shows them how to connect it to their phone. The other, which we will do later, will be an "Extra API" to facilitate features described in the Backend Changes section.
 
 ### [Link to URL to put into phone app](README_DETAILS.md#link-to-url-to-put-into-phone-app)
 
@@ -98,4 +98,4 @@ Some ideas for future versions if we get this off the ground. They may or may no
 * Zulip partial support via a Zulip bot
 * Action buttons on phone notifications that perform ntfy-related tasks
 * Build into Tempest's notification system
-* GUI-based ntfy configs (as opposed to env vars) in the Sandstorm portal via Admin API
+* GUI-based ntfy configs (as opposed to env vars) in the Sandstorm portal via Extra API
