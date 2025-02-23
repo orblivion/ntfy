@@ -84,7 +84,11 @@ Various other TODO items. Most of these are probably prudent to do for the **ini
 
 # [Validate](README_DETAILS.md#validate)
 
-To learn about the system and/or to validate before release.
+What we should validate before any major release.
+
+# [Research](README_DETAILS.md#research)
+
+To learn about the system. Maybe we need to fix things or add more warnings.
 
 # [Future](README_DETAILS.md#future)
 
