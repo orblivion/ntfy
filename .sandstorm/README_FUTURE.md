@@ -57,6 +57,6 @@ Cache lifetime, private topics (if we find a way to do this), other env vars.
 
 ## Group grains
 
-Sandstorm lets you make multiple "types" of grains per app. We could make a "group" type grain if people keep using it for groups when they're not supposed to. It just removes any admin capabilities etc.
+Sandstorm lets you make multiple "types" of grains per app. We could make a "group" type grain if people keep using it for groups when they're not supposed to. It just removes any "admin" type capabilities etc.
 
 HOPEFULLY IT WILL NOT COME TO THIS but I wanted to mark it down because I thought of it.
