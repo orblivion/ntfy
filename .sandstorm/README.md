@@ -1,16 +1,22 @@
 # Overview
 
-These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. I confused myself multiple times in the process. I've put some effort into cleaning it all up but that itself has been an endeavor.
+These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. This is the overview, and it has links to the respective [details](README_DETAILS.md) (which may be a bit discombobulated, pardon the dust).
 
-The bottom line is this: The **initial release** of this ntfy Sandstorm app will have some advantages and some disadvantages compared to the normal ntfy app. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
+The **initial release** of this ntfy Sandstorm app will have some advantages and some disadvantages compared to the normal ntfy app. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
 
 These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you.
 
-And if you are interested in helping, I'd love to hear from you as well. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile. I can start to put this stuff into Github issues.
+If you are interested in helping, particularly if you know something about ntfy and/or could review code, I'd love to hear from you. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile.
 
 # [Changes and Issues](README_DETAILS.md#changes-and-issues)
 
-My notes on what can and should be done exploded. For most readers here, I wanted to make a summary, but you can look at the accompanying sub-section in [README_DETAILS.md](README_DETAILS.md)
+The details for section is for:
+
+* What to change in this version and why
+* What to change in future versions and why
+* What not to do, and why
+
+This overview will try to stick to what to do for the initial release.
 
 ## [Backend changes](README_DETAILS.md#backend-changes)
 
@@ -84,11 +90,11 @@ Various other TODO items. Most of these are probably prudent to do for the **ini
 
 # [Validate](README_DETAILS.md#validate)
 
-What we should validate before any major release.
+What to validate before any major release.
 
 # [Research](README_DETAILS.md#research)
 
-To learn about the system. Maybe we need to fix things or add more warnings.
+What to learn about the system. Maybe we need to fix things or add more warnings.
 
 # [Future](README_DETAILS.md#future)
 
