@@ -22,17 +22,17 @@ This overview will try to stick to what to do for the initial release.
 
 ## [Backend changes](README_DETAILS.md#backend-changes)
 
-## [Attachments](README_DETAILS.md#attachments)
+### [Attachments](README_DETAILS.md#attachments)
 
 Make attachments work.
 
-### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
+#### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
 Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API. It will also break some features, such as authentication (i.e. protecting topics).
 
 Fixing this would require a fundamental change to Sandstorm platform. We may be better to wait for [Tempest](https://github.com/sandstorm-org/tempest).
 
-### [Locking Down Topics](README_DETAILS.md#locking-down-topics)
+#### [Locking Down Topics](README_DETAILS.md#locking-down-topics)
 
 Because Sandstorm uses auth headers for its own purposes, we can't "log in" and thus we cannot have private topics. Thus, just as with a free ntfy.sh account, the user should always pick randomly generated topics. Thankfully the API endpoint given my Sandstorm is random and revokable. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
 
