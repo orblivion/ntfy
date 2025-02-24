@@ -154,7 +154,6 @@ We should figure out what everything in the UI does, and remove things we don't 
 
 Check out: public/config.js maybe this can do a lot of it for us
 
-* Hide "URL" fields in forms? Since we can't ping outside servers anyway.
 * Docs
 	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
 	* Open a dialog. Warn the user that it may not 100% reflect the Sandstorm implementation. Then give link.
@@ -293,6 +292,7 @@ To learn about the system and/or to validate before release. In particular, if w
 
 ## Other
 
+* Make sure ntfy's Admin API doesn't somehow get activated for us
 * Which apps and services work?
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
