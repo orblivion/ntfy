@@ -4,12 +4,6 @@
 
 ## Backend changes
 
-### Connections
-
-* Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
-* Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
-* Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
-
 ### Attachments
 
 Attachments (`NTFY_ATTACHMENT_CACHE_DIR`) requires `BASE_URL`. I have to figure out what I should put for the latter, since the user's UI is a different domain than the API! Just how Sandstorm works.
@@ -279,12 +273,20 @@ To learn about the system and/or to validate before release. In particular, if w
 * Various connections work
     * Websocket
     * JSON stream over HTTP
-    * Over a cell connection
+    * Over a cell connection (for both of the above)
 * Server security and performance testing
     * Make sure API response time from a sleeping grain is low
     * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
 
 # Research
+
+## Connections
+
+* Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
+* Websockets: Currently websocket connection on phone doesn't seem to work (update: I was wrong?). And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
+* Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
+
+## Other
 
 * Which apps work?
     * List the apps here so we can keep testing them.
