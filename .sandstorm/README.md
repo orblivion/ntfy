@@ -4,7 +4,7 @@ This is the Sandstorm fork of ntfy. These READMEs are the result of pondering ho
 
 The **initial release** of this ntfy Sandstorm app will have some advantages and some disadvantages compared to the normal ntfy app. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
 
-These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you.
+These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you. *Note: I haven't documented all code changes in these READMEs*.
 
 You can [try it out the demo](https://apps.sandstorm.io/app/pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh?experimental=true). Here are the [changes I've made](https://github.com/binwiederhier/ntfy/compare/v2.11.0...orblivion:ntfy:sandstorm) on top of the latest tag of ntfy. Some are changes to ntfy itself, some are sandstorm-specific stuff on top.
 
@@ -24,54 +24,76 @@ This overview will try to stick to what to do for the initial release.
 
 ### [Attachments](README_DETAILS.md#attachments)
 
-Make attachments work.
+- [ ] Make attachments work.
 
 ### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
-Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API. It will also break some features, such as authentication (i.e. protecting topics).
+**No changes for the initial release**. Some features, and possibly some apps and services, will not work.
+
+Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API. It will also break some features, such as authentication (i.e. locking down topics, below).
 
 Fixing this would require a fundamental change to Sandstorm platform. We may be better to wait for [Tempest](https://github.com/sandstorm-org/tempest).
 
 ### [Locking Down Topics](README_DETAILS.md#locking-down-topics)
 
-Because Sandstorm uses auth headers for its own purposes, we can't "log in" and thus we cannot have private topics. Thus, just as with a free ntfy.sh account, the user should always pick randomly generated topics. Thankfully the API endpoint given my Sandstorm is random and revokable. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
+**No changes for the initial release**. No ability to protect topics, no special monitoring features.
 
-Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. We can probably give users the ability to monitor which topics are being used, and even get a notification when a new topic is being used.
+Because Sandstorm uses auth headers for its own purposes, we can't "log in" and thus we cannot have private topics. Thus, just as with a free ntfy.sh account, the user should always pick randomly generated topics. Thankfully the API URL given my Sandstorm is random and revokable. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
 
-In the medium run we could add an approval process in the Web UI (requiring an "Extra API"). In the long run we might be able to change Sandstorm to carve out a way for us to authenticate after all.
+Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. Eventually, we can probably give users the ability to monitor which topics are being used, and even get a notification when a new topic is being used.
 
-For the **initial release**, we're just going to release this as-is. No ability to protect topics, no special monitoring features.
+Beyond that, we could add an approval process in the Web UI (requiring an "Extra API"). In the long run we might be able to change Sandstorm (i.e. wait for Tempest) to carve out a way for us to authenticate after all.
 
 ## [Web UI](README_DETAILS.md#web-ui)
 
-For the **initial release** we will:
+**For the initial release we will**:
 
-- [x] Add the API URL (the "offer template" described below) to settings for smooth onboarding
-- [ ] Remove features that won't work or are confusing for Sandstorm
-- [ ] List ntfy features that are missing from the Sandstorm version
-- [ ] Add onboarding information and warnings
+* Add the API URL (the "offer template" described below) to settings for smooth onboarding
+* Remove features that won't work or are confusing for Sandstorm
+* List ntfy features that are missing from the Sandstorm version
+* Add onboarding information and warnings
 
 Anything related to the "Extra API" will be put off.
 
 ### [Security](README_DETAILS.md#security)
 
+**For the initial release we will only add the offer template** (described in a different section):
+
 ntfy's web UI is just another dumb client. It looks like an admin (it fooled me at first), but all configurations and secrets you see are actually stored in the browser (which causes some new problems, see "Caveats about missing features" below)
 
-For Sandstorm integration, we will offer extra functionality. We will make sure that none of this new functionality works over the API endpoint (i.e. via phone clients), only Sandstorm's web portal. One such item will be the "offer template" which gives the user a new API endpoint and shows them how to connect it to their phone. The other, which we will do later, will be an "Extra API" to facilitate features described in the Backend Changes section.
+For Sandstorm integration, we will offer extra functionality. We will make sure that none of this new functionality works over the API URL (i.e. via phone clients), only Sandstorm's web portal. One such item will be the "offer template" which gives the user a new API URL and shows them how to connect it to their phone. The other, which we will do later, will be an "Extra API" to facilitate features described in the Backend Changes section.
 
 ### [Link to URL to put into phone app](README_DETAILS.md#link-to-url-to-put-into-phone-app)
 
+**For the initial release we will add the offer template**
+
 "Offer template" that has API URL and instructions for phone setup.
+
+- [x] Add API URL for users offer template
 
 ### [Remove Features](README_DETAILS.md#remove-features)
 
-Inapplicable features such as logging in should be removed from the UI to avoid confusing the user.
+**For the initial release we will remove** these features from the UI to avoid confusing the user:
+
+- [ ] Embedded docs - maybe?
+- [ ] "Logging in" for protected topics
+- [ ] "Server" fields for sending notifications, etc. For simplicity, just assume we're referring to this server.
+- [ ] *More?*
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
 
-Actually explain this stuff to the user
+**For the initial release we will actually explain this stuff to the user**:
+
+- [x] Create a welcome screen to hold most of this info
 
 #### [Caveats about missing features](README_DETAILS.md#caveats-about-missing-features)
+
+**For the initial release we will have**:
+
+- [ ] Complete List in Welcome Screen
+- [ ] Complete List in description.md
+- [ ] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something)
+- [ ] Move details to [separate doc](README_MISSING_FEATURES.md) that is linked to from both of the above
 
 Some apps and services may not work due to how Sandstorm handles headers. Crossing our fingers that it's not very many (and that the ones that do will not stop working).
 
@@ -81,23 +103,39 @@ Other features will be missing as well, such as Desktop Notifications, protected
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
 
-Warn users about some reliability issues that may be inherent to this Sandstorm version.
+**For the initial release we will**:
+
+- [ ] Warn users about some reliability issues that may be inherent to this Sandstorm version (in the welcome screen).
 
 #### [Caveats about privacy](README_DETAILS.md#caveats-about-privacy)
 
-Explain to user that the server will be not be totally private because of the services that will ping it. Explain how to rotate the API key in case they suspect unwanted use. Make sure they don't share grains with other users.
+**For the initial release we will**:
+
+- [ ] Explain to user that the server will be not be totally private (unlike most Sandstorm apps) because of the services that will ping it.
+- [ ] Mention this in description.md as well
+- [ ] Explain how to rotate the API URL in case they suspect unwanted use.
+- [ ] Make sure they don't share grains with other users.
+- [ ] *More?*
 
 #### [Missing instructions](README_DETAILS.md#missing-instructions)
 
+**For the initial release we will add:**
+
 Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush setup works, etc)
+
+- [x] Unified Push description and instructions
+- [x] Home-made scripts/apps description and instructions
+- [ ] *More?*
 
 ## [Assorted](README_DETAILS.md#assorted)
 
-Various other TODO items. Most of these are probably prudent to do for the **initial release**.
+Various other TODO items. See link for details. Most of these are probably prudent to do for the **initial release**.
 
 # [Validate](README_DETAILS.md#validate)
 
 What to validate before any major release.
+
+- [ ] Validate before initial release.
 
 # [Research](README_DETAILS.md#research)
 
@@ -126,3 +164,4 @@ Some ideas for future versions if we get this off the ground. They may or may no
 * Action buttons on phone notifications that perform ntfy-related tasks
 * Build into Tempest's notification system
 * GUI-based ntfy configs (as opposed to env vars) in the Sandstorm portal via Extra API
+* *More...*
