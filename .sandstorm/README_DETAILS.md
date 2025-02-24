@@ -14,7 +14,7 @@ Does `BASE_URL` relate to what gets displayed to the user? In what context?
 
 #### Explanation
 
-The ntfy API has a "headers" version (i.e. fields are set in custom headers) and a JSON version. Sandstorm is very selective about the headers it accepts. Until and unless we update the Sandstorm platform, the headers version of the API is expected not to work. This will break any components (clients or services) that rely on them.
+The ntfy API has a "headers" version (i.e. fields are set in custom headers) and a JSON version. Sandstorm is very selective about the headers it accepts. Until and unless we update the Sandstorm platform, the headers version of the API is expected not to work. This will break any components (apps or services or some features) that rely on them.
 
 But, as of now the system seems to work:
 
@@ -171,7 +171,7 @@ Actually explain this stuff to the user
 
 #### Caveats about missing features
 
-In the UI and package description:
+In the UI and package description (Make a simple list, but link to README_MISSING_FEATURES for the following details):
 
 * Note that the custom Sandstorm code will only be in English. We should still use translation codes, and could solicit translations.
 * Warn the user that their web-based configs will not be saved.
@@ -185,6 +185,7 @@ In the UI and package description:
 	* Help us test more:
 		* https://docs.ntfy.sh/integrations/
 		* https://unifiedpush.org/users/apps/
+        * Mention that it's becasue of headers (maybe move most of the "Headers vs JSON API" section to here.)
 * Explain that the Desktop PWA will not work with the Sandstorm version. (In the far future, PWAs would be great for Sandstorm)
 * We won't support Desktop Notifications out of the box.
 	* Reasons
@@ -192,6 +193,7 @@ In the UI and package description:
 		* Grains may fall asleep so users might miss the notifications. (I'm not totally sure about this one. Maybe it'll stay awake if you just leave the tab open)
 		* The UI says "notifications not supported" in UI. (Perhaps because the reverse proxy is http? We'd need to look into it.)
 	* If you're a user and Desktop notifications are a priority, we can look at working around these issues. One odd idea is that we could look into users opening an API endpoint in the browser. That would at least be a consistent domain.
+* Protected topics (again because of headers).
 
 #### Caveats about reliability
 
@@ -200,7 +202,7 @@ In the UI and package description:
 Warn users that notifications disappear after 12 hours.
 
 Missing messages:
-* "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons.
+* "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
 * "when you upgrade, restart your Android app or you will lose messages". This is probably more on Android than the server but whatever.
 
 #### Caveats about privacy
@@ -270,6 +272,9 @@ To learn about the system and/or to validate before release. In particular, if w
 * Test that known working apps still work
     * Tusky
     * (TODO - add to list - see research)
+* Test that clients still work
+    * Android
+    * iOS
 * Various connections work
     * Websocket
     * JSON stream over HTTP
@@ -290,6 +295,7 @@ To learn about the system and/or to validate before release. In particular, if w
 
 * Which apps and services work?
     * List them under Validate so we can keep testing them.
+    * List them in description.md - useful for people considering using it
     * Watch the database. See if it sees notifications for those apps.
 * Security
     * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
