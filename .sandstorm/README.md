@@ -46,7 +46,14 @@ For the **initial release**, we're just going to release this as-is. No ability 
 
 ## [Web UI](README_DETAILS.md#web-ui)
 
-For the **initial release** we will only do the "offer template" (described below) because it is necessary for smooth onboarding. We should also do all of the removal of features and explanation to users because it avoids confusion and it's easy enough to do. Anything related to the "Extra API" will be put off.
+For the **initial release** we will:
+
+- [x] Add the API URL (the "offer template" described below) to settings for smooth onboarding
+- [ ] Remove features that won't work or are confusing for Sandstorm
+- [ ] List ntfy features that are missing from the Sandstorm version
+- [ ] Add onboarding information and warnings
+
+Anything related to the "Extra API" will be put off.
 
 ### [Security](README_DETAILS.md#security)
 
