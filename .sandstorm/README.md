@@ -22,13 +22,9 @@ This overview will try to stick to what to do for the initial release.
 
 ## [Backend changes](README_DETAILS.md#backend-changes)
 
-### [Connections](README_DETAILS.md#connections)
+## [Attachments](README_DETAILS.md#attachments)
 
-Confirm we don't need outbound requests, fix websockets, confirm proxy config is right.
-
-### [Attachments](README_DETAILS.md#attachments)
-
-Make attachments work if they don't already.
+Make attachments work.
 
 ### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
@@ -103,7 +99,13 @@ What to validate before any major release.
 
 # [Research](README_DETAILS.md#research)
 
-What to learn about the system. Maybe we need to fix things or add more warnings.
+What to learn about the system. Maybe we need to fix things or add more warnings, in which case we'll move it to one of the above sections.
+
+## [Connections](README_DETAILS.md#connections)
+
+- [ ] Confirm we don't need outbound requests
+- [x] Confirm websockets work
+- [ ] Confirm proxy config is right
 
 # [Future](README_DETAILS.md#future)
 
