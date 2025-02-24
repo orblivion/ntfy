@@ -279,6 +279,7 @@ To learn about the system and/or to validate before release. In particular, if w
 * Various connections work
     * Websocket
     * JSON stream over HTTP
+    * Over a cell connection
 * Server security and performance testing
     * Make sure API response time from a sleeping grain is low
     * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
