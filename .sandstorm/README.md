@@ -107,6 +107,14 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 - [x] Confirm websockets work
 - [ ] Confirm proxy config is right
 
+## [Other](README_DETAILS.md#other)
+
+- [ ] Which Android apps (Tusky, Element, etc) and related services (Mastodon, Matrix, etc) successfully work via the Sandstorm ntfy app?
+- [ ] Some security checks
+- [ ] Does private info get sent to the ntfy server?
+- [ ] See what happens if I use multiple API URLs
+- [ ] Try moving to a new ntfy grain, see how Android apps respond
+
 # [Future](README_DETAILS.md#future)
 
 Some ideas for future versions if we get this off the ground. They may or may not work. See [README_FUTURE.md](README_FUTURE.md) for details.
