@@ -288,8 +288,8 @@ To learn about the system and/or to validate before release. In particular, if w
 
 ## Other
 
-* Which apps work?
-    * List the apps here so we can keep testing them.
+* Which apps and services work?
+    * List them under Validate so we can keep testing them.
     * Watch the database. See if it sees notifications for those apps.
 * Security
     * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
