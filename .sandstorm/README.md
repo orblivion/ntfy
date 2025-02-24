@@ -28,9 +28,9 @@ Make attachments work.
 
 ### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
-Sandstorm blocks non-standard headers. This will break services unless they use json instead. Crossing our fingers that it's not very many (and that the ones that do will not change).
+Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API. It will also break some features, such as authentication (i.e. protecting topics).
 
-Let's keep a list of services that are known to work, for the app description. Android app, iOS app, and Mastodon work for now, at least.
+Fixing this would require a fundamental change to Sandstorm platform. We may be better to wait for [Tempest](https://github.com/sandstorm-org/tempest).
 
 ### [Locking Down Topics](README_DETAILS.md#locking-down-topics)
 
@@ -73,9 +73,11 @@ Actually explain this stuff to the user
 
 #### [Caveats about missing features](README_DETAILS.md#caveats-about-missing-features)
 
+Some apps and services may not work due to how Sandstorm handles headers. Crossing our fingers that it's not very many (and that the ones that do will not stop working).
+
 Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser (such as topic subscriptions and notifications) will stick around. We need to explain to the user what will and won't work.
 
-Other features will be missing as well, such as Desktop Notifications and the Progressive Web App.
+Other features will be missing as well, such as Desktop Notifications, protected topics, and the Progressive Web App.
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
 
