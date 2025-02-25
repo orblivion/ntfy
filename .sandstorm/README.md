@@ -77,7 +77,7 @@ For future versions we may add an "Extra API" for additional features.
 
 - [ ] Embedded docs - maybe?
 - [ ] "Logging in" for protected topics
-- [ ] "Server" fields for sending notifications, etc. For simplicity, just assume we're referring to this server.
+- [ ] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
 - [ ] *More?*
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
