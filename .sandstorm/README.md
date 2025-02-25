@@ -55,7 +55,7 @@ Anything related to the "Extra API" that I am considering (see link for details)
 
 ### [Security](README_DETAILS.md#security)
 
-ntfy's web UI is mostly another dumb client. Almost all configurations and secrets are actually stored in the browser. This simplifies security (though it causes some new problems, see "Caveats about missing features" below).
+ntfy's web UI is mostly a client like any other (i.e. no special permissions). Almost all configurations and secrets are actually stored in the browser. This simplifies security (though it causes some new problems, see "Caveats about missing features" below).
 
 However there are a couple exceptions. **For the initial release**:
 
@@ -161,7 +161,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 ## [Ntfy API](README_DETAILS.md#ntfy-api)
 
 - [ ] What is the "Admin API"?
-- [ ] What is a ntfy "account signup" and "account subscription" and "prefs"? I thought subscription and settings were all client-side and that the web client was a dumb client. (anyway, ENABLE_ACCOUNT_SIGNUP=false should take care of it)
+- [ ] What is a ntfy "account signup" and "account subscription" and "prefs"? I thought subscription and settings were all client-side and that the web client was a simple client. (anyway, ENABLE_ACCOUNT_SIGNUP=false should take care of it)
 
 ## [Other](README_DETAILS.md#other)
 
