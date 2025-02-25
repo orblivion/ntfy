@@ -93,7 +93,7 @@ For Sandstorm integration, we will offer extra functionality. We will make sure 
 - [ ] Complete List in Welcome Screen
 - [ ] Complete List in description.md
 - [ ] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something)
-- [ ] Move details to [separate doc](README_MISSING_FEATURES.md) that is linked to from both of the above
+- [ ] Linked to here from both of the above
 
 Some apps and services may not work due to how Sandstorm handles headers. Crossing our fingers that it's not very many (and that the ones that do will not stop working).
 
