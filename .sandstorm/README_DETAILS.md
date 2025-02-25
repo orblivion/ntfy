@@ -170,7 +170,7 @@ Actually explain this stuff to the user
 
 #### Caveats about missing features
 
-In the UI and package description (Make a simple list, but link to README_MISSING_FEATURES for the following details):
+In the UI and package description (Make a simple list, but link to the README):
 
 * Note that the custom Sandstorm code will only be in English. We should still use translation codes, and could solicit translations.
 * Warn the user that their web-based configs will not be saved.
