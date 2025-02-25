@@ -2,7 +2,7 @@
 
 This is the Sandstorm fork of ntfy. These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. This is the overview, and it has links to the respective [details](README_DETAILS.md) (which may be a bit discombobulated, pardon the dust).
 
-The **initial release** of this ntfy Sandstorm app will have some advantages and some disadvantages compared to the normal ntfy app. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
+The **initial release** of this ntfy Sandstorm app will have some advantages over normal ntfy, but there will be **missing features** for reasons explained below. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
 
 These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you. *Note: I haven't documented all code changes in these READMEs*.
 
