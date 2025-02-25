@@ -105,7 +105,7 @@ Other features will be missing as well, such as Desktop Notifications, protected
 
 **For the initial release we will**:
 
-- [ ] Warn users about some reliability issues that may be inherent to this Sandstorm version (in the welcome screen).
+- [ ] Warn users about some reliability issues that may (or may not?) be inherent to this Sandstorm version (in the welcome screen).
 
 #### [Caveats about privacy](README_DETAILS.md#caveats-about-privacy)
 
@@ -155,7 +155,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 - [ ] See what happens if I use multiple API URLs
 - [ ] Try moving to a new ntfy grain, see how Android apps respond
 
-# [Future](README_DETAILS.md#future)
+# Future
 
 Some ideas for future versions if we get this off the ground. They may or may not work. See [README_FUTURE.md](README_FUTURE.md) for details.
 
