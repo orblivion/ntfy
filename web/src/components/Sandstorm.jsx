@@ -116,7 +116,7 @@ const MissingFeatures = () => {
           <li>Sending messages with headers (JSON only)</li>
           <li>Some 3rd party services</li>
         </ul>
-        <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md">
+        <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features">
           Learn More
         </Link>
       </CardContent>
