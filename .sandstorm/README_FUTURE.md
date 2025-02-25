@@ -61,8 +61,8 @@ Sandstorm lets you make multiple "types" of grains per app. We could make a "gro
 
 HOPEFULLY IT WILL NOT COME TO THIS but I wanted to mark it down because I thought of it.
 
-## Generate random topics
+## QR code for generating random topics
 
-Go in Web UI. "Generate random topic". User is likely on laptop so they can copy/paste to their scripts. Click on QR code so they can easily copy it to their phone.
+In the Web UI there is a "Generate random topic" for subscribing. It would be nice if it was in a more general-purpose tabs than "subscribe to topic". I could imagine wanting a new topic to copy/paste into my script and not wanting to subscribe in the browser. Rather, I'd want to subscribe on my phone. In which case I'd want a QR code to pop up!
 
-Or does this already exist, at least in part? Could just as well be an upstream recommendation.
+Could just as well be an upstream feature.
