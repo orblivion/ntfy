@@ -60,3 +60,9 @@ Cache lifetime, private topics (if we find a way to do this), other env vars.
 Sandstorm lets you make multiple "types" of grains per app. We could make a "group" type grain if people keep using it for groups when they're not supposed to. It just removes any "admin" type capabilities etc.
 
 HOPEFULLY IT WILL NOT COME TO THIS but I wanted to mark it down because I thought of it.
+
+## Generate random topics
+
+Go in Web UI. "Generate random topic". User is likely on laptop so they can copy/paste to their scripts. Click on QR code so they can easily copy it to their phone.
+
+Or does this already exist, at least in part? Could just as well be an upstream recommendation.
