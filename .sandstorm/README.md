@@ -60,6 +60,7 @@ ntfy's web UI is mostly another dumb client. Almost all configurations and secre
 However there are a couple exceptions. **For the initial release**:
 
 * We will make sure that ntfy's "Admin API" (possibly still in beta?) does not somehow affect us
+* We will make sure that ntfy's "Account API" does not somehow affect us
 * We will add a Sandstorm "offer template" (see below), which we will make sure only shows up in the Web UI (not via API URL)
 
 For future versions we may add an "Extra API" for additional features.
@@ -78,6 +79,7 @@ For future versions we may add an "Extra API" for additional features.
 - [ ] Embedded docs - maybe?
 - [ ] "Logging in" for protected topics
 - [ ] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
+- [ ] "Forward to email" - I'm assuming this won't work without outgoing connections (though we could add it with some work).
 - [ ] *More?*
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
@@ -106,7 +108,7 @@ Since Sandstorm rotates ui subdomains, none of the data saved locally to the bro
 
 Sandstorm blocks a lot of headers (see above). This breaks:
 
-* Protected topics (via auth headers)
+* [Protected topics](#locking-down-topics) (via auth headers)
 * Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
@@ -133,6 +135,7 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 - [x] Unified Push description and instructions
 - [x] Home-made scripts/apps description and instructions
+    - [ ] Mention ntfy cli as well
 - [ ] *More?*
 
 ## [Assorted](README_DETAILS.md#assorted)
@@ -155,9 +158,14 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 - [x] Confirm websockets work
 - [ ] Confirm proxy config is right
 
+## [Ntfy API](README_DETAILS.md#ntfy-api)
+
+- [ ] What is the "Admin API"?
+- [ ] What is a ntfy "account signup" and "account subscription" and "prefs"? I thought subscription and settings were all client-side and that the web client was a dumb client. (anyway, ENABLE_ACCOUNT_SIGNUP=false should take care of it)
+
 ## [Other](README_DETAILS.md#other)
 
-- [ ] Which Android apps (Tusky, Element, etc) and related services (Mastodon, Matrix, etc) successfully work via the Sandstorm ntfy app?
+- [ ] Which Android apps (Tusky, Element, etc) and related services (Mastodon, Matrix, etc) successfully work via the Sandstorm ntfy app? (This is where I could use a lot of help!)
 - [ ] Some security checks
 - [ ] Does private info get sent to the ntfy server?
 - [ ] See what happens if I use multiple API URLs

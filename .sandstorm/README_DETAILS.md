@@ -194,6 +194,11 @@ In the UI and package description (Make a simple list, but link to the README):
 		* The UI says "notifications not supported" in UI. (Perhaps because the reverse proxy is http? We'd need to look into it.)
 	* If you're a user and Desktop notifications are a priority, we can look at working around these issues. One odd idea is that we could look into users opening an API endpoint in the browser. That would at least be a consistent domain.
 * Protected topics (again because of headers).
+* "Forward to email"
+        * Email might require outbound connections, which we could add.
+* "Service URL"
+        * Other servers would require making a request to a different domain from the browser. Not sure if this is allowable in the current Sansdtorm model.
+        * I figured this feature would be overly complicated anyway
 
 #### Caveats about reliability
 
@@ -291,9 +296,13 @@ To learn about the system and/or to validate before release. In particular, if w
 * Websockets: Currently websocket connection on phone doesn't seem to work (update: I was wrong?). And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
 
-## Other
+## Ntfy API
 
 * Make sure ntfy's Admin API doesn't somehow get activated for us
+* What is a ntfy "account signup" and "account subscription"?
+
+## Other
+
 * Which apps and services work?
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
