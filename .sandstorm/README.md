@@ -28,7 +28,7 @@ This overview will try to stick to what to do for the initial release.
 
 ### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
-**No changes for the initial release**. Some features, and possibly some apps and services, will not work.
+**For the initial release**, some features, and possibly some apps and services, will not work.
 
 Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API. It will also break some features, such as authentication (i.e. locking down topics, below).
 
@@ -36,13 +36,11 @@ Fixing this would require a fundamental change to Sandstorm platform. We may be 
 
 ### [Locking Down Topics](README_DETAILS.md#locking-down-topics)
 
-**No changes for the initial release**. No ability to protect topics, no special monitoring features.
+**For the initial release** users will not be able to protect topics with username/password (due to needing auth headers, see above). As with free ntfy.sh accounts, please treat topics like passwords!
 
-Because Sandstorm uses auth headers for its own purposes, we can't "log in" and thus we cannot have private topics. Thus, just as with a free ntfy.sh account, the user should always pick randomly generated topics. Thankfully the API URL given my Sandstorm is random and revokable. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
+Note that the API URL is random and revokable, which can help you hide your ntfy grain. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
 
-Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. Eventually, we can probably give users the ability to monitor which topics are being used, and even get a notification when a new topic is being used.
-
-Beyond that, we could add an approval process in the Web UI (requiring an "Extra API"). In the long run we might be able to change Sandstorm (i.e. wait for Tempest) to carve out a way for us to authenticate after all.
+Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. For future versions we might add the ability to monitor or approve topics in the web UI.
 
 ## [Web UI](README_DETAILS.md#web-ui)
 
@@ -57,19 +55,21 @@ Anything related to the "Extra API" will be put off.
 
 ### [Security](README_DETAILS.md#security)
 
-**For the initial release we will only add the offer template** (described in a different section):
+ntfy's web UI is mostly another dumb client. Almost all configurations and secrets are actually stored in the browser (which causes some new problems, see "Caveats about missing features" below).
 
-ntfy's web UI is just another dumb client. It looks like an admin (it fooled me at first), but all configurations and secrets you see are actually stored in the browser (which causes some new problems, see "Caveats about missing features" below)
+However there are a couple exceptions. **For the initial release**:
 
-For Sandstorm integration, we will offer extra functionality. We will make sure that none of this new functionality works over the API URL (i.e. via phone clients), only Sandstorm's web portal. One such item will be the "offer template" which gives the user a new API URL and shows them how to connect it to their phone. The other, which we will do later, will be an "Extra API" to facilitate features described in the Backend Changes section.
+* We will make sure that ntfy's "Admin API" (possibly still in beta?) does not somehow affect us
+* We will add a Sandstorm "offer template" (see below), which we will make sure only shows up in the Web UI (not via API URL)
+
+For future versions we may add an "Extra API" for additional features.
 
 ### [Link to URL to put into phone app](README_DETAILS.md#link-to-url-to-put-into-phone-app)
 
-**For the initial release we will add the offer template**
+**For the initial release we will**
 
-"Offer template" that has API URL and instructions for phone setup.
-
-- [x] Add API URL for users offer template
+- [x] Add a Sandstorm "offer template" to settings page, which generates API URL for users
+- [x] Include instructions on how users can configure their phone with it
 
 ### [Remove Features](README_DETAILS.md#remove-features)
 
