@@ -95,6 +95,8 @@ For future versions we may add an "Extra API" for additional features.
 - [ ] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something)
 - [ ] Linked to here from both of the above
 
+**Why are features missing?** (See link for more details)
+
 Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around long term. This breaks:
 
 * Topic subscriptions
