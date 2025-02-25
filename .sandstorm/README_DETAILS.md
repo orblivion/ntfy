@@ -185,7 +185,8 @@ In the UI and package description (Make a simple list, but link to the README):
 		* https://docs.ntfy.sh/integrations/
 		* https://unifiedpush.org/users/apps/
         * Mention that it's becasue of headers (maybe move most of the "Headers vs JSON API" section to here.)
-* Explain that the Desktop PWA will not work with the Sandstorm version. (In the far future, PWAs would be great for Sandstorm)
+* Explain that the Desktop PWA will not work with the Sandstorm version (due to rotating ui subdomains).
+        * In the far future, PWAs would be great for Sandstorm, but it will probably need to wait for Tempest.
 * We won't support Desktop Notifications out of the box.
 	* Reasons
 		* Sandstorm changes subdomains for grains regularly. ntfy stores its information in the browser, tied to the subdomain. So any subscriptions would be lost.

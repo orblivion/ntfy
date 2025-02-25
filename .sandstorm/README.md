@@ -38,7 +38,7 @@ Fixing this would require a fundamental change to Sandstorm platform. We may be 
 
 **For the initial release** users will not be able to protect topics with username/password (due to needing auth headers, see above). As with free ntfy.sh accounts, please treat topics like passwords!
 
-Note that the API URL is random and revokable, which can help you hide your ntfy grain. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
+Note that the API URL is (thanks to Sandstorm) random and revokable, which can help you hide your ntfy grain. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
 
 Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. For future versions we might add the ability to monitor or approve topics in the web UI.
 
@@ -51,11 +51,11 @@ Because this is Sandstorm, we still want to make ntfy a single-user app and give
 * List ntfy features that are missing from the Sandstorm version
 * Add onboarding information and warnings
 
-Anything related to the "Extra API" will be put off.
+Anything related to the "Extra API" that I am considering (see link for details) will be put off.
 
 ### [Security](README_DETAILS.md#security)
 
-ntfy's web UI is mostly another dumb client. Almost all configurations and secrets are actually stored in the browser (which causes some new problems, see "Caveats about missing features" below).
+ntfy's web UI is mostly another dumb client. Almost all configurations and secrets are actually stored in the browser. This simplifies security (though it causes some new problems, see "Caveats about missing features" below).
 
 However there are a couple exceptions. **For the initial release**:
 
@@ -82,7 +82,7 @@ For future versions we may add an "Extra API" for additional features.
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
 
-**For the initial release we will actually explain this stuff to the user**:
+**For the initial release we will explain this stuff to the user**:
 
 - [x] Create a welcome screen to hold most of this info
 
@@ -90,16 +90,22 @@ For future versions we may add an "Extra API" for additional features.
 
 **For the initial release we will have**:
 
-- [ ] Complete List in Welcome Screen
-- [ ] Complete List in description.md
+- [ ] Complete list of missing features in Welcome Screen
+- [ ] Complete list of missing features in description.md
 - [ ] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something)
 - [ ] Linked to here from both of the above
 
-Some apps and services may not work due to how Sandstorm handles headers. Crossing our fingers that it's not very many (and that the ones that do will not stop working).
+Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around long term. This breaks:
 
-Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser (such as topic subscriptions and notifications) will stick around. We need to explain to the user what will and won't work.
+* Topic subscriptions
+* Other configurations (language, etc)
+* Desktop notifications
+* Progressive Web App
 
-Other features will be missing as well, such as Desktop Notifications, protected topics, and the Progressive Web App.
+Sandstorm blocks a lot of headers (see above). This breaks:
+
+* Protected topics (via auth headers)
+* Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
 
