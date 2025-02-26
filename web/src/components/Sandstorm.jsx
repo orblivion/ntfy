@@ -109,12 +109,14 @@ const MissingFeatures = () => {
         </Typography>
         If you're familiar with <b>ntfy</b>, there are a handful of features that you might be missing in the Sandstorm version:
         <ul>
+          <li>Some Android apps may not work with ntfy</li>
+          <li>Connecting to other servers</li>
+          <li>Sending email</li>
           <li>Protected Topics</li>
           <li>Desktop Notifications</li>
           <li>Progressive Web App (PWA)</li>
           <li>Web subscriptions (other than for testing purposes)</li>
           <li>Sending messages with headers (JSON only)</li>
-          <li>Some 3rd party services</li>
         </ul>
         <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features">
           Learn More
