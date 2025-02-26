@@ -111,6 +111,12 @@ Sandstorm blocks a lot of headers (see above). This breaks:
 * [Protected topics](#locking-down-topics) (via auth headers)
 * Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
 
+We want to keep it simple for Sandstorm. Also these things require additional effort to implement in Sandstorm:
+
+* Sending emails (requires extra work)
+* "Service URL" field for sending notifications in the web interface (breaks Sandstorm's front end container model)
+* Upstream servers (requires extra work)
+
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
 
 **For the initial release we will**:
