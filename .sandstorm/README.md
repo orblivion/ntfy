@@ -168,6 +168,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 - [ ] What is the "Admin API"?
 - [ ] What is a ntfy "account signup" and "account subscription" and "prefs"? I thought subscription and settings were all client-side and that the web client was a simple client. (anyway, ENABLE_ACCOUNT_SIGNUP=false should take care of it)
+- [ ] Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
 
 ## [Other](README_DETAILS.md#other)
 
