@@ -300,6 +300,7 @@ To learn about the system and/or to validate before release. In particular, if w
 
 * Make sure ntfy's Admin API doesn't somehow get activated for us
 * What is a ntfy "account signup" and "account subscription"?
+* Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
 
 ## Other
 
