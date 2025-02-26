@@ -35,16 +35,16 @@ const Intro = () => {
           Welcome to ntfy for Sandstorm
         </Typography>
         <p>
-          <b>ntfy</b> is a notification service. It integrates with many open source Android applications, and lets you create your own custom scripts and applications.
+          <b>ntfy</b> is a notification service. It integrates with many open source Android applications, and lets you send notifications from your own custom scripts and applications.
         </p>
         <p>
           Read below to learn about:
-	  <ul>
-	    <li>How to use this app</li>
-	    <li>How it differs from usual ntfy servers <i>and</i> usual Sandstorm apps</li>
-	    <li>Some security and privacy considerations</li>
-	  </ul>
         </p>
+	<ul>
+	  <li>How to use this app</li>
+	  <li>How it differs from usual ntfy servers <i>and</i> usual Sandstorm apps</li>
+	  <li>Some security and privacy considerations</li>
+	</ul>
       </CardContent>
     </Card>
   )
@@ -68,7 +68,7 @@ const ConnectingApps = () => {
         </CardContent>
         <Alert severity="warning" sx={{ paddingTop: 2 }}>
           <AlertTitle>Privacy and Security</AlertTitle>
-          Unlike most Sandstorm applications, ntfy-enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy and pass on your API URL <b>without asking you first</b>.
+          Unlike most Sandstorm applications, ntfy-enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy. The server will get your API URL, and this grain will get your notifications from that service, which <b>may or may not be your intention</b>.
           <br/>
           <br/>
           If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc).
