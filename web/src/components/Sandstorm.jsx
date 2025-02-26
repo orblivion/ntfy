@@ -86,7 +86,11 @@ const Scripts = () => {
           Custom Scripts and Applications
         </Typography>
 	<p>
-          You can use ntfy in your own <Link href="https://docs.ntfy.sh/publish/">scripts and applications</Link> by simply sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/">JSON request</Link> option. (Sandstorm will not allow the custom headers that ntfy uses).
+          You can use ntfy in your own <Link href="https://docs.ntfy.sh/publish/">scripts and applications
+	  </Link> by sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json">
+	  JSON request</Link> option
+	  because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api">
+	  Sandstorm&apos;s restritions</Link>.
 	</p>
 	<p>
 	  See some <Link href="https://docs.ntfy.sh/examples/">examples</Link>.
