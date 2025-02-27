@@ -172,7 +172,9 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 ## [Other](README_DETAILS.md#other)
 
-- [ ] Which Android apps (Tusky, Element, etc) and related services (Mastodon, Matrix, etc) successfully work via the Sandstorm ntfy app? (This is where I could use a lot of help!)
+- [ ] Which integrations successfully work via the Sansdtorm ntfy app? (This is where I could use a lot of help!)
+    - [ ] [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
+    - [ ] [Other integrations](https://docs.ntfy.sh/integrations/)
 - [ ] Some security checks
 - [ ] Does private info get sent to the ntfy server?
 - [ ] See what happens if I use multiple API URLs
