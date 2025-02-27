@@ -174,6 +174,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 - [ ] Which integrations successfully work via the Sansdtorm ntfy app? (This is where I could use a lot of help!)
     - [ ] [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
+        - Though, it seems like UnifiedPush is a separate protocol (WebPush?), so maybe it can be determined that it just works?
     - [ ] [Other integrations](https://docs.ntfy.sh/integrations/)
 - [ ] Some security checks
 - [ ] Does private info get sent to the ntfy server?
