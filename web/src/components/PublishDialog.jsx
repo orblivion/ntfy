@@ -636,7 +636,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showEmail && (
+            {!showEmail && false ( // Sandstorm ntfy doesn't have email support
               <Chip
                 clickable
                 disabled={disabled}
@@ -659,7 +659,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showAttachUrl && !showAttachFile && (
+            {!showAttachUrl && !showAttachFile && ( // TODO - disable this if we can't attach files
               <Chip
                 clickable
                 disabled={disabled}
