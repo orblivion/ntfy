@@ -636,7 +636,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showEmail && false ( // Sandstorm ntfy doesn't have email support
+            {!showEmail && false && ( // Sandstorm ntfy doesn't have email support
               <Chip
                 clickable
                 disabled={disabled}
