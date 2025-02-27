@@ -217,7 +217,7 @@ const SubscribePage = (props) => {
             {reserveTopicVisible && <ReserveTopicSelect value={everyone} onChange={setEveryone} />}
           </FormGroup>
         )}
-        {!reserveTopicVisible && false ( // Sandstorm ntfy doesn't interact with other ntfy servers right now
+        {!reserveTopicVisible && false && ( // Sandstorm ntfy doesn't interact with other ntfy servers right now
           <FormGroup>
             <FormControlLabel
               control={
