@@ -306,6 +306,12 @@ To learn about the system and/or to validate before release. In particular, if w
 
 * Which apps and services work?
     * [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
+        * Maybe it can actually handle WebPush point blank? In which case I don't need to test them all?
+            * But WebPush seems to use an auth header. Which would mean it should never work, but it sometimes does. What's up?
+                * https://codeberg.org/UnifiedPush/android-example
+                * https://unifiedpush.org/
+                * https://web.dev/articles/push-notifications-web-push-protocol
+                * Check the web push go code!
     * [Other integrations](https://docs.ntfy.sh/integrations/)
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
