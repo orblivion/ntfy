@@ -290,7 +290,11 @@ const PublishDialog = (props) => {
       {dropZone && <DropArea onDrop={handleAttachFileDrop} onDragLeave={handleAttachFileDragLeave} />}
       <Dialog maxWidth="md" open={open} onClose={props.onCancel} fullScreen={fullScreen}>
         <DialogTitle>
-          {baseUrl && topic
+	  {/*
+	  Sandstorm ntfy doesn't interact with other ntfy servers right now.
+	  Don't show the topic (which includes the ui-subdomain, which will confuse people)
+	  */}
+          {baseUrl && topic && false
             ? t("publish_dialog_title_topic", {
                 topic: topicShortUrl(baseUrl, topic),
               })
@@ -309,6 +313,7 @@ const PublishDialog = (props) => {
                 setShowTopicUrl(false);
               }}
             >
+	      {false && // Sandstorm ntfy doesn't interact with other ntfy servers right now
               <TextField
                 margin="dense"
                 label={t("publish_dialog_base_url_label")}
@@ -323,6 +328,7 @@ const PublishDialog = (props) => {
                   "aria-label": t("publish_dialog_base_url_label"),
                 }}
               />
+	      }
               <TextField
                 margin="dense"
                 label={t("publish_dialog_topic_label")}
@@ -659,7 +665,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showAttachUrl && !showAttachFile && ( // TODO - disable this if we can't attach files
+            {!showAttachUrl && !showAttachFile && (
               <Chip
                 clickable
                 disabled={disabled}
@@ -669,7 +675,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showAttachFile && !showAttachUrl && (
+            {!showAttachFile && !showAttachUrl && ( // TODO - disable this if we can't attach files
               <Chip
                 clickable
                 disabled={disabled}
