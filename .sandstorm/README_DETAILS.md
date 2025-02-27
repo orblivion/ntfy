@@ -260,7 +260,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * Why isn't UnifiedPush a parameter here?
 * Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
 * Confirm licenses for everything I use
-* Ntfy - Put Sandstorm ntfy on the ntfy page next to cloudtron! Merge into ntfy?
+* Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
 * Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 * Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
 * Put data retention back to 12 hours
@@ -305,6 +305,8 @@ To learn about the system and/or to validate before release. In particular, if w
 ## Other
 
 * Which apps and services work?
+    * [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
+    * [Other integrations](https://docs.ntfy.sh/integrations/)
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
     * Watch the database. See if it sees notifications for those apps.
