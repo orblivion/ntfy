@@ -316,6 +316,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
     * Watch the database. See if it sees notifications for those apps.
+        * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
 * Security
     * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
         * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
@@ -327,6 +328,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * I could try to find a "verbose" mode for ntfy and just dump everything it's getting from the server.
     * Hopefully ntfy just gets a "ping" to let it know to pull from the server.
     * Watch the database. See if it gets the contents of Matrix messages etc.
+        * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
 * See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
@@ -338,3 +340,4 @@ To learn about the system and/or to validate before release. In particular, if w
     * See how fast that updates?
     * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
     * If so, that makes the jettison-restart strategy (in case of compromise) fast.
+* Do UnifiedPush messages get cached? Are there any other differences with UP?
