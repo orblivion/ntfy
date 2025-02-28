@@ -20,6 +20,8 @@ Also multiple Zulip accounts, sheesh.
 
 "If you trust the Sandstorm platform, you'll know that we're not exfiltrating data".
 
+Also should I add this upstream? On the one hand, ntfy includes a Matrix bridge. On the other hand, they don't include Mollysocket.
+
 ## Sandstorm App Notifications
 
 Maybe we could have one randomly generated topic that all Sandstorm apps push to. To avoid a bunch of manual subscriptions. Send the new topic to the phone over the "System Topic" I suppose. Maybe this would be integrated somehow. Maybe it's just a suggestion given to the user.
