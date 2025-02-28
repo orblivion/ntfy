@@ -180,6 +180,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 - [ ] Does private info get sent to the ntfy server?
 - [ ] See what happens if I use multiple API URLs
 - [ ] Try moving to a new ntfy grain, see how Android apps respond
+- [ ] Do UnifiedPush messages get cached? Are there any other differences with UP?
 
 # Future
 
