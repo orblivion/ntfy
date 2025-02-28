@@ -59,10 +59,10 @@ const ConnectingApps = () => {
           Connecting Apps
         </Typography>
         <p>
-          <b>ntfy</b> implements <Link href="https://unifiedpush.org/">UnifiedPush</Link>, which gives you push notifications for your open source Android apps without requiring Google services.
+          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for your open source Android apps without requiring Google services.
         </p>
         <CardContent> {/* I wanted another indent */}
-          <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy">Play Store</Link>).</p>
+          <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>).</p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
           <p><MobileFriendly/> Set your ntfy-enabled apps to use ntfy for notifications.</p>
         </CardContent>
@@ -86,14 +86,14 @@ const Scripts = () => {
           Custom Scripts and Applications
         </Typography>
 	<p>
-          You can use ntfy in your own <Link href="https://docs.ntfy.sh/publish/">scripts and applications
-	  </Link> by sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json">
+          You can use ntfy in your own <Link href="https://docs.ntfy.sh/publish/" target="_blank">scripts and applications
+	  </Link> by sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank">
 	  JSON request</Link> option
-	  because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api">
+	  because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api" target="_blank">
 	  Sandstorm&apos;s restritions</Link>.
 	</p>
 	<p>
-	  See some <Link href="https://docs.ntfy.sh/examples/">examples</Link>.
+	  See some <Link href="https://docs.ntfy.sh/examples/" target="_blank">examples</Link>.
 	</p>
         <Alert severity="warning" sx={{ paddingTop: 2 }}>
           <AlertTitle>Privacy and Security</AlertTitle>
@@ -122,7 +122,7 @@ const MissingFeatures = () => {
           <li>Web subscriptions (other than for testing purposes)</li>
           <li>Sending messages with headers (JSON only)</li>
         </ul>
-        <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features">
+        <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features" target="_blank">
           Learn More
         </Link>
       </CardContent>
