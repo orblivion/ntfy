@@ -4,12 +4,6 @@
 
 ## Backend changes
 
-### Attachments
-
-Attachments (`NTFY_ATTACHMENT_CACHE_DIR`) requires `BASE_URL`. I have to figure out what I should put for the latter, since the user's UI is a different domain than the API! Just how Sandstorm works.
-
-Does `BASE_URL` relate to what gets displayed to the user? In what context?
-
 ### Headers vs JSON API
 
 #### Explanation
@@ -199,6 +193,15 @@ In the UI and package description (Make a simple list, but link to the README):
 * "Service URL"
         * Other servers would require making a request to a different domain from the browser. Not sure if this is allowable in the current Sansdtorm model.
         * I figured this feature would be overly complicated anyway
+* Attachments
+	* Attachments (`NTFY_ATTACHMENT_CACHE_DIR`) requires `BASE_URL`, I think because it's serving files at a full URL.
+        * We can't have a `BASE_URL`
+                * The ui subdomain (in Sandstorm) always changes
+                * The API URL is bound to change and should not be made available to the application anyway
+	* For the future we can perhaps employ static publishing which will have a steady subdomain.
+                * So long as we can make it a directory that ntfy can still delete file that have left the cache expiry time.
+	* Also, removing attachments reduces the attack surface for abusive behavior since the server is wide open.
+                * We may wan to try to implement authentication (protected topics) first.
 
 #### Caveats about reliability
 

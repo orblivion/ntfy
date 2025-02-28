@@ -675,7 +675,7 @@ const PublishDialog = (props) => {
                 sx={{ marginRight: 1, marginBottom: 1 }}
               />
             )}
-            {!showAttachFile && !showAttachUrl && ( // TODO - disable this if we can't attach files
+            {!showAttachFile && !showAttachUrl && false && (
               <Chip
                 clickable
                 disabled={disabled}

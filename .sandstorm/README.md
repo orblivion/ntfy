@@ -22,10 +22,6 @@ This overview will try to stick to what to do for the initial release.
 
 ## [Backend changes](README_DETAILS.md#backend-changes)
 
-### [Attachments](README_DETAILS.md#attachments)
-
-- [ ] Make attachments work.
-
 ### [Headers vs JSON API](README_DETAILS.md#headers-vs-json-api)
 
 **For the initial release**, some features, and possibly some apps and services, will not work.
@@ -105,6 +101,7 @@ Since Sandstorm rotates ui subdomains, none of the data saved locally to the bro
 * Other configurations (language, etc)
 * Desktop notifications
 * Progressive Web App
+* Attachments (But, I have a backup plan for later)
 
 Sandstorm blocks a lot of headers (see above). This breaks:
 
