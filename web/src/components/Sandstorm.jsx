@@ -15,6 +15,26 @@ import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
 import { useEffect } from "react";
 
+export const DocsHeadsup = () => (
+  <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
+    <Stack spacing={3}>
+      <Card sx={{ p: 3 }} aria-label="Welcome to ntfy for Sandstorm">
+        <CardContent>
+          <Typography variant="h5" sx={{ marginBottom: 2 }}>
+            Documentation
+          </Typography>
+          <Alert severity="info" sx={{ paddingTop: 2 }}>
+            Note that you are currently using the Sandstorm version of ntfy, which has some changes which may not be reflected in the standard ntfy documentation.
+          </Alert>
+          <p>
+	    <Link href="https://docs.ntfy.sh" target="_blank">See here</Link> for ntfy documentation.
+	  </p>
+        </CardContent>
+      </Card>
+    </Stack>
+  </Container>
+);
+
 export const Welcome = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
     <Stack spacing={3}>

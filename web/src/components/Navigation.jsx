@@ -178,7 +178,7 @@ const NavList = (props) => {
           </ListItemIcon>
           <ListItemText primary={t("nav_button_settings")} />
         </ListItemButton>
-        <ListItemButton onClick={() => openUrl("/docs")}>
+        <ListItemButton onClick={() => navigate(routes.docsHeadsup)} selected={location.pathname === routes.docsHeadsup}>
           <ListItemIcon>
             <ArticleIcon />
           </ListItemIcon>
