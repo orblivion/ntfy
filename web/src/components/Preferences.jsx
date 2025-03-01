@@ -50,7 +50,7 @@ import { UnauthorizedError } from "../app/errors";
 import { subscribeTopic } from "./SubscribeDialog";
 import notifier from "../app/Notifier";
 import { useIsLaunchedPWA, useNotificationPermissionListener } from "./hooks";
-import { AppSetup } from "./Sandstorm";
+import { AppSetup, SettingsRefreshWarning } from "./Sandstorm";
 
 const maybeUpdateAccountSettings = async (payload) => {
   if (!session.exists()) {
@@ -72,7 +72,6 @@ const Preferences = () => (
       <AppSetup />
       <Notifications />
       <Reservations />
-      <SettingsRefreshWarning />
       {/* <Users /> */}
       {/* No accounts (or protected topics) for Sandstorm ntfy right now */}
       <Appearance />
@@ -90,6 +89,8 @@ const Notifications = () => {
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         {t("prefs_notifications_title")}
       </Typography>
+      <SettingsRefreshWarning />
+      <br/>
       <PrefGroup>
         <Sound />
         <MinPriority />
@@ -514,6 +515,8 @@ const Appearance = () => {
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         {t("prefs_appearance_title")}
       </Typography>
+      <SettingsRefreshWarning />
+      <br/>
       <PrefGroup>
         <Theme />
         <Language />
