@@ -149,6 +149,7 @@ const MissingFeatures = () => {
           <li>Progressive Web App (PWA)</li>
           <li>Web subscriptions (other than for testing purposes)</li>
           <li>Sending messages with headers (JSON only)</li>
+          <li>Attachments</li>
         </ul>
         <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features" target="_blank">
           Learn More
