@@ -196,13 +196,19 @@ In the UI and package description (Make a simple list, but link to the README):
 * Attachments
 	* Attachments (`NTFY_ATTACHMENT_CACHE_DIR`) requires `BASE_URL`, I think because it's serving files at a full URL.
         * We can't have a `BASE_URL`
-                * The ui subdomain (in Sandstorm) always changes
-                * The API URL is bound to change and should not be made available to the application anyway
+            * The ui subdomain (in Sandstorm) always changes
+            * The API URL is bound to change and should not be made available to the application anyway
 	* For the future we can perhaps employ static publishing which will have a steady subdomain.
-                * So long as we can make it a directory that ntfy can still delete file that have left the cache expiry time.
+            * So long as we can make it a directory that ntfy can still delete file that have left the cache expiry time.
 	* Also, removing attachments reduces the attack surface for abusive behavior since the server is wide open.
-                * We may wan to try to implement authentication (protected topics) first.
+            * We may wan to try to implement authentication (protected topics) first.
 	* Be mindful of all configs with "attachment" in the name. They're not all in a row.
+* Setting `NTFY_BEHIND_PROXY` - Sandstorm doesn't pass through `X-Forwarded-For`.
+    * All visiors to a grain will be rate limited as if they are one visitor
+    * Each grain is for one user, which is let's say 30 visitors (one per topic)
+    * We can 30x the visitor rate limit instead.
+        * One bad visitor could take out the grain but it's just one grain.
+        * Thus, we effectively have a per-user rate limit.
 
 #### Caveats about reliability
 
@@ -272,6 +278,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
 * See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
+* See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. 30x or something.
 
 # Validate
 
@@ -298,6 +305,7 @@ To learn about the system and/or to validate before release. In particular, if w
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
 * Websockets: Currently websocket connection on phone doesn't seem to work (update: I was wrong?). And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
+    * Answer: No `X-Forwarded-For` but it's fine. See `NTFY_BEHIND_PROXY` below.
 
 ## Ntfy API
 
