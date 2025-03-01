@@ -49,7 +49,7 @@ export const Welcome = () => (
 export const SettingsRefreshWarning = () => (
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
     {/* TODO <Trans> */}
-    <AlertTitle>Settings will be temporary</AlertTitle>
+    <AlertTitle>Changes will be temporary</AlertTitle>
     In the Sandstorm version of ntfy, changes to settings in the web interface may be lost as soon as you refresh the page.
   </Alert>
 );
