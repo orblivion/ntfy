@@ -316,6 +316,9 @@ To learn about the system and/or to validate before release. In particular, if w
                 * https://web.dev/articles/push-notifications-web-push-protocol
                 * Check the WebPush go code!
             * If it turns out I do need WebPush, see all the `NTFY_WEB_PUSH_*` configs.
+            * I was wondering why there is there a UnifiedPush header, but not a json field for the same purpose.
+                * Is it because UnifiedPush is a different protocol altogether? After all it works for other servers, not just ntfy.
+                * Is it WebPush (as per the diagram on UnifiedPush's website? Is this related to the WebPush go endpoint?
     * [Other integrations](https://docs.ntfy.sh/integrations/)
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
