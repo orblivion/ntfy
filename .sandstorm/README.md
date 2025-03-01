@@ -72,10 +72,10 @@ For future versions we may add an "Extra API" for additional features.
 
 **For the initial release we will remove** these features from the UI to avoid confusing the user:
 
-- [ ] Embedded docs - maybe?
-- [ ] "Logging in" for protected topics
-- [ ] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
-- [ ] "Forward to email" - I'm assuming this won't work without outgoing connections (though we could add it with some work).
+- [x] Embedded docs - maybe?
+- [x] "Logging in" for protected topics
+- [x] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
+- [x] "Forward to email" - I'm assuming this won't work without outgoing connections (though we could add it with some work).
 - [ ] *More?*
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
