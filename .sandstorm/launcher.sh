@@ -1,17 +1,17 @@
 #!/bin/bash
 set -euo pipefail
 
-# TODO - maybe consider other useful configs: https://docs.ntfy.sh/config/
-
 # export NTFY_BASE_URL=http://ntfy.example.com # (TODO: hopefully can leave blank)
-export NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
-export NTFY_CACHE_DURATION=48h # Default 12h
-#export NTFY_AUTH_DEFAULT_ACCESS=... (TODO: I think default of read-write all is fine)
-export NTFY_BEHIND_PROXY=true # (TODO: Hopefully Sandstorm uses X-Forwarded-For header. Check this actually, it uses it for rate limiting.)
-#export NTFY_ATTACHMENT_CACHE_DIR=/var/lib/ntfy/attachments (TODO: Seems to require BASE_URL for some reason)
-# export NTFY_ENABLE_LOGIN=true (TODO: default seems to have me just logged in anyway?)
+#   Check the uses of it in code to make sure that having it change is safe, since we change the ui-subdomain all the time.
 
 export NTFY_LISTEN_HTTP=:8080
+export NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
+
+# TODO: Hopefully Sandstorm uses X-Forwarded-For header. Check this actually, it uses it for rate limiting.
+# TODO Check that this proxy thing actually is necessary for it to work behind Sandstorm, I'm curious.
+export NTFY_BEHIND_PROXY=true
+
+# If I want rate limiting, see the various options with NTFY_VISITOR_*
 
 # Gets everything underneath as well
 mkdir -p /var/lib/ntfy/attachments

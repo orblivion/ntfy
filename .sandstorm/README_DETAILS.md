@@ -202,6 +202,7 @@ In the UI and package description (Make a simple list, but link to the README):
                 * So long as we can make it a directory that ntfy can still delete file that have left the cache expiry time.
 	* Also, removing attachments reduces the attack surface for abusive behavior since the server is wide open.
                 * We may wan to try to implement authentication (protected topics) first.
+	* Be mindful of all configs with "attachment" in the name. They're not all in a row.
 
 #### Caveats about reliability
 
@@ -256,7 +257,6 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
             * I don't think so. Previously I was worried because you could "add and remove users" but that turned out to be client side only. In this case, whatever it is, I think it requires an admin user to log in first.
             * Just make sure we don't have a vulnerable admin account, or make sure to turn off admin in configs
             * Make sure we note to not use admin users as a shortcut for "all read access" in the future, since it could open the API inadvertently
-* Maybe consider other useful configs: https://docs.ntfy.sh/config/
 * Check out server/types.go:publishMessage
     * see if anything else looks like it should be checked?
     * Maybe some aspects of it won't work with the connections available with Sandstorm?
@@ -266,12 +266,12 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 * Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
 * Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 * Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
-* Put data retention back to 12 hours
 * Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
 * What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
+* See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
 
 # Validate
 
@@ -314,7 +314,8 @@ To learn about the system and/or to validate before release. In particular, if w
                 * https://codeberg.org/UnifiedPush/android-example
                 * https://unifiedpush.org/
                 * https://web.dev/articles/push-notifications-web-push-protocol
-                * Check the web push go code!
+                * Check the WebPush go code!
+            * If it turns out I do need WebPush, see all the `NTFY_WEB_PUSH_*` configs.
     * [Other integrations](https://docs.ntfy.sh/integrations/)
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
