@@ -90,7 +90,7 @@ For future versions we may add an "Extra API" for additional features.
 
 - [ ] Complete list of missing features in Welcome Screen
 - [ ] Complete list of missing features in description.md
-- [ ] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something)
+- [ ] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something, mention that language is temporary etc)
 - [ ] Linked to here from both of the above
 
 **Why are features missing?** (See link for more details)

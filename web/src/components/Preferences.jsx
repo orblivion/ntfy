@@ -72,6 +72,7 @@ const Preferences = () => (
       <AppSetup />
       <Notifications />
       <Reservations />
+      <SettingsRefreshWarning />
       {/* <Users /> */}
       {/* No accounts (or protected topics) for Sandstorm ntfy right now */}
       <Appearance />
