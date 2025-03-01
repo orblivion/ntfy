@@ -107,6 +107,7 @@ Sandstorm blocks a lot of headers (see above). This breaks:
 
 * [Protected topics](#locking-down-topics) (via auth headers)
 * Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
+* *Per-visitor* rate limiting. (Each grain is for one user, so that's still a *per-user* rate limit, and we can adjust the limit.)
 
 We want to keep it simple for Sandstorm. Also these things require additional effort to implement in Sandstorm:
 
@@ -159,7 +160,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 - [ ] Confirm we don't need outbound requests
 - [x] Confirm websockets work
-- [ ] Confirm proxy config is right
+- [x] Confirm proxy config is right (skipping it; no per-visitor rate limiting, but grain is limited to one user which is limited visitors)
 
 ## [Ntfy API](README_DETAILS.md#ntfy-api)
 
