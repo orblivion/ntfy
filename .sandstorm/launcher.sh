@@ -11,6 +11,9 @@ export NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
 # TODO Check that this proxy thing actually is necessary for it to work behind Sandstorm, I'm curious.
 export NTFY_BEHIND_PROXY=true
 
+# See changes in web/src/components/routes.js
+export NTFY_DISALLOWED_TOPICS="all-subscriptions-89dfdbfd72e2ae64728dd,docs-89dfdbfd72e2ae64728dd"
+
 # If I want rate limiting, see the various options with NTFY_VISITOR_*
 
 # Gets everything underneath as well
