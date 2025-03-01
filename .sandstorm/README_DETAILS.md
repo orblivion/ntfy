@@ -232,8 +232,7 @@ The API URL will be secret and randomized, and can be revoked, but the services 
 
 The Sandstorm version of ntfy is made for one **user per** grain. It is not advised share this with friends nor to use it to broadcast messages to them. The web interface in the Sandstorm version will have extra data about the topics.
 
-(This sucks but I want to warn ntfy users somehow) Note for normal ntfy users: Unlike normal ntfy, we are adding a special "Extra API" path only accessible via Sandstorm's web portal. [See h
-ere](TODO) for more.
+(This sucks but I want to warn ntfy users somehow, when it happens, assuming the built-in Accounts API isn't enough) Note for normal ntfy users: Unlike normal ntfy, we are adding a special "Extra API" path only accessible via Sandstorm's web portal. [See here](README LINK) for more.
 
 Warn users that stick around for 12 hours.
 
