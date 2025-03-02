@@ -8,7 +8,7 @@ export NTFY_LISTEN_HTTP=:8080
 export NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
 
 # See changes in web/src/components/routes.js
-export NTFY_DISALLOWED_TOPICS="all-subscriptions-89dfdbfd72e2ae64728dd,docs-89dfdbfd72e2ae64728dd"
+export NTFY_DISALLOWED_TOPICS="sandstorm-extra-89dfdbfd72e2ae64728dd"
 
 # Gets everything underneath as well
 mkdir -p /var/lib/ntfy/attachments
