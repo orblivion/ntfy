@@ -252,6 +252,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * If need be, only create one sharing profile and one permission, and don't include the permission?
     * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
     * Or see how other apps do it.
+    * Since we're using `forSharing`, the API token can be used to create an anon share URL.
 * Figure out the meaning of this: `"prefs_users_description_no_sync": "Users and passwords are not synchronized to your account."`
     * What's the difference between a "User" and an "Account"?
     * I thought "logging in as a user" was just for protected topics. But why does it have a server URL field, even in the web UI where the server should be implicit?
