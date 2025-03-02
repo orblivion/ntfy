@@ -1,13 +1,19 @@
+// https://docs.sandstorm.io/en/latest/developing/http-apis/
 export function requestSandstormIframeURL() {
   const fullTemplate = "https://$API_HOST/.sandstorm-token/$API_TOKEN"
   const hostTemplate = "$API_HOST"
   const tokenTemplate = "$API_TOKEN"
+
   window.parent.postMessage({renderTemplate: {
     rpcId: "FULL_TEMPLATE",
     template: fullTemplate,
     clipboardButton: 'left',
     petname: 'ntfy API URL',
-    // TODO style, other params, etc https://docs.sandstorm.io/en/latest/developing/http-apis/
+
+    // Set the user to the anonymous user because this is being sent out to app
+    // servers (Mastodon, etc). But it also makes the token usable in a share
+    // link. So, we will disable all sharing.
+    forSharing: true,
   }}, "*");
   window.parent.postMessage({renderTemplate: {
     rpcId: "HOST_TEMPLATE",
