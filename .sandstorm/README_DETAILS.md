@@ -356,3 +356,8 @@ To learn about the system and/or to validate before release. In particular, if w
     * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
     * If so, that makes the jettison-restart strategy (in case of compromise) fast.
 * Do UnifiedPush messages get cached? Are there any other differences with UP?
+* BaseURL - Can I leave blank? The grain URL only works with Sandstorm. The ui subdomains rotate. The API URL shouldn't be known to the app.
+    * On the backend, it's used for a bunch of stuff that's not enabled anyway, and/or blank is fine.
+        * I will miss it for attachments, but that is looking for a full URL. I can do static hosting for that in a future release.
+    * On the frontend, it uses the ui subdomain, which is a bit disconcerting, but it's pretty much for identifying user accounts for subscriptions and stuff.
+        * I confirmed that no base_url ends up getting passed to the backend and saved to the cache db (and cached messages would get auto-deleted anyway)
