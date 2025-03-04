@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# export NTFY_BASE_URL=http://ntfy.example.com # (TODO: hopefully can leave blank)
-#   Check the uses of it in code to make sure that having it change is safe, since we change the ui-subdomain all the time.
-
 export NTFY_LISTEN_HTTP=:8080
 export NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
 
