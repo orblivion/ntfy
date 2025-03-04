@@ -124,7 +124,7 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 
 **For the initial release we will**:
 
-- [ ] Explain to user that the server will be not be totally private (unlike most Sandstorm apps) because of the services that will ping it.
+- [x] Explain to user that the server will be not be totally private (unlike most Sandstorm apps) because of the services that will ping it.
 - [ ] Mention this in description.md as well
 - [ ] Explain how to rotate the API URL in case they suspect unwanted use.
 - [ ] Make sure they don't share grains with other users.
