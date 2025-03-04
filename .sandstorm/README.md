@@ -76,7 +76,6 @@ For future versions we may add an "Extra API" for additional features.
 - [x] "Logging in" for protected topics
 - [x] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
 - [x] "Forward to email" - I'm assuming this won't work without outgoing connections (though we could add it with some work).
-- [ ] *More?*
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
 
@@ -164,8 +163,8 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 ## [Ntfy API](README_DETAILS.md#ntfy-api)
 
-- [ ] What is the "Admin API"?
-- [ ] What is a ntfy "account signup" and "account subscription" and "prefs"? I thought subscription and settings were all client-side and that the web client was a simple client. (anyway, ENABLE_ACCOUNT_SIGNUP=false should take care of it)
+- [x] What is the "Admin API"?
+- [x] What is a ntfy "account signup" and "account subscription" and "prefs"?
 - [ ] Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
 
 ## [Other](README_DETAILS.md#other)
@@ -175,7 +174,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
         - Though, it seems like UnifiedPush is a separate protocol (WebPush?), so maybe it can be determined that it just works?
     - [ ] [Other integrations](https://docs.ntfy.sh/integrations/)
 - [ ] Some security checks
-- [ ] Does private info get sent to the ntfy server?
+- [ ] Does private info get sent to the ntfy server for UnifiedPush messages?
 - [ ] See what happens if I use multiple API URLs
 - [ ] Try moving to a new ntfy grain, see how Android apps respond
 - [ ] Do UnifiedPush messages get cached? Are there any other differences with UP?
