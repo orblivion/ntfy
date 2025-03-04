@@ -209,6 +209,7 @@ In the UI and package description (Make a simple list, but link to the README):
     * We can 30x the visitor rate limit instead.
         * One bad visitor could take out the grain but it's just one grain.
         * Thus, we effectively have a per-user rate limit.
+* WebPush
 
 #### Caveats about reliability
 
@@ -321,16 +322,7 @@ To learn about the system and/or to validate before release. In particular, if w
 
 * Which apps and services work?
     * [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
-        * Maybe it can actually handle WebPush point blank? In which case I don't need to test them all?
-            * But WebPush seems to use an auth header. Which would mean it should never work, but it sometimes does. What's up?
-                * https://codeberg.org/UnifiedPush/android-example
-                * https://unifiedpush.org/
-                * https://web.dev/articles/push-notifications-web-push-protocol
-                * Check the WebPush go code!
-            * If it turns out I do need WebPush, see all the `NTFY_WEB_PUSH_*` configs.
-            * I was wondering why there is there a UnifiedPush header, but not a json field for the same purpose.
-                * Is it because UnifiedPush is a different protocol altogether? After all it works for other servers, not just ntfy.
-                * Is it WebPush (as per the diagram on UnifiedPush's website? Is this related to the WebPush go endpoint?
+        * I've been told that UnifiedPush may always use json actually, so maybe we can just guess that it all works and see what people report.
     * [Other integrations](https://docs.ntfy.sh/integrations/)
     * List them under Validate so we can keep testing them.
     * List them in description.md - useful for people considering using it
