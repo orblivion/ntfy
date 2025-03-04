@@ -2,7 +2,9 @@
 set -euo pipefail
 
 export NTFY_LISTEN_HTTP=:8080
-export NTFY_CACHE_FILE=/var/lib/ntfy/cache.db
+CACHE_PATH=/var/lib/ntfy
+mkdir -p $CACHE_PATH
+export NTFY_CACHE_FILE=$CACHE_PATH/cache.db
 export NTFY_LOG_LEVEL="trace" # TODO - remove this before launch! "info" is the default.
 
 # See changes in web/src/components/routes.js
