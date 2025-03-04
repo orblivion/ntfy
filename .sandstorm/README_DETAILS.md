@@ -310,7 +310,11 @@ To learn about the system and/or to validate before release. In particular, if w
 ## Ntfy API
 
 * Make sure ntfy's Admin API doesn't somehow get activated for us
-* What is a ntfy "account signup" and "account subscription"?
+    * It requires a user to be set to Admin. It's just for altering other users.
+* What is a ntfy "account signup" and "account subscription"? I thought subscription and settings were all client-side and that the web client was a simple client.
+    * Actually there's an undocumented API for syncing subscriptions between *web apps*.
+    * ENABLE_ACCOUNT_SIGNUP=false will prevent it from taking effect.
+    * We could use this later to make the web app data persist.
 * Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
 
 ## Other
@@ -336,7 +340,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
         * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
         * I think it makes requests to parent though.
-* Does private info get sent to the ntfy server?
+* Does private info get sent to the ntfy server for UnifiedPush messages?
     * When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)?
         * And it's initially configured to ntfy.sh, before you even realize what's happening.
     * What about Element, etc?
