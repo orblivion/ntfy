@@ -94,7 +94,7 @@ For future versions we may add an "Extra API" for additional features.
 
 **Why are features missing?** (See link for more details)
 
-Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around long term. This breaks:
+Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around long term. It also means we cannot set a "base-url". This breaks:
 
 * Topic subscriptions
 * Other configurations (language, etc)
@@ -107,6 +107,7 @@ Sandstorm blocks a lot of headers (see above). This breaks:
 
 * [Protected topics](#locking-down-topics) (via auth headers)
 * Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
+    * The ones that work may work in a degraded fashion (missing tags, titles, etc)
 * *Per-visitor* rate limiting. (Each grain is for one user, so that's still a *per-user* rate limit, and we can adjust the limit.)
 * ntfy cli - seems to always send auth headers
 
@@ -115,6 +116,8 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 * Sending emails (requires extra work)
 * "Service URL" field for sending notifications in the web interface (breaks Sandstorm's front end container model)
 * Upstream servers (requires extra work)
+* Per-visitor rate limiting (though we have decent per-*user* rate limiting, since one grain is limited to one user)
+* Translations for Sandstorm-specific copy edits - Just a matter of time. But you can help! Reach out (see contacts above) to let me know if you'd like to help.
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
 
