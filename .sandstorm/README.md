@@ -101,12 +101,14 @@ Since Sandstorm rotates ui subdomains, none of the data saved locally to the bro
 * Desktop notifications
 * Progressive Web App
 * Attachments (But, I have a backup plan for later)
+* WebPush
 
 Sandstorm blocks a lot of headers (see above). This breaks:
 
 * [Protected topics](#locking-down-topics) (via auth headers)
 * Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
 * *Per-visitor* rate limiting. (Each grain is for one user, so that's still a *per-user* rate limit, and we can adjust the limit.)
+* ntfy cli - seems to always send auth headers
 
 We want to keep it simple for Sandstorm. Also these things require additional effort to implement in Sandstorm:
 
