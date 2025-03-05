@@ -11,9 +11,13 @@ import {
 import { WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
 import { useEffect } from "react";
+
+const readmeMissingFeatures = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features";
+const readme = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md";
 
 export const DocsHeadsup = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
@@ -41,7 +45,6 @@ export const Welcome = () => (
       <Intro/>
       <ConnectingApps/>
       <Scripts/>
-      <MissingFeatures/>
     </Stack>
   </Container>
 );
@@ -56,6 +59,7 @@ export const SettingsRefreshWarning = () => (
 
 const Intro = () => {
   const { t } = useTranslation(); // TODO
+  const navigate = useNavigate();
   return (
     <Card sx={{ p: 3 }} aria-label="Welcome to ntfy for Sandstorm">
       <CardContent>
@@ -63,16 +67,12 @@ const Intro = () => {
           Welcome to ntfy for Sandstorm
         </Typography>
         <p>
-          <b>ntfy</b> is a notification service. It integrates with many open source Android applications, and lets you send notifications from your own custom scripts and applications.
+          <b>ntfy</b> is a notification service. It integrates with many open source Android applications, and lets you send notifications from your own custom scripts and applications. Please read on to learn about how to use this app as well as some security and privacy considerations.
         </p>
         <p>
-          Read below to learn about:
+          If you're familiar with <b>ntfy</b>, <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>see here</Link> to learn
+	  about a handful of features that you might be missing in the Sandstorm version, including limitations to the API, web interface, and other features.
         </p>
-	<ul>
-	  <li>How to use this app</li>
-	  <li>How it differs from usual ntfy servers <i>and</i> usual Sandstorm apps</li>
-	  <li>Some security and privacy considerations</li>
-	</ul>
       </CardContent>
     </Card>
   )
@@ -132,32 +132,62 @@ const Scripts = () => {
   )
 }
 
-const MissingFeatures = () => {
+export const MissingFeatures = () => {
   return (
-    <Card sx={{ p: 3 }} aria-label="Missing Features">
-      <CardContent>
-        <Typography variant="h5" sx={{ marginBottom: 2 }}>
-          Missing Features
-        </Typography>
-        If you're familiar with <b>ntfy</b>, there are a handful of features that you might be missing in the Sandstorm version:
-        <ul>
-          <li>Some Android apps may not work with ntfy</li>
-          <li>Connecting to other servers</li>
-          <li>Sending email</li>
-          <li>Protected Topics</li>
-          <li>Desktop Notifications</li>
-          <li>Progressive Web App (PWA)</li>
-          <li>Web subscriptions (other than for testing purposes)</li>
-          <li>Sending messages with headers (JSON only)</li>
-          <li>Attachments</li>
-        </ul>
-        <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features" target="_blank">
-          Learn More
-        </Link>
-      </CardContent>
-    </Card>
+    <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Stack spacing={3}>
+        <Card sx={{ p: 3 }} aria-label="Missing Features">
+          <CardContent>
+            <Typography variant="h5" sx={{ marginBottom: 2 }}>
+              Missing Features
+            </Typography>
+            <p>
+              If you're familiar with <b>ntfy</b>, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to <Link href={readmeMissingFeatures} target="_blank">technical hurdles</Link>. If you find yourself missing one of these features, please <Link href={readme} target="_blank">let me know</Link>. If it's in demand, I have some ideas to make it work.
+            </p>
+            <p>
+               Also if you're interested in helping with translations or reporting on which integrations work, I'd love to hear from you as well!
+            </p>
+            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+              Web App
+            </Typography>
+            <ul>
+              <li>Desktop Notifications</li>
+              <li>Progressive Web App (PWA)</li>
+              <li>Translations for Sandstorm-specific text</li>
+              <li>Persistent Subscriptions and other Settings (changes will be lost on page refresh)</li>
+              <li>Sending Notifications to Other Servers</li>
+            </ul>
+            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+              Other Features
+            </Typography>
+            <ul>
+              <li>Certain Integrations (ntfy-enabled apps or services that depend on HTTP headers)
+              <ul>
+                <li>Some may not work at all</li>
+                <li>Some may be degraded (missing tags or title, etc)</li>
+              </ul>
+	      </li>
+              <li>Protected Topics</li>
+              <li>Message Attachments</li>
+              <li>Upstream Servers</li>
+              <li>Sending Email</li>
+              <li>Matrix Gateway (for self-hosted Matrix home servers)</li>
+              <li>Web Push</li>
+              <li>Per-Visitor rate limiting (Sandstorm still provides a per-<i>user</i> limit)</li>
+            </ul>
+            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+              API
+            </Typography>
+            <ul>
+              <li>API calls that use HTTP headers (JSON only)</li>
+              <li>ntfy Command-Line Tool</li>
+            </ul>
+          </CardContent>
+        </Card>
+      </Stack>
+    </Container>
   )
-}
+};
 
 export const AppSetup = () => {
   const { t } = useTranslation(); // TODO

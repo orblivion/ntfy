@@ -27,7 +27,7 @@ import Person from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from "@mui/icons-material/Add";
 import { useLocation, useNavigate } from "react-router-dom";
-import { WavingHand, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
+import { WebAssetOff, WavingHand, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Trans, useTranslation } from "react-i18next";
 import CelebrationIcon from "@mui/icons-material/Celebration";
@@ -177,6 +177,12 @@ const NavList = (props) => {
             <SettingsIcon />
           </ListItemIcon>
           <ListItemText primary={t("nav_button_settings")} />
+        </ListItemButton>
+        <ListItemButton onClick={() => navigate(routes.missingFeatures)} selected={location.pathname === routes.missingFeatures}>
+          <ListItemIcon>
+            <WebAssetOff />
+          </ListItemIcon>
+          <ListItemText primary="Missing Features" />
         </ListItemButton>
         <ListItemButton onClick={() => navigate(routes.docsHeadsup)} selected={location.pathname === routes.docsHeadsup}>
           <ListItemIcon>
