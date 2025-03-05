@@ -45,6 +45,7 @@ import { AccountContext } from "./App";
 import { PermissionDenyAll, PermissionRead, PermissionReadWrite, PermissionWrite } from "./ReserveIcons";
 import { SubscriptionPopup } from "./SubscriptionPopup";
 import { useNotificationPermissionListener } from "./hooks";
+import { DocsHeadsup } from "./Sandstorm";
 
 const navWidth = 280;
 
@@ -91,6 +92,7 @@ const NavList = (props) => {
   const { account } = useContext(AccountContext);
   const [subscribeDialogKey, setSubscribeDialogKey] = useState(0);
   const [subscribeDialogOpen, setSubscribeDialogOpen] = useState(false);
+  const [docsHeadsupOpen, setDocsHeadsupOpen] = useState(false);
 
   const handleSubscribeReset = () => {
     setSubscribeDialogOpen(false);
@@ -129,6 +131,7 @@ const NavList = (props) => {
 
   return (
     <>
+      <DocsHeadsup open={docsHeadsupOpen} setOpen={setDocsHeadsupOpen}/>
       <Toolbar sx={{ display: { xs: "none", sm: "block" } }} />
       <List component="nav" sx={{ paddingTop: { xs: 0, sm: alertVisible ? 0 : "" } }}>
         {showNotificationPermissionRequired && <NotificationPermissionRequired />}
@@ -184,7 +187,7 @@ const NavList = (props) => {
           </ListItemIcon>
           <ListItemText primary="Missing Features" />
         </ListItemButton>
-        <ListItemButton onClick={() => navigate(routes.docsHeadsup)} selected={location.pathname === routes.docsHeadsup}>
+        <ListItemButton onClick={() => setDocsHeadsupOpen(true)}>
           <ListItemIcon>
             <ArticleIcon />
           </ListItemIcon>
