@@ -1,17 +1,19 @@
 import {
   Alert,
   AlertTitle,
+  Box,
+  Button,
   Card,
   CardContent,
   Container,
   Link,
+  Modal,
   Stack,
   Typography,
 } from "@mui/material";
 import { WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
 import { useEffect } from "react";
@@ -19,24 +21,35 @@ import { useEffect } from "react";
 const readmeMissingFeatures = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features";
 const readme = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md";
 
-export const DocsHeadsup = () => (
-  <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
-    <Stack spacing={3}>
-      <Card sx={{ p: 3 }} aria-label="Documentation">
-        <CardContent>
-          <Typography variant="h5" sx={{ marginBottom: 2 }}>
-            Documentation
-          </Typography>
-          <Alert severity="info" sx={{ paddingTop: 2 }}>
-            Note that you are currently using the Sandstorm version of ntfy, which has some changes which may not be reflected in the standard ntfy documentation.
-          </Alert>
-          <p>
-	    <Link href="https://docs.ntfy.sh" target="_blank">See here</Link> for ntfy documentation.
-	  </p>
-        </CardContent>
-      </Card>
-    </Stack>
-  </Container>
+export const DocsHeadsup = ({open, setOpen}) => (
+  <Modal
+      open={open}
+      onBackdropClick={() => setOpen(false)}
+  >
+    <Box
+      loading="lazy"
+      sx={{
+        maxWidth: 1,
+        maxHeight: 1,
+        position: "absolute",
+        bgcolor: "background.paper",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        padding: 4,
+      }}
+    >
+      <Typography variant="h5" sx={{ marginBottom: 2 }}>
+        Documentation
+      </Typography>
+      <Alert severity="info" sx={{ paddingTop: 2 }}>
+        Note that you are currently using the Sandstorm version of ntfy, which has some changes which may not be reflected in the standard ntfy documentation.
+      </Alert>
+      <p>
+        <Button href="https://docs.ntfy.sh" target="_blank">See ntfy documentation</Button>
+      </p>
+    </Box>
+  </Modal>
 );
 
 export const Welcome = () => (
