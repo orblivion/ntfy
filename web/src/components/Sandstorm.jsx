@@ -1,12 +1,12 @@
 import {
-  Typography,
-  Card,
-  CardContent,
   Alert,
   AlertTitle,
-  Stack,
+  Card,
+  CardContent,
   Container,
   Link,
+  Stack,
+  Typography,
 } from "@mui/material";
 import { WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ import { useEffect } from "react";
 export const DocsHeadsup = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
     <Stack spacing={3}>
-      <Card sx={{ p: 3 }} aria-label="Welcome to ntfy for Sandstorm">
+      <Card sx={{ p: 3 }} aria-label="Documentation">
         <CardContent>
           <Typography variant="h5" sx={{ marginBottom: 2 }}>
             Documentation
