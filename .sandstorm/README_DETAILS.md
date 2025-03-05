@@ -210,6 +210,7 @@ In the UI and package description (Make a simple list, but link to the README):
         * One bad visitor could take out the grain but it's just one grain.
         * Thus, we effectively have a per-user rate limit.
 * WebPush
+* CLI
 
 #### Caveats about reliability
 
@@ -304,19 +305,23 @@ To learn about the system and/or to validate before release. In particular, if w
 ## Connections
 
 * Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
-* Websockets: Currently websocket connection on phone doesn't seem to work (update: I was wrong?). And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
+    * Answer: I don't see it from a quick scan. And anyway nothing seems broken. And it would be weird if it was required.
+* Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
+    * Answer: Nevermind it works. :shrug:
 * Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's fine. See `NTFY_BEHIND_PROXY` below.
 
 ## Ntfy API
 
 * Make sure ntfy's Admin API doesn't somehow get activated for us
-    * It requires a user to be set to Admin. It's just for altering other users.
+    * Answer: It requires a user to be set to Admin. It's just for altering other users.
 * What is a ntfy "account signup" and "account subscription"? I thought subscription and settings were all client-side and that the web client was a simple client.
-    * Actually there's an undocumented API for syncing subscriptions between *web apps*.
-    * ENABLE_ACCOUNT_SIGNUP=false will prevent it from taking effect.
-    * We could use this later to make the web app data persist.
+    * Answer:
+        * Actually there's an undocumented API for syncing subscriptions between *web apps*.
+        * `ENABLE_ACCOUNT_SIGNUP=false` will prevent it from taking effect.
+        * We could use this later to make the web app data persist.
 * Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
+    * Answer: It actually seems to send auth headers all the time which keeps it from working.
 
 ## Other
 
@@ -325,7 +330,7 @@ To learn about the system and/or to validate before release. In particular, if w
         * I've been told that UnifiedPush may always use json actually, so maybe we can just guess that it all works and see what people report.
     * [Other integrations](https://docs.ntfy.sh/integrations/)
     * List them under Validate so we can keep testing them.
-    * List them in description.md - useful for people considering using it
+    * List them in description.md - useful for people considering using it.
     * Watch the database. See if it sees notifications for those apps.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
 * Security
