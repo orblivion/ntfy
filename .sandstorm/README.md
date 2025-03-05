@@ -143,7 +143,6 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 - [x] Unified Push description and instructions
 - [x] Home-made scripts/apps description and instructions
-    - [ ] Mention ntfy cli as well
 - [ ] *More?*
 
 ## [Assorted](README_DETAILS.md#assorted)
@@ -170,7 +169,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 - [x] What is the "Admin API"?
 - [x] What is a ntfy "account signup" and "account subscription" and "prefs"?
-- [ ] Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
+- [x] Does the ntfy CLI use json or headers? (It actually uses auth headers all the time, which is a dealbreaker)
 
 ## [Other](README_DETAILS.md#other)
 
