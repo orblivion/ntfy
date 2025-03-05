@@ -92,16 +92,23 @@ For future versions we may add an "Extra API" for additional features.
 - [ ] Also callouts for help w/ listing bad apps and translations in description.md.
 - [x] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something, mention that language is temporary etc)
 
-**Why are features missing?** (See link for more details)
+Some details:
 
-Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around long term. It also means we cannot set a "base-url". This breaks:
+##### Rotating Subdomains
 
-* Topic subscriptions
-* Other configurations (language, etc)
-* Desktop notifications
-* Progressive Web App
-* Attachments (But, I have a backup plan for later)
-* WebPush
+Since Sandstorm rotates ui subdomains, none of the data saved locally to the browser will stick around long term. It also means it's harder to set a "base-url". This breaks:
+
+* Web Interface:
+    * Topic subscriptions
+    * Other configurations (language, etc)
+    * Desktop notifications
+    * Progressive Web App
+* API:
+    * Attachments (But, I have a backup plan for later)
+    * Web Push
+    * Matrix Gateway (for easier self-hosted Matrix home server)
+
+##### Headers
 
 Sandstorm blocks a lot of headers (see above). This breaks:
 
@@ -110,13 +117,15 @@ Sandstorm blocks a lot of headers (see above). This breaks:
     * The ones that work may work in a degraded fashion (missing tags, titles, etc)
 * *Per-visitor* rate limiting. (Each grain is for one user, so that's still a *per-user* rate limit, and we can adjust the limit.)
 * ntfy cli - seems to always send auth headers
+* The "normal" publishing examples using curl. [Publish as JSON](https://docs.ntfy.sh/publish/#publish-as-json) instead.
+
+##### Other
 
 We want to keep it simple for Sandstorm. Also these things require additional effort to implement in Sandstorm:
 
 * Sending emails (requires extra work)
 * "Service URL" field for sending notifications in the web interface (breaks Sandstorm's front end container model)
-* Upstream servers (requires extra work)
-* Per-visitor rate limiting (though we have decent per-*user* rate limiting, since one grain is limited to one user)
+* Upstream servers (requires extra work, probably not a great fit for Sandstorm anyway)
 * Translations for Sandstorm-specific copy edits - Just a matter of time. But you can help! Reach out (see contacts above) to let me know if you'd like to help.
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
