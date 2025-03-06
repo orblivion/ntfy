@@ -164,6 +164,8 @@ Actually explain this stuff to the user
 
 #### Caveats about missing features
 
+(This list may not have something for every item in the [list in the main README](README.md#caveats-about-missing-features)).
+
 In the UI and package description (Make a simple list, but link to the README):
 
 * Note that the custom Sandstorm code will only be in English. We should still use translation codes, and could solicit translations.
