@@ -221,7 +221,17 @@ export const AppSetup = () => {
           <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
 	</p>
 	<p>
-          <iframe scrolling="no" style={{ "background-color": "#ffffff", height: "15px", width: "100%", "margin-left": 0, "margin-top": "15px", "margin-bottom": "15px", border: 0, overflow: "hidden" }} id="offer-iframe-full"></iframe>
+	  <iframe id="offer-iframe-full" scrolling="no" style={{
+	    "background-color": "#ffffff",
+	    height: "15px",
+	    width: "100%",
+	    "margin-left": 0,
+	    "margin-top": "15px",
+	    "margin-bottom": "15px",
+	    border: 0,
+	    overflow: "hidden"
+	  }}>
+	  </iframe>
 	</p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>In Case of Compromise</AlertTitle>
