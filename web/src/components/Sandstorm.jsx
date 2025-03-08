@@ -84,7 +84,7 @@ const Intro = () => {
         </p>
         <p>
           If you're familiar with <b>ntfy</b>, <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>see here</Link> to learn
-	  about a handful of features that you might be missing in the Sandstorm version, including limitations to the API, web interface, and other features.
+          about a handful of features that you might be missing in the Sandstorm version, including limitations to the API, web interface, and other features.
         </p>
       </CardContent>
     </Card>
@@ -126,16 +126,16 @@ const Scripts = () => {
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Custom Scripts and Applications
         </Typography>
-	<p>
+        <p>
           You can use ntfy in your own <Link href="https://docs.ntfy.sh/publish/" target="_blank">scripts and applications
-	  </Link> by sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank">
-	  JSON request</Link> option
-	  because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api" target="_blank">
-	  Sandstorm&apos;s restritions</Link>.
-	</p>
-	<p>
-	  See some <Link href="https://docs.ntfy.sh/examples/" target="_blank">examples</Link>.
-	</p>
+          </Link> by sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank">
+          JSON request</Link> option
+          because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api" target="_blank">
+          Sandstorm&apos;s restritions</Link>.
+        </p>
+        <p>
+          See some <Link href="https://docs.ntfy.sh/examples/" target="_blank">examples</Link>.
+        </p>
         <Alert severity="warning" sx={{ paddingTop: 2 }}>
           <AlertTitle>Privacy and Security</AlertTitle>
           Treat topics like <b>passwords</b>. Any connected 3rd party services can read any topic from your grain if they know its name, so make it hard to guess!
@@ -179,7 +179,7 @@ export const MissingFeatures = () => {
                 <li>Some may not work at all</li>
                 <li>Some may be degraded (missing tags or title, etc)</li>
               </ul>
-	      </li>
+              </li>
               <li>Protected Topics</li>
               <li>Message Attachments</li>
               <li>Upstream Servers</li>
@@ -213,29 +213,29 @@ export const AppSetup = () => {
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
           App Setup
         </Typography>
-	<p>
+        <p>
           Here you will set up your <b>API URL</b>. This is what you will use to connect to your ntfy app on your phone, as well as your custom scripts and applications.
-	</p>
-	<p>
+        </p>
+        <p>
           <AppSettingsAlt/>
           <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
-	</p>
-	<p>
-	  <iframe id="offer-iframe-full" scrolling="no" style={{
-	    "background-color": "#ffffff",
-	    height: "15px",
-	    width: "100%",
-	    "margin-left": 0,
-	    "margin-top": "15px",
-	    "margin-bottom": "15px",
-	    border: 0,
-	    overflow: "hidden"
-	  }}>
-	  </iframe>
-	</p>
+        </p>
+        <p>
+          <iframe id="offer-iframe-full" scrolling="no" style={{
+            "background-color": "#ffffff",
+            height: "15px",
+            width: "100%",
+            "margin-left": 0,
+            "margin-top": "15px",
+            "margin-bottom": "15px",
+            border: 0,
+            overflow: "hidden"
+          }}>
+          </iframe>
+        </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>In Case of Compromise</AlertTitle>
-	  {/* TODO explain that you might end up with multiple API keys. And that this is probably not great for this app? You probably just want the "default server". Actually, maybe do this in the SecurityAndPrivacy thing. And maybe just make reference to that here to "make sure you see" it. */}
+          {/* TODO explain that you might end up with multiple API keys. And that this is probably not great for this app? You probably just want the "default server". Actually, maybe do this in the SecurityAndPrivacy thing. And maybe just make reference to that here to "make sure you see" it. */}
           If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc) and get a new one here.
         </Alert>
       </CardContent>
