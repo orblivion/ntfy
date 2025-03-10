@@ -140,7 +140,12 @@ Separate from the Extra API, we will make use of the "offer template" which is a
 The URL we give to the user to connect to their phone is not the Web UI URL. We need a special "API URL" that Sandstorm facilitates. We provide it to the user using something called the "offer template" in Sandstorm parlance.
 * Offer Template text should include something like "put this into the 'default server' option in your ntfy Android app and you'll be connected!"
 * Regarding the URL format: I'm assuming that `https://domain/path/` works across UnifiedPush. And I'm assuming that `https://basic:auth@domain` does not. So I went with the former format. I wonder if these assumptions are wrong, in which case we may consider changing the format given here. But for simplicity and laziness I'll probably stick to what I have, it's just a bit ugly.
-* Make sure that the offer template API doesn't work over API endpoint!
+
+Extra items:
+
+- [ ] Encourage using different API URLs for different integrations.
+- [ ] But make sure they only use one API URL on a given ntfy receiver app (which will include reading, and UnifiedPush)
+- [ ] Advise on whether to use different API URLs on different phones, if connected to the same UnifiedPush thing (depending on how the behavior turns out)
 
 ### Remove features
 
