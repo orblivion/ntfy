@@ -94,3 +94,7 @@ HOPEFULLY IT WILL NOT COME TO THIS but I wanted to mark it down because I though
 In the Web UI there is a "Generate random topic" for subscribing. It would be nice if it was in a more general-purpose tabs than "subscribe to topic". I could imagine wanting a new topic to copy/paste into my script and not wanting to subscribe in the browser. Rather, I'd want to subscribe on my phone. In which case I'd want a QR code to pop up!
 
 Could just as well be an upstream feature.
+
+## Hosting Icons
+
+There's an Icon field. It takes a URL. It would be nice if the image at the end of it were hostable as part of the app.
