@@ -22,6 +22,32 @@ Also multiple Zulip accounts, sheesh.
 
 Also should I add this upstream? On the one hand, ntfy includes a Matrix bridge. On the other hand, they don't include Mollysocket.
 
+## Integrations
+
+### Write-only role
+
+Have a separate UI for giving API URLs for Integrations. Since they won't be used for UnifiedPush, we can give write-only permissions for those URLs.
+
+We can generate a topic for them (using the existing topic generation code). We can restrict those write-only permissions to that topic.
+
+We do this by assigning a different Sandstorm role, via the offer template. If we want just one topic that they can write to, we could even have a different role for each integration.
+
+The simple version, though, is just a single "integrations" role that is write-only, and expose the API URLs with that role in an "integrations" section of the UI.
+
+### Pet Names and other parameters
+
+We could let the user enter a "Pet name" in the UI, so it's easier to manage in Sandstorm's web key menu. We could encourage them to write in the integration that they're doing this for.
+
+However, we could also have a dropdown menu with preset configurations. It pre-fills the pet name. Less thinking for them. Just need a "other" one where they put their own.
+
+But the coolest part: For the "Zulip" integration, we add fields.
+
+Problem would be is if we have multiple of the same integration. Two Zulips, etc. May want custom pet name or pet name parts.
+
+In the far future "This Sandstorm App", "That Sandstorm App" become listed permissions.
+
+And maybe "for your phone" / "Unified Push" just becomes part of this menu.
+
 ## Sandstorm App Notifications
 
 Maybe we could have one randomly generated topic that all Sandstorm apps push to. To avoid a bunch of manual subscriptions. Send the new topic to the phone over the "System Topic" I suppose. Maybe this would be integrated somehow. Maybe it's just a suggestion given to the user.
