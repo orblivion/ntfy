@@ -57,6 +57,7 @@ export const Welcome = () => {
       <Stack spacing={3}>
         <Intro/>
         <SupportedApps setScriptsOpen={setScriptsOpen}/>
+        <PrivacyAndSecurity/>
         <ConnectingYourPhone/>
         <Scripts open={scriptsOpen} setOpen={setScriptsOpen}/>
       </Stack>
@@ -125,6 +126,21 @@ const SupportedApps = ({setScriptsOpen}) => {
   )
 };
 
+
+const PrivacyAndSecurity = () => (
+  <Alert severity="warning" sx={{ paddingTop: 2 }}>
+    <AlertTitle>Privacy and Security</AlertTitle>
+    Unlike most Sandstorm applications, ntfy-enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy. The server will get your API URL, and this grain will get your notifications from that service, which <b>may or may not be your intention</b>.
+    <br/>
+    <br/>
+    If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc).
+    <br/>
+    <br/>
+    Treat topics like <b>passwords</b>. Any connected 3rd party services can read any topic from your grain if they know its name, so make it hard to guess!
+  </Alert>
+)
+
+
 const ConnectingYourPhone = () => {
   const navigate = useNavigate();
   return (
@@ -138,13 +154,6 @@ const ConnectingYourPhone = () => {
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
           <p><MobileFriendly/> Set your ntfy-enabled apps to use ntfy for notifications.</p>
         </CardContent>
-        <Alert severity="warning" sx={{ paddingTop: 2 }}>
-          <AlertTitle>Privacy and Security</AlertTitle>
-          Unlike most Sandstorm applications, ntfy-enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy. The server will get your API URL, and this grain will get your notifications from that service, which <b>may or may not be your intention</b>.
-          <br/>
-          <br/>
-          If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc).
-        </Alert>
       </CardContent>
     </Card>
   )
@@ -174,8 +183,8 @@ const Scripts = ({open, setOpen}) => {
           Custom Scripts and Applications
         </Typography>
         <p>
-          You can use ntfy in your own <Link href="https://docs.ntfy.sh/publish/" target="_blank">scripts and applications
-          </Link> by sending a POST request. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank">
+          Using ntfy in your own scripts and applications is as easy as <Link href="https://docs.ntfy.sh/publish/" target="_blank">sending a
+          POST request</Link>. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank">
           JSON request</Link> option
           because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api" target="_blank">
           Sandstorm&apos;s restritions</Link>.
@@ -183,11 +192,6 @@ const Scripts = ({open, setOpen}) => {
         <p>
           See some examples of <Link href="https://docs.ntfy.sh/examples/" target="_blank">scripts that use ntfy</Link>.
         </p>
-        <Alert severity="warning" sx={{ paddingTop: 2 }}>
-          /* TODO hmm they should see the security stuff beforehand? maybe I warn here to read ahead?*/
-          <AlertTitle>Privacy and Security</AlertTitle>
-          Treat topics like <b>passwords</b>. Any connected 3rd party services can read any topic from your grain if they know its name, so make it hard to guess!
-        </Alert>
       </Box>
     </Modal>
   )
