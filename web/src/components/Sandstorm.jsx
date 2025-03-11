@@ -56,7 +56,8 @@ export const Welcome = () => (
   <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
     <Stack spacing={3}>
       <Intro/>
-      <ConnectingApps/>
+      <SupportedApps/>
+      <ConnectingYourPhone/>
       <Scripts/>
     </Stack>
   </Container>
@@ -80,28 +81,58 @@ const Intro = () => {
           Welcome to ntfy for Sandstorm
         </Typography>
         <p>
-          <b>ntfy</b> is a notification service. It integrates with many open source Android applications, and lets you send notifications from your own custom scripts and applications. Please read on to learn about how to use this app as well as some security and privacy considerations.
+          <b>ntfy</b> is a notification service. It integrates with many services and open source Android applications. You can easily send notifications from your own custom scripts and applications too!
         </p>
         <p>
-          If you're familiar with <b>ntfy</b>, <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>see here</Link> to learn
-          about a handful of features that you might be missing in the Sandstorm version, including limitations to the API, web interface, and other features.
+          Please read on to learn about how to use ntfy for Sandstorm, as well as some security and privacy considerations and differences from standard ntfy.
         </p>
       </CardContent>
     </Card>
   )
 };
 
-const ConnectingApps = () => {
+const SupportedApps = () => {
   const navigate = useNavigate();
   return (
-    <Card sx={{ p: 3 }} aria-label="Connecting Apps">
+    <Card sx={{ p: 3 }} aria-label="Supported Apps and Integrations">
       <CardContent>
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
-          Connecting Apps
+          Supported Apps and Integrations
         </Typography>
         <p>
-          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for your open source Android apps without requiring Google services.
+          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps without requiring Google services. Additionally, there are a number of other integrations that work with ntfy.
         </p>
+        <p>
+          <ul> {/* TODO emoji? */}
+            <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
+            <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other integrations</b></Link></li>
+          </ul>
+        </p>
+        <Alert severity="warning">
+          <AlertTitle>Incomplete Support</AlertTitle>
+          <p>
+            Due to some techincal hurdles, a handful of <b>features are missing</b> in the Sandstorm version of ntfy. Some applications or integrations <b>may not work as expected</b>.
+          </p>
+          <p>
+            Notably, <b>"Do Not Cache"</b> directives may not work reliably. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
+          </p>
+          <Button>
+            <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
+          </Button>
+        </Alert>
+      </CardContent>
+    </Card>
+  )
+};
+
+const ConnectingYourPhone = () => {
+  const navigate = useNavigate();
+  return (
+    <Card sx={{ p: 3 }} aria-label="Connecting Your Phone">
+      <CardContent>
+        <Typography variant="h5" sx={{ marginBottom: 2 }}>
+          Connecting Your Phone
+        </Typography>
         <CardContent> {/* I wanted another indent */}
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>).</p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
