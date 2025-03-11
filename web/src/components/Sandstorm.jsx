@@ -155,11 +155,16 @@ export const MissingFeatures = () => {
               Missing Features
             </Typography>
             <p>
-              If you're familiar with <b>ntfy</b>, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to <Link href={readmeMissingFeatures} target="_blank">technical hurdles</Link>. If you find yourself missing one of these features, please <Link href={readme} target="_blank">let me know</Link>. If it's in demand, I have some ideas to make it work.
+              If you're familiar with <b>ntfy</b>, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to <Link href={readmeMissingFeatures} target="_blank">technical hurdles</Link>.
             </p>
             <p>
-               Also if you're interested in helping with translations or reporting on which integrations work, I'd love to hear from you as well!
+              I'd <Link href={readme} target="_blank">love to hear from you</Link> if:
             </p>
+            <ul>
+              <li>You find yourself missing one of these features <i>(I have some ideas to make it work)</i></li>
+              <li>You would like to report on which integrations are working for you <i>(I may compile a list)</i></li>
+              <li>You would like to help with translations</li>
+            </ul>
             <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
               Web App
             </Typography>
