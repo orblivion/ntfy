@@ -144,7 +144,7 @@ const NavList = (props) => {
           <ListItemIcon>
             <WavingHand />
           </ListItemIcon>
-          <ListItemText primary="Welcome" /> {/* TODO - translate {t("...")}*/}
+          <ListItemText primary="Welcome" />
         </ListItemButton>
         {!showSubscriptionsList && (
           <ListItemButton onClick={() => navigate(routes.allSubscriptions)} selected={location.pathname === routes.allSubscriptions}>

@@ -170,7 +170,6 @@ const SubscribePage = (props) => {
       <DialogTitle>{t("subscribe_dialog_subscribe_title")}</DialogTitle>
       <DialogContent>
 	<Alert severity="warning" sx={{ paddingTop: 2 }}>
-	  {/* TODO <Trans> */}
           <AlertTitle>For testing purposes only</AlertTitle>
 	  In the Sandstorm version of ntfy, any subscriptions made in the web interface may be lost as soon as you refresh the page. It is recommended that you only use this for testing purposes.
 	</Alert>
