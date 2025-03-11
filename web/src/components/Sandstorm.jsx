@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const readmeMissingFeatures = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features";
 const readme = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md";
@@ -38,6 +38,7 @@ export const DocsHeadsup = ({open, setOpen}) => (
         transform: "translate(-50%, -50%)",
         padding: 4,
       }}
+    /* TODO aria-label="Documentation"?*/
     >
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         Documentation
@@ -50,16 +51,19 @@ export const DocsHeadsup = ({open, setOpen}) => (
   </Modal>
 );
 
-export const Welcome = () => (
-  <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
-    <Stack spacing={3}>
-      <Intro/>
-      <SupportedApps/>
-      <ConnectingYourPhone/>
-      <Scripts/>
-    </Stack>
-  </Container>
-);
+export const Welcome = () => {
+  const [scriptsOpen, setScriptsOpen] = useState(false);
+  return (
+    <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Stack spacing={3}>
+        <Intro/>
+        <SupportedApps setScriptsOpen={setScriptsOpen}/>
+        <ConnectingYourPhone/>
+        <Scripts open={scriptsOpen} setOpen={setScriptsOpen}/>
+      </Stack>
+    </Container>
+  )
+}
 
 export const SettingsRefreshWarning = () => (
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
@@ -89,7 +93,7 @@ const Intro = () => {
   )
 };
 
-const SupportedApps = () => {
+const SupportedApps = ({setScriptsOpen}) => {
   const navigate = useNavigate();
   return (
     <Card sx={{ p: 3 }} aria-label="Supported Apps and Integrations">
@@ -103,7 +107,8 @@ const SupportedApps = () => {
         <p>
           <ul> {/* TODO emoji? */}
             <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
-            <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other integrations</b></Link></li>
+            <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other supported integrations</b></Link></li>
+            <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
           </ul>
         </p>
         <Alert severity="warning">
@@ -148,10 +153,26 @@ const ConnectingYourPhone = () => {
   )
 }
 
-const Scripts = () => {
+const Scripts = ({open, setOpen}) => {
   return (
-    <Card sx={{ p: 3 }} aria-label="Custom Scripts and Applications">
-      <CardContent>
+    <Modal
+        open={open}
+        onBackdropClick={() => setOpen(false)}
+        /* TODO aria-label="Custom Scripts and Applications"?*/
+    >
+      <Box
+        loading="lazy"
+        sx={{
+          maxWidth: 1,
+          maxHeight: 1,
+          position: "absolute",
+          bgcolor: "background.paper",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          padding: 4,
+        }}
+      >
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Custom Scripts and Applications
         </Typography>
@@ -163,14 +184,15 @@ const Scripts = () => {
           Sandstorm&apos;s restritions</Link>.
         </p>
         <p>
-          See some <Link href="https://docs.ntfy.sh/examples/" target="_blank">examples</Link>.
+          See some examples of <Link href="https://docs.ntfy.sh/examples/" target="_blank">scripts that use ntfy</Link>.
         </p>
         <Alert severity="warning" sx={{ paddingTop: 2 }}>
+          /* TODO hmm they should see the security stuff beforehand? maybe I warn here to read ahead?*/
           <AlertTitle>Privacy and Security</AlertTitle>
           Treat topics like <b>passwords</b>. Any connected 3rd party services can read any topic from your grain if they know its name, so make it hard to guess!
         </Alert>
-      </CardContent>
-    </Card>
+      </Box>
+    </Modal>
   )
 }
 
