@@ -42,12 +42,10 @@ export const DocsHeadsup = ({open, setOpen}) => (
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         Documentation
       </Typography>
-      <Alert severity="info" sx={{ paddingTop: 2 }}>
-        Note that you are currently using the Sandstorm version of ntfy, which has some changes which may not be reflected in the standard ntfy documentation.
-      </Alert>
       <p>
-        <Button href="https://docs.ntfy.sh" target="_blank">See ntfy documentation</Button>
+        Note that you are currently using the <b>Sandstorm version of ntfy</b>, which has some changes which may not be reflected in the standard ntfy documentation.
       </p>
+      <Button href="https://docs.ntfy.sh" target="_blank">See ntfy documentation</Button>
     </Box>
   </Modal>
 );
