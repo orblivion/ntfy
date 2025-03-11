@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
 import { useEffect, useState } from "react";
@@ -67,14 +66,12 @@ export const Welcome = () => {
 
 export const SettingsRefreshWarning = () => (
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
-    {/* TODO <Trans> */}
     <AlertTitle>Changes will be temporary</AlertTitle>
     In the Sandstorm version of ntfy, changes to settings in the web interface may be lost as soon as you refresh the page.
   </Alert>
 );
 
 const Intro = () => {
-  const { t } = useTranslation(); // TODO
   const navigate = useNavigate();
   return (
     <Card sx={{ p: 3 }} aria-label="Welcome to ntfy for Sandstorm">
@@ -259,7 +256,6 @@ export const MissingFeatures = () => {
 };
 
 export const AppSetup = () => {
-  const { t } = useTranslation(); // TODO
   useEffect(() => {
     requestSandstormIframeURL()
   })
