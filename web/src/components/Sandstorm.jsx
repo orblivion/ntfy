@@ -250,7 +250,7 @@ export const MissingFeatures = () => {
               <li>Certain Integrations (UnifiedPush enabled apps, or other services, that depend on HTTP headers)
               <ul>
                 <li>Some may not work at all</li>
-                <li>Some may be degraded (missing tags or title, etc)</li>
+                <li>Some may be degraded (missing tags or title, delay or "do not cache" may not be respected)</li>
               </ul>
               </li>
               <li>Push notifications on iOS (manual refresh works)</li>
