@@ -81,7 +81,7 @@ const Intro = () => {
           Welcome to ntfy for Sandstorm
         </Typography>
         <p>
-          <b>ntfy</b> is a notification service. It integrates with many open source Android applications and other services. (iOS support is limited). You can easily send notifications from your own custom scripts and applications too!
+          <b>ntfy</b> is a notification service. It integrates with many open source Android applications and other services (iOS support is limited). You can easily send notifications from your own custom scripts and applications too!
         </p>
         <p>
           Please read on to learn about how to use ntfy for Sandstorm, as well as some security and privacy considerations and differences from standard ntfy.
@@ -100,7 +100,7 @@ const SupportedApps = ({setScriptsOpen}) => {
           Supported Apps and Integrations
         </Typography>
         <p>
-          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps without requiring Google services. Additionally, there are a number of other integrations that work with ntfy.
+          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of other integrations that work with ntfy.
         </p>
         <p>
           <ul> {/* TODO emoji? */}
