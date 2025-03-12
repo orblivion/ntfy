@@ -272,12 +272,13 @@ export const AppSetup = () => {
           App Setup
         </Typography>
         <p>
-          Here you will set up your <b>API URL</b>. This is what you will use to connect to your ntfy app on your phone, as well as your custom scripts and applications.
+          Use this <b>API URL</b> to connect this grain to:
         </p>
-        <p>
-          <AppSettingsAlt/>
-          <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
-        </p>
+        <ul>
+          <li>Your phone (which will auto-configure UnifiedPush services)</li>
+          <li>Other services</li>
+          <li>Custom scripts</li>
+        </ul>
         <p>
           <iframe id="offer-iframe-full" scrolling="no" style={{
             "background-color": "#ffffff",
@@ -291,10 +292,13 @@ export const AppSetup = () => {
           }}>
           </iframe>
         </p>
+        <p>
+          <AppSettingsAlt/>
+          <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
+        </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
-          <AlertTitle>In Case of Compromise</AlertTitle>
-          {/* TODO explain that you might end up with multiple API keys. And that this is probably not great for this app? You probably just want the "default server". Actually, maybe do this in the SecurityAndPrivacy thing. And maybe just make reference to that here to "make sure you see" it. */}
-          If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc) and get a new one here.
+          <AlertTitle>Security Concerns</AlertTitle>
+	    Make sure you see the Security and Privacy section of the <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
         </Alert>
       </CardContent>
     </Card>
