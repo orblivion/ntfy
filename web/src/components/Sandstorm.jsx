@@ -130,7 +130,7 @@ const SupportedApps = ({setScriptsOpen}) => {
 const PrivacyAndSecurity = () => (
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
     <AlertTitle>Privacy and Security</AlertTitle>
-    Unlike most Sandstorm applications, ntfy-enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy. The server will get your API URL, and this grain will get your notifications from that service, which <b>may or may not be your intention</b>.
+    Unlike most Sandstorm applications, UnifiedPush enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy. The server will get your API URL, and this grain will get your notifications from that service, which <b>may or may not be your intention</b>.
     <br/>
     <br/>
     If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc).
@@ -152,9 +152,10 @@ const ConnectingYourPhone = () => {
         <CardContent> {/* I wanted another indent */}
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
-          <p><MobileFriendly/> Set your ntfy-enabled apps to use ntfy for notifications. (Android only)</p>
+          <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications. (Android only)</p>
         </CardContent>
       </CardContent>
+      Other ntfy integrations have their own setup instructions.
     </Card>
   )
 }
@@ -231,7 +232,7 @@ export const MissingFeatures = () => {
               Other Features
             </Typography>
             <ul>
-              <li>Certain Integrations (ntfy-enabled apps or services that depend on HTTP headers)
+              <li>Certain Integrations (UnifiedPush enabled apps, or other services, that depend on HTTP headers)
               <ul>
                 <li>Some may not work at all</li>
                 <li>Some may be degraded (missing tags or title, etc)</li>
