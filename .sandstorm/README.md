@@ -115,7 +115,7 @@ Sandstorm blocks a lot of headers (see above). This breaks:
 
 * [Protected topics](#locking-down-topics) (via auth headers)
 * Possibly some apps/services, depending on how they choose to communicate with ntfy (Crossing our fingers that it's not very many, and that the ones that do will not stop working).
-    * The ones that work may work in a degraded fashion (missing tags, titles, etc)
+    * The ones that work may work in a degraded fashion (missing tags, titles, "do not cache" (`X-Cache`), delay (`X-Delay`))
 * *Per-visitor* rate limiting. (Each grain is for one user, so that's still a *per-user* rate limit, and we can adjust the limit.)
 * ntfy cli - seems to always send auth headers
 * The "normal" publishing examples using curl. [Publish as JSON](https://docs.ntfy.sh/publish/#publish-as-json) instead.
