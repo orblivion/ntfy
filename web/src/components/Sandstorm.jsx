@@ -243,7 +243,7 @@ export const MissingFeatures = () => {
               <li>Message Attachments</li>
               <li>Upstream Servers</li>
               <li>Sending Email</li>
-              <li>Matrix Gateway (for self-hosted Matrix home servers)</li>
+              <li><Link href="https://unifiedpush.org/users/apps/" target="_blank">Matrix Gateway</Link> (for self-hosted Matrix home servers)</li>
               <li>Web Push</li>
               <li>Per-Visitor rate limiting (Sandstorm still provides a per-<i>user</i> limit)</li>
             </ul>

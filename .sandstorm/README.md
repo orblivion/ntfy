@@ -127,6 +127,7 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 * Sending emails (requires extra work)
 * "Service URL" field for sending notifications in the web interface (breaks Sandstorm's front end container model)
 * Upstream servers (requires extra work, probably not a great fit for Sandstorm anyway)
+* iOS push notifications ([requires upstream server](https://blog.ntfy.sh/2023/12/06/138-lines-of-code/#ios-app))
 * Translations for Sandstorm-specific copy edits - Just a matter of time. But you can help! Reach out (see contacts above) to let me know if you'd like to help.
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
