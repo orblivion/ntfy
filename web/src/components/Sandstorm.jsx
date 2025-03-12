@@ -81,7 +81,7 @@ const Intro = () => {
           Welcome to ntfy for Sandstorm
         </Typography>
         <p>
-          <b>ntfy</b> is a notification service. It integrates with many services and open source Android applications. You can easily send notifications from your own custom scripts and applications too!
+          <b>ntfy</b> is a notification service. It integrates with many open source Android applications and other services. (iOS support is limited). You can easily send notifications from your own custom scripts and applications too!
         </p>
         <p>
           Please read on to learn about how to use ntfy for Sandstorm, as well as some security and privacy considerations and differences from standard ntfy.
@@ -150,9 +150,9 @@ const ConnectingYourPhone = () => {
           Connecting Your Phone
         </Typography>
         <CardContent> {/* I wanted another indent */}
-          <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>).</p>
+          <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
-          <p><MobileFriendly/> Set your ntfy-enabled apps to use ntfy for notifications.</p>
+          <p><MobileFriendly/> Set your ntfy-enabled apps to use ntfy for notifications. (Android only)</p>
         </CardContent>
       </CardContent>
     </Card>
@@ -237,6 +237,7 @@ export const MissingFeatures = () => {
                 <li>Some may be degraded (missing tags or title, etc)</li>
               </ul>
               </li>
+              <li>Push notifications on iOS (manual refresh works)</li>
               <li>Protected Topics</li>
               <li>Message Attachments</li>
               <li>Upstream Servers</li>
