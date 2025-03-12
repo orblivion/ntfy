@@ -115,7 +115,7 @@ const SupportedApps = ({setScriptsOpen}) => {
             Due to some techincal hurdles, a handful of <b>features are missing</b> in the Sandstorm version of ntfy. Some applications or integrations <b>may not work as expected</b>.
           </p>
           <p>
-            Notably, <b>"Do Not Cache"</b> directives may not work reliably. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
+            Notably, <b>"Do Not Cache"</b> directives may not work reliably.
           </p>
           <Button>
             <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
@@ -159,10 +159,10 @@ const PrivacyAndSecurity = () => (
 const ConnectingYourPhone = () => {
   const navigate = useNavigate();
   return (
-    <Card sx={{ p: 3 }} aria-label="Connecting Your Phone">
+    <Card sx={{ p: 3 }} aria-label="Connecting Your Phone And Other Integrations">
       <CardContent>
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
-          Connecting Your Phone
+          Connecting Your Phone And Other Integrations
         </Typography>
         <CardContent> {/* I wanted another indent */}
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
@@ -171,6 +171,9 @@ const ConnectingYourPhone = () => {
           <p><IntegrationInstructions/> Set up your other integrations (separate instructions) or custom scripts and connect them to this grain.</p>
         </CardContent>
       </CardContent>
+      <p>
+         When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
+      </p>
     </Card>
   )
 }
