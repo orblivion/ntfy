@@ -296,6 +296,9 @@ export const AppSetup = () => {
           <AppSettingsAlt/>
           <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
         </p>
+        <p>
+          You will need to use this API URL within <i>5 minutes</i> or it will expire. For services, you may need to send a test notification. For your phone, connecting it should be enough.
+        </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>Security Concerns</AlertTitle>
 	    Make sure you see the Security and Privacy section of the <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
