@@ -130,13 +130,28 @@ const SupportedApps = ({setScriptsOpen}) => {
 const PrivacyAndSecurity = () => (
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
     <AlertTitle>Privacy and Security</AlertTitle>
-    Unlike most Sandstorm applications, UnifiedPush enabled apps will give your API URL to 3rd party services (Mastodon, Matrix, etc) in order to recieve push notifications. Some apps, such as Tusky, will <b>automatically configure themseles</b> to use ntfy. The server will get your API URL, and this grain will get your notifications from that service, which <b>may or may not be your intention</b>.
-    <br/>
-    <br/>
-    If you are concerned that your API URL has been compromised, you can revoke it from the Sandstorm Webkeys menu (next to grain sharing, etc).
-    <br/>
-    <br/>
-    Treat topics like <b>passwords</b>. Any connected 3rd party services can read any topic from your grain if they know its name, so make it hard to guess!
+      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+        API URLs are semi-secret
+      </Typography>
+      <p>
+        Unlike most Sandstorm applications, ntfy requires 3rd party services to know one of your API URLs in order to recieve push notifications. UnifiedPush enabled Android apps will give your API URL to the appropriate service on your behalf as part of configuration with your ntfy Android app. Beware that some of these apps, such as Tusky, will do this <b>without asking you</b>. Also note that by default (before you set up your API URL), your ntfy app is configured to use a public ntfy server to relay your notifications.
+      </p>
+      <p>
+        However, your exposure will limited. You can use one API URL on your phone (thus shared by all UnifiedPush services), and different API URLs for each other service. You can revoke API URLs from the Sandstorm Webkeys menu (next to grain sharing, etc). Note: For security reasons, do not use this menu to generate API URLs.
+      </p>
+      </p>
+      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+        Topics are secret
+      </Typography>
+      <p>
+        If a misbehaving 3rd party service can guess your topic name, it can read your notifications. Treat topics like <b>passwords</b>. UnifiedPush apps will do this automatically.
+      </p>
+      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+        Upgrading
+      </Typography>
+      <p>
+        Since this has 3rd parties accessing it, try to upgrade this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
+      </p>
   </Alert>
 )
 
