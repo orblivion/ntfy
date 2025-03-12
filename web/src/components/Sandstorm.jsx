@@ -153,9 +153,9 @@ const ConnectingYourPhone = () => {
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
           <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications. (Android only)</p>
+          <p><IntegrationInstructions/> Set up your other integrations (separate instructions) or custom scripts and connect them to this grain.</p>
         </CardContent>
       </CardContent>
-      Other ntfy integrations have their own setup instructions.
     </Card>
   )
 }
