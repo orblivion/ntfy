@@ -128,6 +128,7 @@ const SupportedApps = ({setScriptsOpen}) => {
 
 
 const PrivacyAndSecurity = () => (
+  <Card>
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
     <AlertTitle>Privacy and Security</AlertTitle>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
@@ -158,6 +159,7 @@ const PrivacyAndSecurity = () => (
         Since this has 3rd parties accessing it, try to upgrade this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
       </p>
   </Alert>
+  </Card>
 )
 
 
