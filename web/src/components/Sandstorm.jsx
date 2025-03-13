@@ -163,16 +163,16 @@ const ConnectingYourPhone = () => {
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Connecting Your Phone And Other Integrations
         </Typography>
+        <Alert severity="info" sx={{ paddingTop: 2 }}>
+          You may need to restart your ntfy phone application after upgrading the Sandstorm app to avoid missing notifications. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
+        </Alert>
         <CardContent> {/* I wanted another indent */}
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
-          <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain</Link>.</p>
+          <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain.</Link></p>
           <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications. (Android only)</p>
-          <p><IntegrationInstructions/> Set up your other integrations (separate instructions) or custom scripts and connect them to this grain.</p>
+          <p><IntegrationInstructions/> Set up your other integrations (separate instructions) or custom scripts and <Link href="#" onClick={() => navigate(routes.settings)}>connect them to this grain.</Link></p>
         </CardContent>
       </CardContent>
-      <p>
-         When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
-      </p>
     </Card>
   )
 }
@@ -321,7 +321,7 @@ export const AppSetup = () => {
         </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>Security Concerns</AlertTitle>
-	    Make sure you see the Security and Privacy section of the <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
+          Make sure you see the Security and Privacy section of the <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
         </Alert>
       </CardContent>
     </Card>
