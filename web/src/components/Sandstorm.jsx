@@ -115,6 +115,9 @@ const SupportedApps = ({setScriptsOpen}) => {
           <p>
             Notably, <b>"Do Not Cache"</b> directives may not work reliably.
           </p>
+          <p>
+            Relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
+          </p>
           <Button>
             <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
           </Button>
@@ -211,15 +214,11 @@ const ConnectingYourPhone = () => {
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Connecting Your Phone And Other Integrations
         </Typography>
-        <Alert severity="info" sx={{ paddingTop: 2 }}>
-      {/* TODO Move this to a better place. */}
-          You may need to restart your ntfy phone application after upgrading the Sandstorm app to avoid missing notifications. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
-        </Alert>
         <CardContent> {/* I wanted another indent */}
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain.</Link></p>
           <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications. (Android only)</p>
-          <p><IntegrationInstructions/> Set up your other integrations (separate instructions) or custom scripts and <Link href="#" onClick={() => navigate(routes.settings)}>connect them to this grain.</Link></p>
+          <p><IntegrationInstructions/> Set up your other integrations (with specific instructions) or custom scripts and <Link href="#" onClick={() => navigate(routes.settings)}>connect them to this grain.</Link></p>
         </CardContent>
       </CardContent>
     </Card>
@@ -321,6 +320,12 @@ export const MissingFeatures = () => {
               <li>API calls that use HTTP headers (JSON only)</li>
               <li>ntfy Command-Line Tool</li>
             </ul>
+            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+              Reliability
+            </Typography>
+            <ul>
+              <li>Upgrading the Sandstorm app seems to interrupt notifications with the ntfy Android app. Restart the Android app to fix this. (This may be an issue with the Android app rather than the server)</li>
+            </ul>
             <Button>
               <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Go Back</Link>
             </Button>
@@ -374,8 +379,13 @@ export const AppSetup = () => {
           Refresh the page to get a new API URL.
         </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
-          <AlertTitle>Security Concerns</AlertTitle>
-          Make sure you see the Security and Privacy section of the <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
+          <AlertTitle>More Info</AlertTitle>
+          <p>
+            When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications.
+          </p>
+          <p>
+            Also make sure to see the Security and Privacy section of the <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
+          </p>
         </Alert>
       </CardContent>
     </Card>
