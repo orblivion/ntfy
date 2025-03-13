@@ -135,22 +135,25 @@ const PrivacyAndSecurity = () => (
         This grain is for you only
       </Typography>
       <p>
-        This is not meant to be a public ntfy instance. Eventually it may contain private information. If you want to help host a friend, invite them to create a new grain on your server.
+        This is not a public ntfy instance. Future versions may contain private information. If you want to host a friend on your server, invite them to create their own grain.
       </p>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
         API URLs are semi-secret
       </Typography>
       <p>
-        Unlike most Sandstorm applications, ntfy requires 3rd party services to know one of your API URLs in order to recieve push notifications. UnifiedPush enabled Android apps will give your API URL to the appropriate service on your behalf as part of configuration with your ntfy Android app. Beware that some of these apps, such as Tusky, will do this <b>without asking you</b>. Also note that by default (before you set up your API URL), your ntfy app is configured to use a public ntfy server to relay your notifications.
-      </p>
-      <p>
-        However, your exposure will limited. You can use one API URL on your phone (thus shared by all UnifiedPush services), and different API URLs for each other service. You can revoke API URLs from the Sandstorm Webkeys menu (next to grain sharing, etc). Note: For security reasons, do not use this menu to generate API URLs.
+        Limited 3rd parties will have access to your grain via the API URL you give it. If you notice a service misbehaving (writing unwanted data to your grain, etc), <b>you can revoke its API URL</b> using the Sandstorm Webkeys menu (next to grain sharing, etc). Note: for security reasons, do not use this menu to generate API URLs.
       </p>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
         Topic names are secret
       </Typography>
       <p>
-        If a misbehaving 3rd party service can guess your topic name, it can read your notifications. Treat topics like <b>passwords</b>. UnifiedPush apps will do this automatically.
+        For each integration, you will choose a "topic" to send and receive notifications (UnifiedPush will do this automatically). <b>Treat your topics like passwords</b> so that misbehaving services can't read each other's notifications.
+      </p>
+      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+        Your phone
+      </Typography>
+      <p>
+        Unfortunately, UnifiedPush integrations need to share the same API URL that you use on your phone (which complicates revoking). Beware that certain apps such as Tusky configure themselves and pass on your API URL <b>without asking you</b>. Also note that by default (before you set up your API URL), your ntfy app connects to a <b>public</b> ntfy server.
       </p>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
         Upgrading this app
