@@ -88,7 +88,7 @@ For future versions we may add an "Extra API" for additional features.
 
 **For the initial release we will have**:
 
-- [ ] Mention major missing features in Welcome Screen, with link to here for details and additional features.
+- [x] Mention major missing features in Welcome Screen, with link to here for details and additional features.
 - [ ] Mention major missing features in description.md, with link to here for details and additional features.
 - [ ] Also callouts for help w/ listing bad apps and translations in description.md.
 - [x] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something, mention that language is temporary etc)
@@ -134,7 +134,7 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 
 **For the initial release we will**:
 
-- [ ] Warn users about some reliability issues that may (or may not?) be inherent to this Sandstorm version (in the welcome screen).
+- [x] Warn users about some reliability issues that may (or may not?) be inherent to this Sandstorm version (in the welcome screen).
 
 #### [Caveats about privacy](README_DETAILS.md#caveats-about-privacy)
 
@@ -142,8 +142,8 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 
 - [x] Explain to user that the server will be not be totally private (unlike most Sandstorm apps) because of the services that will ping it.
 - [ ] Mention this in description.md as well
-- [ ] Explain how to rotate the API URL in case they suspect unwanted use.
-- [ ] Make sure they don't share grains with other users.
+- [x] Explain how to rotate the API URL in case they suspect unwanted use.
+- [x] Make sure they don't share grains with other users.
 - [ ] *More?*
 
 #### [Missing instructions](README_DETAILS.md#missing-instructions)
