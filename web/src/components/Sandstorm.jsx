@@ -126,45 +126,84 @@ const SupportedApps = ({setScriptsOpen}) => {
   )
 };
 
+const PrivacyAndSecurityBasic = () => (
+  <>
+    <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+      This grain is for you only
+    </Typography>
+    <p>
+      This is not a public ntfy instance. Future versions may contain private information. If you want to host a friend on your server, invite them to create their own grain.
+    </p>
+    <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+      Topic names are secret
+    </Typography>
+    <p>
+      For each integration, you will choose a "topic" to send and receive notifications (UnifiedPush-enabled apps will do this automatically). <b>Treat your topics like passwords</b> so that misbehaving services can't read each other's notifications.
+    </p>
+  </>
+);
 
-const PrivacyAndSecurity = () => (
-  <Card>
-  <Alert severity="warning" sx={{ paddingTop: 2 }}>
-    <AlertTitle>Privacy and Security</AlertTitle>
-      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        This grain is for you only
-      </Typography>
-      <p>
-        This is not a public ntfy instance. Future versions may contain private information. If you want to host a friend on your server, invite them to create their own grain.
-      </p>
-      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        API URLs are semi-secret
-      </Typography>
-      <p>
-        Limited 3rd parties will have access to your grain via the API URL you give it. If you notice a service misbehaving (writing unwanted data to your grain, etc), <b>you can revoke its API URL</b> using the Sandstorm Webkeys menu (next to grain sharing, etc). Note: for security reasons, do not use this menu to generate API URLs.
-      </p>
-      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        Topic names are secret
-      </Typography>
-      <p>
-        For each integration, you will choose a "topic" to send and receive notifications (UnifiedPush will do this automatically). <b>Treat your topics like passwords</b> so that misbehaving services can't read each other's notifications.
-      </p>
-      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        Your phone
-      </Typography>
-      <p>
-        Unfortunately, UnifiedPush integrations need to share the same API URL that you use on your phone (which complicates revoking). Beware that certain apps such as Tusky configure themselves and pass on your API URL <b>without asking you</b>. Also note that by default (before you set up your API URL), your ntfy app connects to a <b>public</b> ntfy server.
-      </p>
-      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        Upgrading this app
-      </Typography>
-      <p>
-        Since this has 3rd parties accessing it, try to upgrade this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
-      </p>
-  </Alert>
-  </Card>
-)
+const PrivacyAndSecurityMore = () => (
+  <>
+    <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+      API URLs are semi-secret
+    </Typography>
+    <p>
+      Limited 3rd parties will have access to your grain via the API URL you give it. If you notice a service misbehaving (writing unwanted data to your grain, etc), <b>you can revoke its API URL</b> using the Sandstorm Webkeys menu (next to grain sharing, etc). Note: for security reasons, do not use this menu to generate API URLs.
+    </p>
+    <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+      Your phone
+    </Typography>
+    <p>
+      Unfortunately, UnifiedPush integrations need to share the same API URL that you use on your phone (which complicates revoking). Beware that certain apps such as Tusky configure themselves and pass on your API URL <b>without asking you</b>. Also note that by default (before you set up your API URL), your ntfy app connects to a <b>public</b> ntfy server.
+    </p>
+    <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+      Upgrading this app
+    </Typography>
+    <p>
+      Since this has 3rd parties accessing it, try to upgrade this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
+    </p>
+  </>
+);
 
+const PrivacyAndSecurity = () => {
+  const navigate = useNavigate();
+  return (
+    <Card sx={{ p: 3 }} aria-label="Privacy and Security">
+      <CardContent>
+      <Typography variant="h5" sx={{ marginBottom: 2 }}>
+        Privacy and Security
+      </Typography>
+      <PrivacyAndSecurityBasic/>
+      <Button>
+        <Link onClick={() => navigate(routes.privacySecurityFull)} style={{cursor: "pointer"}}>Additional Concerns</Link>
+      </Button>
+      </CardContent>
+    </Card>
+  )
+};
+
+export const PrivacyAndSecurityFull = () => {
+  const navigate = useNavigate();
+  return (
+    <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
+      <Stack spacing={3}>
+        <Card sx={{ p: 3 }} aria-label="Privacy and Security">
+          <CardContent>
+          <Typography variant="h5" sx={{ marginBottom: 2 }}>
+            Privacy and Security
+          </Typography>
+          <PrivacyAndSecurityBasic/>
+          <PrivacyAndSecurityMore/>
+          <Button>
+            <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Go Back</Link>
+          </Button>
+          </CardContent>
+        </Card>
+      </Stack>
+    </Container>
+  )
+};
 
 const ConnectingYourPhone = () => {
   const navigate = useNavigate();
