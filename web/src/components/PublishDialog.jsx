@@ -86,12 +86,14 @@ const PublishDialog = (props) => {
   const open = !!props.openMode;
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
+    /* // Attachments not supported in Sandstorm
   useEffect(() => {
     window.addEventListener("dragenter", () => {
       props.onDragEnter();
       setDropZone(true);
     });
   }, []);
+  */
 
   useEffect(() => {
     setBaseUrl(props.baseUrl);

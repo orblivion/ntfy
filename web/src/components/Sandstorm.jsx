@@ -11,7 +11,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
+import { IntegrationInstructions, WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
@@ -139,7 +139,6 @@ const PrivacyAndSecurity = () => (
       <p>
         However, your exposure will limited. You can use one API URL on your phone (thus shared by all UnifiedPush services), and different API URLs for each other service. You can revoke API URLs from the Sandstorm Webkeys menu (next to grain sharing, etc). Note: For security reasons, do not use this menu to generate API URLs.
       </p>
-      </p>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
         Topics are secret
       </Typography>
@@ -253,7 +252,7 @@ export const MissingFeatures = () => {
               <li>Certain Integrations (UnifiedPush enabled apps, or other services, that depend on HTTP headers)
               <ul>
                 <li>Some may not work at all</li>
-                <li>Some may be degraded (missing tags or title, delay or "do not cache" may not be respected)</li>
+                <li>Some may be degraded (missing tags or title, delay or <b>"do not cache" may not be respected</b>)</li>
               </ul>
               </li>
               <li>Push notifications on iOS (manual refresh works)</li>
