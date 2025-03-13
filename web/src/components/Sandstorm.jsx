@@ -147,13 +147,13 @@ const PrivacyAndSecurity = () => (
         However, your exposure will limited. You can use one API URL on your phone (thus shared by all UnifiedPush services), and different API URLs for each other service. You can revoke API URLs from the Sandstorm Webkeys menu (next to grain sharing, etc). Note: For security reasons, do not use this menu to generate API URLs.
       </p>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        Topics are secret
+        Topic names are secret
       </Typography>
       <p>
         If a misbehaving 3rd party service can guess your topic name, it can read your notifications. Treat topics like <b>passwords</b>. UnifiedPush apps will do this automatically.
       </p>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-        Upgrading
+        Upgrading this app
       </Typography>
       <p>
         Since this has 3rd parties accessing it, try to upgrade this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
