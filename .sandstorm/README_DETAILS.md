@@ -262,32 +262,17 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
     * Or see how other apps do it.
     * Since we're using `forSharing`, the API token can be used to create an anon share URL.
-* Figure out the meaning of this: `"prefs_users_description_no_sync": "Users and passwords are not synchronized to your account."`
-    * What's the difference between a "User" and an "Account"?
-    * I thought "logging in as a user" was just for protected topics. But why does it have a server URL field, even in the web UI where the server should be implicit?
-    * I think this is related to the Admin API (which ntfy released as beta in 2023)
-        * Though it may be pretty much the same as my "Extra API", heh.
-        * Make a note to use this API for the future perhaps.
-        * Is this another security risk, leaving the web URL open?
-            * I don't think so. Previously I was worried because you could "add and remove users" but that turned out to be client side only. In this case, whatever it is, I think it requires an admin user to log in first.
-            * Just make sure we don't have a vulnerable admin account, or make sure to turn off admin in configs
-            * Make sure we note to not use admin users as a shortcut for "all read access" in the future, since it could open the API inadvertently
-* Check out server/types.go:publishMessage
-    * see if anything else looks like it should be checked?
-    * Maybe some aspects of it won't work with the connections available with Sandstorm?
-    * Why isn't UnifiedPush a parameter here?
-* Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
-* Confirm licenses for everything I use
-* Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
-* Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
-* Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
-* Think about upgrades - this is more vulnerable than most Sandstorm apps.
+- [ ] Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
+- [ ] Confirm licenses for everything I use
+- [ ] Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
+- [ ] Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
 - [ ] What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
-* See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
-* See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. 30x or something.
+- [ ] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
+- [ ] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. 30x or something.
+- [ ] Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
 
 # Validate
 
@@ -317,6 +302,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Answer: Nevermind it works. :shrug:
 - [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's fine. See `NTFY_BEHIND_PROXY` below.
+- [ ] Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
 
 ## Ntfy API
 
