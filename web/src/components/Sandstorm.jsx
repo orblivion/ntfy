@@ -50,6 +50,7 @@ export const DocsHeadsup = ({open, setOpen}) => (
   </Modal>
 );
 
+{/* TODO Pictures for the sections to make it friendly? */}
 export const Welcome = () => {
   const [scriptsOpen, setScriptsOpen] = useState(false);
   return (
@@ -73,7 +74,6 @@ export const SettingsRefreshWarning = () => (
 );
 
 const Intro = () => {
-  const navigate = useNavigate();
   return (
     <Card sx={{ p: 3 }} aria-label="Welcome to ntfy for Sandstorm">
       <CardContent>
@@ -227,6 +227,7 @@ const Scripts = ({open, setOpen}) => {
 }
 
 export const MissingFeatures = () => {
+  const navigate = useNavigate();
   return (
     <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
       <Stack spacing={3}>
@@ -282,6 +283,9 @@ export const MissingFeatures = () => {
               <li>API calls that use HTTP headers (JSON only)</li>
               <li>ntfy Command-Line Tool</li>
             </ul>
+            <Button>
+              <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Go Back</Link>
+            </Button>
           </CardContent>
         </Card>
       </Stack>
@@ -290,6 +294,7 @@ export const MissingFeatures = () => {
 };
 
 export const AppSetup = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     requestSandstormIframeURL()
   })
