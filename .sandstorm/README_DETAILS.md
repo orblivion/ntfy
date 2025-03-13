@@ -255,9 +255,9 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 ## Assorted
 
-* Figure out why go.sum changed when I ran `make` for linux?
-* Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-* Block all access for shared grains.
+- [ ] Figure out why go.sum changed when I ran `make` for linux?
+- [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Block all access for shared grains.
     * If need be, only create one sharing profile and one permission, and don't include the permission?
     * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
     * Or see how other apps do it.
@@ -283,7 +283,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 * Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
 * Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
-* What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
+- [ ] What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
 * See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
@@ -293,17 +293,17 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
-* Test that known working apps still work
+- [ ] Test that known working apps still work
     * Tusky
     * (TODO - add to list - see research)
-* Test that clients still work
+- [ ] Test that clients still work
     * Android
     * iOS
-* Various connections work
+- [ ] Various connections work
     * Websocket
     * JSON stream over HTTP
     * Over a cell connection (for both of the above)
-* Server security and performance testing
+- [ ] Server security and performance testing
     * Make sure API response time from a sleeping grain is low
     * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
 
