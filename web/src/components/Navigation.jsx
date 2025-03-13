@@ -140,7 +140,7 @@ const NavList = (props) => {
         {showNotificationContextNotSupportedBox && <NotificationContextNotSupportedAlert />}
         {showNotificationIOSInstallRequired && <NotificationIOSInstallRequiredAlert />}
         {alertVisible && <Divider />}
-        <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === routes.app || location.pathname === routes.missingFeatures}>
+        <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === routes.app || location.pathname === routes.missingFeatures || location.pathname === routes.privacySecurityFull}>
           <ListItemIcon>
             <WavingHand />
           </ListItemIcon>

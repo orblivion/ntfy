@@ -9,6 +9,7 @@ const routes = {
   // without banning topics that users end up using.
   allSubscriptions: "/sandstorm-extra-89dfdbfd72e2ae64728dd/all-subscriptions",
   missingFeatures: "/sandstorm-extra-89dfdbfd72e2ae64728dd/missing-features",
+  privacySecurityFull: "/sandstorm-extra-89dfdbfd72e2ae64728dd/privacy-security-full",
 
   login: "/login",
   signup: "/signup",
