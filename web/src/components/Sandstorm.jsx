@@ -102,13 +102,11 @@ const SupportedApps = ({setScriptsOpen}) => {
         <p>
           <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of other integrations that work with ntfy.
         </p>
-        <p>
-          <ul> {/* TODO emoji? */}
-            <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
-            <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other supported integrations</b></Link></li>
-            <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
-          </ul>
-        </p>
+        <ul> {/* TODO emoji? */}
+          <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
+          <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other supported integrations</b></Link></li>
+          <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
+        </ul>
         <Alert severity="warning">
           <AlertTitle>Incomplete Support</AlertTitle>
           <p>
@@ -132,7 +130,7 @@ const PrivacyAndSecurityBasic = () => (
       This grain is for you only
     </Typography>
     <p>
-      This is not a public ntfy instance. Future versions may contain private information. If you want to host a friend on your server, invite them to create their own grain.
+      This is not a public ntfy instance. Future versions may display private information. If you want to host a friend on your server, invite them to create their own grain.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
       Topic names are secret
@@ -214,6 +212,7 @@ const ConnectingYourPhone = () => {
           Connecting Your Phone And Other Integrations
         </Typography>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
+      {/* TODO Move this to a better place. */}
           You may need to restart your ntfy phone application after upgrading the Sandstorm app to avoid missing notifications. In general, relying on ntfy for Sandstorm for <b>"mission critical"</b> needs is not recommended.
         </Alert>
         <CardContent> {/* I wanted another indent */}
