@@ -311,28 +311,28 @@ To learn about the system and/or to validate before release. In particular, if w
 
 ## Connections
 
-* Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
+- [x] Outbound requests: hopefully ntfy doesn't need to do any. If it does, we need to allow it (by default Sandstorm does not).
     * Answer: I don't see it from a quick scan. And anyway nothing seems broken. And it would be weird if it was required.
-* Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
+- [x] Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
     * Answer: Nevermind it works. :shrug:
-* Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
+- [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's fine. See `NTFY_BEHIND_PROXY` below.
 
 ## Ntfy API
 
-* Make sure ntfy's Admin API doesn't somehow get activated for us
+- [x] Make sure ntfy's Admin API doesn't somehow get activated for us
     * Answer: It requires a user to be set to Admin. It's just for altering other users.
-* What is a ntfy "account signup" and "account subscription"? I thought subscription and settings were all client-side and that the web client was a simple client.
+- [x] What is a ntfy "account signup" and "account subscription"? I thought subscription and settings were all client-side and that the web client was a simple client.
     * Answer:
         * Actually there's an undocumented API for syncing subscriptions between *web apps*.
         * `ENABLE_ACCOUNT_SIGNUP=false` will prevent it from taking effect.
         * We could use this later to make the web app data persist.
-* Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
+- [x] Does the ntfy CLI use json or headers? (Recommend it or warn against using it)
     * Answer: It actually seems to send auth headers all the time which keeps it from working.
 
 ## Other
 
-* Which apps and services work?
+- [ ] Which apps and services work?
     * [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
         * I've been told that UnifiedPush may always use json actually, so maybe we can just guess that it all works and see what people report.
     * [Other integrations](https://docs.ntfy.sh/integrations/)
@@ -340,11 +340,11 @@ To learn about the system and/or to validate before release. In particular, if w
     * List them in description.md - useful for people considering using it.
     * Watch the database. See if it sees notifications for those apps.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
-* Security
+- [ ] Security
     * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
         * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
         * I think it makes requests to parent though.
-* Does private info get sent to the ntfy server for UnifiedPush messages?
+- [ ] Does private info get sent to the ntfy server for UnifiedPush messages?
     * When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)?
         * And it's initially configured to ntfy.sh, before you even realize what's happening.
     * What about Element, etc?
@@ -352,19 +352,19 @@ To learn about the system and/or to validate before release. In particular, if w
     * Hopefully ntfy just gets a "ping" to let it know to pull from the server.
     * Watch the database. See if it gets the contents of Matrix messages etc.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
-* See what happens if I use multiple API URLs.
+- [ ] See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
         * What about two phones with the same API key?
     * If I use it for scripts, will it be okay?
     * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
     * If it turns out that something goes wrong, we should put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
-* Try moving to a new grain?
+- [ ] Try moving to a new grain?
     * See how fast that updates?
     * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
     * If so, that makes the jettison-restart strategy (in case of compromise) fast.
-* Do UnifiedPush messages get cached? Are there any other differences with UP?
-* BaseURL - Can I leave blank? The grain URL only works with Sandstorm. The ui subdomains rotate. The API URL shouldn't be known to the app.
+- [ ] Do UnifiedPush messages get cached? Are there any other differences with UP?
+- [x] BaseURL - Can I leave blank? The grain URL only works with Sandstorm. The ui subdomains rotate. The API URL shouldn't be known to the app.
     * On the backend, it's used for a bunch of stuff that's not enabled anyway, and/or blank is fine.
         * I will miss it for attachments, but that is looking for a full URL. I can do static hosting for that in a future release.
     * On the frontend, it uses the ui subdomain, which is a bit disconcerting, but it's pretty much for identifying user accounts for subscriptions and stuff.
