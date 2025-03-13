@@ -131,6 +131,12 @@ const PrivacyAndSecurity = () => (
   <Alert severity="warning" sx={{ paddingTop: 2 }}>
     <AlertTitle>Privacy and Security</AlertTitle>
       <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
+        This grain is for you
+      </Typography>
+      <p>
+        This is not meant to be a public ntfy instance. Eventually it may contain private information. If you want to help host a friend, invite them to create a new grain.
+      </p>
+      <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
         API URLs are semi-secret
       </Typography>
       <p>
