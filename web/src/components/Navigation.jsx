@@ -27,7 +27,7 @@ import Person from "@mui/icons-material/Person";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from "@mui/icons-material/Add";
 import { useLocation, useNavigate } from "react-router-dom";
-import { WebAssetOff, WavingHand, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
+import { WavingHand, ChatBubble, MoreVert, NotificationsOffOutlined, Send } from "@mui/icons-material";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Trans, useTranslation } from "react-i18next";
 import CelebrationIcon from "@mui/icons-material/Celebration";
@@ -140,7 +140,7 @@ const NavList = (props) => {
         {showNotificationContextNotSupportedBox && <NotificationContextNotSupportedAlert />}
         {showNotificationIOSInstallRequired && <NotificationIOSInstallRequiredAlert />}
         {alertVisible && <Divider />}
-        <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === routes.app}>
+        <ListItemButton onClick={() => navigate(routes.app)} selected={location.pathname === routes.app || location.pathname === routes.missingFeatures}>
           <ListItemIcon>
             <WavingHand />
           </ListItemIcon>
@@ -180,12 +180,6 @@ const NavList = (props) => {
             <SettingsIcon />
           </ListItemIcon>
           <ListItemText primary={t("nav_button_settings")} />
-        </ListItemButton>
-        <ListItemButton onClick={() => navigate(routes.missingFeatures)} selected={location.pathname === routes.missingFeatures}>
-          <ListItemIcon>
-            <WebAssetOff />
-          </ListItemIcon>
-          <ListItemText primary="Missing Features" />
         </ListItemButton>
         <ListItemButton onClick={() => setDocsHeadsupOpen(true)}>
           <ListItemIcon>
