@@ -1,5 +1,9 @@
 # Future
 
+## Better UI
+
+Add some pictures to the onboarding to counteract all that text. Think of ways to remove more things.
+
 ## Molly
 
 Check out Molly support via Mollysocket? Can I bundle this with ntfy? Would be super dope. But it has challenges. Supposedly it doesn't need your decryption key but how does it become a connected device? You'd need to trust it. I don't think Signal users should just trust my code, though again they can see if I'm exfiltrating.
