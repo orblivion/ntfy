@@ -154,7 +154,6 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 - [x] Unified Push description and instructions
 - [x] Home-made scripts/apps description and instructions
-- [ ] *More?*
 
 ## [Assorted](README_DETAILS.md#assorted)
 
@@ -172,7 +171,7 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 ## [Connections](README_DETAILS.md#connections)
 
-- [ ] Confirm we don't need outbound requests
+- [x] Confirm we don't need outbound requests
 - [x] Confirm websockets work
 - [x] Confirm proxy config is right (skipping it; no per-visitor rate limiting, but grain is limited to one user which is limited visitors)
 
