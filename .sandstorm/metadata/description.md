@@ -1,17 +1,13 @@
-# NOTE: This is not ready for regular use!
+With **ntfy**, you can get push notifications for many open source Android applications and other services without needing Google services. iOS support is limited.
 
-This is in the proof-of-concept phase.
+Traditionally, push notifications for your Android apps are routed through Google services to save on bandwidth. ntfy replaces Google with something called [UnifiedPush](https://unifiedpush.org). Setup on your phone is done with the ntfy Android companion app, and is surprisingly simple!
 
-In particular I suspect that it's insecure until I fix something in particular. And, if you connect your Android ntfy app to this Sandstorm app, Android apps such as Tusky may *automatically* configure itself to use your server. Which means hypothetically your push notification data could be exposed.
+ntfy supports [many apps](https://unifiedpush.org/users/apps/), like Tusky for Mastodon and Element for Matrix. Apart from apps, there are a number of [other integrations](https://docs.ntfy.sh/integrations/) that can send you notifications with ntfy. You can easily send notifications from your own custom scripts and applications too! The app will show you how.
 
-So please use with these concerns in mind!
+*This app is recommended for convenience rather than "mission critical" applications.*
 
-# What is this
+# ntfy for Sandstorm
 
-It's a push notification service. See here for the [main project](https://ntfy.sh). It seems that a decent number of apps use it. You can host it yourself. And hopefully we can make it available for Sandstorm. But, it needs a few touches before it's ready to go.
+The Sandstorm version of ntfy has some benefits and some drawbacks. For instance, the standard version of ntfy is built as a public server, whereas the Sandstorm version is built for a single user. This will give you more control over who is using your grain to relay notifications (hopefully only to you!). On the other hand, because of technical hurdles related to Sandstorm's strict security approach, ntfy's protected topics are not possible at this time.
 
-Right now it seems to work with Tusky, and you can use curl to trigger push notifications on your phone. But you have to set it up right.
-
-# Want to help?
-
-Check out the [README](https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm) in the Sandstorm directory for what's on the agenda. I'm still learning about this, so if you're well versed and are interested, even being around to answer questions would be very helpful!
+There are a handful of other features that will not work quite the same here as in the standard version of ntfy. This is detailed in the app. If you find yourself missing one of them, please reach out, maybe it can be made it work. You can also look at the packager's tortured thoughts on all of this [here](https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md).
