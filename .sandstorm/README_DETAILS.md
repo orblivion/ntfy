@@ -143,8 +143,7 @@ The URL we give to the user to connect to their phone is not the Web UI URL. We 
 
 Extra items:
 
-- [ ] Encourage using different API URLs for different integrations.
-- [ ] But make sure they only use one API URL on a given ntfy receiver app (which will include reading, and UnifiedPush)
+- [x] Encourage using different API URLs for different integrations.
 - [ ] Advise on whether to use different API URLs on different phones, if connected to the same UnifiedPush thing (depending on how the behavior turns out)
 
 ### Remove features
