@@ -2,7 +2,9 @@ With **ntfy**, you can get push notifications for many open source Android appli
 
 Traditionally, push notifications for your Android apps are routed through Google services to save on bandwidth. ntfy replaces Google with something called [UnifiedPush](https://unifiedpush.org). Setup on your phone is done with the ntfy Android companion app, and is surprisingly simple!
 
-ntfy supports [many apps](https://unifiedpush.org/users/apps/), like Tusky for Mastodon and Element for Matrix. Apart from apps, there are a number of [other integrations](https://docs.ntfy.sh/integrations/) that can send you notifications with ntfy. You can easily send notifications from your own custom scripts and applications too! The app will show you how.
+ntfy supports [many Android apps](https://unifiedpush.org/users/apps/), like Tusky for Mastodon and Element for Matrix. Apart from Android apps, there are a number of [other integrations](https://docs.ntfy.sh/integrations/) that can send you notifications with ntfy. You can easily send notifications from your own custom scripts and applications too!
+
+Just install ntfy for Sandstorm and follow the steps.
 
 *This app is recommended for convenience rather than "mission critical" applications.*
 
