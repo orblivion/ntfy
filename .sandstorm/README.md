@@ -89,8 +89,8 @@ For future versions we may add an "Extra API" for additional features.
 **For the initial release we will have**:
 
 - [x] Mention major missing features in Welcome Screen, with link to here for details and additional features.
-- [ ] Mention major missing features in description.md, with link to here for details and additional features.
-- [ ] Also callouts for help w/ listing bad apps and translations in description.md.
+- [x] Make reference to missing features in description.md, and say details in app.
+- [x] Also callouts for help w/ listing bad apps and translations in description.md.
 - [x] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something, mention that language is temporary etc)
 
 Some details:
@@ -157,7 +157,9 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 ## [Assorted](README_DETAILS.md#assorted)
 
-Various other TODO items. See link for details. Most of these are probably prudent to do for the **initial release**.
+- [ ] Various other TODO items.
+
+See link for details. Most of these are probably prudent to do for the **initial release**.
 
 # [Validate](README_DETAILS.md#validate)
 
