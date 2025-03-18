@@ -256,11 +256,8 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 - [ ] Figure out why go.sum changed when I ran `make` for linux?
 - [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-- [ ] Block all access for shared grains.
-    * If need be, only create one sharing profile and one permission, and don't include the permission?
-    * Can't rely on checking X-Sandstorm-User because they might share with an authenticated user.
-    * Or see how other apps do it.
-    * Since we're using `forSharing`, the API token can be used to create an anon share URL.
+- [x] Block all access for shared grains (stopping web root. this is UI for discouragement, not security)
+- [x] Make sure API URLs are marked as having lesser permission (for when we need it later)
 - [ ] Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
 - [ ] Confirm licenses for everything I use
 - [ ] Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
@@ -290,6 +287,8 @@ To learn about the system and/or to validate before release. In particular, if w
 - [ ] Server security and performance testing
     * Make sure API response time from a sleeping grain is low
     * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
+    * Make sure grain sharing via sharing menu doesn't work
+    * Make sure grain sharing via copying an API URL token doesn't work
 
 # Research
 
