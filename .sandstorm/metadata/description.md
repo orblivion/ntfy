@@ -10,4 +10,10 @@ ntfy supports [many apps](https://unifiedpush.org/users/apps/), like Tusky for M
 
 The Sandstorm version of ntfy has some benefits and some drawbacks. For instance, the standard version of ntfy is built as a public server, whereas the Sandstorm version is built for a single user. This will give you more control over who is using your grain to relay notifications (hopefully only to you!). On the other hand, because of technical hurdles related to Sandstorm's strict security approach, ntfy's protected topics are not possible at this time.
 
-There are a handful of other features that will not work quite the same here as in the standard version of ntfy. This is detailed in the app. If you find yourself missing one of them, please reach out, maybe it can be made it work. You can also look at the packager's tortured thoughts on all of this [here](https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md).
+There are a handful of other features, and possibly some integrations, that will not work quite the same here as in the standard version of ntfy. This is detailed in the app. If you find yourself missing one of them, please reach out, maybe it can be made it work. You can also look at the packager's tortured thoughts on all of this [here](https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md).
+
+# Help out
+
+Any feedback would be great! In particular, if you'de like to report which apps or integrations work or don't work, that would be great.
+
+Also, if you're interested in helping to translate the Sandstorm-specific text that has been added, please reach out!
