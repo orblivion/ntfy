@@ -4,11 +4,11 @@ Traditionally, push notifications for your Android apps are routed through Googl
 
 ntfy supports [many Android apps](https://unifiedpush.org/users/apps/), like Tusky for Mastodon and Element for Matrix. Apart from Android apps, there are a number of [other integrations](https://docs.ntfy.sh/integrations/) that can send you notifications with ntfy. You can easily send notifications from your own custom scripts and applications too!
 
-Just install ntfy for Sandstorm and follow the steps.
+Just install and follow the in-app instructions.
 
-*This app is recommended for convenience rather than "mission critical" applications.*
+*Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups. You may consider other options if your needs are "mission critical"*
 
-# ntfy for Sandstorm
+# Sandstorm-specific Differences
 
 The Sandstorm version of ntfy has some benefits and some drawbacks. For instance, the standard version of ntfy is built as a public server, whereas the Sandstorm version is built for a single user. This will give you more control over who is using your grain to relay notifications (hopefully only to you!). On the other hand, because of technical hurdles related to Sandstorm's strict security approach, ntfy's protected topics are not possible at this time.
 

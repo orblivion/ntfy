@@ -116,7 +116,7 @@ const SupportedApps = ({setScriptsOpen}) => {
             Notably, <b>"Do Not Cache"</b> directives may not work reliably.
           </p>
           <p>
-            ntfy for Sandstorm works pretty reliably, though it has occasional hiccups, particularly when upgrading the server (restarting the Android app fixes it). You may not want to use this for <b>"mission critical"</b> things.
+            Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups, particularly when it gets upgraded (restarting the Android app afterwards fixes it). You may consider other options if your needs are <b>"mission critical"</b>.
           </p>
           <Button>
             <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
