@@ -139,7 +139,7 @@ const PrivacyAndSecurityBasic = () => (
       Topic names are secret
     </Typography>
     <p>
-      For each integration, you will choose a "topic" to send and receive notifications (UnifiedPush-enabled apps will do this automatically). <b>Treat your topics like passwords</b> so that misbehaving services can't read each other's notifications.
+      For each integration, you will choose a "topic" to send and receive notifications (UnifiedPush-enabled apps will do this automatically). <b>Treat your topics like passwords</b> so that misbehaving integrations can't read each other's notifications.
     </p>
   </>
 );
@@ -150,7 +150,7 @@ const PrivacyAndSecurityMore = () => (
       API URLs are semi-secret
     </Typography>
     <p>
-      Limited 3rd parties will have access to your grain via the API URL you give it. If you notice a service misbehaving (writing unwanted data to your grain, etc), <b>you can revoke its API URL</b> using the Sandstorm Webkeys menu (next to grain sharing, etc). Note: for security reasons, do not use this menu to generate API URLs.
+      Limited 3rd parties will have access to your grain via the API URL you give it. You can give each integration a different API URL (other than UnifiedPush, see below). If you notice one of them misbehaving (writing unwanted data to your grain, etc), <b>you can revoke its API URL</b> using the Sandstorm Webkeys menu (next to grain sharing, etc). Note: for security reasons, do not use this menu to generate API URLs.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
       Your phone
@@ -162,7 +162,7 @@ const PrivacyAndSecurityMore = () => (
       Upgrading this app
     </Typography>
     <p>
-      Since this has 3rd parties accessing it, try to upgrade this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
+      Since this has 3rd parties accessing it, try to keep this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
     </p>
   </>
 );
