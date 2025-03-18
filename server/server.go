@@ -545,6 +545,10 @@ func (s *Server) handleInternal(w http.ResponseWriter, r *http.Request, v *visit
 }
 
 func (s *Server) handleRoot(w http.ResponseWriter, r *http.Request, v *visitor) error {
+	// Strongly discourage grain sharing (for now at least)
+	if !GetSandstormPermissions(r).Has(SandstormPermissionAdmin) {
+		return errHTTPUnauthorized
+	}
 	r.URL.Path = webAppIndex
 	return s.handleStatic(w, r, v)
 }
