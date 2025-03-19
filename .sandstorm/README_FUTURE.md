@@ -19,6 +19,7 @@ Somehow it all still works but hmm.
 Right now we have per-grain rate limiting.
 
 * We could do per-API URL rate limiting (limit number of topics, though be careful, if the user gets a new key we want to clear the quota).
+  * Would probably require creating a new Sandstorm permission for each possible API URL. Each integration goes into a "slot". I bet 10 "slots" would work for most people probably.
 * We could do per-topic rate limiting (home grown) + `NTFY_GLOBAL_TOPIC_LIMIT` + high per-grain rate limit
   * The plan:
       * A bad actor would be stopped from abusing any topic they create, or creating too many new topics.
