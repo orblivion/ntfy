@@ -10,6 +10,7 @@ type SandstormPermission string
 const HeaderSandstormPermissions = "X-Sandstorm-Permissions"
 
 const SandstormPermissionAdmin = SandstormPermission("admin")
+const SandstormPermissionFullApi = SandstormPermission("fullapi")
 
 type SandstormPermissions []SandstormPermission
 
