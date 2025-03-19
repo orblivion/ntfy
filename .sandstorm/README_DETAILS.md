@@ -260,12 +260,13 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [x] Make sure API URLs are marked as having lesser permission (for when we need it later)
 - [ ] Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
 - [ ] Confirm licenses for everything I use
-- [ ] Describe the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
+- [x] Refer (low key) to the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 - [ ] Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
-- [ ] What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
+- [x] What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
+    * Solution: Just remove subscriptions for now.
 - [ ] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
 - [ ] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. 30x or something.
 - [ ] Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
