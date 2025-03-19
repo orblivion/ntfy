@@ -321,21 +321,15 @@ To learn about the system and/or to validate before release. In particular, if w
 
 ## Other
 
-- [ ] Which apps and services work?
-    * [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
-        * I've been told that UnifiedPush may always use json actually, so maybe we can just guess that it all works and see what people report.
-    * [Other integrations](https://docs.ntfy.sh/integrations/)
-    * List them under Validate so we can keep testing them.
-    * List them in description.md - useful for people considering using it.
-    * Watch the database. See if it sees notifications for those apps.
-        * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
+- [x] Which apps and services work?
+    * I'm satisfied for initial releases that most of it should at least partially work. Further checks will go in future.
 - [x] Security - offer templates
     * I initially didn't want to be able to get a new API URL from an existing API URL.
       * But this is just part of Sandstorm's model. Anybody with a token can delegate more tokens.
       * If I trust you, I trust you not to share with the wrong people (or anyone).
       * However, the grain owner only sees one entry in their list of keys. If they revoke it, the entire chain of keys gets revoked. From their perspective, it's simple.
       * I'm fine with this. (And it's only in the case of peolpe *really* going out of their way to do this. The UI discourages this.)
-- [ ] Does private info get sent to the ntfy server for UnifiedPush messages?
+- [x] Does private info get sent to the ntfy server for UnifiedPush messages?
     * When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)?
         * And it's initially configured to ntfy.sh, before you even realize what's happening.
     * What about Element, etc?
@@ -343,6 +337,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Hopefully ntfy just gets a "ping" to let it know to pull from the server.
     * Watch the database. See if it gets the contents of Matrix messages etc.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
+    * Answer: Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
 - [ ] See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.

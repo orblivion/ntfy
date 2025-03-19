@@ -2,6 +2,16 @@
 
 *(Should reorganize this into "quick followups" vs significant new features)*
 
+## List of working / not working integrations
+
+ (This is where I could use a lot of help!)
+
+* [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
+    * I've been told that UnifiedPush may always use json actually, so maybe we can just guess that it all works and see what people report.
+* [Other integrations](https://docs.ntfy.sh/integrations/)
+* List them under Validate in README_DETAILS.md so we can keep testing them.
+* List them in description.md - useful for people considering using it.
+
 ## Subscriptions on web, again
 
 Put subscriptions back in the web UI if people want it for testing. I just don't want to worry about the old notifications being there as a liability, lost in the rotating ui subdomains.
