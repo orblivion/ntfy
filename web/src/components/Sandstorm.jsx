@@ -109,18 +109,10 @@ const SupportedApps = ({setScriptsOpen}) => {
         <Alert severity="warning">
           <AlertTitle>Incomplete Support</AlertTitle>
           <p>
-            Due to some techincal hurdles, a handful of <b>features are missing</b> in the Sandstorm version of ntfy. Some applications or integrations <b>may not work as expected</b>.
+            Due to some techincal hurdles, some features or integrations <b>may not work as expected</b> in the Sandstorm version of ntfy. Notably, <b>"Do Not Cache"</b> directives may not work in some cases.
           </p>
           <p>
-            Notably, <b>"Do Not Cache"</b> directives may not work reliably.
-          </p>
-          {/* TODO this is noisy */}
-          {/* TODO even more so - mention that stuff might just stop working if it switches to headers-based? Maybe only in the details section? */}
-          <p>
-            Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups, particularly when it gets upgraded (restarting the Android app afterwards fixes it) or if an integration sends a ton of messages.
-          </p>
-          <p>
-            You may consider other options if your needs are <b>"mission critical"</b>.
+            Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups. You may consider other options if your needs are <b>"mission critical"</b>.
           </p>
           <Button>
             <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
@@ -338,6 +330,8 @@ export const MissingFeatures = () => {
             </Typography>
             <ul>
               <li>Upgrading the Sandstorm app seems to interrupt notifications with the ntfy Android app. Restart the Android app to fix this. (This may be an issue with the Android app rather than the server)</li>
+              <li>If an integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
+              <li>We have no control over how the integrations connect with this server. If one of them starts using headers as described above, it may affect functionality.</li>
             </ul>
             <Button>
               <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Go Back</Link>
