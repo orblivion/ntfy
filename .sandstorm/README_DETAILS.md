@@ -275,6 +275,9 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
+- [ ] Look over code
+    * Remaniing TODOs in the source
+    * UI text is usable
 - [ ] Test that known working apps still work
     * Tusky
     * (TODO - add to list - see research)
@@ -325,10 +328,12 @@ To learn about the system and/or to validate before release. In particular, if w
     * List them in description.md - useful for people considering using it.
     * Watch the database. See if it sees notifications for those apps.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
-- [ ] Security
-    * Make sure I can't somehow get the offer template via the API. Try opening it in a browser to see.
-        * Don't forget that we're not calling Sandstorm at the root URL. Does that matter though?
-        * I think it makes requests to parent though.
+- [x] Security - offer templates
+    * I initially didn't want to be able to get a new API URL from an existing API URL.
+      * But this is just part of Sandstorm's model. Anybody with a token can delegate more tokens.
+      * If I trust you, I trust you not to share with the wrong people (or anyone).
+      * However, the grain owner only sees one entry in their list of keys. If they revoke it, the entire chain of keys gets revoked. From their perspective, it's simple.
+      * I'm fine with this. (And it's only in the case of peolpe *really* going out of their way to do this. The UI discourages this.)
 - [ ] Does private info get sent to the ntfy server for UnifiedPush messages?
     * When you let's say install ntfy, do all Tusky notification CONTENTS go to ntfy server (including DMs)?
         * And it's initially configured to ntfy.sh, before you even realize what's happening.
