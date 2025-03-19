@@ -145,7 +145,6 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 - [x] Low key mention this in description.md as well
 - [x] Explain how to rotate the API URL in case they suspect unwanted use.
 - [x] Make sure they don't share grains with other users.
-- [ ] *More?*
 
 #### [Missing instructions](README_DETAILS.md#missing-instructions)
 
@@ -186,12 +185,13 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 
 ## [Other](README_DETAILS.md#other)
 
-- [ ] Which integrations successfully work via the Sansdtorm ntfy app? (This is where I could use a lot of help!)
-    - [ ] [Android apps via UnifiedPush](https://unifiedpush.org/users/apps/) (Tusky, Element, etc) and related services (Mastodon, Matrix, etc)
-        - Though, it seems like UnifiedPush is a separate protocol (WebPush?), so maybe it can be determined that it just works?
-    - [ ] [Other integrations](https://docs.ntfy.sh/integrations/)
+- [x] Which integrations successfully work via the Sansdtorm ntfy app?
+    * For initial release, I'm satisfied enough to think that most integrations will at least mostly work. I give caveats in the UI.
+    * For future releases we can accumulate a list of "known works". (let me know if you'd like to report any successes/failures here)
 - [ ] Some security checks
-- [ ] Does private info get sent to the ntfy server for UnifiedPush messages?
+- [x] Does private info get sent to the ntfy server for UnifiedPush messages?
+    * Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
+    * I'm gonna say, this has to be better than a public ntfy server. This should be as trusted as Sandstorm itself.
 - [ ] See what happens if I use multiple API URLs
 - [ ] Try moving to a new ntfy grain, see how Android apps respond
 - [ ] Do UnifiedPush messages get cached? Are there any other differences with UP?
