@@ -179,7 +179,7 @@ const pkgdef :Spk.PackageDefinition = (
     viewInfo = (
       # For details on the viewInfo field, consult "ViewInfo" in
       # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/grain.capnp
-  
+
       permissions = [
       # Permissions which a user may or may not possess.  A user's current
       # permissions are passed to the app as a comma-separated list of `name`
@@ -192,13 +192,20 @@ const pkgdef :Spk.PackageDefinition = (
         (
           # For now this just gatekeeps the web UI, which is cosmetic. Later we can use this to gatekeep admin-like features.
           name = "admin",
-  
-          title = (defaultText = "administrator"),
+
+          title = (defaultText = "administration"),
           # Display name of the permission, e.g. to display in a checklist of permissions
           # that may be assigned when sharing.
-  
-          description = (defaultText = "grants full control over the grain"),
+
+          # In the future this may include things like topic names, which are usually secret
+          description = (defaultText = "grants access to any private data"),
           # Prose describing what this role means, suitable for a tool tip or similar help text.
+        ),
+        (
+          # In the future we may have fine grained topic permissions
+          name = "fullapi",
+          title = (defaultText = "full api"),
+          description = (defaultText = "grants read and write to all topics"),
         ),
       ],
       roles = [
@@ -207,19 +214,19 @@ const pkgdef :Spk.PackageDefinition = (
 
         # This is the one shareable role. I want to discourage its use with the permission's name and by breaking the web UI.
         (
-          title = (defaultText = "nope"),
+          title = (defaultText = "api"),
           # Name of the role.  Shown in the Sandstorm UI to indicate which users have which roles.
-  
-          permissions  = [false],
+
+          permissions  = [false, true],
           # An array indicating which permissions this role carries.
           # It should be the same length as the permissions array in
           # viewInfo, and the order of the lists must match.
-  
-          verbPhrase = (defaultText = "Do not share"),
+
+          verbPhrase = (defaultText = "can read and write notifications on all topics"),
           # Brief explanatory text to show in the sharing UI indicating
           # what a user assigned this role will be able to do with the grain.
-  
-          description = (defaultText = "Do not share"),
+
+          description = (defaultText = "can read and write notifications on all topics"),
           # Prose describing what this role means, suitable for a tool tip or similar help text.
         ),
       ],
