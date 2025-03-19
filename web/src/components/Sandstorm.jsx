@@ -24,6 +24,7 @@ export const DocsHeadsup = ({open, setOpen}) => (
   <Modal
       open={open}
       onBackdropClick={() => setOpen(false)}
+      aria-label="Documentation"
   >
     <Box
       loading="lazy"
@@ -37,7 +38,6 @@ export const DocsHeadsup = ({open, setOpen}) => (
         transform: "translate(-50%, -50%)",
         padding: 4,
       }}
-    /* TODO aria-label="Documentation"?*/
     >
       <Typography variant="h5" sx={{ marginBottom: 2 }}>
         Documentation
@@ -137,8 +137,7 @@ const PrivacyAndSecurityBasic = () => (
       This grain is for you only
     </Typography>
     <p>
-      {/* TODO - and the services you're connected to */}
-      This is not a public ntfy instance. Future versions may display private information. If you want to host a friend on your server, invite them to create their own grain.
+      This is not a public ntfy instance. Use it only for your own devices and the services you use. Future versions may display private information in the web interface. If you want to host a friend on your server, invite them to create their own grain.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
       Topic names are secret
@@ -241,7 +240,7 @@ const Scripts = ({open, setOpen}) => {
     <Modal
         open={open}
         onBackdropClick={() => setOpen(false)}
-        /* TODO aria-label="Custom Scripts and Applications"?*/
+        aria-label="Custom Scripts and Applications"
     >
       <Box
         loading="lazy"
