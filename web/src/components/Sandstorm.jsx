@@ -116,6 +116,7 @@ const SupportedApps = ({setScriptsOpen}) => {
             Notably, <b>"Do Not Cache"</b> directives may not work reliably.
           </p>
           {/* TODO this is noisy */}
+          {/* TODO even more so - mention that stuff might just stop working if it switches to headers-based? Maybe only in the details section? */}
           <p>
             Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups, particularly when it gets upgraded (restarting the Android app afterwards fixes it) or if an integration sends a ton of messages.
           </p>
@@ -137,6 +138,7 @@ const PrivacyAndSecurityBasic = () => (
       This grain is for you only
     </Typography>
     <p>
+	{/* TODO - and the services you're connected to */}
       This is not a public ntfy instance. Future versions may display private information. If you want to host a friend on your server, invite them to create their own grain.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
