@@ -298,7 +298,7 @@ export const MissingFeatures = () => {
               <li>Desktop Notifications</li>
               <li>Progressive Web App (PWA)</li>
               <li>Translations for Sandstorm-specific text</li>
-              <li>Persistent Subscriptions and other Settings (changes will be lost on page refresh)</li>
+              <li>Web-based Subscriptions or Persistent Settings (changes will be lost on page refresh)</li>
               <li>Sending Notifications to Other Servers</li>
             </ul>
             <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
