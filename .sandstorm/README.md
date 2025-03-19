@@ -67,7 +67,7 @@ For future versions we may add an "Extra API" for additional features.
 
 - [x] Add a Sandstorm "offer template" to settings page, which generates API URL for users
 - [x] Include instructions on how users can configure their phone with it
-- [ ] *more...* (see link)
+- [x] *more...* (see link)
 
 ### [Remove Features](README_DETAILS.md#remove-features)
 
