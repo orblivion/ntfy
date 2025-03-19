@@ -12,8 +12,7 @@ export function requestSandstormIframeURL() {
     // servers (Mastodon, etc). But it also makes the token usable in a share
     // link. So, we will disable all sharing.
     forSharing: true,   // anonymous user (supposedly; it seems to be anonymous regardless?)
-    roleAssignment: {none: null}, // no permissions TODO - use roleId instead. better ui for webkey menu. see how piwik did it
-    // TODO - how did piwik do multi line? probably not tho.
+    roleAssignment: {roleId: 0}, // api role
   }}, "*");
 }
 

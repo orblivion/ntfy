@@ -212,7 +212,9 @@ const pkgdef :Spk.PackageDefinition = (
         # Roles are logical collections of permissions.  For instance, your app may have
         # a "viewer" role and an "editor" role
 
-        # This is the one shareable role. I want to discourage its use with the permission's name and by breaking the web UI.
+        # Having at least one role stops the default full-permission role from showing up in the share menu.
+        # This role will be used for the API, but will break if you try to use it in the share menu.
+        # Thus, there's no way to have a share work in the web UI.
         (
           title = (defaultText = "api"),
           # Name of the role.  Shown in the Sandstorm UI to indicate which users have which roles.
@@ -222,11 +224,11 @@ const pkgdef :Spk.PackageDefinition = (
           # It should be the same length as the permissions array in
           # viewInfo, and the order of the lists must match.
 
-          verbPhrase = (defaultText = "can read and write notifications on all topics"),
+          verbPhrase = (defaultText = "can read and write notifications on all topics via API only"),
           # Brief explanatory text to show in the sharing UI indicating
           # what a user assigned this role will be able to do with the grain.
 
-          description = (defaultText = "can read and write notifications on all topics"),
+          description = (defaultText = "can read and write notifications on all topics via API only"),
           # Prose describing what this role means, suitable for a tool tip or similar help text.
         ),
       ],
