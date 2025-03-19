@@ -260,6 +260,9 @@ const Scripts = ({open, setOpen}) => {
           Sandstorm&apos;s restritions</Link>.
         </p>
         <p>
+	  You can also <Link href="https://docs.ntfy.sh/subscribe/api/" target="_blank">subscribe to topics</a> via the API.
+        </p>
+        <p>
           See some examples of <Link href="https://docs.ntfy.sh/examples/" target="_blank">scripts that use ntfy</Link>.
         </p>
       </Box>
