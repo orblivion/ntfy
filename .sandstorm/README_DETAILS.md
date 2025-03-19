@@ -251,9 +251,9 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
     * Solution: Just remove subscriptions for now.
-- [ ] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
+- [x] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
+    * Answer: Nah should have nothing to do with upgrades. Also it is related to battery life.
 - [x] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. Going with 4x. It could be 30 topics connected, but I doubt all 30 would be bursting at once.
-- [ ] Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
 - [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
 
 # Validate
@@ -290,7 +290,6 @@ To learn about the system and/or to validate before release. In particular, if w
     * Answer: Nevermind it works. :shrug:
 - [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's (sort of) fine. See `NTFY_BEHIND_PROXY` below.
-- [ ] Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
 
 ## Ntfy API
 
@@ -323,6 +322,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Watch the database. See if it gets the contents of Matrix messages etc.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
     * Answer: Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
+- [ ] See what happens if I pub and sub from CLI, and let the grain fall asleep in between.
 - [ ] See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
