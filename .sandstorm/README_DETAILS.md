@@ -293,6 +293,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
     * Make sure grain sharing via sharing menu doesn't work
     * Make sure grain sharing via copying an API URL token doesn't work
+    * Make sure grain sharing via copying an API URL token issued during "experimental" period doesn't work
 
 # Research
 
