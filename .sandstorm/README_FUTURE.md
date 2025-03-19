@@ -16,9 +16,14 @@ Right now we have per-grain rate limiting.
 
 * We could do per-API URL rate limiting (limit number of topics, though be careful, if the user gets a new key we want to clear the quota).
 * We could do per-topic rate limiting (home grown) + `NTFY_GLOBAL_TOPIC_LIMIT` + high per-grain rate limit
-  * A bad actor would be stopped from abusing any topic they create, or creating too many new topics.
-  * Good actors could continue using their designated topics (which the bad actor won't be able to guess)
-  * Bad actor would need to be removed, and the topic limit quota cleared, before any new topics are created by good integrations.
+  * The plan:
+      * A bad actor would be stopped from abusing any topic they create, or creating too many new topics.
+      * Good actors could continue using their designated topics (which the bad actor won't be able to guess)
+      * Bad actor would need to be removed, and the topic limit quota cleared, before any new topics are created by good integrations.
+  * All this said, I may be misunderstanding how `NTFY_GLOBAL_TOPIC_LIMIT` works, given my look at the code, so maybe this won't work.
+      * The code seems to imply that it doesn't really have to do with the number of topics among the currently cached notifications?
+      * Also, even if it is related to currently cached notifications, by the written definition I'm not sure an abandoned topic counts toward this? (otherwise the server would straight up run out of topics)
+      * Anyway, even if this feature doesn't exist as I thought, we could create it. Or other topic-related restrictions. New topics per minute? Etc.
 * We could doublecheck that Sandstorm can't somehow give us the incoming IP address.
 * Maybe figure out `NTFY_VISITOR_SUBSCRIBER_RATE_LIMITING` but it's probably not what we want.
 
