@@ -1,5 +1,9 @@
 # Future
 
+## Subscriptions on web, again
+
+Put subscriptions back in the web UI if people want it for testing. I just don't want to worry about the old notifications being there as a liability, lost in the rotating ui subdomains.
+
 ## Better UI
 
 Add some pictures to the onboarding to counteract all that text. Think of ways to remove more things.

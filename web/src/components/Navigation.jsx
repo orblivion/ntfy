@@ -146,6 +146,12 @@ const NavList = (props) => {
           </ListItemIcon>
           <ListItemText primary="Welcome" />
         </ListItemButton>
+        {/*
+
+        For now, just do away with subscriptions in the browser altogether. Sandstorm rotates ui subdomains so it
+        all gets lost on every reload. It could be okay to have for testing but I have no idea whether the Dexie
+        data will self-delete over time.
+
         {!showSubscriptionsList && (
           <ListItemButton onClick={() => navigate(routes.allSubscriptions)} selected={location.pathname === routes.allSubscriptions}>
             <ListItemIcon>
@@ -167,6 +173,7 @@ const NavList = (props) => {
             <Divider sx={{ my: 1 }} />
           </>
         )}
+        */}
         {session.exists() && (
           <ListItemButton onClick={handleAccountClick} selected={location.pathname === routes.account}>
             <ListItemIcon>
@@ -193,12 +200,15 @@ const NavList = (props) => {
           </ListItemIcon>
           <ListItemText primary={t("nav_button_publish_message")} />
         </ListItemButton>
+        {/*
         <ListItemButton onClick={() => setSubscribeDialogOpen(true)}>
           <ListItemIcon>
             <AddIcon />
           </ListItemIcon>
           <ListItemText primary={t("nav_button_subscribe")} />
         </ListItemButton>
+        */}
+
         {showUpgradeBanner && (
           // The text background gradient didn't seem to do well with switching between light/dark mode,
           // So adding a `key` forces React to replace the entire component when the theme changes
