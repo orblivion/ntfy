@@ -38,7 +38,9 @@ Put subscriptions back in the web UI if people want it for testing. I just don't
 
 ## Better UI
 
-Add some pictures to the onboarding to counteract all that text. Think of ways to remove more things.
+* Add some pictures to the onboarding to counteract all that text.
+* Icons instead of bulletpoints for Supported Apps and Integrations.
+* Think of ways to remove more things.
 
 ## Molly
 
