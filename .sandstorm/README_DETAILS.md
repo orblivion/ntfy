@@ -140,8 +140,6 @@ Extra items:
 
 We should figure out what everything in the UI does, and remove things we don't want (such as the User/Password thing).
 
-- [ ] Check out: public/config.js maybe this can do a lot of it for us
-
 * Docs
 	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
 	* Open a dialog. Warn the user that it may not 100% reflect the Sandstorm implementation. Then give link.
@@ -210,10 +208,6 @@ In the UI and package description (Make a simple list, but link to the README):
 
 #### Caveats about reliability
 
-In the UI and package description:
-
-- [ ] Warn users that notifications disappear after 12 hours.
-
 Missing messages:
 * "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
 * "when you upgrade, restart your Android app or you will lose messages". This is probably more on Android than the server but whatever.
@@ -258,7 +252,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
     * Solution: Just remove subscriptions for now.
 - [ ] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
-- [ ] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. 30x or something.
+- [x] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. Going with 4x. It could be 30 topics connected, but I doubt all 30 would be bursting at once.
 - [ ] Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
 - [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
 

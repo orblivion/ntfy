@@ -138,7 +138,7 @@ const PrivacyAndSecurityBasic = () => (
       This grain is for you only
     </Typography>
     <p>
-	{/* TODO - and the services you're connected to */}
+      {/* TODO - and the services you're connected to */}
       This is not a public ntfy instance. Future versions may display private information. If you want to host a friend on your server, invite them to create their own grain.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
@@ -162,13 +162,19 @@ const PrivacyAndSecurityMore = () => (
       Your phone
     </Typography>
     <p>
-      Unfortunately, UnifiedPush integrations need to share the same API URL that you use on your phone (which complicates revoking). Beware that certain apps such as Tusky configure themselves and pass on your API URL <b>without asking you</b>. Also note that by default (before you set up your API URL), your ntfy app connects to a <b>public</b> ntfy server.
+      Unfortunately, UnifiedPush integrations need to share the same API URL that you use on your phone (which complicates revoking). Beware that certain apps such as Tusky configure themselves and pass on your API URL <b>without asking you</b>.
+    </p>
+    <p>
+      Also note that by default (before you set up your API URL), your ntfy app connects to a <b>public</b> ntfy server.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
       Upgrading this app
     </Typography>
     <p>
-      Since this has 3rd parties accessing it, try to keep this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), since it's not meant to hold data long term, though this may complicate configuration.
+      Since this has 3rd parties accessing it, try to keep this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), though this may complicate configuration.
+    </p>
+    <p>
+      This app is designed to cache notifications for 12 hours.
     </p>
   </>
 );
@@ -262,7 +268,7 @@ const Scripts = ({open, setOpen}) => {
           Sandstorm&apos;s restritions</Link>.
         </p>
         <p>
-	  You can also <Link href="https://docs.ntfy.sh/subscribe/api/" target="_blank">subscribe to topics</a> via the API.
+          You can also <Link href="https://docs.ntfy.sh/subscribe/api/" target="_blank">subscribe to topics</Link> via the API.
         </p>
         <p>
           See some examples of <Link href="https://docs.ntfy.sh/examples/" target="_blank">scripts that use ntfy</Link>.
