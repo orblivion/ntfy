@@ -115,8 +115,12 @@ const SupportedApps = ({setScriptsOpen}) => {
           <p>
             Notably, <b>"Do Not Cache"</b> directives may not work reliably.
           </p>
+          {/* TODO this is noisy */}
           <p>
-            Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups, particularly when it gets upgraded (restarting the Android app afterwards fixes it). You may consider other options if your needs are <b>"mission critical"</b>.
+            Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups, particularly when it gets upgraded (restarting the Android app afterwards fixes it) or if an integration sends a ton of messages.
+          </p>
+          <p>
+            You may consider other options if your needs are <b>"mission critical"</b>.
           </p>
           <Button>
             <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
@@ -311,7 +315,7 @@ export const MissingFeatures = () => {
               <li>Sending Email</li>
               <li><Link href="https://unifiedpush.org/users/apps/" target="_blank">Matrix Gateway</Link> (for self-hosted Matrix home servers)</li>
               <li>Web Push</li>
-              <li>Per-Visitor rate limiting (Sandstorm still provides a per-<i>user</i> limit)</li>
+              <li>Per-Visitor rate limiting (an overly active integration could block other integrations)</li>
             </ul>
             <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
               API
