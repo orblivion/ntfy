@@ -399,7 +399,10 @@ export const AppSetup = () => {
             When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications.
           </p>
           <p>
-            Also make sure to see the Security and Privacy section of the <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
+            It is unknown how smoothly things will work out with two or more phones connected to the same UnifiedPush integrations.
+          </p>
+          <p>
+            Make sure to see the Security and Privacy section of the <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
           </p>
         </Alert>
       </CardContent>
