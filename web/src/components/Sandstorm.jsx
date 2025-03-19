@@ -50,7 +50,6 @@ export const DocsHeadsup = ({open, setOpen}) => (
   </Modal>
 );
 
-{/* TODO Pictures for the sections to make it friendly? */}
 export const Welcome = () => {
   const [scriptsOpen, setScriptsOpen] = useState(false);
   return (
@@ -102,7 +101,7 @@ const SupportedApps = ({setScriptsOpen}) => {
         <p>
           <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of other integrations that work with ntfy.
         </p>
-        <ul> {/* TODO emoji? */}
+        <ul>
           <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
           <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other supported integrations</b></Link></li>
           <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
