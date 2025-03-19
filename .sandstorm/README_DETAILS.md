@@ -212,7 +212,7 @@ In the UI and package description (Make a simple list, but link to the README):
 * Setting `NTFY_BEHIND_PROXY` - Sandstorm doesn't pass through `X-Forwarded-For`.
     * All visiors to a grain will be rate limited as if they are one visitor
     * Each grain is for one user, which is let's say 30 visitors (one per topic)
-    * We can 30x the visitor rate limit instead.
+    * We can increase the visitor rate limit instead.
         * One bad visitor could take out the grain but it's just one grain.
         * Thus, we effectively have a per-user rate limit.
 * WebPush
@@ -304,7 +304,7 @@ To learn about the system and/or to validate before release. In particular, if w
 - [x] Websockets: Currently websocket connection on phone doesn't seem to work. And if I do Caddy I especially need to consider this question: https://docs.ntfy.sh/config/#nginxapache2caddy Check how resilient the app is after this.
     * Answer: Nevermind it works. :shrug:
 - [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
-    * Answer: No `X-Forwarded-For` but it's fine. See `NTFY_BEHIND_PROXY` below.
+    * Answer: No `X-Forwarded-For` but it's (sort of) fine. See `NTFY_BEHIND_PROXY` below.
 - [ ] Read? https://docs.ntfy.sh/config/#behind-a-proxy-tls-etc
 
 ## Ntfy API

@@ -8,7 +8,7 @@ These docs describe what I can and can't do. These notes are for my future self,
 
 You can [try out the demo](https://apps.sandstorm.io/app/pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh?experimental=true). Here are the [changes I've made](https://github.com/binwiederhier/ntfy/compare/v2.11.0...orblivion:ntfy:sandstorm) on top of the latest tag of ntfy. Some are changes to ntfy itself, some are sandstorm-specific stuff on top. *Note: I haven't documented all code changes in these READMEs*.
 
-If you are interested in helping, particularly if you know something about ntfy and/or could review code, I'd love to hear from you. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile.
+If you are interested in helping, particularly if you know something about ntfy and/or could review code, or translate text that I've added to the UI, or report success/failure with specific integrations, I'd love to hear from you. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile.
 
 # [Changes and Issues](README_DETAILS.md#changes-and-issues)
 
@@ -77,6 +77,7 @@ For future versions we may add an "Extra API" for additional features.
 - [x] "Logging in" for protected topics
 - [x] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
 - [x] "Forward to email" - I'm assuming this won't work without outgoing connections (though we could add it with some work).
+- [x] Web-based subscriptions (they won't persist a page reload anyway)
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
 
@@ -91,7 +92,7 @@ For future versions we may add an "Extra API" for additional features.
 - [x] Mention major missing features in Welcome Screen, with link to here for details and additional features.
 - [x] Make reference to missing features in description.md, and say details in app.
 - [x] Also callouts for help w/ listing bad apps and translations in description.md.
-- [x] Caveats in appropriate places (i.e. rename "subscriptions" to "test subscriptions" or something, mention that language is temporary etc)
+- [x] Caveats in appropriate places (i.e. mention that language preference change is temporary etc)
 
 Some details:
 

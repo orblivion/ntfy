@@ -198,7 +198,7 @@ const pkgdef :Spk.PackageDefinition = (
           # that may be assigned when sharing.
 
           # In the future this may include things like topic names, which are usually secret
-          description = (defaultText = "grants access to any private data"),
+          description = (defaultText = "grants access to any private data and allows changing settings"),
           # Prose describing what this role means, suitable for a tool tip or similar help text.
         ),
         (
