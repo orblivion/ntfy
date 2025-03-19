@@ -7,6 +7,10 @@ mkdir -p $CACHE_PATH
 export NTFY_CACHE_FILE=$CACHE_PATH/cache.db
 export NTFY_LOG_LEVEL="trace" # TODO - remove this before launch! "info" is the default.
 
+# TODO reduce this from its default? Could stop misbehaving integrations. though make sure this quota gets
+# cleared eventually, we don't want the system to stop being able to make new topics forever.
+# NTFY_GLOBAL_TOPIC_LIMIT
+
 # See changes in web/src/components/routes.js
 export NTFY_DISALLOWED_TOPICS="sandstorm-extra-89dfdbfd72e2ae64728dd"
 

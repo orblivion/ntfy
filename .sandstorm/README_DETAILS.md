@@ -8,7 +8,7 @@
 
 #### Explanation
 
-The ntfy API has a "headers" version (i.e. fields are set in custom headers) and a JSON version. Sandstorm is very selective about the headers it accepts. Until and unless we update the Sandstorm platform, the headers version of the API is expected not to work. This will break any components (apps or services or some features) that rely on them.
+The ntfy API has a "headers" version (i.e. fields are set in custom headers) and a JSON version. Sandstorm is very selective about the headers it accepts. Until and unless we update the Sandstorm platform, the headers version of the API is expected not to work. This will break any components (apps or services or some features) that rely on them. It seems like mostly this just leads to degraded service (missing do-not-cache, titles, tags, etc if those are sent as headers) since the message seems to be sent in the body, but looking at the code, the (optional?) x-unifiedpush header seems to affect how the messages would be parsed, which I'm guessing could break things.
 
 But, as of now the system seems to work:
 
@@ -23,9 +23,6 @@ However, we will need to maintain this list, as the services could always change
 
 We might also be able to change Sandstorm to accept all these headers, but this seems like an extreme measure. A better idea IMO is to wait until Tempest, and add a pkgdef config to pass through specific headers.
 
-#### Question
-
-Why isn't UnifiedPush a json parameter? There is a X-UnifiedPush header after all. Are the servers (that are working thus far) using the query param thing instead? Hmm.
 
 ### Locking Down Topics
 
@@ -40,7 +37,7 @@ In the below subsections, we explore our hypothetical options for locking down t
 * Allowing monitoring activity on the server in the web interface, and send the user a notification when a new topic is created
 * Requiring approval for new topics in the web interface
 
-For now, we will settle for the monitoring option, assuming it's not deemed insecure. The reasons are given below.
+For now, we will settle for the "public server" option.
 
 #### Option: fully public server with no private topics
 
@@ -50,7 +47,7 @@ Further, remind them that others may use your server for their own pub-sub, if t
 
 The exception is if you *only* use it for notifications that you trigger yourself (via scripts, etc). But then, you have to be aware that the ntfy Android app will *automatically* give your URL to some services: If you have Tusky installed and you connect the ntfy Android app to your grain, it will subscribe you to Tusky *without asking you*. In my opinion, this makes it too much of a risk to recommend the script-only use case.
 
-So, no other mitigations other than hard-to-guess topics. No private topics, no indication of who is using your grain, etc. I think we can do better than this.
+So, no other mitigations other than hard-to-guess topics. No private topics, no indication of who is using your grain, etc.
 
 #### Option: private topics
 
@@ -70,14 +67,6 @@ Secondly, while we could log in via the web interface, the subscribed topics are
 
 For now I am skipping this. If users are interested in *limited* private topics for use with other clients (including home-made ones), let me know and I can try to figure that out.
 
-QUESTIONS
-
-* "Sign In Sign Up" on ntfy.sh is the "allow signups" config option? What would that even do without the ability to set ACL'd topics? Does it relate to Base URL?
-
-See:
-
-* `NTFY_ENABLE_LOGIN`, `NTFY_AUTH_DEFAULT_ACCESS`, and other related configs
-
 #### Option: monitor currently used topics
 
 Give the user some stats about how their grain is being used so they can catch unwanted users. There will be only one user per ntfy grain (see "Web UI"/"Caveats about privacy"). This means that, unlike with other ntfy installations, there should be no problem putting information in the Web UI about the whole system using a new "Extra API" (accessible only via the web), provided that this doesn't somehow introduce a new vulnerability.
@@ -85,6 +74,7 @@ Give the user some stats about how their grain is being used so they can catch u
 Some ideas:
 
 * Show recently used IP addresses, particularly for reads
+	* Probably not doable. Sandstorm doesn't give us incoming IP address.
 * Show topic full info
 	* Option 1) Recently used topics. Easier; can use notifications in cache
 	* Option 2) All used topics. Harder; would need to keep a list additional to the cache
@@ -150,7 +140,7 @@ Extra items:
 
 We should figure out what everything in the UI does, and remove things we don't want (such as the User/Password thing).
 
-Check out: public/config.js maybe this can do a lot of it for us
+- [ ] Check out: public/config.js maybe this can do a lot of it for us
 
 * Docs
 	* Link to ntfy.sh/documentation. Or should we just build docs locally if it's not too hefty?
@@ -159,7 +149,7 @@ Check out: public/config.js maybe this can do a lot of it for us
 * "Logging in"
 * "Server" fields, for sending notifications, etc. Just assume this server.
     * It's a "power user" feature. This being Sandstorm, I'm going to be opinionated and just axe it.
-    * What was that place in the UI where I saw the ui-* URL? Make sure that doesn't show up either.
+    * What was that place in the UI where I saw the `ui-*` URL? Make sure that doesn't show up either.
 * Etc.
 
 ### Info in the UI
@@ -222,7 +212,7 @@ In the UI and package description (Make a simple list, but link to the README):
 
 In the UI and package description:
 
-Warn users that notifications disappear after 12 hours.
+- [ ] Warn users that notifications disappear after 12 hours.
 
 Missing messages:
 * "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
@@ -270,6 +260,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [ ] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
 - [ ] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. 30x or something.
 - [ ] Ntfy - Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
+- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
 
 # Validate
 

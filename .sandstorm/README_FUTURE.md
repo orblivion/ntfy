@@ -2,6 +2,26 @@
 
 *(Should reorganize this into "quick followups" vs significant new features)*
 
+## x-unifiedpush handling
+
+Take a look at how requests with x-unifiedpush header are handled (we don't see most headers). In particular handleBodyAsMessageAutoDetect, which would get called only in that case.
+
+Also for GET requests, this header seems to return the unifiedpush version.
+
+Somehow it all still works but hmm.
+
+## Rate Limiting
+
+Right now we have per-grain rate limiting.
+
+* We could do per-API URL rate limiting (limit number of topics, though be careful, if the user gets a new key we want to clear the quota).
+* We could do per-topic rate limiting (home grown) + `NTFY_GLOBAL_TOPIC_LIMIT` + high per-grain rate limit
+  * A bad actor would be stopped from abusing any topic they create, or creating too many new topics.
+  * Good actors could continue using their designated topics (which the bad actor won't be able to guess)
+  * Bad actor would need to be removed, and the topic limit quota cleared, before any new topics are created by good integrations.
+* We could doublecheck that Sandstorm can't somehow give us the incoming IP address.
+* Maybe figure out `NTFY_VISITOR_SUBSCRIBER_RATE_LIMITING` but it's probably not what we want.
+
 ## List of working / not working integrations
 
  (This is where I could use a lot of help!)
