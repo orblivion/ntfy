@@ -9,10 +9,6 @@ export NTFY_LOG_LEVEL="trace" # TODO - remove this before launch! "info" is the 
 
 # NOTE: If I ever set the data retention to other than 12h, update the security section accordingly.
 
-# TODO reduce this from its default? Could stop misbehaving integrations. though make sure this quota gets
-# cleared eventually, we don't want the system to stop being able to make new topics forever.
-# NTFY_GLOBAL_TOPIC_LIMIT
-
 # See changes in web/src/components/routes.js
 export NTFY_DISALLOWED_TOPICS="sandstorm-extra-89dfdbfd72e2ae64728dd"
 
