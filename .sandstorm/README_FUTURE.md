@@ -1,5 +1,7 @@
 # Future
 
+*(Should reorganize this into "quick followups" vs significant new features)*
+
 ## Subscriptions on web, again
 
 Put subscriptions back in the web UI if people want it for testing. I just don't want to worry about the old notifications being there as a liability, lost in the rotating ui subdomains.
@@ -23,6 +25,8 @@ Zulip doesn't support UnifiedPush. Could we make it work with a bot? For channel
 Filters for things to notify on, etc. Total hack! But it's something. eh? Likely confusing since Zulip has its own notification settings.
 
 Make it clear that this is a temporary thing until they add actual support.
+
+Make it clear that this won't be encrypted from Zulip server to phone. UnifiedPush might be?
 
 Also multiple Zulip accounts, sheesh.
 
