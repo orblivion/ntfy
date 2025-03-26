@@ -29,4 +29,4 @@ usr/lib/x86_64-linux-gnu/libzstd.so.1
 usr/lib/x86_64-linux-gnu/libzstd.so.1.5.4
 usr/lib64/ld-linux-x86-64.so.2
 usr/share/mime/globs2
-usr/share/zoneinfo/America/New_York
+usr/share/zoneinfo/Etc/UTC

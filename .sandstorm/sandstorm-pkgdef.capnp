@@ -145,6 +145,11 @@ const pkgdef :Spk.PackageDefinition = (
     # here are only to tell it where to find files that the app wants.
     searchPath = [
       ( sourcePath = "." ),  # Search this directory first.
+
+      ( sourcePath = "rootfs" ),
+      # Then some system files I want to override
+      # * set /etc/localtime to UTC to have it be immune to tzdata changes
+
       ( sourcePath = "/",    # Then search the system root directory.
         hidePaths = [ "home", "proc", "sys",
                       "etc/passwd", "etc/hosts", "etc/host.conf",
