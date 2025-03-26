@@ -327,7 +327,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Watch the database. See if it gets the contents of Matrix messages etc.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
     * Answer: Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
-- [ ] See what happens if I pub and sub from CLI, and let the grain fall asleep in between.
+- [ ] See what happens if I pub and sub from curl, and let the grain fall asleep in between.
 - [ ] See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
