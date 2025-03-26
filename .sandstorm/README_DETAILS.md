@@ -243,7 +243,11 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
 - [x] Block all access for shared grains (stopping web root. this is UI for discouragement, not security)
 - [x] Make sure API URLs are marked as having lesser permission (for when we need it later)
-- [ ] Check out `sandstorm-files.list`. A few things in there maybe don't belong. But also maybe some things we want to add more of, like timezones? But also - is the Python used? Is the node used? Why aren't they in there?
+- [x] Check out `sandstorm-files.list`. A few things in there maybe don't belong.
+    * But also maybe some things we want to add more of, like timezones?
+        * Answer: Use make a new rootfs and point /etc/localtime to UTC.
+    * But also - is the Python used? Is the node used? Why aren't they in there?
+        * Answer: No, they're only for the build step (and Python only for docs, which I think we don't even do anymore)
 - [ ] Confirm licenses for everything I use
 - [x] Refer (low key) to the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 - [ ] Think about upgrades - this is more vulnerable than most Sandstorm apps.
