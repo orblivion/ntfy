@@ -327,6 +327,7 @@ To learn about the system and/or to validate before release. In particular, if w
 - [ ] Try upgrading the app, confirm that messages aren't going through, but then "refresh" on the Android app and see if that fixes it (instead of having to hard-restart the app!).
     * I wonder if that's why upgrading doesn't stop the phone's connection! It still thinks it's still connected to the old app.
     * I should also try keeping an API connection open during the whole thing. Will I keep getting keepalives from the old app that should have quit?
+- [ ] Why is the API response always "empty" the first time the grain starts? (does that relate to why restarting the grain loses my connectivity?)
 
 ## Ntfy API
 
