@@ -241,6 +241,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [x] Figure out why go.sum changed when I ran `make` for linux?
     * Answer: Not exactly sure why but only two hashes got added. I found them on reputable git repos and anyway they're from orgs that have other hashes in the same file. Lots of hashes got removed but that's fine.
 - [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Squash all my WIP commits.
 - [x] Block all access for shared grains (stopping web root. this is UI for discouragement, not security)
 - [x] Make sure API URLs are marked as having lesser permission (for when we need it later)
 - [x] Check out `sandstorm-files.list`. A few things in there maybe don't belong.
