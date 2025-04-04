@@ -284,6 +284,11 @@ To learn about the system and/or to validate before release. In particular, if w
     * Make sure grain sharing via sharing menu doesn't work
     * Make sure grain sharing via copying an API URL token doesn't work
     * Make sure grain sharing via copying an API URL token issued during "experimental" period doesn't work
+- [ ] Keepalive
+    * No integrations, close all ntfy tabs. Try listening on json stream and waiting for it to fall asleep.
+        [ ] Send a message after to see if it picks it up on the same connection
+        [ ] Listen for keepalive messages (TODO instructions here)
+    [ ] How is battery life compared to expected values from the Internet? (TODO baseline here)
 
 # Research
 
@@ -295,6 +300,17 @@ To learn about the system and/or to validate before release. In particular, if w
     * Answer: Nevermind it works. :shrug:
 - [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's (sort of) fine. See `NTFY_BEHIND_PROXY` below.
+- [ ] ntfy keepalive - How is it working with Sandstorm?
+    [ ] Tests with no integrations, and close all ntfy tabs:
+        [ ] Try listening on json stream and waiting for it to fall asleep, and then send a message after to see if it picks it up on the same connection.
+        [ ] Try letting it fall asleep and then start listening on json stream, presumably will wake it up.
+    [ ] See if curl can print out the "keepalive" signals. See if that stops as the grain falls asleep.
+        [ ] Put instructions for printing that out into the keepalive "Validation" phase
+        [ ] How is Android handling all of that, is it constantly reconnecting? Probably wouldn't design it that way, but maybe?
+            [ ] How is battery life according to the OS?
+                [ ] Check on the Internet to see what expected battery usage is. Put into Validation phase for "keepalive"
+            [ ] How is notification arrival time, compared to let's say ntfy.sh? (not for validation, but just as an indicator of our server behaving differently)
+            [ ] I can look at server logs to see a bit about how Android is behaving. Is it looking for last x seconds of data?
 
 ## Ntfy API
 
