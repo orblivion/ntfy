@@ -290,7 +290,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Make sure grain sharing via copying an API URL token doesn't work
     * Make sure grain sharing via copying an API URL token issued during "experimental" period doesn't work
 - [ ] Keepalive
-    * No integrations, close all ntfy tabs. Try listening on json stream and waiting for it to fall asleep.
+    * No integrations, close all ntfy tabs. Try listening on json stream and waiting for it to fall asleep (look up the correct amount of time).
         [ ] Send a message after to see if it picks it up on the same connection
         [ ] Listen for keepalive messages (TODO instructions here)
     [ ] How is battery life compared to expected values from the Internet? (TODO baseline here)
@@ -307,15 +307,26 @@ To learn about the system and/or to validate before release. In particular, if w
     * Answer: No `X-Forwarded-For` but it's (sort of) fine. See `NTFY_BEHIND_PROXY` below.
 - [ ] ntfy keepalive - How is it working with Sandstorm?
     [ ] Tests with no integrations, and close all ntfy tabs:
-        [ ] Try listening on json stream and waiting for it to fall asleep, and then send a message after to see if it picks it up on the same connection.
+        [ ] Try listening on json stream and waiting for it to fall asleep (look up the correct amount of time), and then send a message after to see if it picks it up on the same connection.
         [ ] Try letting it fall asleep and then start listening on json stream, presumably will wake it up.
+    [ ] Tests with UP integrations? Like a more realistic scenario. Does it stay awake?
     [ ] See if curl can print out the "keepalive" signals. See if that stops as the grain falls asleep.
+        [ ] Oh I never noticed; it seems like it just prints the keepalive in the stream of data. Perfect!
         [ ] Put instructions for printing that out into the keepalive "Validation" phase
         [ ] How is Android handling all of that, is it constantly reconnecting? Probably wouldn't design it that way, but maybe?
             [ ] How is battery life according to the OS?
                 [ ] Check on the Internet to see what expected battery usage is. Put into Validation phase for "keepalive"
             [ ] How is notification arrival time, compared to let's say ntfy.sh? (not for validation, but just as an indicator of our server behaving differently)
             [ ] I can look at server logs to see a bit about how Android is behaving. Is it looking for last x seconds of data?
+- [ ] Try a delayed notification
+   * Start a json or websocket stream (two different tests I guess)
+   * Timed for longer than the grain would stay awake with no activity.
+   * Make sure the message shows up
+   * Make sure the grain still shows up as "no activity".
+        * It means that "activity" just means incoming connections, even though ntfy is provably still running.
+- [ ] Try upgrading the app, confirm that messages aren't going through, but then "refresh" on the Android app and see if that fixes it (instead of having to hard-restart the app!).
+    * I wonder if that's why upgrading doesn't stop the phone's connection! It still thinks it's still connected to the old app.
+    * I should also try keeping an API connection open during the whole thing. Will I keep getting keepalives from the old app that should have quit?
 
 ## Ntfy API
 
