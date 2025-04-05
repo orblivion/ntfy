@@ -291,9 +291,13 @@ To learn about the system and/or to validate before release. In particular, if w
     * Make sure grain sharing via copying an API URL token doesn't work
     * Make sure grain sharing via copying an API URL token issued during "experimental" period doesn't work
 - [ ] Keepalive
-    * No integrations, close all ntfy tabs. Try listening on json stream and waiting for it to fall asleep (look up the correct amount of time).
-        [ ] Send a message after to see if it picks it up on the same connection
-        [ ] Listen for keepalive messages (TODO instructions here)
+    * No integrations, close all ntfy tabs. Subscribe, watch grain logs.
+    * Make sure the grain doesn't fall asleep (3+ minutes).
+    * Watch for keepalive messages.
+        [ ] json
+        [ ] sse
+        [ ] raw
+        [ ] ws
     [ ] How is battery life compared to expected values from the Internet? (TODO baseline here)
 
 # Research
@@ -307,19 +311,24 @@ To learn about the system and/or to validate before release. In particular, if w
 - [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's (sort of) fine. See `NTFY_BEHIND_PROXY` below.
 - [ ] ntfy keepalive - How is it working with Sandstorm?
-    [ ] Tests with no integrations, and close all ntfy tabs:
-        [ ] Try listening on json stream and waiting for it to fall asleep (look up the correct amount of time), and then send a message after to see if it picks it up on the same connection.
-        [ ] Try letting it fall asleep and then start listening on json stream, presumably will wake it up.
+    [x] Watch the logs with zero connections to see how long it takes grain to fall asleep. Then I'll have a reference point.
+        Answer: 1.5-3 minutes
+    [x] Tests with no integrations, and close all ntfy tabs:
+        [x] Try letting it fall asleep and then start listening on json stream, presumably will wake it up.
+        [x] Try listening on json, sse, ws, and raw streams and waiting for it to fall asleep (5+ minutes, based on sleep time above)
+            * Answer: It stays awake
     [ ] Tests with UP integrations? Like a more realistic scenario. Does it stay awake?
-    [ ] See if curl can print out the "keepalive" signals. See if that stops as the grain falls asleep.
-        [ ] Oh I never noticed; it seems like it just prints the keepalive in the stream of data. Perfect!
-        [ ] Put instructions for printing that out into the keepalive "Validation" phase
+    [x] See if curl can print out the "keepalive" signals. See if that stops as the grain falls asleep.
+        * Answer: It always has printed them out. And the grain never falls asleep so long as you're subscribed. json, sse, ws, and raw
+        [x] Put instructions for printing that out into the keepalive "Validation" phase
         [ ] How is Android handling all of that, is it constantly reconnecting? Probably wouldn't design it that way, but maybe?
             [ ] How is battery life according to the OS?
                 [ ] Check on the Internet to see what expected battery usage is. Put into Validation phase for "keepalive"
             [ ] How is notification arrival time, compared to let's say ntfy.sh? (not for validation, but just as an indicator of our server behaving differently)
             [ ] I can look at server logs to see a bit about how Android is behaving. Is it looking for last x seconds of data?
 - [ ] Try a delayed notification
+   [ ] Actually, doublecheck with a normal notification first, while I'm doing a long subscription that's lasted let's say 5 minutes (i.e. after would-be grain sleep time).
+        * Reason for this: at some point it seemed like "last activity" wasn't updated *even then* which is weird.
    * Start a json or websocket stream (two different tests I guess)
    * Timed for longer than the grain would stay awake with no activity.
    * Make sure the message shows up
@@ -328,7 +337,8 @@ To learn about the system and/or to validate before release. In particular, if w
 - [ ] Try upgrading the app, confirm that messages aren't going through, but then "refresh" on the Android app and see if that fixes it (instead of having to hard-restart the app!).
     * I wonder if that's why upgrading doesn't stop the phone's connection! It still thinks it's still connected to the old app.
     * I should also try keeping an API connection open during the whole thing. Will I keep getting keepalives from the old app that should have quit?
-- [ ] Why is the API response always "empty" the first time the grain starts? (does that relate to why restarting the grain loses my connectivity?)
+- [x] Why is the API response always "empty" the first time the grain starts? (does that relate to why restarting the grain loses my connectivity?)
+    * Answer: Seems to happen on other Sandstorm apps as well. Oh well, Android app seems to handle this.
 
 ## Ntfy API
 
