@@ -315,7 +315,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * Answer: Nevermind it works. :shrug:
 - [x] Proxy config - `NTFY_BEHIND_PROXY` - confirm that `X-Forwarded-For` header comes through. DOS is more relevant here than most Sandstorm apps since we'll be necessarily be getting the outside world (albeit only a handful of services) pinging us.
     * Answer: No `X-Forwarded-For` but it's (sort of) fine. See `NTFY_BEHIND_PROXY` below.
-- [ ] ntfy keepalive - How is it working with Sandstorm?
+- [x] ntfy keepalive - How is it working with Sandstorm?
     [x] Watch the logs with zero connections to see how long it takes grain to fall asleep. Then I'll have a reference point.
         Answer: 1.5-3 minutes
     [x] Tests with no integrations, and close all ntfy tabs:
