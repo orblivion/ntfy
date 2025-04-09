@@ -211,6 +211,11 @@ In the UI and package description (Make a simple list, but link to the README):
 Missing messages:
 * "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
 * "when you upgrade, restart your Android app or you will lose messages". This is probably more on Android than the server but whatever.
+    [ ] Change to "pull to refresh" instead of restart app, if that turns out to work.
+- [ ] If you ever reload your grain, you might end up missing some messages.
+    * The first subsequent message from EACH non-UP INTEGRATION will likely fail to send (Sandstorm bug). Even if it's over a minute after. A retry in the integration would fix this.
+    * If your phone isn't connected, including during grain reload, you will likely lose UP notifications (but non-UP seemingly will be queued up)
+        * Or maybe it's just that the UP messages aren't getting caught by the grain during reload? Maybe it's the first message after reload that gets an empty response, since it's before the phone connects (with the same API URL), and the Mastodon server isn't retrying.
 
 #### Caveats about privacy
 
@@ -317,15 +322,15 @@ To learn about the system and/or to validate before release. In particular, if w
         [x] Try letting it fall asleep and then start listening on json stream, presumably will wake it up.
         [x] Try listening on json, sse, ws, and raw streams and waiting for it to fall asleep (5+ minutes, based on sleep time above)
             * Answer: It stays awake
-    [ ] Tests with UP integrations? Like a more realistic scenario. Does it stay awake?
     [x] See if curl can print out the "keepalive" signals. See if that stops as the grain falls asleep.
         * Answer: It always has printed them out. And the grain never falls asleep so long as you're subscribed. json, sse, ws, and raw
         [x] Put instructions for printing that out into the keepalive "Validation" phase
-        [ ] How is Android handling all of that, is it constantly reconnecting? Probably wouldn't design it that way, but maybe?
-            [ ] How is battery life according to the OS?
-                [ ] Check on the Internet to see what expected battery usage is. Put into Validation phase for "keepalive"
-            [ ] How is notification arrival time, compared to let's say ntfy.sh? (not for validation, but just as an indicator of our server behaving differently)
-            [ ] I can look at server logs to see a bit about how Android is behaving. Is it looking for last x seconds of data?
+- [ ] How is Android handling ntfy for Sandstorm?
+    [ ] How is battery life according to the OS?
+        [ ] Check on the Internet to see what expected battery usage is. Put into Validation phase for "keepalive"
+    [ ] How is notification arrival time, compared to let's say ntfy.sh? (not for validation, but just as an indicator of our server behaving differently)
+    [x] I can look at server logs to see a bit about how Android is behaving. Is it looking for last x seconds of data?
+        Answer: It seems to be asking for it (?since=[some random id]), though for UP it doesn't seem to be getting those old messages on the phone.
 - [ ] Try a delayed notification
     [ ] Actually, doublecheck with a normal notification first, while I'm doing a long subscription that's lasted let's say 5 minutes (i.e. after would-be grain sleep time).
         * Reason for this: at some point it seemed like "last activity" wasn't updated *even then* which is weird.
@@ -371,7 +376,6 @@ To learn about the system and/or to validate before release. In particular, if w
     * Watch the database. See if it gets the contents of Matrix messages etc.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
     * Answer: Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
-- [ ] See what happens if I pub and sub from curl, and let the grain fall asleep in between.
 - [ ] See what happens if I use multiple API URLs.
     * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
         * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
@@ -383,7 +387,10 @@ To learn about the system and/or to validate before release. In particular, if w
     * See how fast that updates?
     * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
     * If so, that makes the jettison-restart strategy (in case of compromise) fast.
-- [ ] Do UnifiedPush messages get cached? Are there any other differences with UP?
+- [x] Do UnifiedPush messages get cached? Are there any other differences with UP?
+    * Answer: Whether or not they do, it seems that if you're offline at the relevant time, you will miss the message. This seems to be not true for non-UP messages.
+        * Though the phone's polling request for the UP topics do seem to include "since=" so who knows.
+        * But bottom line it doesn't seem to give missed notifications to your phone, or maybe those messages are failing to get published during grain restarts etc.
 - [x] BaseURL - Can I leave blank? The grain URL only works with Sandstorm. The ui subdomains rotate. The API URL shouldn't be known to the app.
     * On the backend, it's used for a bunch of stuff that's not enabled anyway, and/or blank is fine.
         * I will miss it for attachments, but that is looking for a full URL. I can do static hosting for that in a future release.
