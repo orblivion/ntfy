@@ -258,6 +258,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [x] Refer (low key) to the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 - [ ] Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
+    * Maybe tell them to stop using it if they don't hear from me.
 - [x] What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.
@@ -277,7 +278,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
 - [ ] Look over code
-    * Remaniing TODOs in the source
+    * Remaining TODOs in the source
     * UI text is usable
 - [ ] Test that known working apps still work
     * Tusky
