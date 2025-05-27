@@ -216,6 +216,7 @@ Missing messages:
     * The first subsequent message from EACH non-UP INTEGRATION will likely fail to send (Sandstorm bug). Even if it's over a minute after. A retry in the integration would fix this.
     * If your phone isn't connected, including during grain reload, you will likely lose UP notifications (but non-UP seemingly will be queued up)
         * Or maybe it's just that the UP messages aren't getting caught by the grain during reload? Maybe it's the first message after reload that gets an empty response, since it's before the phone connects (with the same API URL), and the Mastodon server isn't retrying.
+- [ ] After Internet outage, it doesn't seem to send accumulated UP messages (though I think it may get old non-UP messages, I forgot)
 
 #### Caveats about privacy
 
@@ -241,12 +242,17 @@ Don't use the "webkey", use the API URL we give you. (I'm not sure yet if this m
 
 How to use it for UnifiedPush, and that it's a separate thing from scripts that message it. Have a link to the "publish" doc. Maybe this is a section called "setup" or "configure" or "send messages" or "how to use" or "how to connect" or "how to send messages" or whatever to get people to look. And maybe have this be a section instead of "docs", but it should have the "docs" link here, which will go to official ntfy docs with the caveat that it doesn't strictly apply to the Sandstorm version.
 
+## Release Items
+
+- [ ] Confirm licenses for everything I use
+- [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Squash all my WIP commits.
+- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
+
 ## Assorted
 
 - [x] Figure out why go.sum changed when I ran `make` for linux?
     * Answer: Not exactly sure why but only two hashes got added. I found them on reputable git repos and anyway they're from orgs that have other hashes in the same file. Lots of hashes got removed but that's fine.
-- [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-- [ ] Squash all my WIP commits.
 - [x] Block all access for shared grains (stopping web root. this is UI for discouragement, not security)
 - [x] Make sure API URLs are marked as having lesser permission (for when we need it later)
 - [x] Check out `sandstorm-files.list`. A few things in there maybe don't belong.
@@ -254,7 +260,6 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
         * Answer: Use make a new rootfs and point /etc/localtime to UTC.
     * But also - is the Python used? Is the node used? Why aren't they in there?
         * Answer: No, they're only for the build step (and Python only for docs, which I think we don't even do anymore)
-- [ ] Confirm licenses for everything I use
 - [x] Refer (low key) to the limitations and warnings in description.md - see "Caveats about missing features" "Remove Features" etc
 - [ ] Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
@@ -266,7 +271,6 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [x] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
     * Answer: Nah should have nothing to do with upgrades. Also it is related to battery life.
 - [x] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. Going with 4x. It could be 30 topics connected, but I doubt all 30 would be bursting at once.
-- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
 - [ ] Maybe use `forSharing` so that incoming API requests don't have my userid.
     * Though, confirm that it actually sets my ID, given that I'm setting the non-admin roleId.
     * Also, does it even matter that it's my user ID so long as the permissions are right?
