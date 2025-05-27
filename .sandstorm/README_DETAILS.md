@@ -388,10 +388,12 @@ To learn about the system and/or to validate before release. In particular, if w
     * If I use it for scripts, will it be okay?
     * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
     * If it turns out that something goes wrong, we should put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
-- [ ] Try moving to a new grain?
-    * See how fast that updates?
-    * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
-    * If so, that makes the jettison-restart strategy (in case of compromise) fast.
+- [x] Try moving to a new grain?
+    [ ] Answer these questions
+    [ ] Update intsructions accordingly, maybe? Do I want instructions for this?
+        * See how fast that updates?
+        * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
+        * If so, that makes the jettison-restart strategy (in case of compromise) fast.
 - [x] Do UnifiedPush messages get cached? Are there any other differences with UP?
     * Answer: Whether or not they do, it seems that if you're offline at the relevant time, you will miss the message. This seems to be not true for non-UP messages.
         * Though the phone's polling request for the UP topics do seem to include "since=" so who knows.
