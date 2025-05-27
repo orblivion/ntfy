@@ -380,7 +380,7 @@ export const AppSetup = () => {
           </iframe>
         </p>
         <p>
-          You will need to use this API URL within <b>5 minutes</b> or it will expire. For services, you may need to send a test notification. For your phone, connecting it should be enough.
+          You will need to use this API URL within <b>5 minutes</b> or it will expire. For services, you may need to send a test notification. For your phone, subscribing to one topic should be enough.
         </p>
         <p>
           Refresh the page to get a new API URL.
