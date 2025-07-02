@@ -11,7 +11,6 @@ export function requestSandstormIframeURL() {
     // Set the user to the anonymous user because this is being sent out to app
     // servers (Mastodon, etc). But it also makes the token usable in a share
     // link. So, we will disable all sharing.
-    forSharing: true,   // anonymous user (supposedly; it seems to be anonymous regardless?)
     roleAssignment: {roleId: 0}, // api role
   }}, "*");
 }

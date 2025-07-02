@@ -271,11 +271,10 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [x] See if I can improve reliability of upgrades with `NTFY_KEEPALIVE_INTERVAL`
     * Answer: Nah should have nothing to do with upgrades. Also it is related to battery life.
 - [x] See about increasing the per-visitor limits with `NTFY_VISITOR_*` to account for all the visitors that one user could use. Going with 4x. It could be 30 topics connected, but I doubt all 30 would be bursting at once.
-- [ ] Maybe use `forSharing` so that incoming API requests don't have my userid.
-    * Though, confirm that it actually sets my ID, given that I'm setting the non-admin roleId.
-    * Also, does it even matter that it's my user ID so long as the permissions are right?
-        * And I have ways of blocking those keys in the future and forcing the user to make new ones.
-    * But then, change instructions for revoking API URLs to expect them in the sharing menu instead of web key menu.
+- [x] Don't use of `forSharing`
+    * The main reason for this: I don't want the API keys to end up in the sharing menu instead of web key menu.
+    * I no longer want to take time to figure out whether it uses User ID. I just put a warning in a code comment to rely only on permissions.
+        * And also with permissions, I have ways of blocking keys in the future in case of bug, and forcing the user to make new ones.
 
 # Validate
 
