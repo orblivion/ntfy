@@ -212,11 +212,11 @@ Missing messages:
 * "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
 * "when you upgrade, restart your Android app or you will lose messages". This is probably more on Android than the server but whatever.
     [ ] Change to "pull to refresh" instead of restart app, if that turns out to work.
-- [ ] If you ever reload your grain, you might end up missing some messages.
+- [x] If you ever reload your grain, you might end up missing some messages.
     * The first subsequent message from EACH non-UP INTEGRATION will likely fail to send (Sandstorm bug). Even if it's over a minute after. A retry in the integration would fix this.
     * If your phone isn't connected, including during grain reload, you will likely lose UP notifications (but non-UP seemingly will be queued up)
         * Or maybe it's just that the UP messages aren't getting caught by the grain during reload? Maybe it's the first message after reload that gets an empty response, since it's before the phone connects (with the same API URL), and the Mastodon server isn't retrying.
-- [ ] After Internet outage, it doesn't seem to send accumulated UP messages (though I think it may get old non-UP messages, I forgot)
+- [x] After Internet outage, it doesn't seem to send accumulated UP messages (though I think it may get old non-UP messages, I forgot)
 
 #### Caveats about privacy
 
@@ -264,6 +264,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 - [ ] Think about upgrades - this is more vulnerable than most Sandstorm apps.
     * I can't make them upgrade. I have to be on top of building upgrades though! Make sure it's easy for me to build.
     * Maybe tell them to stop using it if they don't hear from me.
+    - [ ] Upgrade to latest tag (v2.12.0 is now out) https://github.com/binwiederhier/ntfy/compare/v2.11.0..v2.12.0
 - [x] What about "deleted" data in the browser UI? Does that use a browser cache that auto expires? or does ntfy handle the deletion?
     * If ntfy handles it, we're in trouble. Need to inform user I guess. Or, just axe the whole "test notifications" thing.
     * Maybe I could just turn off storing it in a cookie or local db. Just leave it in a "global variable"; something that doesn't survive a page reload.

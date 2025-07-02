@@ -330,7 +330,9 @@ export const MissingFeatures = () => {
               Reliability
             </Typography>
             <ul>
-              <li>Upgrading the Sandstorm app seems to interrupt notifications with the ntfy Android app. Restart the Android app to fix this. (This may be an issue with the Android app rather than the server)</li>
+              <li>If you <b>Upgrade this Sandstorm app</b> your Android notifications may be interrupted. Restart the Android app to fix this. <i>(This might be a bug in Android app)</i></li>
+              <li>If you <b>reload this grain</b>, you will probably miss the next message from <i>each</i> non-UnifiedPush integration. <i>(This is a Sandstorm bug)</i></li>
+              <li>If you <b>lose connectivity</b> on Android, you may expect to miss some messages, particularly UnifiedPush messages.</li>
               <li>If an integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
               <li>We have no control over how the integrations connect with this server. If one of them starts using headers as described above, it may affect functionality.</li>
             </ul>
