@@ -45,6 +45,7 @@ export const DocsHeadsup = ({open, setOpen}) => (
       <p>
         Note that you are currently using the <b>Sandstorm version of ntfy</b>, which has some changes which may not be reflected in the standard ntfy documentation.
       </p>
+      <Button onClick={() => setOpen(false)}>Cancel</Button>
       <Button href="https://docs.ntfy.sh" target="_blank">See ntfy documentation</Button>
     </Box>
   </Modal>
