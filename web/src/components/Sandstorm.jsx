@@ -391,13 +391,21 @@ export const AppSetup = () => {
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>More Info</AlertTitle>
           <p>
-            When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications.
+              When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications.
           </p>
           <p>
-            It is unknown how smoothly things will work out with two or more phones connected to the same UnifiedPush integrations.
+              It is not recommended to:
           </p>
+          <ul>
+            <li>
+              Use two or more API URLs from this grain with the same phone at the same time
+            </li>
+            <li>
+              Connect two or more phones with the same UnifiedPush integrations to this grain
+            </li>
+          </ul>
           <p>
-            Make sure to see the Security and Privacy section of the <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
+            See the Security and Privacy section of the <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Welcome Screen</Link>.
           </p>
         </Alert>
       </CardContent>
