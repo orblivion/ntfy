@@ -108,7 +108,7 @@ const SupportedApps = ({setScriptsOpen}) => {
           <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
         </ul>
         <Alert severity="warning">
-          <AlertTitle>Incomplete Support</AlertTitle>
+          <AlertTitle>Limited Support</AlertTitle>
           <p>
             Due to some techincal hurdles, some features or integrations <b>may not work as expected</b> in the Sandstorm version of ntfy. Notably, <b>"Do Not Cache"</b> directives may not work in some cases.
           </p>
@@ -156,7 +156,7 @@ const PrivacyAndSecurityMore = () => (
       Unfortunately, UnifiedPush integrations need to share the same API URL that you use on your phone (which complicates revoking). Beware that certain apps such as Tusky configure themselves and pass on your API URL <b>without asking you</b>.
     </p>
     <p>
-      Also note that by default (before you set up your API URL), your ntfy app connects to a <b>public</b> ntfy server.
+      Also note that by default (before you set up your API URL), your ntfy Android app connects to a <b>public</b> ntfy server.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
       Upgrading this app
@@ -180,7 +180,7 @@ const PrivacyAndSecurity = () => {
       </Typography>
       <PrivacyAndSecurityBasic/>
       <Button>
-        <Link onClick={() => navigate(routes.privacySecurityFull)} style={{cursor: "pointer"}}>Additional Concerns</Link>
+        <Link onClick={() => navigate(routes.privacySecurityFull)} style={{cursor: "pointer"}}>Additional Privacy Concerns</Link>
       </Button>
       </CardContent>
     </Card>
@@ -333,7 +333,7 @@ export const MissingFeatures = () => {
               <li>If you <b>Upgrade this Sandstorm app</b> your Android notifications may be interrupted. Restart the Android app to fix this. <i>(This might be a bug in Android app)</i></li>
               <li>If you <b>reload this grain</b>, you will probably miss the next message from <i>each</i> non-UnifiedPush integration. <i>(This is a Sandstorm bug)</i></li>
               <li>If you <b>lose connectivity</b> on Android, you may expect to miss some messages, particularly UnifiedPush messages.</li>
-              <li>If an integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
+              <li>If one integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
               <li>We have no control over how the integrations connect with this server. If one of them starts using headers as described above, it may affect functionality.</li>
             </ul>
             <Button>
