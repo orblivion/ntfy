@@ -385,13 +385,17 @@ To learn about the system and/or to validate before release. In particular, if w
     * Watch the database. See if it gets the contents of Matrix messages etc.
         * Try subscribing to the up* (unifiedpush) topics as if they're normal topics, while I'm at it. What shows up?
     * Answer: Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
-- [ ] See what happens if I use multiple API URLs.
-    * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
-        * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
-        * What about two phones with the same API key?
+- [x] See what happens if I use multiple API URLs.
     * If I use it for scripts, will it be okay?
+        * Of course, why was I even concerned about this?
     * If I change the "default server" on Android to a new API URL, will all the topics (UnifiedPush and otherwise) continue to work okay? (This is sort of an Android app issue)
+        * UnifiedPush keeps working. I can even delete a UnifiedPush subscription and have the app register it again on the new API URL, and the old and new ones work side by side.
+        * non-UnifiedPush keeps working. I can even create a new subscription on the new API URL, and the new and old subs will both get the same incoming messages.
+        * AFAIK Sandstorm adds nothing special to the equation. If it's awkward in some configuration, I assume that's on the Android app.
+    * If I use it on two different phones, will I get duplicate Mastodon (etc) notifications? Or will it be a different topic per phone?
+        * (moved to README_FUTURE. for now we just don't recommend this)
     * If it turns out that something goes wrong, we should put in some language that we should avoid using different API URLs (which SUCKS UI-wise since it never shows the same one twice)
+        * No need for now.
 - [x] Try moving to a new grain?
     [x] Answer these questions
     [ ] Update instructions accordingly, maybe? Do I want instructions for this?

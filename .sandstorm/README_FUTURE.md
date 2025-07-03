@@ -152,3 +152,9 @@ Could just as well be an upstream feature.
 ## Hosting Icons
 
 There's an Icon field. It takes a URL. It would be nice if the image at the end of it were hostable as part of the app.
+
+## Multiple Phones
+
+* If I use it on two different phones with the same (ex.) Mastodon accounts attached, will I get duplicate notifications? Or will it be a different topic per phone?
+    * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
+    * What about two phones with the same API key?
