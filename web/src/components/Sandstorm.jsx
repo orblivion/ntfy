@@ -391,7 +391,7 @@ export const AppSetup = () => {
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>More Info</AlertTitle>
           <p>
-              When upgrading this Sandstorm app, you may need to restart your ntfy phone application to avoid missing notifications.
+              When upgrading this Sandstorm app, you may need to pull-to-refresh (or maybe even restart) your ntfy Android application to avoid missing notifications.
           </p>
           <p>
               It is not recommended to:

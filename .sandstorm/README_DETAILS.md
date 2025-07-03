@@ -211,7 +211,6 @@ In the UI and package description (Make a simple list, but link to the README):
 Missing messages:
 * "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
 * "when you upgrade, you may need to restart your Android app or pull to refresh, or you will lose messages". This is probably more on Android than the server but whatever.
-    [ ] Change to "pull to refresh" instead of restart app, if that turns out to work.
 - [x] If you ever reload your grain, you might end up missing some messages.
     * The first subsequent message from EACH non-UP INTEGRATION will likely fail to send (Sandstorm bug). Even if it's over a minute after. A retry in the integration would fix this.
     * If your phone isn't connected, including during grain reload, you will likely lose UP notifications (but non-UP seemingly will be queued up)
@@ -346,9 +345,12 @@ To learn about the system and/or to validate before release. In particular, if w
     * Make sure the grain still shows up as "no activity".
         * It means that "activity" just means incoming connections, even though ntfy is provably still running.
         * Confirmed. The message showed up after 5 minutes. The activity timer did not update.
-- [ ] Try upgrading the app, confirm that messages aren't going through, but then "refresh" on the Android app and see if that fixes it (instead of having to hard-restart the app!).
+- [x] Try upgrading the app, confirm that messages aren't going through, but then "refresh" on the Android app and see if that fixes it (instead of having to hard-restart the app!).
     * I wonder if that's why upgrading doesn't stop the phone's connection! It still thinks it's still connected to the old app.
     * I should also try keeping an API connection open during the whole thing. Will I keep getting keepalives from the old app that should have quit?
+    * Answer: The messages don't even always stop going through. I'm just going to leave it at "may need to pull-to-refresh (or restart the app)"
+        * Even if I got it to stop and then fix itself with pull-to-refresh, what's to say that this is the only failure mode? Maybe I sometimes really do have to fully restart the app.
+        * This is so slow to test (needs a whole release every time!) that it's not worth figuring out.
 - [x] Why is the API response always "empty" the first time the grain starts? (does that relate to why restarting the grain loses my connectivity?)
     * Answer: Seems to happen on other Sandstorm apps as well. Oh well, Android app seems to handle this.
 
