@@ -336,14 +336,16 @@ To learn about the system and/or to validate before release. In particular, if w
     [ ] How is notification arrival time, compared to let's say ntfy.sh? (not for validation, but just as an indicator of our server behaving differently)
     [x] I can look at server logs to see a bit about how Android is behaving. Is it looking for last x seconds of data?
         Answer: It seems to be asking for it (?since=[some random id]), though for UP it doesn't seem to be getting those old messages on the phone.
-- [ ] Try a delayed notification
-    [ ] Actually, doublecheck with a normal notification first, while I'm doing a long subscription that's lasted let's say 5 minutes (i.e. after would-be grain sleep time).
+- [x] Try a delayed notification
+    [x] Actually, doublecheck with a normal notification first, while I'm doing a long subscription that's lasted let's say 5 minutes (i.e. after would-be grain sleep time).
         * Reason for this: at some point it seemed like "last activity" wasn't updated *even then* which is weird.
+        * This time "last activity" *did* update.
     * Start a json or websocket stream (two different tests I guess)
     * Timed for longer than the grain would stay awake with no activity.
     * Make sure the message shows up
     * Make sure the grain still shows up as "no activity".
         * It means that "activity" just means incoming connections, even though ntfy is provably still running.
+        * Confirmed. The message showed up after 5 minutes. The activity timer did not update.
 - [ ] Try upgrading the app, confirm that messages aren't going through, but then "refresh" on the Android app and see if that fixes it (instead of having to hard-restart the app!).
     * I wonder if that's why upgrading doesn't stop the phone's connection! It still thinks it's still connected to the old app.
     * I should also try keeping an API connection open during the whole thing. Will I keep getting keepalives from the old app that should have quit?
