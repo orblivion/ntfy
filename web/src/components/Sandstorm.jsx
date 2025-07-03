@@ -330,7 +330,7 @@ export const MissingFeatures = () => {
               Reliability
             </Typography>
             <ul>
-              <li>If you <b>Upgrade this Sandstorm app</b> your Android notifications may be interrupted. Restart the Android app to fix this. <i>(This might be a bug in Android app)</i></li>
+              <li>If you <b>upgrade this Sandstorm app</b>, Android notifications may become blocked. To fix this, try pull-to-refresh, or otherwise restart the Android app. <i>(This might be a bug in the Android app)</i></li>
               <li>If you <b>reload this grain</b>, you will probably miss the next message from <i>each</i> non-UnifiedPush integration. <i>(This is a Sandstorm bug)</i></li>
               <li>If you <b>lose connectivity</b> on Android, you may expect to miss some messages, particularly UnifiedPush messages.</li>
               <li>If one integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
@@ -370,6 +370,7 @@ export const AppSetup = () => {
           <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
         </p>
         <p>
+          <i>(Reload the page to get a new url)</i>
           <iframe id="offer-iframe-full" scrolling="no" style={{
             "background-color": "#ffffff",
             height: "15px",
@@ -385,13 +386,10 @@ export const AppSetup = () => {
         <p>
           You will need to use this API URL within <b>5 minutes</b> or it will expire. For services, you may need to send a test notification. For your phone, subscribing to one topic should be enough.
         </p>
-        <p>
-          Refresh the page to get a new API URL.
-        </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>More Info</AlertTitle>
           <p>
-              When upgrading this Sandstorm app, you may need to pull-to-refresh (or maybe even restart) your ntfy Android application to avoid missing notifications.
+              If you upgrade this Sandstorm app, Android notifications may become blocked. To fix this, try pull-to-refresh, or otherwise restart your Android app.
           </p>
           <p>
               It is not recommended to:
