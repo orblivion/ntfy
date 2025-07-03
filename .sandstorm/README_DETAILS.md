@@ -210,7 +210,7 @@ In the UI and package description (Make a simple list, but link to the README):
 
 Missing messages:
 * "Convenience, not mission critical" - Particularly the Sandstorm version. It's got a lot of caveats for techincal reasons. Things may even stop working (if they start using the headers API, etc).
-* "when you upgrade, restart your Android app or you will lose messages". This is probably more on Android than the server but whatever.
+* "when you upgrade, you may need to restart your Android app or pull to refresh, or you will lose messages". This is probably more on Android than the server but whatever.
     [ ] Change to "pull to refresh" instead of restart app, if that turns out to work.
 - [x] If you ever reload your grain, you might end up missing some messages.
     * The first subsequent message from EACH non-UP INTEGRATION will likely fail to send (Sandstorm bug). Even if it's over a minute after. A retry in the integration would fix this.
@@ -395,8 +395,8 @@ To learn about the system and/or to validate before release. In particular, if w
     [ ] Update instructions accordingly, maybe? Do I want instructions for this?
         * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
             * You have to recreate the non-UnifiedPush ones manually.
-            * The UnifiedPush ones will eventually be re-created. You may have to nudge your apps to make them connect.
-            * All the old topics, UnifiedPush and otherwise, will stay around until you manually delete them.
+            * The UnifiedPush ones, you may have have to delete, and go through the setup process again with the apps.
+            * Look for all of the expected topics to be present, and connected to your new grain.
         * The jettison-restart strategy (in case of compromise) isn't awful but it takes a minute.
 - [x] Do UnifiedPush messages get cached? Are there any other differences with UP?
     * Answer: Whether or not they do, it seems that if you're offline at the relevant time, you will miss the message. This seems to be not true for non-UP messages.
