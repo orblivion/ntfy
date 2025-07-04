@@ -11,7 +11,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { IntegrationInstructions, WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
+import { AccessTime, Api, IntegrationInstructions, WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
@@ -358,15 +358,16 @@ export const AppSetup = () => {
           App Setup
         </Typography>
         <p>
+          <Api/>&nbsp;
           Use this <b>API URL</b> to connect this grain to:
         </p>
         <ul>
-          <li>Your phone (which will auto-configure UnifiedPush services)</li>
+          <li>Your phone</li>
           <li>Other services</li>
           <li>Custom scripts</li>
         </ul>
         <p>
-          <AppSettingsAlt/>
+          <AppSettingsAlt/>&nbsp;
           <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
         </p>
         <p>
@@ -384,7 +385,12 @@ export const AppSetup = () => {
           </iframe>
         </p>
         <p>
-          You will need to use this API URL within <b>5 minutes</b> or it will expire. For services, you may need to send a test notification. For your phone, subscribing to one topic should be enough.
+          <AccessTime/>&nbsp;
+          Use this API URL within <b>5 minutes</b> or it will expire.
+          <ul>
+            <li>For your phone: subscribe to a topic</li>
+            <li>For services: you may need to send a test notification</li>
+          </ul>
         </p>
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>More Info</AlertTitle>
