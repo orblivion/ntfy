@@ -254,13 +254,6 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * You'll probably have to create non-UP ones manually and delete the old ones
     * You may need to manually delete the UP items before apps will re-establish them with the new API URL
 
-## Release Items
-
-- [ ] Confirm licenses for everything I use
-- [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
-- [ ] Squash all my WIP commits.
-- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
-
 ## Assorted
 
 - [x] Figure out why go.sum changed when I ran `make` for linux?
@@ -289,7 +282,14 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
     * I no longer want to take time to figure out whether it uses User ID. I just put a warning in a code comment to rely only on permissions.
         * And also with permissions, I have ways of blocking keys in the future in case of bug, and forcing the user to make new ones.
 
-# Validate
+# Release Items
+
+- [ ] Confirm licenses for everything I use
+- [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Squash all my WIP commits.
+- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
+
+## Validate
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
