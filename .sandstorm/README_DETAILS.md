@@ -296,6 +296,7 @@ To learn about the system and/or to validate before release. In particular, if w
 - [ ] Look over code
     * Remaining TODOs in the source
     * UI text is usable
+    * External links all open in a new window
 - [ ] Test that known working apps still work
     * Tusky
     * (TODO - add to list - see research)
