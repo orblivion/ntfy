@@ -241,6 +241,14 @@ Don't use the "webkey", use the API URL we give you. (I'm not sure yet if this m
 
 How to use it for UnifiedPush, and that it's a separate thing from scripts that message it. Have a link to the "publish" doc. Maybe this is a section called "setup" or "configure" or "send messages" or "how to use" or "how to connect" or "how to send messages" or whatever to get people to look. And maybe have this be a section instead of "docs", but it should have the "docs" link here, which will go to official ntfy docs with the caveat that it doesn't strictly apply to the Sandstorm version.
 
+[ ] "Vague" (don't hand-hold, don't rely on Android UI not changing) instructions for switching servers or API URLs, in a popup.
+    * Warning: you may lose your old notifications.
+    * Back up your settings first if you wish
+    * Make sure you got rid of any topics connected to old/deleted API URLs or grains
+        * When you're done make sure you don't have any topics that say that it's not connected
+    * You'll probably have to create non-UP ones manually and delete the old ones
+    * You may need to manually delete the UP items before apps will re-establish them with the new API URL
+
 ## Release Items
 
 - [ ] Confirm licenses for everything I use
@@ -398,12 +406,18 @@ To learn about the system and/or to validate before release. In particular, if w
         * No need for now.
 - [x] Try moving to a new grain?
     [x] Answer these questions
-    [ ] Update instructions accordingly, maybe? Do I want instructions for this?
-        * Do I keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
+        * When I change servers on the Android app, does it keep all my existing topics? Or at least the same notification configs for UnifiedPush even if it changes topics?
             * You have to recreate the non-UnifiedPush ones manually.
             * The UnifiedPush ones, you may have have to delete, and go through the setup process again with the apps.
             * Look for all of the expected topics to be present, and connected to your new grain.
         * The jettison-restart strategy (in case of compromise) isn't awful but it takes a minute.
+    [x] Do I want instructions for this?
+        * I don't want very specific instructions because:
+            * They ought to be able to figure it out if they can use it at all (to improve this, the ntfy app should just be made easier).
+            * There's nothing Sandstorm-specific here, other than perhaps that changing servers might happen more often.
+            * I don't know for sure whether the Android app's UI won't change over time anyway.
+        * But I do want to provide "missing instructions" so let's give "vague" instructions (see above).
+
 - [x] Do UnifiedPush messages get cached? Are there any other differences with UP?
     * Answer: Whether or not they do, it seems that if you're offline at the relevant time, you will miss the message. This seems to be not true for non-UP messages.
         * Though the phone's polling request for the UP topics do seem to include "since=" so who knows.
