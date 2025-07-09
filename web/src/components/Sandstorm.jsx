@@ -11,7 +11,16 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { AccessTime, Api, IntegrationInstructions, WavingHand, AppSettingsAlt, MobileFriendly, InstallMobile } from "@mui/icons-material";
+import {
+    AccessTime,
+    Api,
+    IntegrationInstructions,
+    WavingHand,
+    AppSettingsAlt,
+    MobileFriendly,
+    InstallMobile,
+    RestartAlt,
+} from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
@@ -346,12 +355,50 @@ export const MissingFeatures = () => {
   )
 };
 
+const AppSetupAlreadyConfigured = ({open, setOpen}) => {
+  return (
+    <Modal
+        open={open}
+        onBackdropClick={() => setOpen(false)}
+        aria-label="Tips for switching to a new API URL or grain"
+    >
+      <Box
+        loading="lazy"
+        sx={{
+          maxWidth: 1,
+          maxHeight: 1,
+          position: "absolute",
+          bgcolor: "background.paper",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          padding: 4,
+        }}
+      >
+        <Typography variant="h5" sx={{ marginBottom: 2 }}>
+          Tips for switching to a new API URL or grain
+        </Typography>
+        If your Android ntfy app is already connected to another API URL (or other ntfy server) and you're switching here, here are some tips and warnings:
+        <ul>
+          <li>You can back up your current settings before proceeding.</li>
+          <li>You will likely <b>lose your old notifications</b> from topics you delete.</li>
+          <li>For UnifiedPush topics, you may need to manually delete the old topics before apps will re-establish them with the new API URL.</li>
+          <li>For non-UnifiedPush topics, you will probably need to manually delete the old topics and subscribe to the respective ones on the new API URL.</li>
+          <li>When you are done reconfiguring, make sure you do not have any remaining topics that are unable to connect (i.e. they may be trying to connect to a deleted API URL or grain).</li>
+        </ul>
+      </Box>
+    </Modal>
+  )
+}
+
 export const AppSetup = () => {
   const navigate = useNavigate();
+  const [alreadyConfiguredOpen, setAlreadyConfiguredOpen] = useState(false);
   useEffect(() => {
     requestSandstormIframeURL()
   })
-  return (
+  return (<>
+    <AppSetupAlreadyConfigured open={alreadyConfiguredOpen} setOpen={setAlreadyConfiguredOpen}/>
     <Card sx={{ p: 3 }} aria-label="App Setup">
       <CardContent>
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
@@ -362,10 +409,14 @@ export const AppSetup = () => {
           Use this <b>API URL</b> to connect this grain to:
         </p>
         <ul>
-          <li>Your phone</li>
-          <li>Other services</li>
+          <li>Your phone (and thus UnifiedPush services)</li>
+          <li>Non-UnifiedPush services</li>
           <li>Custom scripts</li>
         </ul>
+        <p>
+          <RestartAlt/>&nbsp;
+          Are you switching to this API URL from an <b>already configured</b> ntfy App? <Link onClick={() => setAlreadyConfiguredOpen(true)} href="#" >See some tips</Link> here.
+        </p>
         <p>
           <AppSettingsAlt/>&nbsp;
           <b>On Android and iOS:</b> <span style={{ display: "inline-block" }}><i>Settings&rarr;General&rarr;Default Server</i></span>
@@ -388,7 +439,7 @@ export const AppSetup = () => {
           <AccessTime/>&nbsp;
           Use this API URL within <b>5 minutes</b> or it will expire.
           <ul>
-            <li>For your phone: subscribe to a topic</li>
+            <li>For your phone: subscribe to a topic (including UnifiedPush)</li>
             <li>For services: you may need to send a test notification</li>
           </ul>
         </p>
@@ -414,5 +465,5 @@ export const AppSetup = () => {
         </Alert>
       </CardContent>
     </Card>
-  )
+  </>)
 }

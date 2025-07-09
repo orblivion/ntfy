@@ -246,10 +246,10 @@ Don't use the "webkey", use the API URL we give you. (I'm not sure yet if this m
 
 How to use it for UnifiedPush, and that it's a separate thing from scripts that message it. Have a link to the "publish" doc. Maybe this is a section called "setup" or "configure" or "send messages" or "how to use" or "how to connect" or "how to send messages" or whatever to get people to look. And maybe have this be a section instead of "docs", but it should have the "docs" link here, which will go to official ntfy docs with the caveat that it doesn't strictly apply to the Sandstorm version.
 
-[ ] "Vague" (don't hand-hold, don't rely on Android UI not changing) instructions for switching servers or API URLs, in a popup.
-    * Warning: you may lose your old notifications.
+[x] "Vague" (don't hand-hold, don't rely on Android UI not changing) instructions for switching servers or API URLs, in a popup.
     * Back up your settings first if you wish
     * Make sure you got rid of any topics connected to old/deleted API URLs or grains
+        * Warning: you may lose your old notifications of topics you delete
         * When you're done make sure you don't have any topics that say that it's not connected
     * You'll probably have to create non-UP ones manually and delete the old ones
     * You may need to manually delete the UP items before apps will re-establish them with the new API URL
