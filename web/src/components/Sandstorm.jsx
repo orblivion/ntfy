@@ -55,7 +55,7 @@ export const DocsHeadsup = ({open, setOpen}) => (
         Note that you are currently using the <b>Sandstorm version of ntfy</b>, which has some changes which may not be reflected in the standard ntfy documentation.
       </p>
       <Button onClick={() => setOpen(false)}>Cancel</Button>
-      <Button href="https://docs.ntfy.sh" target="_blank">See ntfy documentation</Button>
+      <Button href="https://docs.ntfy.sh" target="_blank" rel="noreferrer">See ntfy documentation</Button>
     </Box>
   </Modal>
 );
@@ -109,11 +109,11 @@ const SupportedApps = () => {
           Supported Apps and Integrations
         </Typography>
         <p>
-          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of non-UnifiedPush integrations that work with ntfy.
+          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank" rel="noreferrer">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of non-UnifiedPush integrations that work with ntfy.
         </p>
         <ul>
-          <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
-          <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank"><b>Other supported integrations</b></Link></li>
+          <li><Link href="https://unifiedpush.org/users/apps/" target="_blank" rel="noreferrer"><b>UnifiedPush-enabled applications</b></Link></li>
+          <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank" rel="noreferrer"><b>Other supported integrations</b></Link></li>
           <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
         </ul>
         <Alert severity="warning">
@@ -227,7 +227,7 @@ const ConnectingYourPhone = () => {
           Connecting Your Phone And Other Integrations
         </Typography>
         <CardContent> {/* I wanted another indent */}
-          <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank">iOS App</Link></p>
+          <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank" rel="noreferrer">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noreferrer">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank" rel="noreferrer">iOS App</Link></p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain.</Link></p>
           <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications. (Android only)</p>
           <p><IntegrationInstructions/> Set up your other integrations (with specific instructions) or custom scripts and <Link href="#" onClick={() => navigate(routes.settings)}>connect them to this grain.</Link></p>
@@ -261,17 +261,17 @@ const Scripts = ({open, setOpen}) => {
           Custom Scripts and Applications
         </Typography>
         <p>
-          Using ntfy in your own scripts and applications is as easy as <Link href="https://docs.ntfy.sh/publish/" target="_blank">sending a
-          POST request</Link>. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank">
+          Using ntfy in your own scripts and applications is as easy as <Link href="https://docs.ntfy.sh/publish/" target="_blank" rel="noreferrer">sending a
+          POST request</Link>. However, you must use the <Link href="https://docs.ntfy.sh/publish/#publish-as-json" target="_blank" rel="noreferrer">
           JSON request</Link> option
-          because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api" target="_blank">
+          because of <Link href="https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#headers-vs-json-api" target="_blank" rel="noreferrer">
           Sandstorm&apos;s restritions</Link>.
         </p>
         <p>
-          You can also <Link href="https://docs.ntfy.sh/subscribe/api/" target="_blank">subscribe to topics</Link> via the API.
+          You can also <Link href="https://docs.ntfy.sh/subscribe/api/" target="_blank" rel="noreferrer">subscribe to topics</Link> via the API.
         </p>
         <p>
-          See some examples of <Link href="https://docs.ntfy.sh/examples/" target="_blank">scripts that use ntfy</Link>.
+          See some examples of <Link href="https://docs.ntfy.sh/examples/" target="_blank" rel="noreferrer">scripts that use ntfy</Link>.
         </p>
       </Box>
     </Modal>
@@ -289,10 +289,10 @@ export const MissingFeatures = () => {
               Missing Features
             </Typography>
             <p>
-              If you're familiar with <b>ntfy</b>, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to <Link href={readmeMissingFeatures} target="_blank">technical hurdles</Link>.
+              If you're familiar with <b>ntfy</b>, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to <Link href={readmeMissingFeatures} target="_blank" rel="noreferrer">technical hurdles</Link>.
             </p>
             <p>
-              I'd <Link href={readme} target="_blank">love to hear from you</Link> if:
+              I'd <Link href={readme} target="_blank" rel="noreferrer">love to hear from you</Link> if:
             </p>
             <ul>
               <li>You find yourself missing one of these features <i>(I have some ideas to make it work)</i></li>
@@ -324,7 +324,7 @@ export const MissingFeatures = () => {
               <li>Message Attachments</li>
               <li>Upstream Servers</li>
               <li>Sending Email</li>
-              <li><Link href="https://unifiedpush.org/users/apps/" target="_blank">Matrix Gateway</Link> (for self-hosted Matrix home servers)</li>
+              <li><Link href="https://unifiedpush.org/users/apps/" target="_blank" rel="noreferrer">Matrix Gateway</Link> (for self-hosted Matrix home servers)</li>
               <li>Web Push</li>
               <li>Per-Visitor rate limiting (an overly active integration could block other integrations)</li>
             </ul>
