@@ -395,7 +395,8 @@ export const AppSetup = () => {
   const navigate = useNavigate();
   const [alreadyConfiguredOpen, setAlreadyConfiguredOpen] = useState(false);
   useEffect(() => {
-    requestSandstormIframeURL()
+    document.querySelector("#main").scrollTo(0,0);
+    requestSandstormIframeURL();
   })
   return (<>
     <AppSetupAlreadyConfigured open={alreadyConfiguredOpen} setOpen={setAlreadyConfiguredOpen}/>
