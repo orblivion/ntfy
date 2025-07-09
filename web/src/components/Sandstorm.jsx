@@ -52,15 +52,13 @@ export const DocsHeadsup = ({open, setOpen}) => (
 );
 
 export const Welcome = () => {
-  const [scriptsOpen, setScriptsOpen] = useState(false);
   return (
     <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
       <Stack spacing={3}>
         <Intro/>
-        <SupportedApps setScriptsOpen={setScriptsOpen}/>
+        <SupportedApps/>
         <PrivacyAndSecurity/>
         <ConnectingYourPhone/>
-        <Scripts open={scriptsOpen} setOpen={setScriptsOpen}/>
       </Stack>
     </Container>
   )
@@ -91,16 +89,18 @@ const Intro = () => {
   )
 };
 
-const SupportedApps = ({setScriptsOpen}) => {
+const SupportedApps = () => {
   const navigate = useNavigate();
-  return (
+  const [scriptsOpen, setScriptsOpen] = useState(false);
+  return (<>
+    <Scripts open={scriptsOpen} setOpen={setScriptsOpen}/>
     <Card sx={{ p: 3 }} aria-label="Supported Apps and Integrations">
       <CardContent>
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
           Supported Apps and Integrations
         </Typography>
         <p>
-          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of other integrations that work with ntfy.
+          <b>ntfy</b> implements <Link href="https://unifiedpush.org/" target="_blank">UnifiedPush</Link>, which gives you push notifications for many of your open source Android apps (Tusky for Mastodon, Element for Matrix, etc) without requiring Google services. Additionally, there are a number of non-UnifiedPush integrations that work with ntfy.
         </p>
         <ul>
           <li><Link href="https://unifiedpush.org/users/apps/" target="_blank"><b>UnifiedPush-enabled applications</b></Link></li>
@@ -121,7 +121,7 @@ const SupportedApps = ({setScriptsOpen}) => {
         </Alert>
       </CardContent>
     </Card>
-  )
+  </>)
 };
 
 const PrivacyAndSecurityBasic = () => (
