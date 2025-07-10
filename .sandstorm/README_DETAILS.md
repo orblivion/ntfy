@@ -239,11 +239,6 @@ Don't use the "webkey", use the API URL we give you. (I'm not sure yet if this m
 
 (IMHO this would be good to put into the normal ntfy UI. Maybe I could upstream it.)
 
-[ ] Help setting up UP? Maybe skip? Maybe I already answer this enough?
-    * Open each app, it may auto-establish (creating a new upxxxx topic) or it may bring up a notification.
-    * Tusky is finnicky though. You should see one tusky entry on ntfy per account. Try logging in and out. (this should be in instructions for connecting in the first place)
-    * This can be a modal in the API URL screen.
-
 How to use it for UnifiedPush, and that it's a separate thing from scripts that message it. Have a link to the "publish" doc. Maybe this is a section called "setup" or "configure" or "send messages" or "how to use" or "how to connect" or "how to send messages" or whatever to get people to look. And maybe have this be a section instead of "docs", but it should have the "docs" link here, which will go to official ntfy docs with the caveat that it doesn't strictly apply to the Sandstorm version.
 
 [x] "Vague" (don't hand-hold, don't rely on Android UI not changing) instructions for switching servers or API URLs, in a popup.

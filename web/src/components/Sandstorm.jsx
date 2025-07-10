@@ -229,7 +229,11 @@ const ConnectingYourPhone = () => {
         <CardContent> {/* I wanted another indent */}
           <p><InstallMobile/> Install the ntfy Android app (available on <Link href="https://f-droid.org/en/packages/io.heckel.ntfy/" target="_blank" rel="noreferrer">F-Droid</Link> and <Link href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noreferrer">Play Store</Link>) or <Link href="https://apps.apple.com/us/app/ntfy/id1625396347" target="_blank" rel="noreferrer">iOS App</Link></p>
           <p><Link href="#" onClick={() => navigate(routes.settings)}><AppSettingsAlt/> Connect your ntfy Android app to this grain.</Link></p>
-          <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications. (Android only)</p>
+          <p><MobileFriendly/> Set your UnifiedPush-enabled apps to use ntfy for notifications.</p>
+          <ul>
+            <li>Android only</li>
+            <li>Set up happens in each app, sometimes silently.</li>
+          </ul>
           <p><IntegrationInstructions/> Set up your other integrations (with specific instructions) or custom scripts and <Link href="#" onClick={() => navigate(routes.settings)}>connect them to this grain.</Link></p>
         </CardContent>
       </CardContent>

@@ -52,6 +52,10 @@ Put subscriptions back in the web UI if people want it for testing. I just don't
 * Icons instead of bulletpoints for Supported Apps and Integrations.
 * Think of ways to remove more things.
 
+### Setup section
+
+Really, the last segment in Welcome, along with the App setup with the API URL, should all go into a new "Setup" tab. And it should be interactive so we can show less text at once.
+
 ## Molly
 
 Check out Molly support via Mollysocket? Can I bundle this with ntfy? Would be super dope. But it has challenges. Supposedly it doesn't need your decryption key but how does it become a connected device? You'd need to trust it. I don't think Signal users should just trust my code, though again they can see if I'm exfiltrating.
@@ -158,3 +162,11 @@ There's an Icon field. It takes a URL. It would be nice if the image at the end 
 * If I use it on two different phones with the same (ex.) Mastodon accounts attached, will I get duplicate notifications? Or will it be a different topic per phone?
     * Because the service sees two different ntfy servers to update. Even though it's actually the same server.
     * What about two phones with the same API key?
+
+## More Instructions
+
+### Help setting up UnifiedPush
+
+* Open each app, it may auto-establish (creating a new upxxxx topic) or it may bring up a notification.
+* Tusky is finnicky though. You should see one tusky entry on ntfy per account. Try logging in and out. (this should be in instructions for connecting in the first place)
+* This can be a modal in the API URL screen.
