@@ -280,7 +280,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 # Release Items
 
 - [ ] Confirm licenses for everything I use
-- [ ] Make a version for my release - v2.11.0~s1 - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Make a version for my release - v2.13.0-sandstorm-9 (for `appVersion` `9` on top of `v2.13.0` proper) - As a git tag along my Sandstorm fork, and in pkgdef.
 - [ ] Squash all my WIP commits.
 - [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
 
