@@ -327,7 +327,7 @@ export const MissingFeatures = () => {
               <li>Protected Topics</li>
               <li>Message Attachments</li>
               <li>Upstream Servers</li>
-              <li>Sending Email</li>
+              <li>Email publishing and notifications</li>
               <li><Link href="https://unifiedpush.org/users/apps/" target="_blank" rel="noreferrer">Matrix Gateway</Link> (for self-hosted Matrix home servers)</li>
               <li>Web Push</li>
               <li>Per-Visitor rate limiting (an overly active integration could block other integrations)</li>
