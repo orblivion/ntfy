@@ -168,10 +168,10 @@ const PrivacyAndSecurityMore = () => (
       Also note that by default (before you set up your API URL), your ntfy Android app connects to a <b>public</b> ntfy server.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-      Upgrading this app
+      This app and this grain
     </Typography>
     <p>
-      Since this has 3rd parties accessing it, try to keep this app up to date. I'll do my best to keep this app up to date with ntfy security updates. If in doubt, you can just delete your grain and start over (and create new topics), though this may complicate configuration.
+      Since this app has 3rd parties accessing it, try to keep this app up to date. I'll do my best to keep this app up to date with any ntfy security updates. If you're worried that an outsider got in, you can delete your grain and start over (and create new topics).
     </p>
     <p>
       This app is designed to cache notifications for 12 hours.
