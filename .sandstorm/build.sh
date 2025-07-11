@@ -8,8 +8,6 @@ cd $here/..
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
 
-which goreleaser || go install github.com/goreleaser/goreleaser@latest
-goreleaser -v   # verifies that it worked
-
+make cli-deps-all # goreleaser comes from here, circa v2.13.0
 make web
 make cli-linux-amd64
