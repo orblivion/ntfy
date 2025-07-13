@@ -279,12 +279,14 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 # Release Items
 
-- [ ] Confirm licenses for everything I use
-- [ ] Make a version for my release - v2.13.0-sandstorm-9 (for `appVersion` `9` on top of `v2.13.0` proper) - As a git tag along my Sandstorm fork, and in pkgdef.
-- [ ] Squash all my WIP commits.
-- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
+## Regular
 
-## Validate
+- [ ] Confirm licenses for everything I use
+- [ ] Make a version for my release - For example v2.13.0-sandstorm-9 (for `appVersion` `9` on top of `v2.13.0` proper) - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Squash any WIP commits.
+- [ ] Check for verified commits in ntfy (as of this writing, not available) or maybe other signed code to compare to (granted, I don't sign my own code either)
+
+### Validate
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
@@ -322,6 +324,10 @@ To learn about the system and/or to validate before release. In particular, if w
         [ ] raw
         [ ] ws
 - [ ] How is battery life compared to expected values? (["0%-1% in 17h of use" according to the developer](https://docs.ntfy.sh/faq/#how-much-battery-does-the-android-app-use))
+
+## Initial Release Only
+
+- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
 
 # Research
 
