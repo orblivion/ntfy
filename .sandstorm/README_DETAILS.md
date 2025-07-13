@@ -302,6 +302,7 @@ To learn about the system and/or to validate before release. In particular, if w
 - [ ] Test that permissions work
     * curl root fails with 401, but web works
     * curl /kay/json works with normal API URL, weakened API URL (invent a new empty api rol) fails
+    * TODO - just make this into a unit test (while you're at it, add an upstream test for Map and Filter if they never got around to it)
 - [ ] Various connections work
     * Websocket
     * JSON stream over HTTP
