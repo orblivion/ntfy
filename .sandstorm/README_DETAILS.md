@@ -283,6 +283,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 - [ ] Confirm licenses for everything I use
 - [ ] Make a version for my release - For example v2.13.0-sandstorm-9 (for `appVersion` `9` on top of `v2.13.0` proper) - As a git tag along my Sandstorm fork, and in pkgdef.
+- [ ] Add to Changelog. At very least let us know what versions were released to the non-experimental market.
 - [ ] Squash any WIP commits.
 - [ ] Check for verified commits in ntfy (as of this writing, not available) or maybe other signed code to compare to (granted, I don't sign my own code either)
 
@@ -296,6 +297,7 @@ To learn about the system and/or to validate before release. In particular, if w
     * External links all open in a new window
 - [ ] Test that known working apps still work
     * Tusky
+    * Element (It doesn't even work correctly when connected to ntfy.sh! However we can check if we see messages if we do a full export/backup of the Android app.)
     * UP Example
     * (TODO - add to list - see research)
 - [ ] Test that clients still work
@@ -304,30 +306,30 @@ To learn about the system and/or to validate before release. In particular, if w
 - [ ] Test that permissions work
     * curl root fails with 401, but web works
     * curl /kay/json works with normal API URL, weakened API URL (invent a new empty api rol) fails
-    * TODO - just make this into a unit test (while you're at it, add an upstream test for Map and Filter if they never got around to it)
-- [ ] Various connections work
+    * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
+    * TODO - just make these into unit tests (while you're at it, add an upstream test for Map and Filter if they never got around to it)
+- [ ] Various connections work (Android app)
     * Websocket
     * JSON stream over HTTP
     * Over a cell connection (for both of the above)
 - [ ] Server security and performance testing
-    * Make sure API response time from a sleeping grain is low
-    * Make sure curl $API/$ADMIN/$EXTRA URLS (if/when we implement them) don't give admin/extra powers
-    * Make sure grain sharing via sharing menu doesn't work
-    * Make sure grain sharing via copying an API URL token doesn't work
-    * Make sure grain sharing via copying an API URL token issued during "experimental" period doesn't work
+    [ ] Make sure API response time from a sleeping grain is low
+    [ ] Make sure grain sharing via sharing menu doesn't work
+    [ ] Make sure grain sharing via copying an API URL token doesn't work
 - [ ] Keepalive
     * No integrations, close all ntfy tabs. Subscribe, watch grain logs.
     * Make sure the grain doesn't fall asleep (3+ minutes).
+    * Make sure the grain falls asleep after we stop subscribing.
     * Watch for keepalive messages.
-        [ ] json
-        [ ] sse
-        [ ] raw
-        [ ] ws
+        [ ] curl https://domain/topic/json
+        [ ] curl https://domain/topic/sse
+        [ ] curl https://domain/topic/raw (keepalives are just newlines)
+        [ ] websocat wss://domain/topic/ws (It doesn't send keepalives. Make sure it stays open and send it a message after grain shutdown limits to be sure it's actually listening.)
 - [ ] How is battery life compared to expected values? (["0%-1% in 17h of use" according to the developer](https://docs.ntfy.sh/faq/#how-much-battery-does-the-android-app-use))
 
 ## Initial Release Only
 
-- [ ] Warn users that they need to get a new API URL once I publish the fullapi permission
+- [ ] Warn users that they need to get the new app with different appid (which I created to avoid users having API URLs with bad permissions)
 
 # Research
 
