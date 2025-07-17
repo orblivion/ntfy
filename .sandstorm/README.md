@@ -1,24 +1,20 @@
 # Overview
 
-This is the Sandstorm fork of ntfy. These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. This is the overview, and it has links to the respective [details](README_DETAILS.md) (which may be a bit discombobulated, pardon the dust).
+This is ntfy for Sandstorm, a fork of [ntfy](https://github.com/binwiederhier/ntfy). You can [install it](https://apps.sandstorm.io/app/pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh) from the Sandstorm App Market (or just try the demo).
 
-The **initial release** of this ntfy Sandstorm app will have some advantages over normal ntfy, but there will be **missing features** for reasons explained below. I am going to cut down the work I have to do as much as I can to make it a passable release (one which I am comfortable using myself).
-
-These docs describe what I can and can't do. These notes are for my future self, and for others who are particularly interested. I will *probably hold off on implementing anything past the initial version* until I hear from a potential user that they are interested in it. So please, speak up if that is you.
-
-You can [try out the demo](https://apps.sandstorm.io/app/pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh?experimental=true). Here are the [changes I've made](https://github.com/binwiederhier/ntfy/compare/v2.13.0...orblivion:ntfy:sandstorm) on top of the latest tag of ntfy. Some are changes to ntfy itself, some are sandstorm-specific stuff on top. *Note: I haven't documented all code changes in these READMEs*.
+Ntfy for Sandstorm has some advantages over standard ntfy, and there is some exciting potential for integrating it with other Sandstorm applications in the future. However, there are some **missing features** for reasons explained below. In future versions I could try to find a way to add some of them back, especially if you reach out and let me know that you'd like to see them!
 
 If you are interested in helping, particularly if you know something about ntfy and/or could review code, or translate text that I've added to the UI, or report success/failure with specific integrations, I'd love to hear from you. Find me on [Mastodon](https://mastodon.social/@ill_logic) or [Zulip](https://sandstorm.zulipchat.com/#narrow/channel/476196-app-updates/topic/ntfy.3A.20a.20UnifiedPush.20app.20for.20Sandstorm). Or my email address which is on my website which is on my Github profile.
+
+These READMEs are the result of pondering how ntfy works and how it can be integrated into Sandstorm. Right now they focus on the **initial version** of ntfy for Sandstorm. This is the overview, and it has links to the respective [details](README_DETAILS.md). Here are the [changes I've made](https://github.com/binwiederhier/ntfy/compare/v2.13.0...orblivion:ntfy:sandstorm) on top of v2.13.0 of ntfy. Some are changes to ntfy itself, some are Sandstorm-specific stuff on top.
 
 # [Changes and Issues](README_DETAILS.md#changes-and-issues)
 
 The details for this section is for:
 
-* What to change in this version and why
+* What to change / was changed in this version and why
 * What to change in future versions and why
 * What not to do, and why
-
-This overview will try to stick to what to do for the initial release.
 
 ## [Backend changes](README_DETAILS.md#backend-changes)
 
@@ -26,7 +22,7 @@ This overview will try to stick to what to do for the initial release.
 
 **For the initial release**, some features, and possibly some apps and services, will not work.
 
-Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API. It will also break some features, such as authentication (i.e. locking down topics, below).
+Sandstorm blocks non-standard headers. This may break some services that rely on the standard headers-based ntfy API (which passes fields such as `Title` as a header). It will also break some features, such as authentication (i.e. locking down topics, below).
 
 Fixing this would require a fundamental change to Sandstorm platform. We may be better to wait for [Tempest](https://github.com/sandstorm-org/tempest).
 
@@ -34,13 +30,13 @@ Fixing this would require a fundamental change to Sandstorm platform. We may be 
 
 **For the initial release** users will not be able to protect topics with username/password (due to needing auth headers, see above). As with free ntfy.sh accounts, please treat topics like passwords!
 
-Note that the API URL is (thanks to Sandstorm) random and revokable, which can help you hide your ntfy grain. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
+Note that the API URL is (thanks to Sandstorm) random and revokable, which can help you hide your ntfy grain, limiting potential bad actors. However services (Mastodon, etc) that send notifications will see the endpoint, so it won't be totally secret.
 
-Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. For future versions we might add the ability to monitor or approve topics in the web UI.
+This relies on you not sharing your grain with other users. Because this is Sandstorm, we still want to make ntfy a single-user app and give the user as much ownership over it as possible. For future versions we might add the ability to monitor or approve topics in the web UI.
 
 ## [Web UI](README_DETAILS.md#web-ui)
 
-**For the initial release we will**:
+**For the initial release we**:
 
 * Add the API URL (the "offer template" described below) to settings for smooth onboarding
 * Remove features that won't work or are confusing for Sandstorm
@@ -63,7 +59,7 @@ For future versions we may add an "Extra API" for additional features.
 
 ### [Link to URL to put into phone app](README_DETAILS.md#link-to-url-to-put-into-phone-app)
 
-**For the initial release we will**
+**For the initial release we**
 
 - [x] Add a Sandstorm "offer template" to settings page, which generates API URL for users
 - [x] Include instructions on how users can configure their phone with it
@@ -71,9 +67,9 @@ For future versions we may add an "Extra API" for additional features.
 
 ### [Remove Features](README_DETAILS.md#remove-features)
 
-**For the initial release we will remove** these features from the UI to avoid confusing the user:
+**For the initial release we remove** these features from the UI to avoid confusing the user:
 
-- [x] Embedded docs - maybe?
+- [x] Embedded docs
 - [x] "Logging in" for protected topics
 - [x] "Service URL" field for sending notifications, and similar. For simplicity, just assume we're referring to the given grain.
 - [x] "Forward to email" - I'm assuming this won't work without outgoing connections (though we could add it with some work).
@@ -81,18 +77,18 @@ For future versions we may add an "Extra API" for additional features.
 
 ### [Info in the UI](README_DETAILS.md#info-in-the-ui)
 
-**For the initial release we will explain this stuff to the user**:
+**For the initial release we**:
 
-- [x] Create a welcome screen to hold most of this info
+- [x] Create a welcome screen to explain this stuff to the user
 
 #### [Caveats about missing features](README_DETAILS.md#caveats-about-missing-features)
 
-**For the initial release we will have**:
+**For the initial release we have**:
 
-- [x] Mention major missing features in Welcome Screen, with link to here for details and additional features.
-- [x] Make reference to missing features in description.md, and say details in app.
+- [x] Mention of major missing features in Welcome Screen, with link to here(?) for details and additional features.
+- [x] Reference to missing features in description.md, and say that details are in the app.
 - [x] Also callouts for help w/ listing bad apps and translations in description.md.
-- [x] Caveats in appropriate places (i.e. mention that language preference change is temporary etc)
+- [x] Caveats in appropriate places (i.e. mention that settings [language preference, etc] changes are temporary, etc)
 
 Some details:
 
@@ -133,13 +129,13 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 
 #### [Caveats about reliability](README_DETAILS.md#caveats-about-reliability)
 
-**For the initial release we will**:
+**For the initial release we**:
 
 - [x] Warn users about some reliability issues that may (or may not?) be inherent to this Sandstorm version (in the welcome screen).
 
 #### [Caveats about privacy](README_DETAILS.md#caveats-about-privacy)
 
-**For the initial release we will**:
+**For the initial release we**:
 
 - [x] Explain to user that the server will be not be totally private (unlike most Sandstorm apps) because of the services that will ping it.
 - [x] Low key mention this in description.md as well
@@ -148,7 +144,7 @@ We want to keep it simple for Sandstorm. Also these things require additional ef
 
 #### [Missing instructions](README_DETAILS.md#missing-instructions)
 
-**For the initial release we will add:**
+**For the initial release we add:**
 
 Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush setup works, etc)
 
@@ -157,19 +153,19 @@ Usage instructions that ought to have been in ntfy regardless. (How UnifiedPush 
 
 ## [Assorted](README_DETAILS.md#assorted)
 
-- [x] Various other TODO items.
+- [x] Various other TODO items for initial release.
 
-See link for details. Most of these are probably prudent to do for the **initial release**.
+See link for details.
 
 # [Validate](README_DETAILS.md#validate)
 
 What to validate before any major release.
 
-- [ ] Validate before initial release.
+- [x] Validate before initial release.
 
 # [Research](README_DETAILS.md#research)
 
-What to learn about the system. Maybe we need to fix things or add more warnings, in which case we'll move it to one of the above sections.
+What to learn about the system before initial release.
 
 ## [Connections](README_DETAILS.md#connections)
 
@@ -192,13 +188,13 @@ What to learn about the system. Maybe we need to fix things or add more warnings
 - [x] Does private info get sent to the ntfy server for UnifiedPush messages?
     * Maybe. Some binary data comes through for Mastodon, not sure if encrypted or what. For Matrix it's some nondescript data comes with some IDs.
     * I'm gonna say, this has to be better than a public ntfy server. This should be as trusted as Sandstorm itself.
-- [x] See what happens if I use multiple API URLs (just tell them not to do this)
+- [x] See what happens if I use multiple API URLs (nevermind; just tell them not to do this)
 - [x] Try moving to a new ntfy grain, see how Android apps respond
 - [x] Do UnifiedPush messages get cached? Are there any other differences with UP?
 
 # Future
 
-Some ideas for future versions if we get this off the ground. They may or may not work. See [README_FUTURE.md](README_FUTURE.md) for details.
+Some ideas for future versions if this gets traction. They may or may not work. See [README_FUTURE.md](README_FUTURE.md) for details.
 
 * Molly support via Mollysocket
 * Zulip partial support via a Zulip bot
