@@ -157,6 +157,16 @@ Could just as well be an upstream feature.
 
 There's an Icon field. It takes a URL. It would be nice if the image at the end of it were hostable as part of the app.
 
+## Attachments
+
+Let's see if we can get attachments to work.
+
+Static serving is one option. That can then be the BASE_URL and everything will probably work "normally". And, it will probably be the smallest code change, which will make updates much more pleasant. A downside is that we lose some access control: why do we have different API URLs in the first place?
+
+However, maybe somehow this can work with the API URL. I don't think it will, because we have multiple API URLs, and thus no single BASE_URL that will work. But... doublecheck that. Maybe the phone always sees its own API URL as the "BASE_URL". If that's true, we can probably fake it. Each client can download attachments over their own API URL.
+
+Whichever we do, ntfy will need to be able to delete attachments as the messages expire.
+
 ## Multiple Phones
 
 * If I use it on two different phones with the same (ex.) Mastodon accounts attached, will I get duplicate notifications? Or will it be a different topic per phone?
