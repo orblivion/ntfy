@@ -193,7 +193,7 @@ In the UI and package description (Make a simple list, but link to the README):
             * The ui subdomain (in Sandstorm) always changes
             * The API URL is bound to change and should not be made available to the application anyway
 	* For the future we can perhaps employ static publishing which will have a steady subdomain.
-            * So long as we can make it a directory that ntfy can still delete file that have left the cache expiry time.
+            * So long as we can make it a directory where ntfy can still delete files that have left the cache expiry time.
 	* Also, removing attachments reduces the attack surface for abusive behavior since the server is wide open.
             * We may wan to try to implement authentication (protected topics) first.
 	* Be mindful of all configs with "attachment" in the name. They're not all in a row.
