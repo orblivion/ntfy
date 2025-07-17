@@ -16,6 +16,6 @@ There are a handful of other features, and possibly some integrations, that will
 
 # Help out
 
-Any feedback would be great! In particular, if you'de like to report which apps or integrations work or don't work, that would be great.
+Any feedback would be great! In particular, if you'd like to report which apps or integrations work or don't work, that would be great.
 
 Also, if you're interested in helping to translate the Sandstorm-specific text that has been added, please reach out!
