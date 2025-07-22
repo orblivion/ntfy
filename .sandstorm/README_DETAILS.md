@@ -325,6 +325,8 @@ To learn about the system and/or to validate before release. In particular, if w
         [ ] curl https://domain/topic/sse
         [ ] curl https://domain/topic/raw (keepalives are just newlines)
         [ ] websocat wss://domain/topic/ws (It doesn't send keepalives. Make sure it stays open and send it a message after grain shutdown limits to be sure it's actually listening.)
+- [ ] Delayed notification
+    * After would-be grain sleep time (3+ minutes)
 - [ ] How is battery life compared to expected values? (["0%-1% in 17h of use" according to the developer](https://docs.ntfy.sh/faq/#how-much-battery-does-the-android-app-use))
     * Power to 100%, unplug in my phone, don't use any screen or audio unnecessarily. Leave for 6+ hours (overnight).
     * A ton of battery used on ntfy-enabled apps would make me wonder if they're polling instead of using ntfy.
