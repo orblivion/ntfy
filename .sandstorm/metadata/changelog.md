@@ -1,3 +1,10 @@
+# v2.14.0-sandstorm-12
+
+Upgrade to [ntfy v2.14.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.14.0). For ntfy-Sandstorm, this adds:
+
+* pre-defined templates (github, grafana, etc)
+* sprig template functions
+
 # v2.13.0-sandstorm-11
 
 Initial release of the Sandstorm fork.
