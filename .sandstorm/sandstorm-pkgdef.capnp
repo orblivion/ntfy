@@ -19,9 +19,9 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "ntfy"),
 
-    appVersion = 11,  # Increment this for every release.
+    appVersion = 12,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "v2.13.0-sandstorm-11"),
+    appMarketingVersion = (defaultText = "v2.14.0-sandstorm-12"),
     # Human-readable representation of appVersion. Should match the way you
     # identify versions of your app in documentation and marketing.
 
