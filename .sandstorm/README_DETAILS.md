@@ -291,7 +291,7 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 To learn about the system and/or to validate before release. In particular, if we make a big change like starting to use Caddy, or adding Websocket support (assuming we don't have it on day one), that the behavior stays the same. And we should test these with websockets and with the other kind of connection.
 
-- [ ] Look over code
+- [ ] Look over my code changes
     * Remaining TODOs in the source
     * UI text is usable
     * External links all open in a new window
