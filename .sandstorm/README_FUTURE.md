@@ -2,10 +2,6 @@
 
 *(Should reorganize this into "quick followups" vs significant new features)*
 
-## Promote
-
-Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/) next to cloudtron! Merge into ntfy?
-
 ## x-unifiedpush handling
 
 Take a look at how requests with x-unifiedpush header are handled (we don't see most headers). In particular handleBodyAsMessageAutoDetect, which would get called only in that case.
