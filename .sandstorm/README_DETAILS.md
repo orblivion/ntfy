@@ -445,3 +445,7 @@ To learn about the system and/or to validate before release. In particular, if w
         * I will miss it for attachments, but that is looking for a full URL. I can do static hosting for that in a future release.
     * On the frontend, it uses the ui subdomain, which is a bit disconcerting, but it's pretty much for identifying user accounts for subscriptions and stuff.
         * I confirmed that no base_url ends up getting passed to the backend and saved to the cache db (and cached messages would get auto-deleted anyway)
+
+## Promote
+
+[x] Put Sandstorm ntfy on the [ntfy integrations page](https://docs.ntfy.sh/integrations/)
