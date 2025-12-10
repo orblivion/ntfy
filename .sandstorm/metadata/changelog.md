@@ -1,6 +1,13 @@
+# v2.15.0-sandstorm-13
+
+Upgrade to [ntfy v2.15.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.15.0) (with Sandstorm changes on top). For ntfy-Sandstorm, this adds:
+
+* Mitigation around "database locked" errors (probably not an issue for Sandstorm because it's low traffic anyway)
+* Build with `nopayments`, `nofirebase`, and `nowebpush` in hopes of making a slightly smaller download (and hypothetically smaller attack surface)
+
 # v2.14.0-sandstorm-12
 
-Upgrade to [ntfy v2.14.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.14.0). For ntfy-Sandstorm, this adds:
+Upgrade to [ntfy v2.14.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.14.0) (with Sandstorm changes on top). For ntfy-Sandstorm, this adds:
 
 * pre-defined templates (github, grafana, etc)
 * sprig template functions
