@@ -8,7 +8,7 @@ builds:
     binary: ntfy
     env:
       - CGO_ENABLED=1 # required for go-sqlite3
-    tags: [ sqlite_omit_load_extension,osusergo,netgo ]
+    tags: [ sqlite_omit_load_extension,osusergo,netgo,nopayments,nofirebase,nowebpush ]
     ldflags:
       - "-linkmode=external -extldflags=-static -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}"
     goos: [ linux ]
