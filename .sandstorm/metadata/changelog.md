@@ -1,4 +1,4 @@
-# v2.15.0-sandstorm-13
+# v2.15.0-sandstorm-14
 
 Upgrade to [ntfy v2.15.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.15.0) (with Sandstorm changes on top). For ntfy-Sandstorm, this adds:
 
