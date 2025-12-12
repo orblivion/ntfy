@@ -296,6 +296,11 @@ To learn about the system and/or to validate before release. In particular, if w
     * UI text is usable
     * External links all open in a new window
 - [ ] Test that known working apps still work
+    * ATTENTION:
+        * Check if it's working before ntfy-sandstorm update
+        * Check if it stops working after ntfy-sandstorm update
+        * Check if I need to log out and back in!
+        * Give users warnings I guess? Sucks!
     * Tusky
     * Element (It doesn't even work correctly when connected to ntfy.sh! However we can check if we see messages if we do a full export/backup of the Android app.)
     * UP Example
@@ -325,15 +330,9 @@ To learn about the system and/or to validate before release. In particular, if w
         [ ] curl https://domain/topic/sse
         [ ] curl https://domain/topic/raw (keepalives are just newlines)
         [ ] websocat wss://domain/topic/ws (It doesn't send keepalives. Make sure it stays open and send it a message after grain shutdown limits to be sure it's actually listening.)
-- [ ] Delayed notification
-    * After would-be grain sleep time (3+ minutes)
 - [ ] How is battery life compared to expected values? (["0%-1% in 17h of use" according to the developer](https://docs.ntfy.sh/faq/#how-much-battery-does-the-android-app-use))
     * Power to 100%, unplug in my phone, don't use any screen or audio unnecessarily. Leave for 6+ hours (overnight).
     * A ton of battery used on ntfy-enabled apps would make me wonder if they're polling instead of using ntfy.
-
-## Initial Release Only
-
-- [ ] Warn users that they need to get the new app with different appid (which I created to avoid users having API URLs with bad permissions)
 
 # Research
 
