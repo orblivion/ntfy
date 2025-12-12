@@ -345,7 +345,7 @@ export const MissingFeatures = () => {
               Reliability
             </Typography>
             <ul>
-              <li>If you <b>upgrade this Sandstorm app</b>, Android notifications may become blocked. To fix this, try pull-to-refresh, or otherwise restart the Android app. <i>(This might be a bug in the Android app)</i></li>
+              <li>If you <b>upgrade this Sandstorm app</b>, Android notifications may become blocked. To fix this, wait about a minute for "Reconnecting..." to go away in your list of Android topics. Then try pull-to-refresh. Finally, try restarting the Android app. <i>(This might be a bug in the Android app)</i></li>
               <li>If you <b>reload this grain</b>, you will probably miss the next message from <i>each</i> non-UnifiedPush integration. <i>(This is a Sandstorm bug)</i></li>
               <li>If you <b>lose connectivity</b> on Android, you may expect to miss some messages, particularly UnifiedPush messages.</li>
               <li>If one integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
@@ -454,7 +454,7 @@ export const AppSetup = () => {
         <Alert severity="info" sx={{ paddingTop: 2 }}>
           <AlertTitle>More Info</AlertTitle>
           <p>
-              If you upgrade this Sandstorm app, Android notifications may become blocked. To fix this, try pull-to-refresh, or otherwise restart your Android app.
+              If you upgrade this Sandstorm app, Android notifications may become blocked. To fix this, wait about a minute for "Reconnecting..." to go away in your list of Android topics. Then try pull-to-refresh. Finally, try restarting your Android app.
           </p>
           <p>
               It is not recommended to:
