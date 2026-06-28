@@ -19,10 +19,10 @@ usr/bin/uname
 usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
 usr/lib/x86_64-linux-gnu/libc.so.6
 usr/lib/x86_64-linux-gnu/libpcre2-8.so.0
-usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2
+usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.14.0
 usr/lib/x86_64-linux-gnu/libselinux.so.1
 usr/lib/x86_64-linux-gnu/libtinfo.so.6
-usr/lib/x86_64-linux-gnu/libtinfo.so.6.4
+usr/lib/x86_64-linux-gnu/libtinfo.so.6.5
 usr/lib64/ld-linux-x86-64.so.2
 usr/share/mime/globs2
 usr/share/zoneinfo/Etc/UTC
