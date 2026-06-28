@@ -26,7 +26,6 @@ import routes from "./routes";
 import { requestSandstormIframeURL } from "../app/sandstorm";
 import { useEffect, useState } from "react";
 
-const readmeMissingFeatures = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md#caveats-about-missing-features";
 const readme = "https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md";
 
 export const DocsHeadsup = ({open, setOpen}) => (
@@ -65,6 +64,7 @@ export const Welcome = () => {
     <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
       <Stack spacing={3}>
         <Intro/>
+        <LimitedSupportWarning/>
         <SupportedApps/>
         <PrivacyAndSecurity/>
         <ConnectingYourPhone/>
@@ -82,18 +82,39 @@ export const SettingsRefreshWarning = () => (
 
 const Intro = () => {
   return (
-    <Card sx={{ p: 3 }} aria-label="Welcome to ntfy for Sandstorm">
+    <Card sx={{ p: 3 }} aria-label="Welcome to sntfy (ntfy for Sandstorm)">
       <CardContent>
         <Typography variant="h5" sx={{ marginBottom: 2 }}>
-          Welcome to ntfy for Sandstorm
+          Welcome to sntfy (ntfy for Sandstorm)
         </Typography>
         <p>
-          <b>ntfy</b> is a notification service. It integrates with many open source Android applications and other services (iOS support is limited). You can easily send notifications from your own custom scripts and applications too!
+          <b>sntfy</b> is a <i>limited version</i> of a notification service called <b>ntfy</b>, for Sandstorm. <b>ntfy</b> integrates with many open source Android applications and other services (iOS support is limited). You can easily send notifications from your own custom scripts and applications too!
         </p>
         <p>
-          Please read on to learn about how to use ntfy for Sandstorm, how it differs from standard ntfy, and some security and privacy considerations.
+          Please read on to learn about how to use sntfy, how it differs from standard ntfy, and some security and privacy considerations.
         </p>
       </CardContent>
+    </Card>
+  )
+};
+
+const LimitedSupportWarning = () => {
+  return (
+    <Card sx={{ p: 3 }} aria-label="Limited Support">
+        <Alert severity="warning">
+            <Typography variant="h5" sx={{ marginBottom: 2 }}>
+              Limited Support
+            </Typography>
+          <p>
+            It is recommended to use <b>sntfy</b> only for convenience, not for anything "mission critical".
+          </p>
+          <p>
+            As of now, <b>ntfy</b>&#39;s primary features seem to work reliably, including Unified Push and many other integrations. However due to Sandstorm&#39;s security model, some features are <i>not supported</i> or only <i>work partially</i>. In particular, this includes any feature that requires special http headers or authentication (notably, per-message disabling of cache may be ignored). Some features may conceivably stop working, due to a change in ntfy or even an integration. There may also be occasional edge cases of missed messages due to how Sandstorm works.
+          </p>
+          <p>
+            <b>ntfy</b> changes over time and it is impractical to keep a comprehensive list of what features currently work. <Link href={readme} target="_blank" rel="noreferrer">See here</Link> to learn more about all of this, and feel free to reach out to ask questions, report issues, or make requests.
+          </p>
+        </Alert>
     </Card>
   )
 };
@@ -116,18 +137,6 @@ const SupportedApps = () => {
           <li><Link href="https://docs.ntfy.sh/integrations/" target="_blank" rel="noreferrer"><b>Other supported integrations</b></Link></li>
           <li><Link onClick={() => setScriptsOpen(true)} href="#" ><b>Make your own scripts and integrations</b></Link></li>
         </ul>
-        <Alert severity="warning">
-          <AlertTitle>Limited Support</AlertTitle>
-          <p>
-            Due to some techincal hurdles, some features or integrations <b>may not work as expected</b> in the Sandstorm version of ntfy. Notably, <b>"Do Not Cache"</b> directives may not work in some cases.
-          </p>
-          <p>
-            Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups. You may consider other options if your needs are <b>"mission critical"</b>.
-          </p>
-          <Button>
-            <Link onClick={() => navigate(routes.missingFeatures)} style={{cursor: "pointer"}}>Learn More</Link>
-          </Button>
-        </Alert>
       </CardContent>
     </Card>
   </>)
@@ -139,7 +148,7 @@ const PrivacyAndSecurityBasic = () => (
       This grain is for you only
     </Typography>
     <p>
-      Unlike standard ntfy, ntfy for Sandstorm is not meant to be a public instance. Future versions may display private information in the web interface. Use this grain only for your own devices and the services you use. If you want to host a friend on your server, invite them to create their own grain.
+      Unlike standard ntfy, sntfy is not meant to be a public instance. Future versions may display private information in the web interface. Use this grain only for your own devices and the services you use. If you want to host a friend on your server, invite them to create their own grain.
     </p>
     <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
       Topic names are secret
@@ -283,83 +292,6 @@ const Scripts = ({open, setOpen}) => {
     </Modal>
   )
 }
-
-export const MissingFeatures = () => {
-  const navigate = useNavigate();
-  return (
-    <Container maxWidth="md" sx={{ marginTop: 3, marginBottom: 3 }}>
-      <Stack spacing={3}>
-        <Card sx={{ p: 3 }} aria-label="Missing Features">
-          <CardContent>
-            <Typography variant="h5" sx={{ marginBottom: 2 }}>
-              Missing Features
-            </Typography>
-            <p>
-              If you're familiar with <b>ntfy</b>, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to <Link href={readmeMissingFeatures} target="_blank" rel="noreferrer">technical hurdles</Link>.
-            </p>
-            <p>
-              I'd <Link href={readme} target="_blank" rel="noreferrer">love to hear from you</Link> if:
-            </p>
-            <ul>
-              <li>You find yourself missing one of these features <i>(I have some ideas to make it work)</i></li>
-              <li>You would like to report on which integrations are working for you <i>(I may compile a list)</i></li>
-              <li>You would like to help with translations</li>
-            </ul>
-            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-              Web App
-            </Typography>
-            <ul>
-              <li>Subscriptions and Notifications</li>
-              <li>Progressive Web App (PWA)</li>
-              <li>Translations for Sandstorm-specific text</li>
-              <li>Persistent Settings (changes will be lost on page refresh)</li>
-              <li>Publishing to Other Servers</li>
-            </ul>
-            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-              Other Features
-            </Typography>
-            <ul>
-              <li>UnifiedPush enabled apps, or other services, that depend on ntfy-specific HTTP headers
-              <ul>
-                <li>Some may not work at all</li>
-                <li>Some may be degraded (missing tags or title, delay or <b>"do not cache" may not be respected</b>)</li>
-              </ul>
-              </li>
-              <li>Push notifications on iOS (manual refresh works)</li>
-              <li>Protected Topics</li>
-              <li>Message Attachments</li>
-              <li>Upstream Servers</li>
-              <li>Email publishing and notifications</li>
-              <li><Link href="https://unifiedpush.org/users/apps/" target="_blank" rel="noreferrer">Matrix Gateway</Link> (for self-hosted Matrix home servers)</li>
-              <li>Web Push</li>
-              <li>Per-Visitor rate limiting (an overly active integration could block other integrations)</li>
-            </ul>
-            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-              API
-            </Typography>
-            <ul>
-              <li>API calls that depend on ntfy-specific HTTP headers</li>
-              <li>ntfy Command-Line Tool</li>
-            </ul>
-            <Typography variant="h6" sx={{ marginTop: 2, marginBottom: 2 }}>
-              Reliability
-            </Typography>
-            <ul>
-              <li>If you <b>upgrade this Sandstorm app</b>, Android notifications may become blocked. To fix this, wait about a minute for "Reconnecting..." to go away in your list of Android topics. Then try pull-to-refresh. Finally, try restarting the Android app. <i>(This might be a bug in the Android app)</i></li>
-              <li>If you <b>reload this grain</b>, you will probably miss the next message from <i>each</i> non-UnifiedPush integration. <i>(This is a Sandstorm bug)</i></li>
-              <li>If you <b>lose connectivity</b> on Android, you may expect to miss some messages, particularly UnifiedPush messages.</li>
-              <li>If one integration sends a ton of messages, it may trigger the rate limit (see above) and block incoming messages from all other integrations.</li>
-              <li>We have no control over how the integrations connect with this server. If one of them starts using headers as described above, it may affect functionality.</li>
-            </ul>
-            <Button>
-              <Link onClick={() => navigate(routes.app)} style={{cursor: "pointer"}}>Go Back</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </Stack>
-    </Container>
-  )
-};
 
 // Remember to keep this vague. The Android UI might change.
 const AppSetupAlreadyConfigured = ({open, setOpen}) => {
