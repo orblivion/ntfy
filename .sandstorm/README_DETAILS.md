@@ -279,6 +279,8 @@ How to use it for UnifiedPush, and that it's a separate thing from scripts that 
 
 # Release Items
 
+*(NOTE: Since renaming to sntfy, where we don't carefully track non-working ntfy features any longer, we are not doing all of these. Just doing a quick check to make sure basic features still work.)*
+
 ## Regular
 
 - [ ] Confirm licenses for everything I use
