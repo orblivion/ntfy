@@ -30,7 +30,7 @@ const ActionBar = (props) => {
   const location = useLocation();
   const isLaunchedPWA = useIsLaunchedPWA();
 
-  let title = "ntfy";
+  let title = "sntfy";
   if (props.selected) {
     title = topicDisplayName(props.selected);
   } else if (location.pathname === routes.settings) {
