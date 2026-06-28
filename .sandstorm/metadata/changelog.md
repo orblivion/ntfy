@@ -1,3 +1,9 @@
+# v2.25.0-sandstorm-15
+
+Rebrand to "sntfy" to avoid expectations that this is actually "ntfy". Change SLA to no longer track non-working features or check them very carefully. It's too difficult to keep up with ntfy and account for Sandstorm's framework.
+
+Upgrade to [ntfy v2.25.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.25.0) (with Sandstorm changes on top). See other releases in between v2.15.0 and v2.25.0 for details, though a lot of it will not apply to sntfy.
+
 # v2.15.0-sandstorm-14
 
 Upgrade to [ntfy v2.15.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.15.0) (with Sandstorm changes on top). For ntfy-Sandstorm, this adds:
