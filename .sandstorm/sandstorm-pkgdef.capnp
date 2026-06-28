@@ -17,7 +17,7 @@ const pkgdef :Spk.PackageDefinition = (
     # This manifest is included in your app package to tell Sandstorm
     # about your app.
 
-    appTitle = (defaultText = "ntfy"),
+    appTitle = (defaultText = "sntfy"),
 
     appVersion = 14,  # Increment this for every release.
 

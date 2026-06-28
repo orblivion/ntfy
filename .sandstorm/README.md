@@ -1,3 +1,16 @@
+# Hi
+
+This is **sntfy**, i.e. **ntfy** for [Sandstorm](https://sandstorm.org). If you're familiar with **ntfy**, there are a handful of features that have been left out of this version of ntfy for Sandstorm due to technical hurdles. Again, it recommended to use **sntfy** only for convenience, not for anything "mission critical". When [Tempest](https://github.com/sandstorm-org/tempest) arrives, we may be able to support ntfy fully.
+
+Feel free to reach out (contact points below) if:
+
+* Something stops working after an upgrade
+* You would like to help with translations
+
+What follows was an attempt to document everything that doesn't work (particularly [here](#caveats-about-missing-features)). At some point in 2025 I stopped keeping it up to date, but it will probably be mostly relevant for a while.
+
+---
+
 # Overview
 
 This is ntfy for Sandstorm, a fork of [ntfy](https://github.com/binwiederhier/ntfy). You can [install it](https://apps.sandstorm.io/app/pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh) from the Sandstorm App Market (or just try the demo).

@@ -1,4 +1,4 @@
-With **ntfy**, you can get push notifications for many open source Android applications and other services without needing Google services. iOS support is limited.
+**sntfy** is a *limited version* of a notification service called [ntfy](https://ntfy.sh), made for Sandstorm. With **sntfy**, you can get push notifications for many open source Android applications and other services without needing Google services. iOS support is limited.
 
 Traditionally, push notifications for your Android apps are routed through Google services to save on bandwidth. ntfy replaces Google with something called [UnifiedPush](https://unifiedpush.org). Setup on your phone is done with the ntfy Android companion app, and is surprisingly simple!
 
@@ -6,13 +6,13 @@ ntfy supports [many Android apps](https://unifiedpush.org/users/apps/), like Tus
 
 Just install and follow the in-app instructions.
 
-*Though ntfy for Sandstorm works pretty reliably, it has occasional hiccups. You may consider other options if your needs are "mission critical"*
+*Though sntfy works pretty reliably, it has occasional hiccups. It is not recommended for anything that is "mission critical"*
 
 # Sandstorm-specific Differences
 
-The Sandstorm version of ntfy has some benefits and some drawbacks. For instance, the standard version of ntfy is built as a public server, whereas the Sandstorm version is built for a single user. This will give you more control over who is using your grain to relay notifications (hopefully only to you!). On the other hand, because of technical hurdles related to Sandstorm's strict security approach, ntfy's protected topics are not possible at this time.
+sntfy has some benefits and some drawbacks compared to standard ntfy. For instance, standard ntfy is built as a public server, whereas sntfy is built for a single user. This will give you more control over who is using your grain to relay notifications (hopefully only to you!). On the other hand, because of technical hurdles related to Sandstorm's strict security approach, ntfy's protected topics are not possible at this time.
 
-There are a handful of other features, and possibly some integrations, that will not work quite the same here as in the standard version of ntfy. This is detailed in the app. If you find yourself missing one of them, please reach out, maybe it can be made it work. You can also see the technical explanations for all of this [here](https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md).
+There are a handful of other features, and possibly some integrations, that will not work quite the same here as in the standard version of ntfy. You can read more about it [here](https://github.com/orblivion/ntfy/blob/sandstorm/.sandstorm/README.md).
 
 # Help out
 
