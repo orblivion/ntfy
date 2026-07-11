@@ -12,5 +12,5 @@ apt install -y \
 
 export PATH=$PATH:/usr/local/go/bin
 
-node -v || ./installers/install-node.sh
+./installers/install-node.sh
 go version || ./installers/install-go.sh
