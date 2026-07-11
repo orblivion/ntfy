@@ -1,3 +1,7 @@
+# v2.26.0-sandstorm-16
+
+Upgrade to [ntfy v2.26.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.26.0) (with Sandstorm changes on top). Most importantly it fixes a DOS attack for templates. (Though this is largeyly mitigated on Sandstorm, since your server is only accessible to servers you shared it with).
+
 # v2.25.0-sandstorm-15
 
 Rebrand to "sntfy" to avoid expectations that this is actually "ntfy". Change SLA to no longer track non-working features or check them very carefully. It's too difficult to keep up with ntfy and account for Sandstorm's framework.
