@@ -6,3 +6,5 @@ set -euox pipefail
 #curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
 apt install -y nodejs npm
 npm -v   # verifies that it worked
+
+npm config set ignore-scripts true --global
