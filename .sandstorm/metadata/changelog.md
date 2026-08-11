@@ -1,3 +1,8 @@
+# v2.27.0-sandstorm-17
+
+Upgrade to [ntfy v2.27.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.27.0) (with Sandstorm changes on top). See link for upstream fixes, including a couple security fixes.
+
+
 # v2.26.0-sandstorm-16
 
 Upgrade to [ntfy v2.26.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.26.0) (with Sandstorm changes on top). Most importantly it fixes a DOS attack for templates. (Though this is largeyly mitigated on Sandstorm, since your server is only accessible to servers you shared it with).
