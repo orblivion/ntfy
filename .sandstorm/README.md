@@ -13,7 +13,7 @@ What follows was an attempt to document everything that doesn't work (particular
 
 # Overview
 
-This is ntfy for Sandstorm, a fork of [ntfy](https://github.com/binwiederhier/ntfy). You can [install it](https://apps.sandstorm.io/app/pxm3ugzn7sfhtw4kz9ktdfkyphdq0qa1y2n1g0yfnzkn0mqcszhh) from the Sandstorm App Market (or just try the demo).
+This is ntfy for Sandstorm, a fork of [ntfy](https://github.com/binwiederhier/ntfy). You can [install it](https://apps.sandstorm.io/app/c6rk81r4qk6dm3k04x1kxmyccqewhh4npuxeyg1xrpfypn2ddy0h) from the Sandstorm App Market (or just try the demo).
 
 Ntfy for Sandstorm has some advantages over standard ntfy, and there is some exciting potential for integrating it with other Sandstorm applications in the future. However, there are some **missing features** for reasons explained below. In future versions I could try to find a way to add some of them back, especially if you reach out and let me know that you'd like to see them!
 
