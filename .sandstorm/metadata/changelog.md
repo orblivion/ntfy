@@ -1,3 +1,7 @@
+# v2.32.0-sandstorm-19
+
+Upgrade to [ntfy v2.32.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.32.0) (with Sandstorm changes on top). See [upstream releases](https://github.com/binwiederhier/ntfy/blob/main/docs/releases.md) for details since the last release.
+
 # v2.28.0-sandstorm-18
 
 Upgrade to [ntfy v2.28.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.28.0) (with Sandstorm changes on top). See link for upstream fixes. This is described as a "hardening" release.
