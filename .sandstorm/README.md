@@ -7,6 +7,8 @@ Feel free to reach out (contact points below) if:
 * Something stops working after an upgrade
 * You would like to help with translations
 
+NOTE: **sntfy** changes are tracked on the `sandstorm` branch. This isn't a straightforward branch of development, however, because it gets rebased with upstream every release. I.e., all **sntfy** commits come after all upstream **ntfy** commits. This means that old `sandstorm` branch changes might no longer work as they did when they were originally made. However, each release has a tag, and those represent the versions as they were actually released.
+
 What follows was an attempt to document everything that doesn't work (particularly [here](#caveats-about-missing-features)). At some point in 2025 I stopped keeping it up to date, but it will probably be mostly relevant for a while.
 
 ---
