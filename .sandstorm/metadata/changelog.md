@@ -1,4 +1,10 @@
+# v2.34.0-sandstorm-20
+
+Upgrade to [ntfy v2.34.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.34.0) (with Sandstorm changes on top). See [upstream releases](https://github.com/binwiederhier/ntfy/blob/main/docs/releases.md) for details since the last release. Includes rejecting compromised eMudhra CAs.
+
 # v2.32.0-sandstorm-19
+
+*(was only released to Sandstorm experimental market)*
 
 Upgrade to [ntfy v2.32.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.32.0) (with Sandstorm changes on top). See [upstream releases](https://github.com/binwiederhier/ntfy/blob/main/docs/releases.md) for details since the last release.
 
