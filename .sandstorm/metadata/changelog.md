@@ -1,6 +1,6 @@
-# v2.37.0-sandstorm-22
+# v2.38.1-sandstorm-23
 
-Upgrade to [ntfy v2.38.0](https://github.com/binwiederhier/ntfy/releases/tag/v2.38.0) (with Sandstorm changes on top). See [upstream releases](https://github.com/binwiederhier/ntfy/blob/main/docs/releases.md) for details since the last release. Includes security fixes.
+Upgrade to [ntfy v2.38.1](https://github.com/binwiederhier/ntfy/releases/tag/v2.38.1) (with Sandstorm changes on top). See [upstream releases](https://github.com/binwiederhier/ntfy/blob/main/docs/releases.md) for details since the last release. Includes security fixes.
 
 # v2.37.0-sandstorm-21
 
